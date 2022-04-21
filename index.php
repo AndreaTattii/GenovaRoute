@@ -23,7 +23,15 @@
 </head>
 
 <body style="background-image: url('img/foto_epoca_genova.png'); background-repeat: no-repeat; background-size: cover;">
-    <div class="container pt-5  p-1" >
+
+    <nav class="navbar  navbar-expand-lg navbar-light bg-light" style="background-color: #B30000;">
+        <div class="container p-2">
+            <a class="navbar-brand" href="./">
+                <h1>Genova Route</h1>
+            </a>   
+        </div>
+    </nav>
+    <div class="container pt-5  p-1">
         <div class="row justify-content-md-center " style="font-family: 'Helvetica', 'Arial', sans-serif; padding: 20px;">
             <div class="col-sm-6" style=" background-color: white; border-style:solid; border-color:black; border-width:5px; border-radius: 25px;">
                 <div class="row justify-content-md-center">
@@ -81,15 +89,33 @@
 
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="container center-text">
-                    <b style="text-align: center;">Copyright 2022 GenovaRoute.com</b>
-                    <br>
-                    <b style="text-align: center;">Partita IVA 02070920992</b>
-                </div>
+        <div class="row justify-content-md-center">
+            <div class="footer-clean" style="background-color: white; position: absolute; bottom: 0;">
+                <footer>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-4 ">
+                                <a class="navbar-brand" href="./">
+                                    <img src="img/home/logoScritta.png" alt="" height="60" class="d-inline-block align-text-top">
+                                </a>
+                            </div>
+                            <div class="col-12">
+                                <center>
+
+                                    <p style="text-decoration: none; color:black">Partita Iva: 02070920992</p>
+                                    <p>GenovaRoute ©</p>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </div>
+    </div>
+
+
+
+
 </body>
 
 </html>
