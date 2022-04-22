@@ -6,7 +6,7 @@
         $host="127.0.0.1";
         $user="root";
         $pass="";
-        $database="getnbite";
+        $database="genovaroot";
     
         $connessione = new mysqli($host, $user, $pass , $database);
         
