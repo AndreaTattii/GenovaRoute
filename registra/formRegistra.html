@@ -4,49 +4,47 @@
 <head>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="../../../js/bootstrap.min.js"></script>
+  <script src="../bootstrap/js/bootstrap.min.js"></script>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- CSS Personale-->
-  <link rel="stylesheet" href="../../../cssPersonal/style.css">
+  <link rel="stylesheet" href="../bootstrap/cssPersonal/style.css">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
   <!-- font -->
   <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
   <title>Eventi</title>
 </head>
 
-<body>
-
-
+<body class="d-flex flex-column min-vh-100" style="background-image: url('../img/foto_epoca_genova.png'); background-repeat: no-repeat; background-size: cover;">
   
+  <nav class="navbar  navbar-expand-lg " style="background-color: #B30000;">
+    <div class="container p-2">
+        <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold;" href="./">
+            <h1>Genova Route</h1>
+        </a>
+    </div>
+  </nav>
 
   <div class="container pt-5">
-    <div class="row">
-      <div class="col-sm-6">
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background:#ffffff">
-          <div class="container p-2">
-            <a href="../../../index.php"><img src="../../../img/Home/logoScritta.png" height="50"></a>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="../../../index.php" style="color: black">Home</a>
-                </li>
-              </ul>
-             </div>
-          </div>
-        </nav>
-        <div class="row center-text"> 
-          <h1 style="font-family: 'Inter'; font-size: 30px; color: black;">Benvenuto su GetnBite</h1>
+    <div class="row justify-content-md-center " style="font-family: 'Helvetica', 'Arial', sans-serif; padding: 20px;">
+      <div class="col-sm-12" style=" background-color: white; border-style:solid; border-color:black; border-width:2px; border-radius: 60px;">
+      
+        <div class="row center-text">
+          <h1 style="font-weight: bold; font-size: 30px; color: black; text-align: center;">Benvenuto su Genova Route</h1>
         </div>
+
         <!-- form -->
         <div id="registrazione" style="margin:5px; padding:20px;">
-          
+
           <form class="row g-3" action="registrazioneBackend/registra.php" method="post">
             <div class="col-md-6">
 
@@ -61,7 +59,7 @@
 
             </div>
             <div class="col-12">
-              
+
               <label for="inputAddress" class="form-label">Mail</label>
               <input type="mail" class="form-control" id="mail" name="mail" required>
 
@@ -72,7 +70,7 @@
               <input type="password" class="form-control" id="password" name="password" required>
 
             </div>
-            
+
             <div class="col-12">
               <div class="form-check">
 
@@ -86,38 +84,16 @@
             <br>
             <div class="col-12">
               <br>
-              <button type="submit" class="btn btn-primary" style="background-color: #00E1A5; border-color: black;">Registrati</button>
+              <button type="submit" class="btn btn-primary" style="background-color: #B30000; border-color: black;">
+                Registrati
+              </button>
 
             </div>
           </form>
         </div>
-        
       </div>
-      <div class="col-sm-6">
-        <div style="background-color: #00E1A5; padding:30px;">
-          <div class="container pt-5 center-text">
-            <div class="row">
-              <img src="img/fattorinoCartoon.png" width="75%">
-            </div>
-            <div class="row center-text"> 
-              <h1 style="font-family: 'Playfair Display';font-size: 30px; color: white;">Mangia con GetnBite</h1>
-            </div>
-          </div>
-        </div>
-      </div>   
     </div>
-
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="container center-text">
-          <b style="text-align: center;">Copyright 2022 GetnBite.com</b> 
-          <br>
-          <b style="text-align: center;">Partita IVA 02070920992</b>
-        </div>
-      </div>
-        
-    </div>
-  </div> 
+  </div>
 </body>
 
 </html>

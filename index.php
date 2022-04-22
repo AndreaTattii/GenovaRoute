@@ -36,8 +36,8 @@
         </div>
     </nav>
     <div class="container pt-5  p-1">
-        <div class="row justify-content-md-center " style="font-family: 'Helvetica', 'Arial', sans-serif; padding: 20px;">
-            <div class="col-sm-6" style=" background-color: white; border-style:solid; border-color:black; border-width:2px; border-radius: 80px;">
+        <div class="row justify-content-md-center " style="font-family: 'Helvetica', 'Arial', sans-serif; padding: 20px; margin: 20px;">
+            <div class="col-sm-6" style=" background-color: white; border-style:solid; border-color:black; border-width:2px; border-radius: 60px;">
                 <div class="row justify-content-md-center">
                     <h1 style="font-weight: bold; font-size: 30px; color: black; text-align: center;">Login</h1>
                 </div>

@@ -4,7 +4,7 @@
     $host="127.0.0.1";
     $user="root";
     $password="";
-    $database="getnbite";
+    $database="genovaroute";
 
     $connessione= new mysqli($host, $user, $password , $database);
 
@@ -32,12 +32,6 @@
         echo "Errore durante inserimento: ".$connessione->error;
     }
 
-    $sql = "SELECT * FROM utente WHERE email='".$_SESSION['email']."'";
-    $result = $connessione->query($sql);
-    $row = $result->fetch_array();
 
-    $sql = "INSERT INTO carrello (id_Utente) VALUES 
-    ('".$row['id']."')";
-    $connessione->query($sql);
-    $connessione->close();
+    
 ?>
