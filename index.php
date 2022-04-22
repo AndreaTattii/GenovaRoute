@@ -19,23 +19,27 @@
     <!-- font -->
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+
     <title>Login</title>
 </head>
 
-<body style="background-image: url('img/foto_epoca_genova.png'); background-repeat: no-repeat; background-size: cover;">
+<body class="d-flex flex-column min-vh-100" style="background-image: url('img/foto_epoca_genova.png'); background-repeat: no-repeat; background-size: cover;">
 
-    <nav class="navbar  navbar-expand-lg navbar-light bg-light" style="background-color: #B30000;">
+    <nav class="navbar  navbar-expand-lg " style="background-color: #B30000;">
         <div class="container p-2">
-            <a class="navbar-brand" href="./">
+            <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold;" href="./">
                 <h1>Genova Route</h1>
-            </a>   
+            </a>
         </div>
     </nav>
     <div class="container pt-5  p-1">
         <div class="row justify-content-md-center " style="font-family: 'Helvetica', 'Arial', sans-serif; padding: 20px;">
-            <div class="col-sm-6" style=" background-color: white; border-style:solid; border-color:black; border-width:5px; border-radius: 25px;">
+            <div class="col-sm-6" style=" background-color: white; border-style:solid; border-color:black; border-width:2px; border-radius: 80px;">
                 <div class="row justify-content-md-center">
-                    <h1 style="font-family: 'Helvetica', 'Arial', sans-serif; font-size: 30px; color: black; text-align: center;">Login</h1>
+                    <h1 style="font-weight: bold; font-size: 30px; color: black; text-align: center;">Login</h1>
                 </div>
                 <!-- form -->
                 <div id="login" style="margin:5px; padding:20px; ">
@@ -83,39 +87,12 @@
                             <br><br>
                         </div>
                     </form>
-                    <p>Non hai un account? <a href="../registra/formRegistra.html" style="color: #B30000; ">Registrati
-                        </a></p>
+                    <p>Non hai un account? <a href="registra/formRegistra.html" style="color: #B30000; ">Registrati</a> </p>
                 </div>
 
             </div>
         </div>
-        <div class="row justify-content-md-center">
-            <div class="footer-clean" style="background-color: white; position: absolute; bottom: 0;">
-                <footer>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-4 ">
-                                <a class="navbar-brand" href="./">
-                                    <img src="img/home/logoScritta.png" alt="" height="60" class="d-inline-block align-text-top">
-                                </a>
-                            </div>
-                            <div class="col-12">
-                                <center>
-
-                                    <p style="text-decoration: none; color:black">Partita Iva: 02070920992</p>
-                                    <p>GenovaRoute ©</p>
-                                </center>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
     </div>
-
-
-
-
 </body>
 
 </html>
