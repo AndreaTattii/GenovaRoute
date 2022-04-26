@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
-    <title>Login</title>
+    <title>Genova Route</title>
 </head>
 
 <body class="d-flex flex-column min-vh-100" style="background-image: url('img/foto_epoca_genova.png'); background-repeat: no-repeat; background-size: cover;">
@@ -38,6 +38,7 @@
     <div class="container pt-5  p-1">
         <div class="row justify-content-md-center " style="font-family: 'Helvetica', 'Arial', sans-serif; padding: 20px; margin: 20px;">
             <div class="col-sm-6" style=" background-color: white; border-style:solid; border-color:black; border-width:2px; border-radius: 60px;">
+                <br>
                 <div class="row justify-content-md-center">
                     <h1 style="font-weight: bold; font-size: 30px; color: black; text-align: center;">Login</h1>
                 </div>
