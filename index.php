@@ -26,7 +26,7 @@
     <title>Genova Route</title>
 </head>
 
-<body class="d-flex flex-column min-vh-100" style="background-image: url('img/foto_epoca_genova.png'); background-repeat: no-repeat; background-size: cover;">
+<body class="d-flex flex-column min-vh-100" >  <!--style="background-image: url('img/foto_epoca_genova.png'); background-repeat: no-repeat; background-size: cover;"-->
 
     <nav class="navbar  navbar-expand-lg " style="background-color: #B30000;">
         <div class="container p-2">
