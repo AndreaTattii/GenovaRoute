@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php session_start(); 
+
+function isMobile() {
+    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+}
+?>
 <!doctype html>
 <html lang="en">
 
@@ -29,7 +34,14 @@
 
 <body class="d-flex flex-column min-vh-100">
 
-
+<?php
+if(isMobile()){
+    echo '<h1>Mobile</h1>';
+}
+else {
+    echo '<h1>PC</h1>'; 
+}
+?>
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Offcanvas navbar</a>
