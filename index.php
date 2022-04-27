@@ -88,7 +88,7 @@
                             <br><br>
                         </div>
                     </form>
-                    <p>Non hai un account? <a href="registra/formRegistra.html" style="color: #B30000; ">Registrati</a> </p>
+                    <p>Non hai un account? <a href="src/registra/formRegistra.html" style="color: #B30000; ">Registrati</a> </p>
                 </div>
 
             </div>

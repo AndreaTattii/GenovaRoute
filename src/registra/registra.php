@@ -4,7 +4,7 @@
     $host="127.0.0.1";
     $user="root";
     $password="";
-    $database="genovaroute";
+    $database="GenovaRoute";
 
     $connessione= new mysqli($host, $user, $password , $database);
 
@@ -20,13 +20,13 @@
     //hashing della password
     $password = hash("sha256", $password);
 
-    $sql = "INSERT INTO utente (nome, cognome, email, pass) VALUES 
+    $sql = "INSERT INTO utente (nome, cognome, email, psw) VALUES 
     ('$nome','$cognome', '$mail', '$password')";
 
 
     if($connessione->query($sql) === true){
         $_SESSION['email']= $mail;
-        header("location: ../../../../");
+        header("location: ../index.php");
         echo "Utente inserito con successo";
     }else{
         echo "Errore durante inserimento: ".$connessione->error;
