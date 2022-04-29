@@ -42,9 +42,12 @@ else {
     echo '<h1>PC</h1>'; 
 }
 ?>
-    <nav class="navbar navbar-light bg-light">
+    <!-- <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Offcanvas navbar</a>
+            <li class="nav-item">
+				<a class="nav-link" href="#" style="color: black">Percorsi</a>
+			</li>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -82,6 +85,26 @@ else {
                 </div>
             </div>
         </div>
+    </nav> -->
+    <nav class="navbar  navbar-expand-lg " style="background-color: #B30000;">
+        <div class="container p-2">
+            <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold;" href="./">
+                <h1>Genova Route</h1>
+            </a>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+	    		<ul class="navbar-nav">
+	    			<li class="nav-item">
+	    				<a class="nav-link" href="" style="color: white">Percorsi</a>
+	    			</li>
+	    			<li class="nav-item">
+	    				<a class="nav-link" href="" style="color: white">Preferiti</a>
+	    			</li>
+	    			<li class="nav-item">
+	    				<a class="nav-link" href="" style="color: white">Account</a>
+	    			</li>
+	    		</ul>
+	    	</div>
+        </div>
     </nav>
 
     <div style="background-image: url('../img/foto_epoca_genova.png'); height: 600px; background-repeat: no-repeat; width:100%; background-position: center; background-size: cover;">
@@ -89,15 +112,35 @@ else {
         <center>
             <br>
             <br>
-            <p style="color: white; font-size:20px;">Il miglior sito di consegne.</p>
-            <h2 style="color: white; font-size:80px;">Il cibo chiama: GetnBite!</h2>
-            <p style="color: white; font-size:20px;">Facile da ordinare.</p>
-            <p style="color: white; font-size:20px;">Buono da mangiare.</p>
+            <p style="color: white; font-size:20px;">Benvenuto</p>
+            <h2 style="color: white; font-size:80px;">Scopri le bellezze di genova</h2>
             <br>
 
         </center>
     </div>
 
+    <div class="footer-clean">
+		<footer>
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-4 ">
+						<a class="navbar-brand" href="./">
+							<img src="img/home/logoScritta.png" alt=""  height="60" class="d-inline-block align-text-top">
+						</a>
+					</div>
+					<div class="col-4" ></div>
+						<center>
+							<a href="#" style="text-decoration: none; color:black">Login Admin</a>
+							<br>
+							<br>
+							<p style="text-decoration: none; color:black">Partita Iva: 02070920992</p>
+							<p>GenovaRoute ©</p> 
+						</center>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
 
 </body>
 
