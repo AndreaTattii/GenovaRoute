@@ -28,7 +28,8 @@ function isMobile() {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
-    <title>Webapp</title>
+    <title>Genova Route</title>
+    <link rel="icon" href="../img/g.png" type="image/icon type">
 
 </head>
 
