@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php session_start(); ?>
 <!doctype html>
 <html lang="en">
 
@@ -32,25 +32,25 @@
 
     <nav class="navbar  navbar-expand-lg fixed-bottom" style="background-color: #B30000;">
         <div class="container p-2">
-            <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold;" href="./">
-                <h1>Genova Route Mobile</h1>
-            </a>
-            <div class="col s-4">
-                <a class="navbar-brand" href="./">
-                    <img src="img/logo/percorso.png" class=" float-left" >
-                </a>
+            <div class="row  justify-content-center">
+                <div class="col s-4">
+                    <a class="navbar-brand" href="./">
+                        <img src="img/icons/percorso.png">
+                    </a>
+                </div>
+                <div class="col s-4">
+                    <a class="navbar-brand" href="./">
+                        <img src="img/icons/scannerizza.png">
+                    </a>
+                </div>
+                <div class="col s-4">
+                    <a class="navbar-brand" href="./">
+                        <img src="img/icons/account.png">
+                    </a>
+                </div>
             </div>
-            <div class="col s-4">
-                <a class="navbar-brand" href="./">
-                    <img src="img/logo/scannerizza.png"  >
-                </a>
-            </div>
-            <div class="col s-4">
-                <a class="navbar-brand" href="./">
-                    <img src="img/logo/account.png" class=" float-right" >
-                </a>
-            </div>
-            
+
+
         </div>
     </nav>
     <p>Voluptate dolore consequat esse cillum consequat dolore sunt reprehenderit exercitation nostrud proident irure. Esse aliqua commodo ut culpa. Incididunt aliqua anim ullamco exercitation sint. Anim culpa elit laborum eu aute. Proident mollit sunt elit qui consequat tempor magna dolore cupidatat veniam laborum ipsum consectetur voluptate. Duis excepteur excepteur eu qui occaecat reprehenderit ullamco id.</p>
@@ -79,7 +79,7 @@
     <p>Voluptate dolore consequat esse cillum consequat dolore sunt reprehenderit exercitation nostrud proident irure. Esse aliqua commodo ut culpa. Incididunt aliqua anim ullamco exercitation sint. Anim culpa elit laborum eu aute. Proident mollit sunt elit qui consequat tempor magna dolore cupidatat veniam laborum ipsum consectetur voluptate. Duis excepteur excepteur eu qui occaecat reprehenderit ullamco id.</p>
 
 
-    
+
 </body>
 
 </html>
