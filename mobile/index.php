@@ -30,22 +30,24 @@
 <body class="d-flex flex-column min-vh-100">
     <!--style="background-image: url('img/foto_epoca_genova.png'); background-repeat: no-repeat; background-size: cover;"-->
 
-    <nav class="navbar  navbar-expand-lg fixed-bottom" style="background-color: #B30000;">
+    <nav class="navbar  navbar-expand-lg fixed-bottom" style="background-color: white;">
+        <hr size="5" width="100%" color="black">  
+        <br>
         <div class="container p-2">
             <div class="row  justify-content-center">
                 <div class="col s-4">
                     <a class="navbar-brand" href="./">
-                        <img src="img/icons/percorso.png">
+                        <img src="../img/icons/percorso.png">
                     </a>
                 </div>
                 <div class="col s-4">
                     <a class="navbar-brand" href="./">
-                        <img src="img/icons/scannerizza.png">
+                        <img src="../img/icons/scannerizza.png">
                     </a>
                 </div>
                 <div class="col s-4">
                     <a class="navbar-brand" href="./">
-                        <img src="img/icons/account.png">
+                        <img src="../img/icons/account.png">
                     </a>
                 </div>
             </div>
