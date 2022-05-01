@@ -37,13 +37,16 @@ function isMobile() {
 
 <?php
 if(isMobile()){
+    $_SESSION['dispositivo']='mobile';
     echo '<h1>Mobile</h1>';
 }
 else {
+    $_SESSION['dispositivo']='pc';
+
     echo '<h1>PC</h1>'; 
 }
 ?>
-    <!-- <nav class="navbar navbar-light bg-light">
+     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Offcanvas navbar</a>
             <li class="nav-item">
@@ -146,4 +149,3 @@ else {
 </body>
 
 </html>
-<?php session_destroy(); ?>

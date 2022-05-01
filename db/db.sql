@@ -13,8 +13,7 @@ CREATE TABLE IF NOT EXISTS Tappa(
 );
 
 CREATE TABLE IF NOT EXISTS Percorso(
-	id int PRIMARY KEY AUTO_INCREMENT,
-    nome varchar(255) NOT NULL,
+	nome varchar(255) PRIMARY KEY ,
     descrizione varchar(255) NOT NULL
 );
 

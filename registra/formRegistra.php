@@ -1,10 +1,24 @@
+<?php session_start(); 
+function isMobile() {
+    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+}
+if(isMobile()){
+    $_SESSION['dispositivo']='mobile';
+    echo '<h1>Mobile</h1>';
+}
+else {
+    $_SESSION['dispositivo']='pc';
+
+    echo '<h1>PC</h1>'; 
+}
+?>
 <!doctype html>
 <html lang="en">
 
 <head>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="../../bootstrap/js/bootstrap.min.js"></script>
+  <script src="../bootstrap/js/bootstrap.min.js"></script>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +27,7 @@
   <link rel="stylesheet" href="../bootstrap/cssPersonal/style.css">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
   <!-- font -->
   <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
@@ -22,7 +36,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
   <title>Genova Route</title>
-  <link rel="icon" href="../../img/G.png" type="image/icon type">
+  <link rel="icon" href="../img/G.png" type="image/icon type">
 </head>
 
 <body class="d-flex flex-column min-vh-100">

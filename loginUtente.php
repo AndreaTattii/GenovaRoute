@@ -19,7 +19,7 @@
         
         
         if (isset($_SESSION['email'])) {           
-            header("Location: src/index.php");
+            header("Location: ".$_SESSION['dispositivo']."/index.php");
         }  
             $email = $_POST['mail'];
             $password = $_POST['password'];
@@ -31,7 +31,10 @@
             if ($result->num_rows > 0) {
                 $row = mysqli_fetch_assoc($result);
                 $_SESSION['email'] = $row['email'];
-                header("Location: src/index.php");
+                header("Location: ".$_SESSION['dispositivo']."/index.php");
+                /*
+                header("Location: pc/index")
+                */
             } else {
                 $_SESSION['errore'] = 1;
                 header("Location: index.php");

@@ -26,7 +26,7 @@
 
     if($connessione->query($sql) === true){
         $_SESSION['email']= $mail;
-        header("location: ../index.php");
+        header("location: ../".$_SESSION['dispositivo']."/index.php");
         echo "Utente inserito con successo";
     }else{
         echo "Errore durante inserimento: ".$connessione->error;

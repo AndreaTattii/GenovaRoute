@@ -1,11 +1,21 @@
-<?php session_start(); ?>
+<?php session_start();
+function isMobile()
+{
+    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+}
+if (isMobile()) {
+    $_SESSION['dispositivo'] = 'mobile';
+} else {
+    $_SESSION['dispositivo'] = 'pc';
+}
+?>
 <!doctype html>
 <html lang="en">
 
 <head>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,7 +37,8 @@
     <link rel="icon" href="img/g.png" type="image/icon type">
 </head>
 
-<body class="d-flex flex-column min-vh-100" >  <!--style="background-image: url('img/foto_epoca_genova.png'); background-repeat: no-repeat; background-size: cover;"-->
+<body class="d-flex flex-column min-vh-100">
+    <!--style="background-image: url('img/foto_epoca_genova.png'); background-repeat: no-repeat; background-size: cover;"-->
 
     <nav class="navbar  navbar-expand-lg " style="background-color: #B30000;">
         <div class="container p-2">
@@ -89,7 +100,7 @@
                             <br><br>
                         </div>
                     </form>
-                    <p>Non hai un account? <a href="src/registra/formRegistra.html" style="color: #B30000; ">Registrati</a> </p>
+                    <p>Non hai un account? <a href="registra/formRegistra.php" style="color: #B30000; ">Registrati</a> </p>
                 </div>
 
             </div>
@@ -98,4 +109,3 @@
 </body>
 
 </html>
-<?php session_destroy(); ?>
