@@ -5,16 +5,16 @@
 <head>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS Personale-->
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
 
     <!-- font -->
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
@@ -28,39 +28,55 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <!--style="background-image: url('img/foto_epoca_genova.png'); background-repeat: no-repeat; background-size: cover;"-->
-    
-    <div class="container fixed-bottom" style="background-color: white; border-top-color:#black;  border-top-style: solid; border-top-width: 4px; height: 70px;">
+
+
+    <!-- NAVBAR -->
+    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 90px;">
         <div class="row  justify-content-center" style="padding-top: 15px;">
-            <div class="col s-4" style="background-color:red ; ">
+            <div class="col s-4">
                 <center>
                     <a class="navbar-brand" href="./">
-                        <img src="../img/icons/percorso.png">
+                        <img src="../../img/icons/percorsoSfondo.png">
                     </a>
                 </center>
 
             </div>
-            <div class="col s-4">
+            <div class="col s-4" style="padding-top: 15px;">
                 <center>
-                    <a class="navbar-brand" href="./">
-                        <img src="../img/icons/scannerizza.png">
+                    <a class="navbar-brand" href="../scanner/index.php ">
+                        <img src="../../img/icons/scannerizza.png">
                     </a>
                 </center>
 
             </div>
-            <div class="col s-4">
+            <div class="col s-4" style="padding-top: 15px;">
                 <center>
-                    <a class="navbar-brand" href="./">
-                        <img src="../img/icons/account.png">
+                    <a class="navbar-brand" href="../profilo/index.php">
+                        <img src="../../img/icons/account.png">
                     </a>
                 </center>
-                
+
             </div>
         </div>
 
 
     </div>
 
+    
+    <!-- LOGO -->
+    
+
+
+    <!-- TITOLO PAGINA -->
+    <br>
+    <div style="border-top-color:#B30000;  border-top-style: solid; border-top-width: 2px; border-bottom-color:#B30000;  border-bottom-style: solid; border-bottom-width: 2px;">
+        <center>
+            <h1 style="color: #B30000;">Percorsi<h1>
+        </center>
+    </div>
+    
+
+    <!-- CONTENUTO PAGINA -->
     <p>Voluptate dolore consequat esse cillum consequat dolore sunt reprehenderit exercitation nostrud proident irure. Esse aliqua commodo ut culpa. Incididunt aliqua anim ullamco exercitation sint. Anim culpa elit laborum eu aute. Proident mollit sunt elit qui consequat tempor magna dolore cupidatat veniam laborum ipsum consectetur voluptate. Duis excepteur excepteur eu qui occaecat reprehenderit ullamco id.</p>
     <p>Voluptate dolore consequat esse cillum consequat dolore sunt reprehenderit exercitation nostrud proident irure. Esse aliqua commodo ut culpa. Incididunt aliqua anim ullamco exercitation sint. Anim culpa elit laborum eu aute. Proident mollit sunt elit qui consequat tempor magna dolore cupidatat veniam laborum ipsum consectetur voluptate. Duis excepteur excepteur eu qui occaecat reprehenderit ullamco id.</p>
     <p>Voluptate dolore consequat esse cillum consequat dolore sunt reprehenderit exercitation nostrud proident irure. Esse aliqua commodo ut culpa. Incididunt aliqua anim ullamco exercitation sint. Anim culpa elit laborum eu aute. Proident mollit sunt elit qui consequat tempor magna dolore cupidatat veniam laborum ipsum consectetur voluptate. Duis excepteur excepteur eu qui occaecat reprehenderit ullamco id.</p>
