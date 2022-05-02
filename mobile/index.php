@@ -30,9 +30,9 @@
 <body class="d-flex flex-column min-vh-100">
     <!--style="background-image: url('img/foto_epoca_genova.png'); background-repeat: no-repeat; background-size: cover;"-->
     
-    <div class="container fixed-bottom" style="background-color: white; border-top-color:#E4E4E4;  border-top-style: solid; border-top-width: 4px; height: 50px;">
-        <div class="row  justify-content-center">
-            <div class="col s-4">
+    <div class="container fixed-bottom" style="background-color: white; border-top-color:#black;  border-top-style: solid; border-top-width: 4px; height: 70px;">
+        <div class="row  justify-content-center" style="padding-top: 15px;">
+            <div class="col s-4" style="background-color:red ; ">
                 <center>
                     <a class="navbar-brand" href="./">
                         <img src="../img/icons/percorso.png">
