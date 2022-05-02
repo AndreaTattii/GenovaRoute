@@ -29,32 +29,38 @@
 
 <body class="d-flex flex-column min-vh-100">
     <!--style="background-image: url('img/foto_epoca_genova.png'); background-repeat: no-repeat; background-size: cover;"-->
-
-    <nav class="navbar  navbar-expand-lg fixed-bottom" style="background-color: white;">
-        <hr size="5" width="100%" color="black">  
-        <br>
-        <div class="container p-2">
-            <div class="row  justify-content-center">
-                <div class="col s-4">
+    
+    <div class="container fixed-bottom" style="background-color: white; border-top-color:#E4E4E4;  border-top-style: solid; border-top-width: 4px; height: 50px;">
+        <div class="row  justify-content-center">
+            <div class="col s-4">
+                <center>
                     <a class="navbar-brand" href="./">
                         <img src="../img/icons/percorso.png">
                     </a>
-                </div>
-                <div class="col s-4">
+                </center>
+
+            </div>
+            <div class="col s-4">
+                <center>
                     <a class="navbar-brand" href="./">
                         <img src="../img/icons/scannerizza.png">
                     </a>
-                </div>
-                <div class="col s-4">
+                </center>
+
+            </div>
+            <div class="col s-4">
+                <center>
                     <a class="navbar-brand" href="./">
                         <img src="../img/icons/account.png">
                     </a>
-                </div>
+                </center>
+                
             </div>
-
-
         </div>
-    </nav>
+
+
+    </div>
+
     <p>Voluptate dolore consequat esse cillum consequat dolore sunt reprehenderit exercitation nostrud proident irure. Esse aliqua commodo ut culpa. Incididunt aliqua anim ullamco exercitation sint. Anim culpa elit laborum eu aute. Proident mollit sunt elit qui consequat tempor magna dolore cupidatat veniam laborum ipsum consectetur voluptate. Duis excepteur excepteur eu qui occaecat reprehenderit ullamco id.</p>
     <p>Voluptate dolore consequat esse cillum consequat dolore sunt reprehenderit exercitation nostrud proident irure. Esse aliqua commodo ut culpa. Incididunt aliqua anim ullamco exercitation sint. Anim culpa elit laborum eu aute. Proident mollit sunt elit qui consequat tempor magna dolore cupidatat veniam laborum ipsum consectetur voluptate. Duis excepteur excepteur eu qui occaecat reprehenderit ullamco id.</p>
     <p>Voluptate dolore consequat esse cillum consequat dolore sunt reprehenderit exercitation nostrud proident irure. Esse aliqua commodo ut culpa. Incididunt aliqua anim ullamco exercitation sint. Anim culpa elit laborum eu aute. Proident mollit sunt elit qui consequat tempor magna dolore cupidatat veniam laborum ipsum consectetur voluptate. Duis excepteur excepteur eu qui occaecat reprehenderit ullamco id.</p>
