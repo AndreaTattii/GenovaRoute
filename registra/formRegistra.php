@@ -2,15 +2,6 @@
 function isMobile() {
     return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
 }
-if(isMobile()){
-    $_SESSION['dispositivo']='mobile';
-    echo '<h1>Mobile</h1>';
-}
-else {
-    $_SESSION['dispositivo']='pc';
-
-    echo '<h1>PC</h1>'; 
-}
 ?>
 <!doctype html>
 <html lang="en">
@@ -43,7 +34,7 @@ else {
   
   <nav class="navbar  navbar-expand-lg " style="background-color: #B30000;">
     <div class="container p-2">
-        <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold;" href="../../index.php">
+        <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold;" href="../index.php">
             <h1>Genova Route</h1>
         </a>
     </div>
