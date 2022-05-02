@@ -31,7 +31,7 @@
 
 
     <!-- NAVBAR -->
-    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 90px;">
+    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 85px;">
         <div class="row  justify-content-center" style="padding-top: 15px;">
             <div class="col s-4">
                 <center>
