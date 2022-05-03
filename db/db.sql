@@ -45,17 +45,22 @@ INSERT INTO Percorso (nome, descrizione) VALUES ('Vicolata', 'Percorso per la vi
 --fill table Tappa with data
 INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('Arco della Vittoria', 'Arco della Vittoria della seconda guerra mondiale', 'Piazza della Vittoria', 'Genova');
 INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('Ponte monumentale', 'Bellissimo ponte monumentale in centro città', 'Via XX Settembre', 'Genova');
-INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('Fontana de Ferrari', 'Fontana bellissima in una bella piazza', 'Piazza de Ferrari', 'Genova');
-INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('Cattedrale di San Lorenzo', 'Meravigliosa cattedrale', 'Piazza San Lorenzo', 'Genova');
+INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('Fontana de Ferrari', 'Fontana bellissima in una bella piazza', 'Piazza Raffaele de Ferrari', 'Genova');
+INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('Cattedrale di San Lorenzo', 'Meravigliosa cattedrale di mio fratello Lorenzo', 'Piazza San Lorenzo', 'Genova');
 INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('Ombre Rosse', 'Ottimo ristorante con piatti tipici genovesi', 'Vico degli Indoratori', 'Genova');
-INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('Vascello Neptune', 'Arco della Vittoria della seconda guerra mondiale', 'Piazza della Vittoria', 'Genova');
-INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('Arco della Vittoria', 'Arco della Vittoria della seconda guerra mondiale', 'Piazza della Vittoria', 'Genova');
-INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('Arco della Vittoria', 'Arco della Vittoria della seconda guerra mondiale', 'Piazza della Vittoria', 'Genova');
+INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('Acquario di Genova', 'Meraviglioso acquario pieno di pesci belli', 'Porto Antico, Molo Ponte Calvi', 'Genova');
+INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('Palazzo Doria Tursi', 'Palazzo dei Doria, famiglia genovese stabilitasi nel 1742', 'Via Garibaldi', 'Genova');
+INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('PEsciolino', 'Ristorante di buonissimo pesce genovese', 'Vico Domoculta', 'Genova');
 
 --fill table Tappa_Appartiene_Percorso with data
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (1, 1);
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (2, 1);
-INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (3, 2);
+INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (3, 1);
+INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (4, 1);
+INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (5, 1);
+INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (6, 1);
+INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (7, 1);
+INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (8, 1);
 
 
 
