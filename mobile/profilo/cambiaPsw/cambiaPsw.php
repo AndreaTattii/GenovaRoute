@@ -16,8 +16,7 @@
         }
        
 
-            $_SESSION['errore'] = false ;
-            $_SESSION['successo'] = false ;
+            
          
             $email = $_SESSION['email'];
             $vecchiaPsw = $_POST['vecchiaPsw'];
