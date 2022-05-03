@@ -38,11 +38,9 @@ CREATE TABLE IF NOT EXISTS Tappa_Appartiene_Percorso(
     PRIMARY KEY (id_tappa, id_percorso)
 );
 
---fill table Percorso with data
 INSERT INTO Percorso (nome, descrizione) VALUES ('Visita a Genova', 'Percorso per i monumenti, musei e ristoranti di Genova');
 INSERT INTO Percorso (nome, descrizione) VALUES ('Vicolata', 'Percorso per la vicolata');
 
---fill table Tappa with data
 INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('Arco della Vittoria', 'Arco della Vittoria della seconda guerra mondiale', 'Piazza della Vittoria', 'Genova');
 INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('Ponte monumentale', 'Bellissimo ponte monumentale in centro città', 'Via XX Settembre', 'Genova');
 INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('Fontana de Ferrari', 'Fontana bellissima in una bella piazza', 'Piazza Raffaele de Ferrari', 'Genova');
@@ -52,7 +50,6 @@ INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('Acquario di Genova',
 INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('Palazzo Doria Tursi', 'Palazzo dei Doria, famiglia genovese stabilitasi nel 1742', 'Via Garibaldi', 'Genova');
 INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('PEsciolino', 'Ristorante di buonissimo pesce genovese', 'Vico Domoculta', 'Genova');
 
---fill table Tappa_Appartiene_Percorso with data
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (1, 1);
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (2, 1);
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (3, 1);
