@@ -150,7 +150,15 @@ if ($result = $connessione->query($sql)) {
                 ';
 
                 unset($_SESSION['successo']);
-            }    
+            }
+            
+            if(isset($_SESSION['errore'])){
+                echo '
+                    <p>Vecchia password errata </p>
+                ';
+
+                unset($_SESSION['errore']);
+            }
         ?>
 
 

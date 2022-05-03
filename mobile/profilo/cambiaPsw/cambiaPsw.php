@@ -15,8 +15,9 @@
             echo "Errore: ".$connessione->error;
         }
        
-        
-        
+
+            $_SESSION['errore'] = false ;
+            $_SESSION['successo'] = false ;
          
             $email = $_SESSION['email'];
             $vecchiaPsw = $_POST['vecchiaPsw'];
@@ -34,9 +35,8 @@
                 $sql="UPDATE utente SET psw= '".$nuovaPsw."'";
                 mysqli_query($connessione, $sql);
                 
-            } else {
-                $_SESSION['successo'] = false ;
-                
+            }else{
+                $_SESSION['errore'] = true ;
             }
             
             header("Location: ./");
