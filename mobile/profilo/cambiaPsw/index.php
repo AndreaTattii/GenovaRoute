@@ -30,16 +30,16 @@ if ($result = $connessione->query($sql)) {
 <head>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../../bootstrap/js/bootstrap.min.js"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS Personale-->
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../../css/style.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../bootstrap/css/bootstrap.min.css">
 
     <!-- font -->
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
@@ -49,7 +49,7 @@ if ($result = $connessione->query($sql)) {
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
     <title>Genova Route</title>
-    <link rel="icon" href="img/g.png" type="image/icon type">
+    <link rel="icon" href="../../../img/g.png" type="image/icon type">
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -60,24 +60,24 @@ if ($result = $connessione->query($sql)) {
         <div class="row  justify-content-center" style="padding-top: 15px;">
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
-                    <a class="navbar-brand" href="../percorsi/index.php">
-                        <img src="../../img/icons/percorso.png">
+                    <a class="navbar-brand" href="../../percorsi/index.php">
+                        <img src="../../../img/icons/percorso.png">
                     </a>
                 </center>
 
             </div>
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
-                    <a class="navbar-brand" href="../scanner/index.php">
-                        <img src="../../img/icons/scannerizza.png">
+                    <a class="navbar-brand" href="../../scanner/index.php">
+                        <img src="../../../img/icons/scannerizza.png">
                     </a>
                 </center>
 
             </div>
             <div class="col s-4">
                 <center>
-                    <a class="navbar-brand" href="./">
-                        <img src="../../img/icons/accountSfondo.png">
+                    <a class="navbar-brand" href="../index.php">
+                        <img src="../../../img/icons/accountSfondo.png">
                     </a>
                 </center>
 
@@ -98,7 +98,7 @@ if ($result = $connessione->query($sql)) {
 
         <div class="row justify-content-center" style="padding-top: 20px">
             <div class="col s-2" id="immagineProfilo">
-                <img src="../../img/FotoProfilo.png">
+                <img src="../../../img/FotoProfilo.png">
             </div>
 
             <div class="col" id="nomeUtente" style="padding-top: 10px; padding-right:80px">
@@ -107,16 +107,36 @@ if ($result = $connessione->query($sql)) {
 
 
             </div>
-            <!-- CONTENUTO PAGINA -->
-
-
         </div>
 
-        
+        <!-- CONTENUTO PAGINA -->
+        <div class="row justify-content-start" style="padding-top: 10px;">
+            <h2 style="color:#B30000">Cambia password</h2>
+        </div>
+        <form action="cambiaPsw.php" method="POST">
+            <div class="row  align-items-center" style="padding: 5px;">
+                <div class="col -6">
+                    <label for="inputAddress" class="form-label">Vecchia Password</label>
+                </div>
+                <div class="col -6">
+                    <input type="password" class="form-control" id="vecchiaPsw" name="vecchiaPsw" required>
+                </div>
+            </div>
+            <div class="row align-items-center" style="padding: 5px;">
+                <div class="col -6">
+                    <label for="inputAddress" class="form-label">Nuova Password</label>
+                </div>
+                <div class="col -6">
+                    <input type="password" class="form-control" id="nuovaPsw" name="nuovaPsw" required>
+                </div>
+            </div>
+        </form>
+
+
     </div>
 
 
-       
+
 
 
 
