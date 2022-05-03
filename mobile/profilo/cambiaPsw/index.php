@@ -1,5 +1,6 @@
 <?php session_start();
 
+
 $host = "127.0.0.1";
 $user = "root";
 $pass = "";
@@ -21,6 +22,7 @@ if ($result = $connessione->query($sql)) {
 } else {
     echo "Impossibile eseguire la query";
 }
+
 
 
 ?>
@@ -96,6 +98,7 @@ if ($result = $connessione->query($sql)) {
             </div>
         </div>
 
+        <!-- INTESTAZIONE -->
         <div class="row justify-content-center" style="padding-top: 20px">
             <div class="col s-2" id="immagineProfilo">
                 <img src="../../../img/FotoProfilo.png">
@@ -114,6 +117,7 @@ if ($result = $connessione->query($sql)) {
             <h2 style="color:#B30000">Cambia password</h2>
         </div>
         <form action="cambiaPsw.php" method="POST">
+
             <div class="row  align-items-center" style="padding: 5px;">
                 <div class="col -6">
                     <label for="inputAddress" class="form-label">Vecchia Password</label>
@@ -122,6 +126,7 @@ if ($result = $connessione->query($sql)) {
                     <input type="password" class="form-control" id="vecchiaPsw" name="vecchiaPsw" required>
                 </div>
             </div>
+
             <div class="row align-items-center" style="padding: 5px;">
                 <div class="col -6">
                     <label for="inputAddress" class="form-label">Nuova Password</label>
@@ -130,7 +135,23 @@ if ($result = $connessione->query($sql)) {
                     <input type="password" class="form-control" id="nuovaPsw" name="nuovaPsw" required>
                 </div>
             </div>
+
+            <div class="row align-items-center" style="padding: 5px;">
+                <button type="submit" class="btn btn-primary" style="background-color: white; border-color:#B30000; font-size: 15px; color:#B30000 ; text-align: center; ">Cambia password</button>
+            </div>
         </form>
+        
+
+        <?php 
+            
+            if(isset($_SESSION['successo'])){
+                echo '
+                    <p>Password cambiata con successo</p>
+                ';
+
+                unset($_SESSION['successo']);
+            }    
+        ?>
 
 
     </div>
