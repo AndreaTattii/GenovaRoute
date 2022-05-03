@@ -33,15 +33,15 @@
     <!-- NAVBAR -->
     <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 70px;">
         <div class="row  justify-content-center" style="padding-top: 15px;">
-            <div class="col s-4">
+            <div class="col s-4" >
                 <center>
-                    <a class="navbar-brand" href="./">
+                    <a class="navbar-brand" href="./" >
                         <img src="../../img/icons/percorsoSfondo.png">
                     </a>
                 </center>
 
             </div>
-            <div class="col s-4" style="padding-top: 15px;">
+            <div class="col s-4" style="padding-top: 15px; ">
                 <center>
                     <a class="navbar-brand" href="../scanner/index.php ">
                         <img src="../../img/icons/scannerizza.png">
@@ -49,7 +49,7 @@
                 </center>
 
             </div>
-            <div class="col s-4" style="padding-top: 15px;">
+            <div class="col s-4" style="padding-top: 15px; ">
                 <center>
                     <a class="navbar-brand" href="../profilo/index.php">
                         <img src="../../img/icons/account.png">

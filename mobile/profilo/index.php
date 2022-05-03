@@ -33,7 +33,7 @@
     <!-- NAVBAR -->
     <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 70px;">
         <div class="row  justify-content-center" style="padding-top: 15px;">
-            <div class="col s-4" style="padding-top: 15px;">
+            <div class="col s-4" style="padding-top: 15px; ">
                 <center>
                     <a class="navbar-brand" href="../percorsi/index.php">
                         <img src="../../img/icons/percorso.png">
@@ -41,7 +41,7 @@
                 </center>
 
             </div>
-            <div class="col s-4" style="padding-top: 15px;">
+            <div class="col s-4" style="padding-top: 15px; ">
                 <center>
                     <a class="navbar-brand" href="../scanner/index.php">
                         <img src="../../img/icons/scannerizza.png">
@@ -63,11 +63,26 @@
     </div>
 
     
-    <!-- LOGO -->
+    <div class="container">
+
+        <!-- TITOLO PAGINA -->
+        <div class="row justify-content-center">
+            <div class="col s-4" id="immagineProfilo">
+                <img src="../../img/FotoProfilo.png"
+            </div>
+            <div class="col s-4" id="nomeUtente">
+                
+            </div>
+        <!-- CONTENUTO PAGINA -->
+        <div class="row justify-content-center">
+
+        </div>
+
+    </div>
     
 
 
-    <!-- TITOLO PAGINA -->
+    
     <br>
     <div style="border-top-color:#B30000;  border-top-style: solid; border-top-width: 2px; border-bottom-color:#B30000;  border-bottom-style: solid; border-bottom-width: 2px;">
         <center>
@@ -76,7 +91,7 @@
     </div>
     
 
-    <!-- CONTENUTO PAGINA -->
+    
     <p>Voluptate dolore consequat esse cillum consequat dolore sunt reprehenderit exercitation nostrud proident irure. Esse aliqua commodo ut culpa. Incididunt aliqua anim ullamco exercitation sint. Anim culpa elit laborum eu aute. Proident mollit sunt elit qui consequat tempor magna dolore cupidatat veniam laborum ipsum consectetur voluptate. Duis excepteur excepteur eu qui occaecat reprehenderit ullamco id.</p>
     <p>Voluptate dolore consequat esse cillum consequat dolore sunt reprehenderit exercitation nostrud proident irure. Esse aliqua commodo ut culpa. Incididunt aliqua anim ullamco exercitation sint. Anim culpa elit laborum eu aute. Proident mollit sunt elit qui consequat tempor magna dolore cupidatat veniam laborum ipsum consectetur voluptate. Duis excepteur excepteur eu qui occaecat reprehenderit ullamco id.</p>
     <p>Voluptate dolore consequat esse cillum consequat dolore sunt reprehenderit exercitation nostrud proident irure. Esse aliqua commodo ut culpa. Incididunt aliqua anim ullamco exercitation sint. Anim culpa elit laborum eu aute. Proident mollit sunt elit qui consequat tempor magna dolore cupidatat veniam laborum ipsum consectetur voluptate. Duis excepteur excepteur eu qui occaecat reprehenderit ullamco id.</p>
