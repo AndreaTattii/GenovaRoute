@@ -23,7 +23,7 @@
     $sql = "INSERT INTO utente (nome, cognome, email, psw) VALUES 
     ('$nome','$cognome', '$mail', '$password')";
 
-
+    href ="../mobile/percorsi/index.php";
     if($connessione->query($sql) === true){
         $_SESSION['email']= $mail;
         header("location: ../".$_SESSION['dispositivo']."/percorsi/index.php");

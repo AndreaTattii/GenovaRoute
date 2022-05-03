@@ -1,4 +1,30 @@
-<?php session_start(); ?>
+<?php session_start(); 
+
+    $host="127.0.0.1";
+    $user="root";
+    $pass="";
+    $database="genovaroute";
+
+    $connessione= new mysqli($host, $user, $pass , $database);
+    
+
+    if($connessione === false){
+        die("Errore: ".$connessione->connect_error);
+    }
+
+    $sql= "SELECT nome, cognome FROM utente WHERE email = '".$_SESSION['email']."'";
+
+    if($result = $connessione->query($sql)){
+        $row = $result->fetch_array();
+        $nome = $row['nome'];
+        $cognome = $row['cognome'];
+        
+    }else{
+        echo "Impossibile eseguire la query";
+    }
+
+    
+?>
 <!doctype html>
 <html lang="en">
 
@@ -66,12 +92,12 @@
     <div class="container">
 
         <!-- TITOLO PAGINA -->
-        <div class="row justify-content-center">
-            <div class="col s-4" id="immagineProfilo">
-                <img src="../../img/FotoProfilo.png"
+        <div class="row justify-content-center" style="padding-top: 20px">
+            <div class="col s-3" id="immagineProfilo">
+                <img src="../../img/FotoProfilo.png">
             </div>
-            <div class="col s-4" id="nomeUtente">
-                
+            <div class="col s-9" id="nomeUtente" style="padding-top: 10px; padding-right:80px">
+               <?php echo  ' <h1 style="font-weight: bold; font-size: 30px; color: black; text-align: center;">'.$nome.' '.$cognome.'</h1> ';  ?> 
             </div>
         <!-- CONTENUTO PAGINA -->
         <div class="row justify-content-center">
