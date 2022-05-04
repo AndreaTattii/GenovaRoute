@@ -40,6 +40,14 @@ CREATE TABLE IF NOT EXISTS Tappa_Appartiene_Percorso(
 
 INSERT INTO Percorso (nome, descrizione) VALUES ('Visita a Genova', 'Percorso per i monumenti, musei e ristoranti di Genova');
 INSERT INTO Percorso (nome, descrizione) VALUES ('Vicolata', 'Percorso per la vicolata');
+INSERT INTO Percorso (nome, descrizione) VALUES ('Chiese di Genova', 'Percorso per le chiese di Genova');
+INSERT INTO Percorso (nome, descrizione) VALUES ('Musei di Genova', 'Percorso per i musei di Genova');
+INSERT INTO Percorso (nome, descrizione) VALUES ('Fontane di Genova', 'Percorso per le fontane di Genova');
+INSERT INTO Percorso (nome, descrizione) VALUES ('Visita a Dublino', 'Percorso per i monumenti, musei e ristoranti di Dublino');
+INSERT INTO Percorso (nome, descrizione) VALUES ('Chiese di Dublino', 'Percorso per le chiese di Dublino');
+INSERT INTO Percorso (nome, descrizione) VALUES ('Musei di Dublino', 'Percorso per i musei di Dublino');
+INSERT INTO Percorso (nome, descrizione) VALUES ('Visita a Pisa', 'Percorso per i monumenti, musei e ristoranti di Pisa');
+INSERT INTO Percorso (nome, descrizione) VALUES ('Chiese di Pisa', 'Percorso per le chiese di Pisa');
 
 INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('Arco della Vittoria', 'Arco della Vittoria della seconda guerra mondiale', 'Piazza della Vittoria', 'Genova');
 INSERT INTO Tappa (nome, descrizione, via, città) VALUES ('Ponte monumentale', 'Bellissimo ponte monumentale in centro città', 'Via XX Settembre', 'Genova');
