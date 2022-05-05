@@ -57,7 +57,7 @@ if ($result = $connessione->query($sql)) {
 <body class="d-flex flex-column min-vh-100">
 
 
-    <!-- NAVBAR -->
+    <!-- NAVBAR BASSA -->
     <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 70px;">
         <div class="row  justify-content-center" style="padding-top: 15px;">
             <div class="col s-4" style="padding-top: 15px; ">
@@ -91,10 +91,19 @@ if ($result = $connessione->query($sql)) {
 
 
     <div class="container">
-        <!-- L0G0 -->
-        <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px;">
-            <div class="col">
-                <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;">Genova Route</h1>
+
+        <!-- NAVBAR ALTA -->
+        <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px;">
+            <div class="col -2">
+                <a href="../index.php">
+                    <img src="../../../img/icons/back.png">
+                </a>
+            </div>
+            <div class="col -7">
+                <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;">Profilo</h1>
+            </div>
+            <div class="col -2">
+                
             </div>
         </div>
 

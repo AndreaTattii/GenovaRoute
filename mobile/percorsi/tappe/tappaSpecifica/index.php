@@ -1,6 +1,9 @@
 <?php 
     session_start(); 
-    $nomePercorso=$_POST['tappa'];
+    if(isset($_POST['tappa'])){
+        $_SESSION['nomeTappa'] = $_POST['tappa'];
+    }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -8,16 +11,16 @@
 <head>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../bootstrap/js/bootstrap.min.js"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS Personale-->
-    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../../css/style.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../bootstrap/css/bootstrap.min.css">
 
     <!-- font -->
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
@@ -27,7 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
     <title>Genova Route</title>
-    <link rel="icon" href="../../../img/G.png" type="image/icon type">
+    <link rel="icon" href="../../../../img/G.png" type="image/icon type">
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -38,24 +41,24 @@
         <div class="row  justify-content-center" style="padding-top: 15px;">
             <div class="col s-4" >
                 <center>
-                    <a class="navbar-brand" href="../index.php" >
-                        <img src="../../../img/icons/percorsoSfondo.png">
+                    <a class="navbar-brand" href="../../../index.php" >
+                        <img src="../../../../img/icons/percorsoSfondo.png">
                     </a>
                 </center>
 
             </div>
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
-                    <a class="navbar-brand" href="../../scanner/index.php ">
-                        <img src="../../../img/icons/scannerizza.png">
+                    <a class="navbar-brand" href="../../../scanner/index.php ">
+                        <img src="../../../../img/icons/scannerizza.png">
                     </a>
                 </center>
 
             </div>
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
-                    <a class="navbar-brand" href="../../profilo/index.php">
-                        <img src="../../../img/icons/account.png">
+                    <a class="navbar-brand" href="../../../profilo/index.php">
+                        <img src="../../../../img/icons/account.png">
                     </a>
                 </center>
 
@@ -66,18 +69,27 @@
     </div>
 
     
-    <!-- LOGO -->
+    <!-- NAVBAR ALTA -->
+    <div class="container" >
+        <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px;">
+
+            <div class="col -2">
+                <a href="../index.php">
+                    <img src="../../../../img/icons/back.png">
+                </a>
+            </div>
+            <div class="col -7">
+                <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;  font-size: 20px;"><?php echo $_SESSION['nomeTappa']  ?></h1>
+            </div>
+            <div class="col -2">
+
+            </div>
+        </div>
+    </div>
     
 
 
-    <!-- TITOLO PAGINA -->
-    <br>
-    <div style="border-top-color:#B30000;  border-top-style: solid; border-top-width: 2px; border-bottom-color:#B30000;  border-bottom-style: solid; border-bottom-width: 2px;">
-        <center>
-            <h1 style="color: #B30000;">Tappe<h1>
-        </center>
-    </div>
-    <br>
+    
     
 
     <!-- CONTENUTO PAGINA -->
@@ -96,7 +108,7 @@
                         die("Errore: ".$connessione->connect_error);
                     }
                     $i = 0;
-                    $sql = "SELECT tappa.nome FROM tappa, Tappa_Appartiene_Percorso, percorso WHERE percorso.nome = '".$nomePercorso."' AND Tappa_Appartiene_Percorso.id_tappa=tappa.id AND percorso.id=Tappa_Appartiene_Percorso.id_percorso ";
+                    $sql = "SELECT tappa.nome FROM tappa, Tappa_Appartiene_Percorso, percorso WHERE percorso.nome = '".$_SESSION['nomeTappa']."' AND Tappa_Appartiene_Percorso.id_tappa=tappa.id AND percorso.id=Tappa_Appartiene_Percorso.id_percorso ";
                     if($result = $connessione->query($sql)){
                         if($result->num_rows > 0){
                                     while($row=$result->fetch_array()){ //da risolvere il decentramento verticale del bottone in ogni card
