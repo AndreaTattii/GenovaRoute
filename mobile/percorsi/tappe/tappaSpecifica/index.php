@@ -11,7 +11,7 @@ if (isset($_POST['tappa'])) {
 <head>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="../../../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../../bootstrap/js/bootstrap.min.js"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -88,38 +88,6 @@ if (isset($_POST['tappa'])) {
     </div>
 
 
-
-
-
-
-    <!-- CONTENUTO PAGINA -->
-
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="../../../../img/foto_epoca_genova.png" alt="First slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="../../../../img/FotoProfilo.png" alt="Second slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="..." alt="Third slide">
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
     <?php
 
     $host = "127.0.0.1";
@@ -135,12 +103,72 @@ if (isset($_POST['tappa'])) {
         die("Errore: " . $connessione->connect_error);
     }
     $i = 0;
-    $sql = "SELECT tappa.nome FROM tappa, Tappa_Appartiene_Percorso, percorso WHERE percorso.nome = '" . $_SESSION['nomeTappa'] . "' AND Tappa_Appartiene_Percorso.id_tappa=tappa.id AND percorso.id=Tappa_Appartiene_Percorso.id_percorso ";
+    $sql = "SELECT * FROM tappa WHERE nome = '" . $_SESSION['nomeTappa'] . "'";
     if ($result = $connessione->query($sql)) {
+        $row = $result -> fetch_assoc();
+        $img1 = $row['img1'];
+        $img2 = $row['img2'];
+        $img3 = $row['img3'];
+        $descrizione = $row['descrizione'];
+        $dove = $row['via'];
     } else {
         echo "Impossibile eseguire la query";
     }
+    
+
+
     ?>
+
+
+
+    <!-- CONTENUTO PAGINA -->
+    <div class="container" style="padding-top: 50px; padding-left: 50px; padding-right:50px; height: 200px;">
+        <!-- CAROSELLO -->        
+        <div class="row" style="padding-top: 20px; padding-top: 20px;">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" >
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="<?php echo $img1; ?>" class="d-block w-100" alt="..." style="max-height: 200px; margin-left: auto; margin-right: auto;">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="<?php echo $img2; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="<?php echo $img3; ?>" class="d-block w-100" alt="..."style=" max-height: 200px; margin-left: auto; margin-right: auto;">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <!-- DESCRIZIONE -->
+        <div class="row" style="padding-top: 10px;">
+            <div class="row">
+                <h2 style="color: #B30000;">Descrizione</h2>
+            </div>
+            <div class="row">
+                <p><?php echo $descrizione;?></p>
+            </div>
+        </div>
+        <!-- DOVE -->
+        <div class="row" style="padding-top: 10px;">
+            <div class="row">
+                <h2 style="color: #B30000;">Dove</h2>
+            </div>
+            <div class="row">
+                <p><?php echo $dove;?></p>
+            </div>
+        </div>
+
+    </div>
+
+
 
 
 

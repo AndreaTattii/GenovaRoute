@@ -63,7 +63,7 @@ session_start();
     </div>
 
 
-    
+
     <!-- NAVBAR ALTA -->
     <div class="container">
         <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px;">
@@ -78,7 +78,7 @@ session_start();
     <!-- CONTENUTO PAGINA -->
     <?php
 
-    
+
 
     $host = "127.0.0.1";
     $user = "root";
@@ -125,13 +125,13 @@ session_start();
     } else {
         echo "Impossibile eseguire la query";
     }
-    
-    
-
     ?>
 
-
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 </body>
 
 </html>
