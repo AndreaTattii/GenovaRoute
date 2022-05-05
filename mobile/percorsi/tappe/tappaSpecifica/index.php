@@ -1,8 +1,8 @@
-<?php 
-    session_start(); 
-    if(isset($_POST['tappa'])){
-        $_SESSION['nomeTappa'] = $_POST['tappa'];
-    }
+<?php
+session_start();
+if (isset($_POST['tappa'])) {
+    $_SESSION['nomeTappa'] = $_POST['tappa'];
+}
 
 ?>
 <!doctype html>
@@ -39,9 +39,9 @@
     <!-- NAVBAR -->
     <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 70px;">
         <div class="row  justify-content-center" style="padding-top: 15px;">
-            <div class="col s-4" >
+            <div class="col s-4">
                 <center>
-                    <a class="navbar-brand" href="../../../index.php" >
+                    <a class="navbar-brand" href="../../../index.php">
                         <img src="../../../../img/icons/percorsoSfondo.png">
                     </a>
                 </center>
@@ -68,9 +68,9 @@
 
     </div>
 
-    
+
     <!-- NAVBAR ALTA -->
-    <div class="container" >
+    <div class="container">
         <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px;">
 
             <div class="col -2">
@@ -86,41 +86,67 @@
             </div>
         </div>
     </div>
-    
 
 
-    
-    
+
+
+
 
     <!-- CONTENUTO PAGINA -->
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="../../../../img/foto_epoca_genova.png" alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="../../../../img/FotoProfilo.png" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="..." alt="Third slide">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
     <?php
 
-                    $host="127.0.0.1";
-                    $user="root";
-                    $pass="";
-                    $database="genovaroute";
-                
-                    $connessione= new mysqli($host, $user, $pass , $database);
-                    
-                    //error_reporting(0);
-            
-                    if($connessione === false){
-                        die("Errore: ".$connessione->connect_error);
-                    }
-                    $i = 0;
-                    $sql = "SELECT tappa.nome FROM tappa, Tappa_Appartiene_Percorso, percorso WHERE percorso.nome = '".$_SESSION['nomeTappa']."' AND Tappa_Appartiene_Percorso.id_tappa=tappa.id AND percorso.id=Tappa_Appartiene_Percorso.id_percorso ";
-                    if($result = $connessione->query($sql)){
-                        
-                    }else{
-                        echo "Impossibile eseguire la query";
-                    }
-                ?>
+    $host = "127.0.0.1";
+    $user = "root";
+    $pass = "";
+    $database = "genovaroute";
+
+    $connessione = new mysqli($host, $user, $pass, $database);
+
+    //error_reporting(0);
+
+    if ($connessione === false) {
+        die("Errore: " . $connessione->connect_error);
+    }
+    $i = 0;
+    $sql = "SELECT tappa.nome FROM tappa, Tappa_Appartiene_Percorso, percorso WHERE percorso.nome = '" . $_SESSION['nomeTappa'] . "' AND Tappa_Appartiene_Percorso.id_tappa=tappa.id AND percorso.id=Tappa_Appartiene_Percorso.id_percorso ";
+    if ($result = $connessione->query($sql)) {
+    } else {
+        echo "Impossibile eseguire la query";
+    }
+    ?>
 
 
 
 </body>
 
 </html>
-<?php 
-    //unset($nomePercorso);
+<?php
+//unset($nomePercorso);
 ?>
