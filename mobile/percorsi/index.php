@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php 
+    session_start();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -35,7 +37,7 @@
         <div class="row  justify-content-center" style="padding-top: 15px;">
             <div class="col s-4" >
                 <center>
-                    <a class="navbar-brand" href="./" >
+                    <a  class="navbar-brand" href="./" >
                         <img src="../../img/icons/percorsoSfondo.png">
                     </a>
                 </center>
@@ -43,7 +45,7 @@
             </div>
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
-                    <a class="navbar-brand" href="../scanner/index.php ">
+                    <a  class="navbar-brand" href="../scanner/index.php ">
                         <img src="../../img/icons/scannerizza.png">
                     </a>
                 </center>
@@ -51,7 +53,7 @@
             </div>
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
-                    <a class="navbar-brand" href="../profilo/index.php">
+                    <a  class="navbar-brand" href="../profilo/index.php">
                         <img src="../../img/icons/account.png">
                     </a>
                 </center>
@@ -108,7 +110,7 @@
                                         <div class="col-sm align-self-center" style="width:100%;">       
                                             <div class="card text-center align-self-center" style="width:100%;  background-color: '.$coloreRiga.';">
                                                 <div class="card-body">
-                                                    <form action="#" method="post">
+                                                    <form action="tappe/index.php" method="post">
                                                         <p class="card-title">
                                                             <input type="hidden" name="percorso" value="'.$row['nome'].'">
                                                             <input type="submit" value="'.$row['nome'].'" style="background-color: '.$coloreRiga.'; text-decoration: none; color: #B30000; font-size:20px; border: none; font-weight: bold; float: left;"> 
