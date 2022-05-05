@@ -77,9 +77,7 @@
     
     <script src="html5-qrcode.min.js"></script>
         <style>
-          .row{
-            display:flex;
-          }
+
         </style>
         <div class="row">
           <div class="col">
@@ -92,7 +90,7 @@
         </div>
         <script type="text/javascript">
         function onScanSuccess(qrCodeMessage) {
-            document.getElementById('result').innerHTML = '<span class="result">'+qrCodeMessage+'</span>';
+            document.getElementById('result').innerHTML = '<a href="'+qrCodeMessage+'" class="result">link</a>';
         }
         function onScanError(errorMessage) {
           //handle scan error
