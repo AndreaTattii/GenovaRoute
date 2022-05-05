@@ -12,7 +12,10 @@ CREATE TABLE IF NOT EXISTS Tappa(
     nome varchar(255) NOT NULL,
     descrizione varchar(255) NOT NULL,
     via varchar(255) NOT NULL,
-    città varchar(255)
+    città varchar(255),
+    img1 varchar(255) NOT NULL,
+    img2 varchar(255) NOT NULL,
+    img3 varchar(255) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Percorso(
