@@ -77,11 +77,6 @@
     
     <script src="html5-qrcode.min.js"></script>
         <style>
-          .result{
-            background-color: green;
-            color:#fff;
-            padding:20px;
-          }
           .row{
             display:flex;
           }
