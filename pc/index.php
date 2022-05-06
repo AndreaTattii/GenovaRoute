@@ -71,7 +71,7 @@ function isMobile() {
     
 
     <div class="container">
-        <div class="row align-items-center">
+        <div class="row align-items-center" style="margin: 20px; padding-top: 20px;">
             <div class="col">
                 <h1 style="color:#B30000;">Esperienze uniche</h1>
             </div>
