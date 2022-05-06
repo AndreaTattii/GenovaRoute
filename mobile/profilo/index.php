@@ -69,7 +69,7 @@ if ($result = $connessione->query($sql)) {
             </div>
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
-                    <a class="navbar-brand" href="../scanner/QrCode/index.html">
+                    <a class="navbar-brand" href="../scanner/index.php">
                         <img src="../../img/icons/scannerizza.png">
                     </a>
                 </center>
