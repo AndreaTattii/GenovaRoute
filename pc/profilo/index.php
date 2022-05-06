@@ -75,27 +75,18 @@ if ($result = $connessione->query($sql)) {
         </div>
     </nav>
 
-    <div style="background-image: url('../img/foto_epoca_genova.png'); height: 600px; background-repeat: no-repeat; width:100%; background-position: center; background-size: cover;">
-
-        <center>
-            <br>
-            <br>
-            <p style="color: white; font-size:20px;">Benvenuto</p>
-            <h2 style="color: white; font-size:80px;">Scopri le bellezze di genova</h2>
-            <br>
-        </center>
-    </div>
-
     <!--- Corpo del sito -->
-    <div class="row justify-content-center" style="padding-top: 20px">
-        <div class="col s-2" id="immagineProfilo">
-            <img src="../../img/FotoProfilo.png">
+    
+    <div class="container">
+        <div class="row justify-content-center align-item-center" style="padding-top: 20px">
+            <div class="col" id="immagineProfilo">
+                <img src="../../img/FotoProfilo.png">
+            </div>
+            <div class="col -" id="nomeUtente" style="padding-top: 10px;">
+                <?php echo  ' <h1 style="font-weight: bold; font-size: 30px; color: black; text-align: center;">' . $nome . ' ' . $cognome . '</h1> ';  ?>
+            </div>
         </div>
-        <div class="col" id="nomeUtente" style="padding-top: 10px; padding-right:80px">
-            <?php echo  ' <h1 style="font-weight: bold; font-size: 30px; color: black; text-align: center;">' . $nome . ' ' . $cognome . '</h1> ';  ?>
-        </div>
-    </div>
-            
+    </div>     
     
 
     <div class="footer-clean" style="border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px;">
