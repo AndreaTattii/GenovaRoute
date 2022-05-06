@@ -6,9 +6,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/3.3.3/adapter.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
-    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <link rel='stylesheet' href='QrCode/global.css'>
     <link rel='stylesheet' href='QrCode/bundle.css'>
     <script defer src='QrCode/bundle.js'></script>
@@ -74,12 +71,12 @@
 
 
     <!-- TITOLO PAGINA -->
-    <br>
+    <!-- <br>
     <div style="border-top-color:#B30000;  border-top-style: solid; border-top-width: 2px; border-bottom-color:#B30000;  border-bottom-style: solid; border-bottom-width: 2px;">
         <center>
             <h1 style="color: #B30000;">Scanner<h1>
         </center>
-    </div>
+    </div> -->
     
 
     <!-- CONTENUTO PAGINA -->

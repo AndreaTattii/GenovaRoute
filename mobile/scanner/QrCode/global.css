@@ -37,7 +37,7 @@ input, button, select, textarea {
 	margin: 0 0 0.5em 0;
 	box-sizing: border-box;
 	border: 1px solid #ccc;
-	border-radius: 2px;
+	border-radius: 25px;
 }
 
 input:disabled {
@@ -45,19 +45,26 @@ input:disabled {
 }
 
 button {
-	color: #333;
-	background-color: #f4f4f4;
-	outline: none;
+	background-color: #B30000;
+	border-color:#B30000;
+	font-size: 15px;
+	color:white ;
+	text-align: center;
+	border-radius: 25px;
 }
 
 button:disabled {
 	color: #999;
+	border-radius: 25px;
 }
 
 button:not(:disabled):active {
-	background-color: #ddd;
+	background-color: white;
+	color:#B30000 ;
 }
 
 button:focus {
 	border-color: #666;
+	background-color: white;
+	color:#B30000 ;
 }
