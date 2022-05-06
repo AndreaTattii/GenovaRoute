@@ -82,8 +82,12 @@ if(isset($_POST['percorso'])){
             <div class="col -7">
                 <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;"><?php echo $_SESSION['nomePercorso']  ?> </h1>
             </div>
-            <div class="col -2">
-
+            <div class="col s-2">
+                <center>
+                    <a class="navbar-brand" href="../index.php">
+                        <img src="../../../img/icons/percorsoSfondo.png">
+                    </a>
+                </center>
             </div>
         </div>
     </div>
