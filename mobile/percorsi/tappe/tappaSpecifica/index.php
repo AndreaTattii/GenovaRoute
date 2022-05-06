@@ -1,8 +1,12 @@
 <?php
 session_start();
+/* ACCENTI */
+header('Content-Type: text/html; charset=ISO-8859-1');
 if (isset($_POST['tappa'])) {
     $_SESSION['nomeTappa'] = $_POST['tappa'];
 }
+
+
 
 ?>
 <!doctype html>
@@ -13,7 +17,7 @@ if (isset($_POST['tappa'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../../../../bootstrap/js/bootstrap.min.js"></script>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS Personale-->
@@ -36,33 +40,32 @@ if (isset($_POST['tappa'])) {
 <body class="d-flex flex-column min-vh-100">
 
 
-    <!-- NAVBAR -->
+    <!-- NAVBAR BASSA-->
     <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 70px;">
-        <div class="row  justify-content-center" style="padding-top: 15px;">
-            <div class="col s-4">
+        <div class="row  justify-content-center " style="padding-top: 15px;">
+            <div class="col .s-4">
                 <center>
                     <a class="navbar-brand" href="../../../index.php">
-                        <img src="../../../../img/icons/percorsoSfondo.png">
+                        <img src="../../../../img/icons/backRed.png">
                     </a>
                 </center>
 
             </div>
-            <div class="col s-4" style="padding-top: 15px; ">
+            <div class="col .s-4">
                 <center>
-                    <a class="navbar-brand" href="../../../scanner/index.php ">
+                    <a class="navbar-brand" href="../../../index.php">
                         <img src="../../../../img/icons/scannerizza.png">
                     </a>
                 </center>
-
             </div>
-            <div class="col s-4" style="padding-top: 15px; ">
+            <div class="col .s-4" style="padding-bottom: 15px; ">
                 <center>
-                    <a class="navbar-brand" href="../../../profilo/index.php">
-                        <img src="../../../../img/icons/account.png">
+                    <a class="navbar-brand" href="../../../scanner/index.php ">
+                        <img src="../../../../img/icons/nextRed.png">
                     </a>
                 </center>
-
             </div>
+
         </div>
 
 
@@ -105,7 +108,7 @@ if (isset($_POST['tappa'])) {
     $i = 0;
     $sql = "SELECT * FROM tappa WHERE nome = '" . $_SESSION['nomeTappa'] . "'";
     if ($result = $connessione->query($sql)) {
-        $row = $result -> fetch_assoc();
+        $row = $result->fetch_assoc();
         $img1 = $row['img1'];
         $img2 = $row['img2'];
         $img3 = $row['img3'];
@@ -114,7 +117,7 @@ if (isset($_POST['tappa'])) {
     } else {
         echo "Impossibile eseguire la query";
     }
-    
+
 
 
     ?>
@@ -122,10 +125,10 @@ if (isset($_POST['tappa'])) {
 
 
     <!-- CONTENUTO PAGINA -->
-    <div class="container" style="padding-top: 50px; padding-left: 50px; padding-right:50px; height: 200px;">
-        <!-- CAROSELLO -->        
+    <div class="container" style="padding-top: 50px; padding-left: 50px; padding-right:50px;">
+        <!-- CAROSELLO -->
         <div class="row" style="padding-top: 20px; padding-top: 20px;">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" >
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="<?php echo $img1; ?>" class="d-block w-100" alt="..." style="max-height: 200px; margin-left: auto; margin-right: auto;">
@@ -134,7 +137,7 @@ if (isset($_POST['tappa'])) {
                         <img src="<?php echo $img2; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
                     </div>
                     <div class="carousel-item">
-                        <img src="<?php echo $img3; ?>" class="d-block w-100" alt="..."style=" max-height: 200px; margin-left: auto; margin-right: auto;">
+                        <img src="<?php echo $img3; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -153,7 +156,7 @@ if (isset($_POST['tappa'])) {
                 <h2 style="color: #B30000;">Descrizione</h2>
             </div>
             <div class="row">
-                <p><?php echo $descrizione;?></p>
+                <p><?php echo $descrizione; ?></p>
             </div>
         </div>
         <!-- DOVE -->
@@ -162,10 +165,14 @@ if (isset($_POST['tappa'])) {
                 <h2 style="color: #B30000;">Dove</h2>
             </div>
             <div class="row">
-                <p><?php echo $dove;?></p>
+                <p><?php echo $dove; ?></p>
             </div>
         </div>
+        <div class="row " style="padding-top: 10px; padding-bottom:100px">
+            <div class="col .s-4">
 
+            </div>
+        </div>
     </div>
 
 
