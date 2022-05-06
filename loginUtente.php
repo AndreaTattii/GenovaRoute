@@ -31,7 +31,13 @@
             if ($result->num_rows > 0) {
                 $row = mysqli_fetch_assoc($result);
                 $_SESSION['email'] = $row['email'];
-                header("Location: ".$_SESSION['dispositivo']."/percorsi/index.php");  
+                if($_SESSION['dispositivo']=='mobile'){
+                    header("Location: mobile/percorsi/index.php");
+                }
+                else{
+                    header("Location: pc/index.php");
+                }
+                //header("Location: ".$_SESSION['dispositivo']."/percorsi/index.php");  
                 /*
                 header("Location: pc/index")
                 */

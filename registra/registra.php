@@ -26,7 +26,13 @@
     
     if($connessione->query($sql) === true){
         $_SESSION['email']= $mail;
-        header("location: ../".$_SESSION['dispositivo']."/percorsi/index.php");
+        if($_SESSION['dispositivo']=='mobile'){
+            header("Location: ../mobile/percorsi/index.php");
+        }
+        else{
+            header("Location: ../pc/index.php");
+        }
+        //header("location: ../".$_SESSION['dispositivo']."/percorsi/index.php");
         echo "Utente inserito con successo";
     }else{
         echo "Errore durante inserimento: ".$connessione->error;
