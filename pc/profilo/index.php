@@ -1,4 +1,29 @@
-<?php session_start(); ?>
+<?php session_start();
+
+$host = "127.0.0.1";
+$user = "root";
+$pass = "";
+$database = "genovaroute";
+
+$connessione = new mysqli($host, $user, $pass, $database);
+
+
+if ($connessione === false) {
+    die("Errore: " . $connessione->connect_error);
+}
+
+$sql = "SELECT nome, cognome FROM utente WHERE email = '" . $_SESSION['email'] . "'";
+
+if ($result = $connessione->query($sql)) {
+    $row = $result->fetch_array();
+    $nome = $row['nome'];
+    $cognome = $row['cognome'];
+} else {
+    echo "Impossibile eseguire la query";
+}
+
+
+?>
 <!doctype html>
 <html lang="en">
 
@@ -58,38 +83,16 @@
             <p style="color: white; font-size:20px;">Benvenuto</p>
             <h2 style="color: white; font-size:80px;">Scopri le bellezze di genova</h2>
             <br>
-
         </center>
     </div>
 
     <!--- Corpo del sito -->
-    
-
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col">
-                <h1 style="color:#B30000;">Esperienze uniche</h1>
-            </div>
-            <div class="col">
-                <p>La nostra applicazione, in regalo agli amanti della cultura, fornisce esperienze uniche e indimenticabili.</p>
-            </div>
-            <div class="col">
-                <img src="../img/PorcoAntico.png" > 
-            </div>
+    <div class="row justify-content-center" style="padding-top: 20px">
+        <div class="col s-2" id="immagineProfilo">
+            <img src="../../img/FotoProfilo.png">
         </div>
-        <br>
-        <br>
-        <br>
-        <div class="row align-items-center">
-            <div class="col">
-                <img src="../img/mappa.png" >    
-            </div>
-            <div class="col">
-                <h1 style="color:#B30000; text-align:center;">Percorsi a tema</h1>
-            </div>
-            <div class="col">
-                <p>Scopri aspetti nascosti, attraverso i nostri percorsi guidati, all’interno della città.</p>
-            </div>
+        <div class="col" id="nomeUtente" style="padding-top: 10px; padding-right:80px">
+            <?php echo  ' <h1 style="font-weight: bold; font-size: 30px; color: black; text-align: center;">' . $nome . ' ' . $cognome . '</h1> ';  ?>
         </div>
     </div>
             
