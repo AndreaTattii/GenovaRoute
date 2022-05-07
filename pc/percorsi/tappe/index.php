@@ -80,7 +80,7 @@ if(isset($_POST['percorso'])){
                     <div class="col-sm align-self-center" style="width:60%; padding-top:30px">       
                         <div class="card text-center align-self-center" style="width:100%;  background-color: #F0F0F0;">
                             <div class="card-body">
-                                <form action="tappe/index.php" method="post">
+                                <form action="tappaSpecifica/index.php" method="post">
                                     <p class="card-title">
                                         <input type="hidden" name="tappa" value="' . $row['nome'] . '">
                                         <input type="submit" value="'.$row['ordine'].'. ' . $row['nome'] . '" style="background-color: #F0F0F0; text-decoration: none; color: #B30000; font-size:20px; border: none; font-weight: bold; float: left;"> 
@@ -120,6 +120,12 @@ if(isset($_POST['percorso'])){
 		</footer>
 	</div>
 
+
+    <script>
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
 </body>
 
 </html>

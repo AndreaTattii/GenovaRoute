@@ -117,13 +117,7 @@ if (isset($_POST['tappa'])) {
     } else {
         echo "Impossibile eseguire la query";
     }
-
-
-
     ?>
-
-
-
     <!-- CONTENUTO PAGINA -->
     <div class="container" style="padding-top: 50px; padding-left: 50px; padding-right:50px;">
         <!-- CAROSELLO -->
@@ -153,7 +147,7 @@ if (isset($_POST['tappa'])) {
         <!-- DESCRIZIONE -->
         <div class="row" style="padding-top: 10px;">
             <div class="row">
-                <h2 style="color: #B30000;">Descrizione</h2>
+                <h2 style="color: #B30000; font-weight: bold;">Descrizione</h2>
             </div>
             <div class="row">
                 <p><?php echo $descrizione; ?></p>
@@ -162,7 +156,7 @@ if (isset($_POST['tappa'])) {
         <!-- DOVE -->
         <div class="row" style="padding-top: 10px;">
             <div class="row">
-                <h2 style="color: #B30000;">Dove</h2>
+                <h2 style="color: #B30000; font-weight: bold;">Dove</h2>
             </div>
             <div class="row">
                 <p><?php echo $dove; ?></p>
@@ -174,11 +168,6 @@ if (isset($_POST['tappa'])) {
             </div>
         </div>
     </div>
-
-
-
-
-
 </body>
 
 </html>
