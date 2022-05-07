@@ -82,9 +82,19 @@ if (isset($_POST['tappa'])) {
         $img3 = $row['img3'];
         $descrizione = $row['descrizione'];
         $dove = $row['via'];
+        $_SESSION['ordine'] = $row['ordine'];
     } else {
         echo "Impossibile eseguire la query";
     }
+    $sql = "SELECT COUNT(ordine) AS numeroTappe FROM tappa, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "'";
+
+    if ($result = $connessione->query($sql)) {
+        $row = $result->fetch_assoc();
+        $_SESSION['quanteTappe'] = $row['numeroTappe'];
+    } else {
+        echo "Impossibile eseguire la query";
+    }
+    echo $_SESSION['quanteTappe'];
 ?>
 <!-- CONTENUTO PAGINA -->
 <div class="container" style="padding-top: 50px; padding-left: 50px; padding-right:50px;">
@@ -130,14 +140,22 @@ if (isset($_POST['tappa'])) {
     </div>
     <div class="row" style="padding-top: 20px; padding-top: 20px;">
         <div class="col-md-6" style="float:left">
-            <form method="post" action="#">
-                <input type="button" name="tappa" value="Indietro" class="btn btn-primary" style="margin-left: 10px;background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center;">
-            </form>
+            <?php
+                if($_SESSION['ordine']!=0){
+                    echo'<form method="post" action="#">
+                        <input type="button" name="tappa" value="Indietro" class="btn btn-primary" style="margin-left: 10px;background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center;">
+                    </form>';
+                }
+            ?>
         </div>
         <div class="col-md-6" style="float:right">
-            <form method="post" action="#">
-                <input type="button" name="tappa" value="Avanti" class="btn btn-primary" style="margin-right: 10px;background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center;">
-            </form>
+            <?php
+                if($_SESSION['ordine']!=$_SESSION['quanteTappe']-1){
+                    echo'<form method="post" action="#">
+                        <input type="button" name="tappa" value="Avanti" class="btn btn-primary" style="margin-right: 10px;background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center;">
+                    </form>';
+                }
+            ?>
         </div>
     </div>
 </div>
