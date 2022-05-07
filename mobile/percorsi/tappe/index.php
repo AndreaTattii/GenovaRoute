@@ -105,7 +105,7 @@ if(isset($_POST['percorso'])){
         die("Errore: " . $connessione->connect_error);
     }
     $i = 0;
-    $sql = "SELECT tappa.nome FROM tappa, Tappa_Appartiene_Percorso, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "' AND Tappa_Appartiene_Percorso.id_tappa=tappa.id AND percorso.id=Tappa_Appartiene_Percorso.id_percorso ";
+    $sql = "SELECT tappa.nome, ordine FROM tappa, Tappa_Appartiene_Percorso, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "' AND Tappa_Appartiene_Percorso.id_tappa=tappa.id AND percorso.id=Tappa_Appartiene_Percorso.id_percorso ";
     if ($result = $connessione->query($sql)) {
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_array()) { //da risolvere il decentramento verticale del bottone in ogni card
@@ -121,8 +121,8 @@ if(isset($_POST['percorso'])){
                                                 <div class="card-body">
                                                     <form action="tappaSpecifica/index.php" method="post">
                                                         <p class="card-title">
-                                                            <input type="hidden" name="tappa" value="' . $row['nome'] . '">
-                                                            <input type="submit" value="' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:18px; border: none; font-weight: bold; float: left;"> 
+                                                            <input type="hidden" name="ordineTappa" value="' . $row['ordine'] . '">
+                                                            <input type="submit" value="' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:16px; border: none; font-weight: bold; float: left;"> 
                                                             <button type="submit" class="btn btn-primary" style="background-color: #B30000; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>
                                                         </p>
                                                     </form>
@@ -140,7 +140,11 @@ if(isset($_POST['percorso'])){
     ?>
 
 
-
+    <script>
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
 </body>
 
 </html>

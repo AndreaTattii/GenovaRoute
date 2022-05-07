@@ -1,13 +1,49 @@
 <?php
-session_start();
+    session_start();
+
+    if (isset($_POST['ordineTappa'])) {
+        $_SESSION['ordineTappa'] = $_POST['ordineTappa'];
+    }
+    $host = "127.0.0.1";
+    $user = "root";
+    $pass = "";
+    $database = "genovaroute";
+
+    $connessione = new mysqli($host, $user, $pass, $database);
+
+    //error_reporting(0);
+
+    if ($connessione === false) {
+        die("Errore: " . $connessione->connect_error);
+    }
+    $sql = "SELECT * FROM tappa WHERE ordine = '" . $_SESSION['ordineTappa'] . "'";
+    if ($result = $connessione->query($sql)) {
+        $row = $result->fetch_assoc();
+        $img1 = $row['img1'];
+        $img2 = $row['img2'];
+        $img3 = $row['img3'];
+        $descrizione = $row['descrizione'];
+        $dove = $row['via'];
+        $_SESSION['nomeTappa'] = $row['nome'];
+    } else {
+        echo "Impossibile eseguire la query";
+    }
+    $sql = "SELECT COUNT(ordine) AS numeroTappe FROM tappa, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "'";
+
+    if ($result = $connessione->query($sql)) {
+        $row = $result->fetch_assoc();
+        $_SESSION['quanteTappe'] = $row['numeroTappe'];
+    } else {
+        echo "Impossibile eseguire la query";
+    }
+
 /* ACCENTI */
 header('Content-Type: text/html; charset=ISO-8859-1');
-if (isset($_POST['tappa'])) {
-    $_SESSION['nomeTappa'] = $_POST['tappa'];
-}
-
-
-
+//if (isset($_POST['tappa'])) {
+//    $_SESSION['nomeTappa'] = $_POST['tappa'];
+//}else if (isset($_SESSION['nomeTappa'])) {
+//    $_SESSION['nomeTappa'] = $_POST['tappa'];
+//}
 ?>
 <!doctype html>
 <html lang="en">
@@ -45,24 +81,33 @@ if (isset($_POST['tappa'])) {
         <div class="row  justify-content-center " style="padding-top: 15px;">
             <div class="col .s-4">
                 <center>
-                    <a class="navbar-brand" href="../../../index.php">
-                        <img src="../../../../img/icons/backRed.png">
-                    </a>
+                <?php
+                    if($_SESSION['ordineTappa']!=0){
+                        echo'<form method="post" action="../tappaSpecifica/index.php">
+                                <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa']-1 . '">
+                                <input type="image" src="../../../../img/icons/backRed.png" name="tappa" value="Indietro" class="navbar-brand">
+                            </form>';
+                    }
+                ?>
                 </center>
-
             </div>
             <div class="col .s-4">
                 <center>
-                    <a class="navbar-brand" href="../../../index.php">
+                    <a class="navbar-brand" href="../../../scanner/index.php">
                         <img src="../../../../img/icons/scannerizza.png">
                     </a>
                 </center>
             </div>
             <div class="col .s-4" style="padding-bottom: 15px; ">
                 <center>
-                    <a class="navbar-brand" href="../../../scanner/index.php ">
-                        <img src="../../../../img/icons/nextRed.png">
-                    </a>
+                <?php
+                    if($_SESSION['ordineTappa']!=$_SESSION['quanteTappe']-1){
+                        echo'<form method="post" action="../tappaSpecifica/index.php">
+                                <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa']+1 . '">
+                                <input type="image" name="tappa" value="Avanti" class="navbar-brand" src="../../../../img/icons/nextRed.png">
+                            </form>';
+                    }
+                ?>
                 </center>
             </div>
 
@@ -90,34 +135,6 @@ if (isset($_POST['tappa'])) {
         </div>
     </div>
 
-
-    <?php
-
-    $host = "127.0.0.1";
-    $user = "root";
-    $pass = "";
-    $database = "genovaroute";
-
-    $connessione = new mysqli($host, $user, $pass, $database);
-
-    //error_reporting(0);
-
-    if ($connessione === false) {
-        die("Errore: " . $connessione->connect_error);
-    }
-    $i = 0;
-    $sql = "SELECT * FROM tappa WHERE nome = '" . $_SESSION['nomeTappa'] . "'";
-    if ($result = $connessione->query($sql)) {
-        $row = $result->fetch_assoc();
-        $img1 = $row['img1'];
-        $img2 = $row['img2'];
-        $img3 = $row['img3'];
-        $descrizione = $row['descrizione'];
-        $dove = $row['via'];
-    } else {
-        echo "Impossibile eseguire la query";
-    }
-    ?>
     <!-- CONTENUTO PAGINA -->
     <div class="container" style="padding-top: 50px; padding-left: 50px; padding-right:50px;">
         <!-- CAROSELLO -->
@@ -168,6 +185,11 @@ if (isset($_POST['tappa'])) {
             </div>
         </div>
     </div>
+    <script>
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
 </body>
 
 </html>
