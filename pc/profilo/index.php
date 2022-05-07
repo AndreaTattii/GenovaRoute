@@ -86,6 +86,21 @@ if ($result = $connessione->query($sql)) {
                 <?php echo  ' <h1 style="font-weight: bold; font-size: 30px; color: black; text-align: center;">' . $nome . ' ' . $cognome . '</h1> ';  ?>
             </div>
         </div>
+                <div class="row">
+            <div class="col -3">
+                
+            </div>
+            <div class="col -3" style="">
+                <form action="logout/logout.php" method="POST">
+                    <button type="submit" class="btn btn-primary button-profile" style="background-color: white; border-color:#B30000; font-size: 15px; color:#B30000 ; text-align: center; ">Log out</button>
+                </form>
+            </div>
+            <div class="col -6" style="">
+                <form action="cambiaPsw/index.php" method="POST" >
+                    <button type="submit" class="btn btn-primary button-profile" style="background-color: white; border-color:#B30000; font-size: 15px; color:#B30000 ; text-align: center; ">Password</button>
+                </form>
+            </div>
+        </div>
     </div>     
     
 
