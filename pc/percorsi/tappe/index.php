@@ -1,20 +1,25 @@
-<?php session_start(); ?>
+<?php
+session_start();
+if(isset($_POST['percorso'])){
+    $_SESSION['nomePercorso'] = $_POST['percorso'];
+}
+?>
 <!doctype html>
 <html lang="en">
 
 <head>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../bootstrap/js/bootstrap.min.js"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS Personale-->
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../../css/style.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../bootstrap/css/bootstrap.min.css">
 
     <!-- font -->
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
@@ -24,14 +29,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
     <title>Genova Route</title>
-    <link rel="icon" href="../../img/g.png" type="image/icon type">
+    <link rel="icon" href="../../../img/g.png" type="image/icon type">
 
 </head>
 
 <body class="d-flex flex-column min-vh-100">
     <nav class="navbar  navbar-expand-lg" style="background-color: #B30000;">
         <div class="container p-2">
-            <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold;" href="../index.php">
+            <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold;" href="../../index.php">
                 <h1>Genova Route</h1>
             </a>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
@@ -43,16 +48,18 @@
 	    				<a class="nav-link" href="#" style="color: white">Preferiti</a>
 	    			</li>
 	    			<li class="nav-item">
-	    				<a class="nav-link" href="../profilo/index.php" style="color: white">Account</a>
+	    				<a class="nav-link" href="../../profilo/index.php" style="color: white">Account</a>
 	    			</li>
 	    		</ul>
 	    	</div>
         </div>
     </nav>
 
-    <h1 style="font-weight:bold; padding-top:15px; padding-left:150px">Scegli un percorso</h1>
+    <h2 style="color:#B30000; font-weight:bold; padding-top:15px; padding-left:150px"><?php echo $_SESSION['nomePercorso']?></h2>
+    <h1 style="font-weight:bold; padding-left:150px">Scegli una tappa</h1>
 
     <?php
+
     $host = "127.0.0.1";
     $user = "root";
     $pass = "";
@@ -65,19 +72,18 @@
     if ($connessione === false) {
         die("Errore: " . $connessione->connect_error);
     }
-    $sql = "SELECT * FROM percorso ORDER BY (SELECT COUNT(*) AS numero_tappe FROM percorso, tappa, tappa_appartiene_percorso WHERE id_percorso=percorso.id AND id_tappa=tappa.id)";
+    $sql = "SELECT tappa.nome, ordine FROM tappa, Tappa_Appartiene_Percorso, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "' AND Tappa_Appartiene_Percorso.id_tappa=tappa.id AND percorso.id=Tappa_Appartiene_Percorso.id_percorso ";
     if ($result = $connessione->query($sql)) {
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_array()) {
-            
                 echo '
                     <div class="col-sm align-self-center" style="width:60%; padding-top:30px">       
                         <div class="card text-center align-self-center" style="width:100%;  background-color: #F0F0F0;">
                             <div class="card-body">
                                 <form action="tappe/index.php" method="post">
                                     <p class="card-title">
-                                        <input type="hidden" name="percorso" value="' . $row['nome'] . '">
-                                        <input type="submit" value="' . $row['nome'] . '" style="background-color: #F0F0F0; text-decoration: none; color: #B30000; font-size:20px; border: none; font-weight: bold; float: left;"> 
+                                        <input type="hidden" name="tappa" value="' . $row['nome'] . '">
+                                        <input type="submit" value="'.$row['ordine'].'. ' . $row['nome'] . '" style="background-color: #F0F0F0; text-decoration: none; color: #B30000; font-size:20px; border: none; font-weight: bold; float: left;"> 
                                         <button type="submit" class="btn btn-primary" style="background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>
                                     </p>
                                 </form>
@@ -87,7 +93,7 @@
                     ';
             }
         } else {
-            echo "<p style='text-align: center'>Non ci sono percorsi salvati nel database</p>";
+            echo "<p style='text-align: center'>Non ci sono tappe salvate nel database</p>";
         }
     } else {
         echo "Impossibile eseguire la query";

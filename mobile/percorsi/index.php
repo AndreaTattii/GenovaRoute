@@ -93,7 +93,7 @@ session_start();
         die("Errore: " . $connessione->connect_error);
     }
     $i = 0;
-    $sql = "SELECT * FROM percorso ORDER BY nome";
+    $sql = "SELECT * FROM percorso ORDER BY (SELECT COUNT(*) AS numero_tappe FROM percorso, tappa, tappa_appartiene_percorso WHERE id_percorso=percorso.id AND id_tappa=tappa.id)";
     if ($result = $connessione->query($sql)) {
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_array()) { //da risolvere il decentramento verticale del bottone in ogni card

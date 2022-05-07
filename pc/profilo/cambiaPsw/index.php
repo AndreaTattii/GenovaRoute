@@ -36,7 +36,7 @@ function isMobile() {
 <body class="d-flex flex-column min-vh-100">
     <nav class="navbar  navbar-expand-lg" style="background-color: #B30000;">
         <div class="container p-2">
-            <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold;" href="./">
+            <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold;" href="../../index.php">
                 <h1>Genova Route</h1>
             </a>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
@@ -55,21 +55,8 @@ function isMobile() {
         </div>
     </nav>
 
-    <div style="background-image: url('../img/foto_epoca_genova.png'); height: 600px; background-repeat: no-repeat; width:100%; background-position: center; background-size: cover;">
-
-        <center>
-            <br>
-            <br>
-            <p style="color: white; font-size:20px;">Benvenuto</p>
-            <h2 style="color: white; font-size:80px;">Scopri le bellezze di genova</h2>
-            <br>
-
-        </center>
-    </div>
-
     <!--- Corpo del sito -->
-    
-    <div class="container" style="">
+    <div class="container" style="padding-top:30px">
     <div class="row" style="">
             <h2 style="color:#B30000">Cambia password</h2>
     </div>
