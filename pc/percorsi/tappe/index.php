@@ -104,7 +104,6 @@ if(isset($_POST['percorso'])){
 
     <div class="footer-clean" style="border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px;">
 		<footer>
-            <hr size="5" width="100%" color="black">
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-4 ">
