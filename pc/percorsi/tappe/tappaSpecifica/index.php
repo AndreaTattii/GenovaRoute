@@ -94,7 +94,6 @@ if (isset($_POST['tappa'])) {
     } else {
         echo "Impossibile eseguire la query";
     }
-    echo $_SESSION['quanteTappe'];
 ?>
 <!-- CONTENUTO PAGINA -->
 <div class="container" style="padding-top: 50px; padding-left: 50px; padding-right:50px;">
