@@ -1,10 +1,49 @@
 <?php
-session_start();
+    session_start();
+
+    if (isset($_POST['ordineTappa'])) {
+        $_SESSION['ordineTappa'] = $_POST['ordineTappa'];
+    }
+    $host = "127.0.0.1";
+    $user = "root";
+    $pass = "";
+    $database = "genovaroute";
+
+    $connessione = new mysqli($host, $user, $pass, $database);
+
+    //error_reporting(0);
+
+    if ($connessione === false) {
+        die("Errore: " . $connessione->connect_error);
+    }
+    $sql = "SELECT * FROM tappa WHERE ordine = '" . $_SESSION['ordineTappa'] . "'";
+    if ($result = $connessione->query($sql)) {
+        $row = $result->fetch_assoc();
+        $img1 = $row['img1'];
+        $img2 = $row['img2'];
+        $img3 = $row['img3'];
+        $descrizione = $row['descrizione'];
+        $dove = $row['via'];
+        $_SESSION['nomeTappa'] = $row['nome'];
+    } else {
+        echo "Impossibile eseguire la query";
+    }
+    $sql = "SELECT COUNT(ordine) AS numeroTappe FROM tappa, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "'";
+
+    if ($result = $connessione->query($sql)) {
+        $row = $result->fetch_assoc();
+        $_SESSION['quanteTappe'] = $row['numeroTappe'];
+    } else {
+        echo "Impossibile eseguire la query";
+    }
+
 /* ACCENTI */
 header('Content-Type: text/html; charset=ISO-8859-1');
-if (isset($_POST['tappa'])) {
-    $_SESSION['nomeTappa'] = $_POST['tappa'];
-}
+//if (isset($_POST['tappa'])) {
+//    $_SESSION['nomeTappa'] = $_POST['tappa'];
+//}else if (isset($_SESSION['nomeTappa'])) {
+//    $_SESSION['nomeTappa'] = $_POST['tappa'];
+//}
 ?>
 <!doctype html>
 <html lang="en">
@@ -60,41 +99,7 @@ if (isset($_POST['tappa'])) {
     <h2 style="color:#B30000; font-weight:bold; padding-top:15px; padding-left:150px"><?php echo $_SESSION['nomePercorso']?></h2>
     <h1 style="font-weight:bold; padding-left:150px"><?php echo $_SESSION['nomeTappa']?></h1>
 
-<?php
 
-    $host = "127.0.0.1";
-    $user = "root";
-    $pass = "";
-    $database = "genovaroute";
-
-    $connessione = new mysqli($host, $user, $pass, $database);
-
-    //error_reporting(0);
-
-    if ($connessione === false) {
-        die("Errore: " . $connessione->connect_error);
-    }
-    $sql = "SELECT * FROM tappa WHERE nome = '" . $_SESSION['nomeTappa'] . "'";
-    if ($result = $connessione->query($sql)) {
-        $row = $result->fetch_assoc();
-        $img1 = $row['img1'];
-        $img2 = $row['img2'];
-        $img3 = $row['img3'];
-        $descrizione = $row['descrizione'];
-        $dove = $row['via'];
-        $_SESSION['ordine'] = $row['ordine'];
-    } else {
-        echo "Impossibile eseguire la query";
-    }
-    $sql = "SELECT COUNT(ordine) AS numeroTappe FROM tappa, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "'";
-
-    if ($result = $connessione->query($sql)) {
-        $row = $result->fetch_assoc();
-        $_SESSION['quanteTappe'] = $row['numeroTappe'];
-    } else {
-        echo "Impossibile eseguire la query";
-    }
-?>
 <!-- CONTENUTO PAGINA -->
 <div class="container" style="padding-top: 50px; padding-left: 50px; padding-right:50px;">
     <div class="row" style="padding-top: 20px; padding-top: 20px;">
@@ -140,18 +145,21 @@ if (isset($_POST['tappa'])) {
     <div class="row" style="padding-top: 20px; padding-top: 20px;">
         <div class="col-md-6" style="float:left">
             <?php
-                if($_SESSION['ordine']!=0){
-                    echo'<form method="post" action="#">
-                        <input type="button" name="tappa" value="Indietro" class="btn btn-primary" style="margin-left: 10px;background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center;">
+                if($_SESSION['ordineTappa']!=0){
+                    echo'<form method="post" action="../tappaSpecifica/index.php">
+                        <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa']-1 . '">
+                        <input type="submit" name="tappa" value="Indietro" class="btn btn-primary" style="margin-left: 10px;background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center;">
+
                     </form>';
                 }
             ?>
         </div>
         <div class="col-md-6" style="float:right">
             <?php
-                if($_SESSION['ordine']!=$_SESSION['quanteTappe']-1){
-                    echo'<form method="post" action="#">
-                        <input type="button" name="tappa" value="Avanti" class="btn btn-primary" style="margin-right: 10px;background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center;">
+                if($_SESSION['ordineTappa']!=$_SESSION['quanteTappe']-1){
+                    echo'<form method="post" action="../tappaSpecifica/index.php">
+                        <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa']+1 . '">
+                        <input type="submit" name="tappa" value="Avanti" class="btn btn-primary" style="margin-right: 10px;background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center;">
                     </form>';
                 }
             ?>
