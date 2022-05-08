@@ -6,9 +6,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
-    <link rel='stylesheet' href='QrCode/global.css'>
-    <link rel='stylesheet' href='QrCode/bundle.css'>
-    <script defer src='QrCode/bundle.js'></script>
+    <link rel='stylesheet' href='global.css'>
+    <link rel='stylesheet' href='bundle.css'>
+    <script defer src='bundle.js'></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
