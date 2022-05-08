@@ -72,6 +72,7 @@
         <div class="row  justify-content-center " style="padding-top: 15px;">
             <div class="col .s-4">
                 <center>
+<<<<<<< HEAD
                     <!--<a class="navbar-brand" href="../../../index.php">
                         <img src="../../../../img/icons/backRed.png">
                     </a> -->
@@ -81,24 +82,48 @@
                         </button>
 
                     </form>
+=======
+                <?php
+                    if($_SESSION['ordineTappa']!=0){
+                        echo'<form method="post" action="../tappaSpecifica/index.php">
+                                <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa']-1 . '">
+                                <input type="image" src="../../../../img/icons/backRed.png" name="tappa" value="Indietro" class="navbar-brand">
+                            </form>';
+                    }
+                ?>
+>>>>>>> 17438f8d201532609d4fc74ed65953284b553062
                 </center>
-
             </div>
             <div class="col .s-4">
                 <center>
+<<<<<<< HEAD
                     <a class="navbar-brand" href="../../../scanner/">
+=======
+                    <a class="navbar-brand" href="../../../scanner/index.php">
+>>>>>>> 17438f8d201532609d4fc74ed65953284b553062
                         <img src="../../../../img/icons/scannerizza.png">
                     </a>
                 </center>
             </div>
             <div class="col .s-4" style="padding-bottom: 15px; ">
                 <center>
+<<<<<<< HEAD
                     <form action="incrementaOrdinata.php" method="POST">
                         <button type="submit" style="background-color: white;">
                             <img src="../../../../img/icons/nextRed.png">
                         </button>
 
                     </form>
+=======
+                <?php
+                    if($_SESSION['ordineTappa']!=$_SESSION['quanteTappe']-1){
+                        echo'<form method="post" action="../tappaSpecifica/index.php">
+                                <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa']+1 . '">
+                                <input type="image" name="tappa" value="Avanti" class="navbar-brand" src="../../../../img/icons/nextRed.png">
+                            </form>';
+                    }
+                ?>
+>>>>>>> 17438f8d201532609d4fc74ed65953284b553062
                 </center>
             </div>
 
@@ -126,10 +151,13 @@
         </div>
     </div>
 
+<<<<<<< HEAD
 
     
 
 
+=======
+>>>>>>> 17438f8d201532609d4fc74ed65953284b553062
     <!-- CONTENUTO PAGINA -->
     <div class="container" style="padding-top: 50px; padding-left: 50px; padding-right:50px;">
         <!-- CAROSELLO -->
@@ -159,7 +187,7 @@
         <!-- DESCRIZIONE -->
         <div class="row" style="padding-top: 10px;">
             <div class="row">
-                <h2 style="color: #B30000;">Descrizione</h2>
+                <h2 style="color: #B30000; font-weight: bold;">Descrizione</h2>
             </div>
             <div class="row">
                 <p><?php echo $descrizione; ?></p>
@@ -168,7 +196,7 @@
         <!-- DOVE -->
         <div class="row" style="padding-top: 10px;">
             <div class="row">
-                <h2 style="color: #B30000;">Dove</h2>
+                <h2 style="color: #B30000; font-weight: bold;">Dove</h2>
             </div>
             <div class="row">
                 <p><?php echo $dove; ?></p>
@@ -180,11 +208,11 @@
             </div>
         </div>
     </div>
-
-
-
-
-
+    <script>
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
 </body>
 
 </html>
