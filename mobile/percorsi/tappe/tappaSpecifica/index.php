@@ -35,6 +35,7 @@ if ($result = $connessione->query($sql)) {
     echo "Impossibile eseguire la query";
 }
 
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -75,19 +76,17 @@ if ($result = $connessione->query($sql)) {
                     <!--<a class="navbar-brand" href="../../../index.php">
                         <img src="../../../../img/icons/backRed.png">
                     </a> -->
-                    <form action="decrementaOrdinata.php" method="POST">
-                        <button type="submit" style="background-color: white;">
-                            <img src="../../../../img/icons/backRed.png">
-                        </button>
-
-                    </form>
-                    <?php /*
-                    if ($_SESSION['ordineTappa'] != 0) {
-                        echo '<form method="post" action="../tappaSpecifica/index.php">
-                                <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa'] - 1 . '">
-                                <input type="image" src="../../../../img/icons/backRed.png" name="tappa" value="Indietro" class="navbar-brand">
-                            </form>';
-                    }*/
+                    
+                    <?php 
+                    if ($_SESSION['ordine'] != 0) {
+                        echo '
+                            <form action="decrementaOrdinata.php" method="POST">
+                                 <button type="submit" style="background-color: white;">
+                                    <img src="../../../../img/icons/backRed.png">
+                                </button>
+                            </form>
+                        ';
+                    }
                     ?>
                 </center>
             </div>
@@ -101,19 +100,17 @@ if ($result = $connessione->query($sql)) {
             </div>
             <div class="col .s-4" style="padding-bottom: 15px; ">
                 <center>
-                    <form action="incrementaOrdinata.php" method="POST">
-                        <button type="submit" style="background-color: white;">
-                            <img src="../../../../img/icons/nextRed.png">
-                        </button>
-
-                    </form>
-                    <?php /*
-                    if ($_SESSION['ordineTappa'] != $_SESSION['quanteTappe'] - 1) {
-                        echo '<form method="post" action="../tappaSpecifica/index.php">
-                                <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa'] + 1 . '">
-                                <input type="image" name="tappa" value="Avanti" class="navbar-brand" src="../../../../img/icons/nextRed.png">
-                            </form>';
-                    }*/
+                    
+                    <?php 
+                    if ($_SESSION['ordine'] != $_SESSION['quanteTappe'] ) {
+                        echo '
+                            <form action="incrementaOrdinata.php" method="POST">
+                                <button type="submit" style="background-color: white;">
+                                    <img src="../../../../img/icons/nextRed.png">
+                                </button>
+                            </form>
+                        ';
+                    }
                     ?>
                 </center>
             </div>
