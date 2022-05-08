@@ -1,12 +1,39 @@
 <?php
-session_start();
-/* ACCENTI */
-header('Content-Type: text/html; charset=ISO-8859-1');
-if (isset($_POST['tappa'])) {
-    $_SESSION['nomeTappa'] = $_POST['tappa'];
-}
+    session_start();
+    /* ACCENTI */
+    header('Content-Type: text/html; charset=ISO-8859-1');
+    if (isset($_POST['tappa'])) {
+        $_SESSION['ordine'] = $_POST['tappa'];
+    }
+
+    $host = "127.0.0.1";
+    $user = "root";
+    $pass = "";
+    $database = "genovaroute";
+
+    $connessione = new mysqli($host, $user, $pass, $database);
+
+    //error_reporting(0);
+
+    if ($connessione === false) {
+        die("Errore: " . $connessione->connect_error);
+    }
 
 
+    
+
+    $sql = "SELECT * FROM tappa WHERE ordine = '" . $_SESSION['ordine'] . "'";
+    if ($result = $connessione->query($sql)) {
+        $row = $result->fetch_assoc();
+        $img1 = $row['img1'];
+        $img2 = $row['img2'];
+        $img3 = $row['img3'];
+        $descrizione = $row['descrizione'];
+        $dove = $row['via'];
+        $nome = $row['nome'];
+    } else {
+        echo "Impossibile eseguire la query";
+    }
 
 ?>
 <!doctype html>
@@ -45,24 +72,33 @@ if (isset($_POST['tappa'])) {
         <div class="row  justify-content-center " style="padding-top: 15px;">
             <div class="col .s-4">
                 <center>
-                    <a class="navbar-brand" href="../../../index.php">
+                    <!--<a class="navbar-brand" href="../../../index.php">
                         <img src="../../../../img/icons/backRed.png">
-                    </a>
+                    </a> -->
+                    <form action="decrementaOrdinata.php" method="POST">
+                        <button type="submit" style="background-color: white;">
+                            <img src="../../../../img/icons/backRed.png">
+                        </button>
+
+                    </form>
                 </center>
 
             </div>
             <div class="col .s-4">
                 <center>
-                    <a class="navbar-brand" href="../../../index.php">
+                    <a class="navbar-brand" href="../../../scanner/">
                         <img src="../../../../img/icons/scannerizza.png">
                     </a>
                 </center>
             </div>
             <div class="col .s-4" style="padding-bottom: 15px; ">
                 <center>
-                    <a class="navbar-brand" href="../../../scanner/index.php ">
-                        <img src="../../../../img/icons/nextRed.png">
-                    </a>
+                    <form action="incrementaOrdinata.php" method="POST">
+                        <button type="submit" style="background-color: white;">
+                            <img src="../../../../img/icons/nextRed.png">
+                        </button>
+
+                    </form>
                 </center>
             </div>
 
@@ -82,7 +118,7 @@ if (isset($_POST['tappa'])) {
                 </a>
             </div>
             <div class="col -7">
-                <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;  font-size: 20px;"><?php echo $_SESSION['nomeTappa']  ?></h1>
+                <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;  font-size: 20px;"><?php echo $nome;  ?></h1>
             </div>
             <div class="col -2">
 
@@ -91,37 +127,7 @@ if (isset($_POST['tappa'])) {
     </div>
 
 
-    <?php
-
-    $host = "127.0.0.1";
-    $user = "root";
-    $pass = "";
-    $database = "genovaroute";
-
-    $connessione = new mysqli($host, $user, $pass, $database);
-
-    //error_reporting(0);
-
-    if ($connessione === false) {
-        die("Errore: " . $connessione->connect_error);
-    }
-    $i = 0;
-    $sql = "SELECT * FROM tappa WHERE nome = '" . $_SESSION['nomeTappa'] . "'";
-    if ($result = $connessione->query($sql)) {
-        $row = $result->fetch_assoc();
-        $img1 = $row['img1'];
-        $img2 = $row['img2'];
-        $img3 = $row['img3'];
-        $descrizione = $row['descrizione'];
-        $dove = $row['via'];
-    } else {
-        echo "Impossibile eseguire la query";
-    }
-
-
-
-    ?>
-
+    
 
 
     <!-- CONTENUTO PAGINA -->

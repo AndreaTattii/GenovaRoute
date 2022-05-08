@@ -157,7 +157,7 @@ INSERT INTO Tappa (nome, descrizione, via, città, ordine, img1, img2, img3)
     );
 INSERT INTO Tappa (nome, descrizione, via, città, ordine, img1, img2, img3) 
     VALUES (    
-            'PEsciolino', 
+            'Pesciolino', 
             'Ristorante di buonissimo pesce genovese', 
             'Vico Domoculta', 
             'Genova',
