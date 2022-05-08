@@ -1,39 +1,39 @@
 <?php
-    session_start();
-    /* ACCENTI */
-    header('Content-Type: text/html; charset=ISO-8859-1');
-    if (isset($_POST['tappa'])) {
-        $_SESSION['ordine'] = $_POST['tappa'];
-    }
+session_start();
+/* ACCENTI */
+header('Content-Type: text/html; charset=ISO-8859-1');
+if (isset($_POST['tappa'])) {
+    $_SESSION['ordine'] = $_POST['tappa'];
+}
 
-    $host = "127.0.0.1";
-    $user = "root";
-    $pass = "";
-    $database = "genovaroute";
+$host = "127.0.0.1";
+$user = "root";
+$pass = "";
+$database = "genovaroute";
 
-    $connessione = new mysqli($host, $user, $pass, $database);
+$connessione = new mysqli($host, $user, $pass, $database);
 
-    //error_reporting(0);
+//error_reporting(0);
 
-    if ($connessione === false) {
-        die("Errore: " . $connessione->connect_error);
-    }
+if ($connessione === false) {
+    die("Errore: " . $connessione->connect_error);
+}
 
 
-    
 
-    $sql = "SELECT * FROM tappa WHERE ordine = '" . $_SESSION['ordine'] . "'";
-    if ($result = $connessione->query($sql)) {
-        $row = $result->fetch_assoc();
-        $img1 = $row['img1'];
-        $img2 = $row['img2'];
-        $img3 = $row['img3'];
-        $descrizione = $row['descrizione'];
-        $dove = $row['via'];
-        $nome = $row['nome'];
-    } else {
-        echo "Impossibile eseguire la query";
-    }
+
+$sql = "SELECT * FROM tappa WHERE ordine = '" . $_SESSION['ordine'] . "'";
+if ($result = $connessione->query($sql)) {
+    $row = $result->fetch_assoc();
+    $img1 = $row['img1'];
+    $img2 = $row['img2'];
+    $img3 = $row['img3'];
+    $descrizione = $row['descrizione'];
+    $dove = $row['via'];
+    $nome = $row['nome'];
+} else {
+    echo "Impossibile eseguire la query";
+}
 
 ?>
 <!doctype html>
@@ -72,7 +72,6 @@
         <div class="row  justify-content-center " style="padding-top: 15px;">
             <div class="col .s-4">
                 <center>
-<<<<<<< HEAD
                     <!--<a class="navbar-brand" href="../../../index.php">
                         <img src="../../../../img/icons/backRed.png">
                     </a> -->
@@ -82,48 +81,40 @@
                         </button>
 
                     </form>
-=======
-                <?php
-                    if($_SESSION['ordineTappa']!=0){
-                        echo'<form method="post" action="../tappaSpecifica/index.php">
-                                <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa']-1 . '">
+                    <?php /*
+                    if ($_SESSION['ordineTappa'] != 0) {
+                        echo '<form method="post" action="../tappaSpecifica/index.php">
+                                <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa'] - 1 . '">
                                 <input type="image" src="../../../../img/icons/backRed.png" name="tappa" value="Indietro" class="navbar-brand">
                             </form>';
-                    }
-                ?>
->>>>>>> 17438f8d201532609d4fc74ed65953284b553062
+                    }*/
+                    ?>
                 </center>
             </div>
             <div class="col .s-4">
                 <center>
-<<<<<<< HEAD
                     <a class="navbar-brand" href="../../../scanner/">
-=======
-                    <a class="navbar-brand" href="../../../scanner/index.php">
->>>>>>> 17438f8d201532609d4fc74ed65953284b553062
-                        <img src="../../../../img/icons/scannerizza.png">
-                    </a>
+                        <a class="navbar-brand" href="../../../scanner/index.php">
+                            <img src="../../../../img/icons/scannerizza.png">
+                        </a>
                 </center>
             </div>
             <div class="col .s-4" style="padding-bottom: 15px; ">
                 <center>
-<<<<<<< HEAD
                     <form action="incrementaOrdinata.php" method="POST">
                         <button type="submit" style="background-color: white;">
                             <img src="../../../../img/icons/nextRed.png">
                         </button>
 
                     </form>
-=======
-                <?php
-                    if($_SESSION['ordineTappa']!=$_SESSION['quanteTappe']-1){
-                        echo'<form method="post" action="../tappaSpecifica/index.php">
-                                <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa']+1 . '">
+                    <?php /*
+                    if ($_SESSION['ordineTappa'] != $_SESSION['quanteTappe'] - 1) {
+                        echo '<form method="post" action="../tappaSpecifica/index.php">
+                                <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa'] + 1 . '">
                                 <input type="image" name="tappa" value="Avanti" class="navbar-brand" src="../../../../img/icons/nextRed.png">
                             </form>';
-                    }
-                ?>
->>>>>>> 17438f8d201532609d4fc74ed65953284b553062
+                    }*/
+                    ?>
                 </center>
             </div>
 
@@ -151,13 +142,10 @@
         </div>
     </div>
 
-<<<<<<< HEAD
-
-    
 
 
-=======
->>>>>>> 17438f8d201532609d4fc74ed65953284b553062
+
+
     <!-- CONTENUTO PAGINA -->
     <div class="container" style="padding-top: 50px; padding-left: 50px; padding-right:50px;">
         <!-- CAROSELLO -->
@@ -209,8 +197,8 @@
         </div>
     </div>
     <script>
-        if ( window.history.replaceState ) {
-            window.history.replaceState( null, null, window.location.href );
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
         }
     </script>
 </body>
