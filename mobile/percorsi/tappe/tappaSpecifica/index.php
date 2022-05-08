@@ -35,6 +35,12 @@ if ($result = $connessione->query($sql)) {
     echo "Impossibile eseguire la query";
 }
 
+$sql = "SELECT MAX(tappa.ordine)  FROM tappa, Tappa_Appartiene_Percorso, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "' AND Tappa_Appartiene_Percorso.id_tappa=tappa.id AND percorso.id=Tappa_Appartiene_Percorso.id_percorso ";
+    
+    if ($result = $connessione->query($sql)) {
+        $row = $result->fetch_assoc();
+        $_SESSION['quanteTappe'] = $row['MAX(tappa.ordine)'];
+    }
 
 ?>
 <!doctype html>

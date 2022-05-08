@@ -176,8 +176,3 @@ INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (6, 1);
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (7, 1);
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (8, 1);
 
-
-
-
-
-
