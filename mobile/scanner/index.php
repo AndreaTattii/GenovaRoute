@@ -30,7 +30,7 @@
     <link rel="icon" href="img/g.png" type="image/icon type">
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100" onload="submitform()">
 
 
     <!-- NAVBAR -->
@@ -80,7 +80,6 @@
     
 
     <!-- CONTENUTO PAGINA -->
-
 
 
 </body>
