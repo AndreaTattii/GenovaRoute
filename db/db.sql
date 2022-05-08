@@ -176,3 +176,4 @@ INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (6, 1);
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (7, 1);
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (8, 1);
 
+INSERT INTO Utente (email, nome, cognome, psw, admn) VALUES ('admin@admin', 'admin', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1);

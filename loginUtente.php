@@ -25,7 +25,7 @@
             $password = $_POST['password'];
             $password = hash("sha256", $password);
 
-            $sql = "SELECT email, psw FROM utente WHERE email='$email' AND psw='$password'";
+            $sql = "SELECT * FROM utente WHERE email='$email' AND psw='$password'";
             $result = mysqli_query($connessione, $sql);
 
             if ($result->num_rows > 0) {
@@ -35,7 +35,11 @@
                     header("Location: mobile/percorsi/index.php");
                 }
                 else{
-                    header("Location: pc/index.php");
+                    if($row['admn']==1){
+                        header("Location: pc/admin/index.php");
+                    }else{
+                        header("Location: pc/index.php");
+                    }
                 }
                 //header("Location: ".$_SESSION['dispositivo']."/percorsi/index.php");  
                 /*
@@ -46,6 +50,5 @@
                 header("Location: index.php");
             }
         
-
     ?>
 		
