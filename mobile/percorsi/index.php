@@ -75,6 +75,7 @@ session_start();
         </div>
     </div>
 
+    
 
     <!-- CONTENUTO PAGINA -->
 
@@ -104,19 +105,33 @@ session_start();
                         $coloreRiga = "#F0F0F0";
                     }
                     echo '
-                                            <div class="col-sm align-self-center" style="width:100%;">       
-                                                <div class="card text-center align-self-center" style="width:100%;  background-color: ' . $coloreRiga . ';">
-                                                    <div class="card-body">
-                                                        <form action="tappe/index.php" method="post">
-                                                            <p class="card-title">
-                                                                <input type="hidden" name="percorso" value="' . $row['nome'] . '">
-                                                                <input type="submit" value="' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:20px; border: none; font-weight: bold; float: left;"> 
-                                                                <button type="submit" class="btn btn-primary" style="background-color: #B30000; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>
-                                                            </p>
-                                                        </form>
-                                                    </div>
-                                                </div>                                        
-                                            </div>
+                    <form action="tappe/index.php" method="post">
+                        <div class="container " style="width:100%;  background-color: ' . $coloreRiga . '; padding-bottom: 15px; padding-top: 15px">
+                            <div class="row justify-content-center " style="background-color: ' . $coloreRiga . ';">
+                                <div class="col-xs ">
+                                    <div class="row">
+                                        <input type="hidden" name="percorso" value="' . $row['nome'] . '">
+                                        <input type="submit" value="' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:20px; border: none; font-weight: bold; float: left;"> 
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <center>
+                                        <p>'.$row['descrizione'].'</p>
+                                    </center>
+                                    
+                                </div>
+                                <div class="row justify-content-center" >                               
+                                        <button type="submit" class="btn btn-primary" style="width:100px; background-color: #B30000; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>                                   
+
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </form>
+                    
+
+                                            
                                             ';
                 }
             } else {
