@@ -77,56 +77,66 @@ session_start();
 
 
     <!-- CONTENUTO PAGINA -->
-    <?php
 
+    <div class="container" style="margin:0px; padding:0px">
+        <?php
+        $host = "127.0.0.1";
+        $user = "root";
+        $pass = "";
+        $database = "genovaroute";
 
+        $connessione = new mysqli($host, $user, $pass, $database);
 
-    $host = "127.0.0.1";
-    $user = "root";
-    $pass = "";
-    $database = "genovaroute";
+        //error_reporting(0);
 
-    $connessione = new mysqli($host, $user, $pass, $database);
-
-    //error_reporting(0);
-
-    if ($connessione === false) {
-        die("Errore: " . $connessione->connect_error);
-    }
-    $i = 0;
-    $sql = "SELECT * FROM percorso ORDER BY (SELECT COUNT(*) AS numero_tappe FROM percorso, tappa, tappa_appartiene_percorso WHERE id_percorso=percorso.id AND id_tappa=tappa.id)";
-    if ($result = $connessione->query($sql)) {
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_array()) { //da risolvere il decentramento verticale del bottone in ogni card
-                $i++;
-                if ($i % 2 == 0) {
-                    $coloreRiga = "white";
-                } else {
-                    $coloreRiga = "#F0F0F0";
+        if ($connessione === false) {
+            die("Errore: " . $connessione->connect_error);
+        }
+        $i = 0;
+        $sql = "SELECT * FROM percorso ORDER BY (SELECT COUNT(*) AS numero_tappe FROM percorso, tappa, tappa_appartiene_percorso WHERE id_percorso=percorso.id AND id_tappa=tappa.id)";
+        if ($result = $connessione->query($sql)) {
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_array()) { //da risolvere il decentramento verticale del bottone in ogni card
+                    $i++;
+                    if ($i % 2 == 0) {
+                        $coloreRiga = "white";
+                    } else {
+                        $coloreRiga = "#F0F0F0";
+                    }
+                    echo '
+                                            <div class="col-sm align-self-center" style="width:100%;">       
+                                                <div class="card text-center align-self-center" style="width:100%;  background-color: ' . $coloreRiga . ';">
+                                                    <div class="card-body">
+                                                        <form action="tappe/index.php" method="post">
+                                                            <p class="card-title">
+                                                                <input type="hidden" name="percorso" value="' . $row['nome'] . '">
+                                                                <input type="submit" value="' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:20px; border: none; font-weight: bold; float: left;"> 
+                                                                <button type="submit" class="btn btn-primary" style="background-color: #B30000; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>
+                                                            </p>
+                                                        </form>
+                                                    </div>
+                                                </div>                                        
+                                            </div>
+                                            ';
                 }
-                echo '
-                                        <div class="col-sm align-self-center" style="width:100%;">       
-                                            <div class="card text-center align-self-center" style="width:100%;  background-color: ' . $coloreRiga . ';">
-                                                <div class="card-body">
-                                                    <form action="tappe/index.php" method="post">
-                                                        <p class="card-title">
-                                                            <input type="hidden" name="percorso" value="' . $row['nome'] . '">
-                                                            <input type="submit" value="' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:20px; border: none; font-weight: bold; float: left;"> 
-                                                            <button type="submit" class="btn btn-primary" style="background-color: #B30000; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>
-                                                        </p>
-                                                    </form>
-                                                </div>
-                                            </div>                                        
-                                        </div>
-                                        ';
+            } else {
+                echo "Non ci sono percorsi salvati nel database";
             }
         } else {
-            echo "Non ci sono percorsi salvati nel database";
+            echo "Impossibile eseguire la query";
         }
-    } else {
-        echo "Impossibile eseguire la query";
-    }
-    ?>
+        ?>
+        <div class="row">
+
+        </div>
+        <div class="row">
+            
+        </div>
+    </div>
+
+
+
+    
 
     <br>
     <br>

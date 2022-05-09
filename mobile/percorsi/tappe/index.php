@@ -88,57 +88,67 @@ if(isset($_POST['percorso'])){
         </div>
     </div>
 
+    <div class="container" style="margin:0px; padding:0px">
+        <!-- CONTENUTO PAGINA -->
+        <?php
 
-    <!-- CONTENUTO PAGINA -->
-    <?php
+        $host = "127.0.0.1";
+        $user = "root";
+        $pass = "";
+        $database = "genovaroute";
 
-    $host = "127.0.0.1";
-    $user = "root";
-    $pass = "";
-    $database = "genovaroute";
+        $connessione = new mysqli($host, $user, $pass, $database);
 
-    $connessione = new mysqli($host, $user, $pass, $database);
+        unset($_SESSION['ordine']);
+        //error_reporting(0);
 
-    unset($_SESSION['ordine']);
-    //error_reporting(0);
-
-    if ($connessione === false) {
-        die("Errore: " . $connessione->connect_error);
-    }
-    $i = 0;
-    $sql = "SELECT tappa.nome, tappa.ordine FROM tappa, Tappa_Appartiene_Percorso, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "' AND Tappa_Appartiene_Percorso.id_tappa=tappa.id AND percorso.id=Tappa_Appartiene_Percorso.id_percorso ";
-    if ($result = $connessione->query($sql)) {
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_array()) { //da risolvere il decentramento verticale del bottone in ogni card
-                $i++;
-                if ($i % 2 == 0) {
-                    $coloreRiga = "white";
-                } else {
-                    $coloreRiga = "#F0F0F0";
+        if ($connessione === false) {
+            die("Errore: " . $connessione->connect_error);
+        }
+        $i = 0;
+        $sql = "SELECT tappa.nome, tappa.ordine FROM tappa, Tappa_Appartiene_Percorso, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "' AND Tappa_Appartiene_Percorso.id_tappa=tappa.id AND percorso.id=Tappa_Appartiene_Percorso.id_percorso ";
+        if ($result = $connessione->query($sql)) {
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_array()) { //da risolvere il decentramento verticale del bottone in ogni card
+                    $i++;
+                    if ($i % 2 == 0) {
+                        $coloreRiga = "white";
+                    } else {
+                        $coloreRiga = "#F0F0F0";
+                    }
+                    echo '
+                                            <div class="col-sm align-self-center" style="width:100%;">       
+                                                <div class="card text-center align-self-center" style="width:100%;  background-color: ' . $coloreRiga . ';">
+                                                    <div class="card-body">
+                                                        <form action="tappaSpecifica/index.php" method="post">
+                                                            <p class="card-title">
+                                                                <input type="hidden" name="tappa" value="' . $row['ordine'] . '">
+                                                                <input type="submit" value="' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:18px; border: none; font-weight: bold; float: left;"> 
+                                                                <button type="submit" class="btn btn-primary" style="background-color: #B30000; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>
+                                                            </p>
+                                                        </form>
+                                                    </div>
+                                                </div>                                        
+                                            </div>
+                                            ';
                 }
-                echo '
-                                        <div class="col-sm align-self-center" style="width:100%;">       
-                                            <div class="card text-center align-self-center" style="width:100%;  background-color: ' . $coloreRiga . ';">
-                                                <div class="card-body">
-                                                    <form action="tappaSpecifica/index.php" method="post">
-                                                        <p class="card-title">
-                                                            <input type="hidden" name="tappa" value="' . $row['ordine'] . '">
-                                                            <input type="submit" value="' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:18px; border: none; font-weight: bold; float: left;"> 
-                                                            <button type="submit" class="btn btn-primary" style="background-color: #B30000; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>
-                                                        </p>
-                                                    </form>
-                                                </div>
-                                            </div>                                        
-                                        </div>
-                                        ';
+            } else {
+                echo "Non ci sono tappe salvate nel database";
             }
         } else {
-            echo "Non ci sono tappe salvate nel database";
+            echo "Impossibile eseguire la query";
         }
-    } else {
-        echo "Impossibile eseguire la query";
-    }
-    ?>
+        ?>
+        <div class="row">
+
+        </div>
+        <div class="row">
+
+        </div>
+    </div>
+
+    
+
 
 
     <script>

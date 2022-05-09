@@ -63,46 +63,52 @@ if(isset($_POST['percorso'])){
     <div class="container" style="padding-top:30px; margin-bottom: 100px;">
     <?php
 
-$host = "127.0.0.1";
-$user = "root";
-$pass = "";
-$database = "genovaroute";
+        $host = "127.0.0.1";
+        $user = "root";
+        $pass = "";
+        $database = "genovaroute";
 
-$connessione = new mysqli($host, $user, $pass, $database);
+        $connessione = new mysqli($host, $user, $pass, $database);
 
-//error_reporting(0);
+        //error_reporting(0);
 
-if ($connessione === false) {
-    die("Errore: " . $connessione->connect_error);
-}
-$sql = "SELECT tappa.nome, ordine FROM tappa, Tappa_Appartiene_Percorso, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "' AND Tappa_Appartiene_Percorso.id_tappa=tappa.id AND percorso.id=Tappa_Appartiene_Percorso.id_percorso ";
-if ($result = $connessione->query($sql)) {
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_array()) {
-            echo '
-                <div class="col-sm align-self-center" style="width:60%; padding-top:30px; ">       
-                    <div class="card text-center align-self-center" style="width:100%;  background-color: #F0F0F0;">
-                        <div class="card-body">
-                            <form action="tappaSpecifica/index.php" method="post">
-                                <p class="card-title">
-                                    <input type="hidden" name="tappa" value="' . $row['nome'] . '">
-                                    <input type="hidden" name="ordineTappa" value="' . $row['ordine'] . '">
-                                    <input type="submit" value="'.$row['ordine'].'. ' . $row['nome'] . '" style="background-color: #F0F0F0; text-decoration: none; color: #B30000; font-size:20px; border: none; font-weight: bold; float: left;"> 
-                                    <button type="submit" class="btn btn-primary" style="background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>
-                                </p>
-                            </form>
-                        </div>
-                    </div>                                        
-                </div>
-                ';
+        if ($connessione === false) {
+            die("Errore: " . $connessione->connect_error);
         }
-    } else {
-        echo "<p style='text-align: center'>Non ci sono tappe salvate nel database</p>";
-    }
-} else {
-    echo "Impossibile eseguire la query";
-}
-?>
+        $sql = "SELECT tappa.nome, ordine FROM tappa, Tappa_Appartiene_Percorso, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "' AND Tappa_Appartiene_Percorso.id_tappa=tappa.id AND percorso.id=Tappa_Appartiene_Percorso.id_percorso ";
+        if ($result = $connessione->query($sql)) {
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_array()) {
+                    echo '
+                        <div class="col-sm align-self-center" style="width:60%; padding-top:30px; ">       
+                            <div class="card text-center align-self-center" style="width:100%;  background-color: #F0F0F0;">
+                                <div class="card-body">
+                                    <form action="tappaSpecifica/index.php" method="post">
+                                        <p class="card-title">
+                                            <input type="hidden" name="tappa" value="' . $row['nome'] . '">
+                                            <input type="hidden" name="ordineTappa" value="' . $row['ordine'] . '">
+                                            <input type="submit" value="'.$row['ordine'].'. ' . $row['nome'] . '" style="background-color: #F0F0F0; text-decoration: none; color: #B30000; font-size:20px; border: none; font-weight: bold; float: left;"> 
+                                            <button type="submit" class="btn btn-primary" style="background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>
+                                        </p>
+                                    </form>
+                                </div>
+                            </div>                                        
+                        </div>
+                        ';
+                }
+            } else {
+                echo "<p style='text-align: center'>Non ci sono tappe salvate nel database</p>";
+            }
+        } else {
+            echo "Impossibile eseguire la query";
+        }
+        ?>
+        <div class="row">
+
+        </div>
+        <div class="row">
+
+        </div>
     </div>
     
 
