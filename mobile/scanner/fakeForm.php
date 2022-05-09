@@ -1,4 +1,5 @@
 <?php
+session_start();
 $risultato=$_GET['risultato'];
 echo $risultato;
 
@@ -6,7 +7,7 @@ echo $risultato;
 //Il primo numero è il numero del percorso, il secondo è il numero della tappa
 //estrapola dalla variabile $risultato i due numeri
 $pos = strpos($risultato, ".");
-$_SESSION['percorso'] = substr($risultato, 0, $pos);
+$_SESSION['nomePercorso'] = substr($risultato, 0, $pos);
 $_SESSION['ordine'] = substr($risultato, $pos+1, strlen($risultato));
 
 //echo 'il percorso è' . $percorso . ' e la tappa è ' . $tappa;
