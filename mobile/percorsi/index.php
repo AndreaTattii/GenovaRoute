@@ -158,6 +158,16 @@ session_start();
     <br>
     <br>
     <br>
+    <script>
+        window.addEventListener("orientationchange", function() {
+            if (window.orientation == 90 || window.orientation == -90) {
+                alert("Gira lo schermo in verticale!!!")
+                //window.orientation = 0;
+                //document.getElementById("orientation").style.display = "none";
+                //window.location.reload();
+            }
+        });
+    </script>
 </body>
 
 </html>

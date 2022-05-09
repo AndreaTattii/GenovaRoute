@@ -1,6 +1,7 @@
 <?php
 session_start();
 /* ACCENTI */
+//error_reporting(0);
 header('Content-Type: text/html; charset=ISO-8859-1');
 if (isset($_POST['tappa'])) {
     $_SESSION['ordine'] = $_POST['tappa'];
@@ -13,8 +14,6 @@ $database = "genovaroute";
 
 $connessione = new mysqli($host, $user, $pass, $database);
 
-//error_reporting(0);
-
 if ($connessione === false) {
     die("Errore: " . $connessione->connect_error);
 }
@@ -24,13 +23,17 @@ if ($connessione === false) {
 
 $sql = "SELECT * FROM tappa WHERE ordine = '" . $_SESSION['ordine'] . "'";
 if ($result = $connessione->query($sql)) {
-    $row = $result->fetch_assoc();
-    $img1 = $row['img1'];
-    $img2 = $row['img2'];
-    $img3 = $row['img3'];
-    $descrizione = $row['descrizione'];
-    $dove = $row['via'];
-    $nome = $row['nome'];
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $img1 = $row['img1'];
+        $img2 = $row['img2'];
+        $img3 = $row['img3'];
+        $descrizione = $row['descrizione'];
+        $dove = $row['via'];
+        $nome = $row['nome'];
+    }else{
+        die('ERRORE: codice QR non riconosciuto');
+    }
 } else {
     echo "Impossibile eseguire la query";
 }
@@ -203,6 +206,14 @@ $sql = "SELECT MAX(tappa.ordine)  FROM tappa, Tappa_Appartiene_Percorso, percors
         if (window.history.replaceState) {
             window.history.replaceState(null, null, window.location.href);
         }
+        window.addEventListener("orientationchange", function() {
+            if (window.orientation == 90 || window.orientation == -90) {
+                alert("Gira lo schermo in verticale!!!")
+                //window.orientation = 0;
+                //document.getElementById("orientation").style.display = "none";
+                //window.location.reload();
+            }
+        });
     </script>
 </body>
 

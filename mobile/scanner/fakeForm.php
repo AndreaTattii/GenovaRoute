@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 $risultato=$_GET['risultato'];
 echo $risultato;
 
