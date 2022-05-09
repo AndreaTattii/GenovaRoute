@@ -29,49 +29,52 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
+
     <nav class="navbar  navbar-expand-lg" style="background-color: #B30000;">
         <div class="container p-2">
             <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold;" href="../index.php">
                 <h1>Genova Route</h1>
             </a>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-	    		<ul class="navbar-nav">
-	    			<li class="nav-item">
-	    				<a class="nav-link" href="#" style="color: white">Percorsi</a>
-	    			</li>
-	    			<li class="nav-item">
-	    				<a class="nav-link" href="#" style="color: white">Preferiti</a>
-	    			</li>
-	    			<li class="nav-item">
-	    				<a class="nav-link" href="../profilo/index.php" style="color: white">Account</a>
-	    			</li>
-	    		</ul>
-	    	</div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: white">Percorsi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: white">Preferiti</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../profilo/index.php" style="color: white">Account</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
     <h1 style="font-weight:bold; padding-top:15px; padding-left:150px">Scegli un percorso</h1>
 
-    <?php
-    $host = "127.0.0.1";
-    $user = "root";
-    $pass = "";
-    $database = "genovaroute";
 
-    $connessione = new mysqli($host, $user, $pass, $database);
+    <div class="container" style="padding-top:30px; margin-bottom: 100px;">
+        <?php
+        $host = "127.0.0.1";
+        $user = "root";
+        $pass = "";
+        $database = "genovaroute";
 
-    //error_reporting(0);
+        $connessione = new mysqli($host, $user, $pass, $database);
 
-    if ($connessione === false) {
-        die("Errore: " . $connessione->connect_error);
-    }
-    $sql = "SELECT * FROM percorso ORDER BY (SELECT COUNT(*) AS numero_tappe FROM percorso, tappa, tappa_appartiene_percorso WHERE id_percorso=percorso.id AND id_tappa=tappa.id)";
-    if ($result = $connessione->query($sql)) {
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_array()) {
-            
-                echo '
-                    <div class="col-sm align-self-center" style="width:60%; padding-top:30px">       
+        //error_reporting(0);
+
+        if ($connessione === false) {
+            die("Errore: " . $connessione->connect_error);
+        }
+        $sql = "SELECT * FROM percorso ORDER BY (SELECT COUNT(*) AS numero_tappe FROM percorso, tappa, tappa_appartiene_percorso WHERE id_percorso=percorso.id AND id_tappa=tappa.id)";
+        if ($result = $connessione->query($sql)) {
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_array()) {
+
+                    echo '
+                    <div class="col-sm align-self-center" style="width:60%; padding-top:30px; ">       
                         <div class="card text-center align-self-center" style="width:100%;  background-color: #F0F0F0;">
                             <div class="card-body">
                                 <form action="tappe/index.php" method="post">
@@ -85,39 +88,42 @@
                         </div>                                        
                     </div>
                     ';
+                }
+            } else {
+                echo "<p style='text-align: center'>Non ci sono percorsi salvati nel database</p>";
             }
         } else {
-            echo "<p style='text-align: center'>Non ci sono percorsi salvati nel database</p>";
+            echo "Impossibile eseguire la query";
         }
-    } else {
-        echo "Impossibile eseguire la query";
-    }
-    ?>
-            
-    
+        ?>
+    </div>
 
-    <div class="footer-clean" style="border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px;">
-		<footer>
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-4 ">
-					</div>
-					<div class="col-4" ></div>
-						<center>
-							<p style="text-decoration: none; color:black">Partita Iva: 02070920992</p>
-							<p>GenovaRoute ©</p> 
-						</center>
-					</div>
-				</div>
-			</div>
-		</footer>
-	</div>
+
+
+
+
+    <div class="footer-clean" style="border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px; position:fixed; bottom:0px; width:100%; background-color:white;">
+        <footer>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-4 ">
+                    </div>
+                    <div class="col-4"></div>
+                    <center>
+                        <p style="text-decoration: none; color:black">Partita Iva: 02070920992</p>
+                        <p>GenovaRoute ©</p>
+                    </center>
+                </div>
+            </div>
+    </div>
+    </footer>
+    </div>
 
 
 
     <script>
-        if ( window.history.replaceState ) {
-            window.history.replaceState( null, null, window.location.href );
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
         }
     </script>
 </body>

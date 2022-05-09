@@ -82,9 +82,11 @@ function isMobile() {
                 <img src="../img/PorcoAntico.png" > 
             </div>
         </div>
+
         <br>
         <br>
         <br>
+        
         <div class="row align-items-center">
             <div class="col">
                 <img src="../img/mappa.png" >    

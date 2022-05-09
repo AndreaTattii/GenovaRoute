@@ -1,41 +1,41 @@
 <?php
-    session_start();
+session_start();
 
-    if (isset($_POST['ordineTappa'])) {
-        $_SESSION['ordineTappa'] = $_POST['ordineTappa'];
-    }
-    $host = "127.0.0.1";
-    $user = "root";
-    $pass = "";
-    $database = "genovaroute";
+if (isset($_POST['ordineTappa'])) {
+    $_SESSION['ordineTappa'] = $_POST['ordineTappa'];
+}
+$host = "127.0.0.1";
+$user = "root";
+$pass = "";
+$database = "genovaroute";
 
-    $connessione = new mysqli($host, $user, $pass, $database);
+$connessione = new mysqli($host, $user, $pass, $database);
 
-    //error_reporting(0);
+//error_reporting(0);
 
-    if ($connessione === false) {
-        die("Errore: " . $connessione->connect_error);
-    }
-    $sql = "SELECT * FROM tappa WHERE ordine = '" . $_SESSION['ordineTappa'] . "'";
-    if ($result = $connessione->query($sql)) {
-        $row = $result->fetch_assoc();
-        $img1 = $row['img1'];
-        $img2 = $row['img2'];
-        $img3 = $row['img3'];
-        $descrizione = $row['descrizione'];
-        $dove = $row['via'];
-        $_SESSION['nomeTappa'] = $row['nome'];
-    } else {
-        echo "Impossibile eseguire la query";
-    }
-    $sql = "SELECT COUNT(ordine) AS numeroTappe FROM tappa, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "'";
+if ($connessione === false) {
+    die("Errore: " . $connessione->connect_error);
+}
+$sql = "SELECT * FROM tappa WHERE ordine = '" . $_SESSION['ordineTappa'] . "'";
+if ($result = $connessione->query($sql)) {
+    $row = $result->fetch_assoc();
+    $img1 = $row['img1'];
+    $img2 = $row['img2'];
+    $img3 = $row['img3'];
+    $descrizione = $row['descrizione'];
+    $dove = $row['via'];
+    $_SESSION['nomeTappa'] = $row['nome'];
+} else {
+    echo "Impossibile eseguire la query";
+}
+$sql = "SELECT COUNT(ordine) AS numeroTappe FROM tappa, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "'";
 
-    if ($result = $connessione->query($sql)) {
-        $row = $result->fetch_assoc();
-        $_SESSION['quanteTappe'] = $row['numeroTappe'];
-    } else {
-        echo "Impossibile eseguire la query";
-    }
+if ($result = $connessione->query($sql)) {
+    $row = $result->fetch_assoc();
+    $_SESSION['quanteTappe'] = $row['numeroTappe'];
+} else {
+    echo "Impossibile eseguire la query";
+}
 
 /* ACCENTI */
 header('Content-Type: text/html; charset=ISO-8859-1');
@@ -81,118 +81,123 @@ header('Content-Type: text/html; charset=ISO-8859-1');
                 <h1>Genova Route</h1>
             </a>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-	    		<ul class="navbar-nav">
-	    			<li class="nav-item">
-	    				<a class="nav-link" href="../../index.php" style="color: white">Percorsi</a>
-	    			</li>
-	    			<li class="nav-item">
-	    				<a class="nav-link" href="#" style="color: white">Preferiti</a>
-	    			</li>
-	    			<li class="nav-item">
-	    				<a class="nav-link" href="../../../profilo/index.php" style="color: white">Account</a>
-	    			</li>
-	    		</ul>
-	    	</div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.php" style="color: white">Percorsi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: white">Preferiti</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../profilo/index.php" style="color: white">Account</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <h2 style="color:#B30000; font-weight:bold; padding-top:15px; padding-left:150px"><?php echo $_SESSION['nomePercorso']?></h2>
-    <h1 style="font-weight:bold; padding-left:150px"><?php echo $_SESSION['nomeTappa']?></h1>
+    <h2 style="color:#B30000; font-weight:bold; padding-top:15px; padding-left:150px"><?php echo $_SESSION['nomePercorso'] ?></h2>
+    <h1 style="font-weight:bold; padding-left:150px"><?php echo $_SESSION['nomeTappa'] ?></h1>
 
 
-<!-- CONTENUTO PAGINA -->
-<div class="container" style="padding-top: 50px; padding-left: 50px; padding-right:50px;">
-    <div class="row" style="padding-top: 20px; padding-top: 20px;">
-        <div class="col-md-8">
-            <div class="row">
-                <h2 style="color: #B30000; font-weight: bold;">Descrizione</h2>
-            </div>
-            <div class="row">
-                <p><?php echo $descrizione; ?></p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="<?php echo $img1; ?>" class="d-block w-100" alt="..." style="max-height: 200px; margin-left: auto; margin-right: auto;">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="<?php echo $img2; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="<?php echo $img3; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
-                    </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="row" style="padding-top: 20px; padding-top: 20px;">
-        <div class="row">
-            <h2 style="color: #B30000; font-weight: bold;">Dove</h2>
-        </div>
-        <div class="row">
-            <p><?php echo $dove; ?></p>
-        </div>
-    </div>
-    <div class="row" style="padding-top: 20px; padding-top: 20px;">
-        <div class="col-md-6" style="float:left">
-            <?php
-                if($_SESSION['ordineTappa']!=0){
-                    echo'<form method="post" action="../tappaSpecifica/index.php">
-                        <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa']-1 . '">
-                        <input type="submit" name="tappa" value="Indietro" class="btn btn-primary" style="margin-left: 10px;background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center;">
+    <!-- CONTENUTO PAGINA -->
+    <div class="container" style="padding: 50px; padding-bottom:100px">
 
-                    </form>';
+        <div class="row" style="padding-top: 20px; padding-top: 20px;">
+
+            <div class="col-md-8">
+                <div class="row">
+                    <h2 style="color: #B30000; font-weight: bold;">Descrizione</h2>
+                </div>
+                <div class="row">
+                    <p><?php echo $descrizione; ?></p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="<?php echo $img1; ?>" class="d-block w-100" alt="..." style="max-height: 200px; margin-left: auto; margin-right: auto;">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="<?php echo $img2; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="<?php echo $img3; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="padding-top: 20px; padding-top: 20px;">
+                <div class="row">
+                    <h2 style="color: #B30000; font-weight: bold;">Dove</h2>
+                </div>
+                <div class="row">
+                    <p><?php echo $dove; ?></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-between" style="padding-top: 20px; padding-top: 20px;">
+            <div class="col-md-4" style="float:left">
+                <?php
+                if ($_SESSION['ordineTappa'] != 0) {
+                    echo '
+                        <form method="post" action="../tappaSpecifica/index.php">
+                            <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa'] - 1 . '">
+                            <input type="submit" name="tappa" value="Indietro" class="btn btn-primary" style="margin-left: 10px;background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center;">
+                        </form>
+                    ';
                 }
-            ?>
-        </div>
-        <div class="col-md-6" style="float:right">
-            <?php
-                if($_SESSION['ordineTappa']!=$_SESSION['quanteTappe']-1){
-                    echo'<form method="post" action="../tappaSpecifica/index.php">
-                        <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa']+1 . '">
-                        <input type="submit" name="tappa" value="Avanti" class="btn btn-primary" style="margin-right: 10px;background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center;">
-                    </form>';
-                }
-            ?>
-        </div>
-    </div>
-</div>
-
-
-
+                ?>
+            </div>
             
-    
+            <div class="col-md-4 " style="float:right">
+                <?php
+                if ($_SESSION['ordineTappa'] != $_SESSION['quanteTappe'] - 1) {
+                    echo '
+                        <form method="post" action="../tappaSpecifica/index.php">
+                            <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa'] + 1 . '">
+                            <input type="submit" name="tappa" value="Avanti" class="btn btn-primary" style="margin-right: 10px;background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center;">
+                        </form>
+                    ';
+                }
+                ?>
+            </div>
+        </div>
+ 
+    </div>
 
-    <div class="footer-clean" style="border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px;">
-		<footer>
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-4 ">
-					</div>
-					<div class="col-4" ></div>
-						<center>
-							<p style="text-decoration: none; color:black">Partita Iva: 02070920992</p>
-							<p>GenovaRoute ©</p> 
-						</center>
-					</div>
-				</div>
-			</div>
-		</footer>
-	</div>
 
+    <div class="footer-clean" style="border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px; position:fixed; bottom:0px; width:100%; margin-top:40px; background-color:white">
+            <footer>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-4 ">
+
+                        </div>
+                        <div class="col-4"></div>
+                        <center>
+                            <p style="text-decoration: none; color:black">Partita Iva: 02070920992</p>
+                            <p>GenovaRoute ©</p>
+                        </center>
+                    </div>
+                </div>
+            </footer>
+        </div>
 
     <script>
-        if ( window.history.replaceState ) {
-            window.history.replaceState( null, null, window.location.href );
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
         }
     </script>
 

@@ -104,7 +104,7 @@ if ($result = $connessione->query($sql)) {
     </div>     
     
 
-    <div class="footer-clean" style="border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px;">
+    <div class="footer-clean" style="border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px; position:fixed; bottom:0px; width:100%;">
 		<footer>
 			<div class="container">
 				<div class="row justify-content-center">

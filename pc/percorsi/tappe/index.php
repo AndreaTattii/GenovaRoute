@@ -55,55 +55,58 @@ if(isset($_POST['percorso'])){
         </div>
     </nav>
 
-    <h2 style="color:#B30000; font-weight:bold; padding-top:15px; padding-left:150px"><?php echo $_SESSION['nomePercorso']?></h2>
-    <h1 style="font-weight:bold; padding-left:150px">Scegli una tappa</h1>
+    <h2 style="color:#B30000; font-weight:bold; padding-top:15px; font-size:40px; padding-left:150px"><?php echo $_SESSION['nomePercorso']?></h2>
+    <h1 style="font-weight:bold; padding-left:150px; font-size:30px;">Scegli una tappa</h1>
 
+    
+    
+    <div class="container" style="padding-top:30px; margin-bottom: 100px;">
     <?php
 
-    $host = "127.0.0.1";
-    $user = "root";
-    $pass = "";
-    $database = "genovaroute";
+$host = "127.0.0.1";
+$user = "root";
+$pass = "";
+$database = "genovaroute";
 
-    $connessione = new mysqli($host, $user, $pass, $database);
+$connessione = new mysqli($host, $user, $pass, $database);
 
-    //error_reporting(0);
+//error_reporting(0);
 
-    if ($connessione === false) {
-        die("Errore: " . $connessione->connect_error);
-    }
-    $sql = "SELECT tappa.nome, ordine FROM tappa, Tappa_Appartiene_Percorso, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "' AND Tappa_Appartiene_Percorso.id_tappa=tappa.id AND percorso.id=Tappa_Appartiene_Percorso.id_percorso ";
-    if ($result = $connessione->query($sql)) {
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_array()) {
-                echo '
-                    <div class="col-sm align-self-center" style="width:60%; padding-top:30px">       
-                        <div class="card text-center align-self-center" style="width:100%;  background-color: #F0F0F0;">
-                            <div class="card-body">
-                                <form action="tappaSpecifica/index.php" method="post">
-                                    <p class="card-title">
-                                        <input type="hidden" name="tappa" value="' . $row['nome'] . '">
-                                        <input type="hidden" name="ordineTappa" value="' . $row['ordine'] . '">
-                                        <input type="submit" value="'.$row['ordine'].'. ' . $row['nome'] . '" style="background-color: #F0F0F0; text-decoration: none; color: #B30000; font-size:20px; border: none; font-weight: bold; float: left;"> 
-                                        <button type="submit" class="btn btn-primary" style="background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>
-                                    </p>
-                                </form>
-                            </div>
-                        </div>                                        
-                    </div>
-                    ';
-            }
-        } else {
-            echo "<p style='text-align: center'>Non ci sono tappe salvate nel database</p>";
+if ($connessione === false) {
+    die("Errore: " . $connessione->connect_error);
+}
+$sql = "SELECT tappa.nome, ordine FROM tappa, Tappa_Appartiene_Percorso, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "' AND Tappa_Appartiene_Percorso.id_tappa=tappa.id AND percorso.id=Tappa_Appartiene_Percorso.id_percorso ";
+if ($result = $connessione->query($sql)) {
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_array()) {
+            echo '
+                <div class="col-sm align-self-center" style="width:60%; padding-top:30px; ">       
+                    <div class="card text-center align-self-center" style="width:100%;  background-color: #F0F0F0;">
+                        <div class="card-body">
+                            <form action="tappaSpecifica/index.php" method="post">
+                                <p class="card-title">
+                                    <input type="hidden" name="tappa" value="' . $row['nome'] . '">
+                                    <input type="hidden" name="ordineTappa" value="' . $row['ordine'] . '">
+                                    <input type="submit" value="'.$row['ordine'].'. ' . $row['nome'] . '" style="background-color: #F0F0F0; text-decoration: none; color: #B30000; font-size:20px; border: none; font-weight: bold; float: left;"> 
+                                    <button type="submit" class="btn btn-primary" style="background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>
+                                </p>
+                            </form>
+                        </div>
+                    </div>                                        
+                </div>
+                ';
         }
     } else {
-        echo "Impossibile eseguire la query";
+        echo "<p style='text-align: center'>Non ci sono tappe salvate nel database</p>";
     }
-    ?>
-            
+} else {
+    echo "Impossibile eseguire la query";
+}
+?>
+    </div>
     
 
-    <div class="footer-clean" style="border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px;">
+    <div class="footer-clean" style="border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px; position:fixed; bottom:0px; width:100%; background-color:white;">
 		<footer>
 			<div class="container">
 				<div class="row justify-content-center">
