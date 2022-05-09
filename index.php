@@ -8,6 +8,7 @@ if (isMobile()) {
 } else {
     $_SESSION['dispositivo'] = 'pc';
 }
+$_SERVER['SERVER_ADDR'];
 ?>
 <!doctype html>
 <html lang="en">

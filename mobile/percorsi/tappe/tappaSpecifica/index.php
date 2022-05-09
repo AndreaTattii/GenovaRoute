@@ -87,7 +87,7 @@ $sql = "SELECT MAX(tappa.ordine)  FROM tappa, Tappa_Appartiene_Percorso, percors
                     if ($_SESSION['ordine'] != 0) {
                         echo '
                             <form action="decrementaOrdinata.php" method="POST">
-                                 <button type="submit" style="background-color: white;">
+                                 <button type="submit" style="background-color: white; border-color:transparent;">
                                     <img src="../../../../img/icons/backRed.png">
                                 </button>
                             </form>
@@ -111,7 +111,7 @@ $sql = "SELECT MAX(tappa.ordine)  FROM tappa, Tappa_Appartiene_Percorso, percors
                     if ($_SESSION['ordine'] != $_SESSION['quanteTappe'] ) {
                         echo '
                             <form action="incrementaOrdinata.php" method="POST">
-                                <button type="submit" style="background-color: white;">
+                                <button type="submit" style="background-color: white; border-color:transparent;">
                                     <img src="../../../../img/icons/nextRed.png">
                                 </button>
                             </form>

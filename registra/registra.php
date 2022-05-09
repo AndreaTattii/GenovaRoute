@@ -27,10 +27,10 @@
     if($connessione->query($sql) === true){
         $_SESSION['email']= $mail;
         if($_SESSION['dispositivo']=='mobile'){
-            header("Location: ../mobile/percorsi/index.php");
+            header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/mobile/percorsi/index.php");
         }
         else{
-            header("Location: ../pc/index.php");
+            header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/index.php");
         }
         //header("location: ../".$_SESSION['dispositivo']."/percorsi/index.php");
         echo "Utente inserito con successo";

@@ -15,12 +15,6 @@
         if($connessione === false){
             echo "Errore: ".$connessione->error;
         }
-       
-        
-        
-        if (isset($_SESSION['email'])) {           
-            header("Location: ".$_SESSION['dispositivo']."/index.php");
-        }  
             $email = $_POST['mail'];
             $password = $_POST['password'];
             $password = hash("sha256", $password);
@@ -32,13 +26,13 @@
                 $row = mysqli_fetch_assoc($result);
                 $_SESSION['email'] = $row['email'];
                 if($_SESSION['dispositivo']=='mobile'){
-                    header("Location: mobile/percorsi/index.php");
+                    header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/mobile/percorsi/index.php");
                 }
                 else{
                     if($row['admn']==1){
-                        header("Location: pc/admin/index.php");
+                        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/index.php");
                     }else{
-                        header("Location: pc/index.php");
+                        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/index.php");
                     }
                 }
                 //header("Location: ".$_SESSION['dispositivo']."/percorsi/index.php");  
@@ -47,7 +41,7 @@
                 */
             } else {
                 $_SESSION['errore'] = 1;
-                header("Location: index.php");
+                header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/index.php");
             }
         
     ?>
