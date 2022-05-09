@@ -90,12 +90,12 @@ if ($result = $connessione->query($sql)) {
             <div class="col -3">
                 
             </div>
-            <div class="col -3" style="">
+            <div class="col -3"></div>
                 <form action="logout/logout.php" method="POST">
                     <button type="submit" class="btn btn-primary button-profile" style="background-color: white; border-color:#B30000; font-size: 15px; color:#B30000 ; text-align: center; ">Log out</button>
                 </form>
             </div>
-            <div class="col -6" style="">
+            <div class="col -6" >
                 <form action="cambiaPsw/index.php" method="POST" >
                     <button type="submit" class="btn btn-primary button-profile" style="background-color: white; border-color:#B30000; font-size: 15px; color:#B30000 ; text-align: center; ">Password</button>
                 </form>
