@@ -1,23 +1,14 @@
-<html>
-    <head>
-        <script defer src='bundle.js'></script>
-    </head>
-    <body onload="submitform()">
-        <form name="myForm" id="myForm" action="interpretaStringa.php" method="POST">
-            <input type="hidden" name="stringaQR" value="" id="stringaQR">
-            <input type="submit" value="">
-        </form>
-        <script type="text/javascript">
-                //var auto = setTimeout(function(){ autoRefresh(); }, 100);
+<?php
+$risultato=$_GET['risultato'];
+echo $risultato;
 
-                function submitform(){
-                    document.getElementById("myForm").submit();
-                }
+//$risultato contiene il risultato della scansione, cioè due numeri separati da un .
+//Il primo numero è il numero del percorso, il secondo è il numero della tappa
+//estrapola dalla variabile $risultato i due numeri
+$pos = strpos($risultato, ".");
+$_SESSION['percorso'] = substr($risultato, 0, $pos);
+$_SESSION['ordine'] = substr($risultato, $pos+1, strlen($risultato));
 
-                //function autoRefresh(){
-                //   clearTimeout(auto);
-                //   auto = setTimeout(function(){ submitform(); autoRefresh(); }, 10000);
-                //}
-        </script>
-    </body>
-</html>
+//echo 'il percorso è' . $percorso . ' e la tappa è ' . $tappa;
+header("Location: ../percorsi/tappe/tappaSpecifica/index.php");
+?>

@@ -17,8 +17,8 @@ var e=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__p
 
 function At(t,e){
     //1.3
-    window.location.href = `fakeForm.php` 
-    document.getElementById("stringaQR").setAttribute("value",`${t}`)
+    window.location.href = `fakeForm.php?risultato=${t}` 
+    //document.getElementById("stringaQR").setAttribute("value",`${t}`)
     //alert(`Code matched = ${t}`),console.log(e)
 }
 
