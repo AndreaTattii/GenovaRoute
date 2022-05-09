@@ -139,6 +139,10 @@ if(isset($_POST['percorso'])){
             echo "Impossibile eseguire la query";
         }
         ?>
+        <br>
+        <br>
+        <br>
+        <br>
         <div class="row">
 
         </div>
