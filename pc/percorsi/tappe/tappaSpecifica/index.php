@@ -113,7 +113,8 @@ header('Content-Type: text/html; charset=ISO-8859-1');
                     <p><?php echo $descrizione; ?></p>
                 </div>
             </div>
-            <div class="col-md-4">
+
+            <div class="col-md-4" style="height:200px;">
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -136,6 +137,7 @@ header('Content-Type: text/html; charset=ISO-8859-1');
                     </div>
                 </div>
             </div>
+
 
             <div class="row" style="padding-top: 20px; padding-top: 20px;">
                 <div class="row">

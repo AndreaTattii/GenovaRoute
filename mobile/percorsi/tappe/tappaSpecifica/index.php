@@ -152,7 +152,7 @@ $sql = "SELECT MAX(tappa.ordine)  FROM tappa, Tappa_Appartiene_Percorso, percors
     <!-- CONTENUTO PAGINA -->
     <div class="container" style="padding-top: 50px; padding-left: 50px; padding-right:50px;">
         <!-- CAROSELLO -->
-        <div class="row" style="padding-top: 20px; padding-top: 20px;">
+        <div class="row" style="padding-top: 20px; padding-top: 20px; height:200px;">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -176,7 +176,7 @@ $sql = "SELECT MAX(tappa.ordine)  FROM tappa, Tappa_Appartiene_Percorso, percors
             </div>
         </div>
         <!-- DESCRIZIONE -->
-        <div class="row" style="padding-top: 10px;">
+        <div class="row" style="padding-top: 30px;">
             <div class="row">
                 <h2 style="color: #B30000; font-weight: bold;">Descrizione</h2>
             </div>
