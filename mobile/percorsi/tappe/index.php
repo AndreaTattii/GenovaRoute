@@ -75,7 +75,7 @@ if(isset($_POST['percorso'])){
         <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px;">
 
             <div class="col -2">
-                <a href="../index.php">
+                <a href="mappaStatica.php">
                     <img src="../../../img/icons/back.png">
                 </a>
             </div>
@@ -84,7 +84,7 @@ if(isset($_POST['percorso'])){
             </div>
             <div class="col s-2">
                 <center>
-                    <a class="navbar-brand" href="../index.php">
+                    <a class="navbar-brand" href="mappaStatica.php">
                         <img src="../../../img/icons/percorsoSfondo.png">
                     </a>
                 </center>
