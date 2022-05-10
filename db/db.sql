@@ -17,6 +17,8 @@ CREATE TABLE IF NOT EXISTS Tappa(
     img1 varchar(255) NOT NULL,
     img2 varchar(255) NOT NULL,
     img3 varchar(255) NOT NULL
+    lon varchar(255),
+    lat varchar(255)
 );
 
 CREATE TABLE IF NOT EXISTS Percorso(
