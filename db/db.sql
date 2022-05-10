@@ -14,7 +14,6 @@ CREATE TABLE IF NOT EXISTS Tappa(
     descrizione mediumtext NOT NULL,
     via varchar(255) NOT NULL,
     città varchar(255),
-    ordine int UNIQUE NOT NULL,
     img1 varchar(255) NOT NULL,
     img2 varchar(255) NOT NULL,
     img3 varchar(255) NOT NULL
@@ -41,6 +40,7 @@ CREATE TABLE IF NOT EXISTS Utente_Percorre_Tappa(
 CREATE TABLE IF NOT EXISTS Tappa_Appartiene_Percorso(
     id_tappa int REFERENCES Tappa(id),
     id_percorso int REFERENCES Percorso(id),
+    ordine int UNIQUE NOT NULL,
     PRIMARY KEY (id_tappa, id_percorso)
 );
 
