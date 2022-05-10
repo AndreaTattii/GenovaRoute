@@ -60,27 +60,52 @@ function isMobile()
 
     <!-- CORPO -->
 
-    <div class="container align-self-center">
+    <div class="container">
         <div class="row">
             <h1>Home</h1>
         </div>
-        <div class="row justify-content-center" style="margin:20px">
-            <form action="gestioneP.php" method="POST">
-                <button type="submit" class="btn btn-primary" style="background-color:#B30000; width:50%;">Gestisci i percorsi</button>
-            </form>
+        <div class="row" style="padding:15px; margin:15px;">
+            <div class="col">
+
+            </div>
+            <div class="col">
+                <div class="row  align-self-center" style="margin:20px;">
+                    <form action="gestioneP.php" method="POST">
+                        <button type="submit" class="btn btn-primary" style="background-color:#B30000; width:100%; border-color:#B30000">Gestisci i percorsi</button>
+                    </form>
+                </div>
+                <div class="row align-self-center" style="margin:20px">
+                    <form action="gestioneT.php" method="POST">
+                        <button type="submit" class="btn btn-primary" style="background-color:#B30000; width:100%; border-color:#B30000">Gestisci le tappe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col">
+
+            </div>
         </div>
-        <div class="row justify-content-center" style="margin:20px">
-            <form action="gestioneT.php" method="POST">
-                <button type="submit" class="btn btn-primary" style="background-color:#B30000; width:50%;">Gestisci le tappe</button>
-            </form>
+        <div class="row">
+            <h2 style="color:#B30000;" >Percorsi</h2>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h3>Nome</h3>
+                </div>
+                <div class="col">
+                    <h3>Descrizione</h3>   
+                </div>
+            </div>
         </div>
     </div>
 
 
 
+
+
     <div class="footer-clean" style="border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px; position:fixed; bottom:0px; width:100%;">
         <footer>
-            <hr size="5" width="100%" color="black">
+
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-4 ">
