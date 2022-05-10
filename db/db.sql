@@ -57,7 +57,7 @@ INSERT INTO Percorso (nome, descrizione) VALUES ('Musei di Dublino', 'Percorso p
 INSERT INTO Percorso (nome, descrizione) VALUES ('Visita a Pisa', 'Percorso per i monumenti, musei e ristoranti di Pisa');
 INSERT INTO Percorso (nome, descrizione) VALUES ('Chiese di Pisa', 'Percorso per le chiese di Pisa');
 
-INSERT INTO Tappa (nome, descrizione, via, città, ordine, img1, img2, img3) 
+INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3) 
     VALUES (
             'Arco della Vittoria', 
             "
@@ -67,12 +67,11 @@ INSERT INTO Tappa (nome, descrizione, via, città, ordine, img1, img2, img3)
             ", 
             'Piazza della Vittoria', 
             'Genova',
-            0,
             'http://www.visitgenoa.it/sites/default/files/gallery/PiazzadellaVittoria%20(2).jpg',
             'https://upload.wikimedia.org/wikipedia/it/3/3e/Genova_piazza_della_Vittoria_anni_trenta.jpg',
             'https://life-globe.com/image/cache/catalog/italia/liguria/genova/ploschad-pobedy/piazza-della-vittoria-genova-8-915x610.jpg'
     );
-INSERT INTO Tappa (nome, descrizione, via, città, ordine, img1, img2, img3) 
+INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3) 
     VALUES (
             'Ponte monumentale', 
             "  
@@ -81,12 +80,11 @@ INSERT INTO Tappa (nome, descrizione, via, città, ordine, img1, img2, img3)
             ", 
             "Corso Andrea Podesta'",
             'Genova',
-            1,
             'https://i.ebayimg.com/images/g/MnEAAOSwPCFeVWvC/s-l400.jpg',
             'https://www.ilmugugnogenovese.it/wp-content/uploads/2016/02/4BD70B00-AE33-4AEE-856F-1F6EA0C4E1BC.jpeg',
             'http://4.bp.blogspot.com/-oKbxGlHoK3I/UdLxW96MtQI/AAAAAAAAC8I/nPJuUpELhqs/s1600/61+P.Monumentale+afdga+Mondani.jpg'
     );
-INSERT INTO Tappa (nome, descrizione, via, città, ordine, img1, img2, img3) 
+INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3) 
     VALUES (
             'Fontana de Ferrari', 
             "
@@ -96,12 +94,11 @@ INSERT INTO Tappa (nome, descrizione, via, città, ordine, img1, img2, img3)
             ", 
             'Piazza Raffaele de Ferrari', 
             'Genova',
-            2,
             'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Genoa_fontana_di_piazza_De_Ferrari.jpg/1200px-Genoa_fontana_di_piazza_De_Ferrari.jpg',
             'https://i.ebayimg.com/images/g/jtUAAOSwZFdaja0N/s-l400.jpg',
             'http://www.lavocedigenova.it/typo3temp/pics/p_ed7a0648c8.jpeg'
     );
-INSERT INTO Tappa (nome, descrizione, via, città, ordine, img1, img2, img3) 
+INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3) 
     VALUES (
             'Cattedrale di San Lorenzo', 
             "
@@ -110,23 +107,21 @@ INSERT INTO Tappa (nome, descrizione, via, città, ordine, img1, img2, img3)
             ", 
             'Piazza San Lorenzo', 
             'Genova',
-            3,
             'https://images.placesonline.com/photos/424010405180500_Genova_772146049.jpg',
             'https://images.fidhouse.com/fidelitynews/wp-content/uploads/sites/9/2014/12/Cattedrale-di-San-Lorenzo-Genova-59994-2.jpg',
             'https://www.mentelocale.it/immagini/schede/462x260/138594.jpg'
             );
-INSERT INTO Tappa (nome, descrizione, via, città, ordine, img1, img2, img3) 
+INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3) 
     VALUES (
             'Ombre Rosse', 
             'Ottimo ristorante con piatti tipici genovesi', 
             'Vico degli Indoratori', 
             'Genova',
-            4,
             'https://res.cloudinary.com/tf-lab/image/upload/restaurant/890f6db5-56cc-4c67-9d67-acdce6ff1acd/670a4514-f276-40c0-93e0-7012ff008ec9.jpg',
             'https://res.cloudinary.com/tf-lab/image/upload/restaurant/890f6db5-56cc-4c67-9d67-acdce6ff1acd/275a0d5a-2f53-4db4-8bb5-9faf6548b514.jpg',
             'https://res.cloudinary.com/tf-lab/image/upload/restaurant/890f6db5-56cc-4c67-9d67-acdce6ff1acd/de87e653-94dd-4cc6-a394-171089d546ea.jpg'
     );
-INSERT INTO Tappa (nome, descrizione, via, città, ordine, img1, img2, img3) 
+INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3) 
     VALUES (
             'Acquario di Genova', 
             "
@@ -135,12 +130,11 @@ INSERT INTO Tappa (nome, descrizione, via, città, ordine, img1, img2, img3)
             ", 
             'Porto Antico, Molo Ponte Calvi', 
             'Genova',
-            5,
             'https://www.poli-listaperta.it/wp-content/uploads/2021/11/unnamed.jpg',
             'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/e4/63/cb/acquario-di-genova.jpg?w=1200&h=1200&s=1',
             'https://fai-platform.imgix.net/media/convenzioni/liguria/ge/acquario-di-genova_104669.jpg'
     );
-INSERT INTO Tappa (nome, descrizione, via, città, ordine, img1, img2, img3)
+INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3)
      VALUES (
             'Palazzo Doria Tursi', 
             "
@@ -152,31 +146,29 @@ INSERT INTO Tappa (nome, descrizione, via, città, ordine, img1, img2, img3)
             ",
              'Via Garibaldi', 
              'Genova',
-             6,
              'https://img2.juzaphoto.com/002/shared_files/uploads/2795110.jpg',
              'http://hiddenarchitecture.net/wp-content/uploads/2019/09/raschdorf-017.jpg',
              'https://as2.ftcdn.net/v2/jpg/02/16/81/89/1000_F_216818917_4jbTMQnjEK9MXZ2NvwVVcBBV98HhQ91L.jpg'
     );
-INSERT INTO Tappa (nome, descrizione, via, città, ordine, img1, img2, img3) 
+INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3) 
     VALUES (    
             'Pesciolino', 
             'Ristorante di buonissimo pesce genovese', 
             'Vico Domoculta', 
             'Genova',
-            7,
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQguLzVCcKg9eURHqSOtLHg6TXax9dLHSa6Bk3M0SXFWQeoDwOkKeE-n1PzFsGIFv1abpQ&usqp=CAU',
             'https://4.bp.blogspot.com/-3YmCKTJPT7w/VtRZuCAwuHI/AAAAAAAACuI/6Iq1QDTKH4U/w1200-h630-p-k-no-nu/ambiente.jpg',
             'https://www.hotelcitygenova.it/resources/images/1c65a6a2-a14f-4049-972e-dc87d804b370/it/FWB/ristorante-pesciolino.jpg'
     );
 
-INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (1, 1);
-INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (2, 1);
-INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (3, 1);
-INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (4, 1);
-INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (5, 1);
-INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (6, 1);
-INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (7, 1);
-INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso) VALUES (8, 1);
+INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (1, 1, 0);
+INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (2, 1, 1);
+INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (3, 1, 2);
+INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (4, 1, 3);
+INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (5, 1, 4);
+INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (6, 1, 5);
+INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (7, 1. 6);
+INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (8, 1, 7);
 
 
 INSERT INTO Utente (email, nome, cognome, psw, admn) VALUES ('admin@admin', 'admin', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1);
