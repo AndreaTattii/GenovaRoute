@@ -2,7 +2,7 @@
 session_start();
 /* ACCENTI */
 //error_reporting(0);
-header('Content-Type: text/html; charset=ISO-8859-1');
+//header('Content-Type: text/html; charset=ISO-8859-1');
 if (isset($_POST['tappa'])) {
     $_SESSION['ordine'] = $_POST['tappa'];
 }

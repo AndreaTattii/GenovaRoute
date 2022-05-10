@@ -125,7 +125,6 @@
                         else{
                             $sfondo = "background-color:white;";
                         }
-
                         echo "<div class='row' style='".$sfondo." '>";
                         echo "<div class='col-2'>";
                         echo $row["id"];
