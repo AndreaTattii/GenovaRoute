@@ -153,12 +153,14 @@ header('Content-Type: text/html; charset=ISO-8859-1');
             <div class="col-md-4" style="float:left">
                 <?php
                 if ($_SESSION['ordineTappa'] != 0) {
+                    $_SESSION['ordineTappa'] = $_SESSION['ordineTappa'] - 1;
                     echo '
                         <form method="post" action="../tappaSpecifica/index.php">
-                            <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa'] - 1 . '">
+                            <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa'] . '">
                             <input type="submit" name="tappa" value="Indietro" class="btn btn-primary" style="margin-left: 10px;background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center;">
                         </form>
                     ';
+                    $_SESSION['ordineTappa'] = $_SESSION['ordineTappa'] + 1;
                 }
                 ?>
             </div>
@@ -166,12 +168,14 @@ header('Content-Type: text/html; charset=ISO-8859-1');
             <div class="col-md-4 " style="float:right">
                 <?php
                 if ($_SESSION['ordineTappa'] != $_SESSION['quanteTappe'] - 1) {
+                    $_SESSION['ordineTappa'] = $_SESSION['ordineTappa'] + 1;
                     echo '
                         <form method="post" action="../tappaSpecifica/index.php">
-                            <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa'] + 1 . '">
+                            <input type="hidden" name="ordineTappa" value="' . $_SESSION['ordineTappa']. '">
                             <input type="submit" name="tappa" value="Avanti" class="btn btn-primary" style="margin-right: 10px;background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center;">
                         </form>
                     ';
+                    $_SESSION['ordineTappa'] = $_SESSION['ordineTappa'] - 1;
                 }
                 ?>
             </div>
