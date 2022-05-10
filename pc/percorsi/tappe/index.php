@@ -42,7 +42,7 @@ if(isset($_POST['percorso'])){
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
 	    		<ul class="navbar-nav">
 	    			<li class="nav-item">
-	    				<a class="nav-link" href="#" style="color: white">Percorsi</a>
+	    				<a class="nav-link" href="../index.php" style="color: white">Percorsi</a>
 	    			</li>
 	    			<li class="nav-item">
 	    				<a class="nav-link" href="#" style="color: white">Preferiti</a>
