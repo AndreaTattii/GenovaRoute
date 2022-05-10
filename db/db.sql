@@ -10,20 +10,20 @@ CREATE TABLE IF NOT EXISTS Utente(
 
 CREATE TABLE IF NOT EXISTS Tappa(
 	id int PRIMARY KEY AUTO_INCREMENT,
-    nome varchar(255) NOT NULL,
+    nome varchar(255) UNIQUE NOT NULL,
     descrizione mediumtext NOT NULL,
     via varchar(255) NOT NULL,
     città varchar(255),
     img1 varchar(255) NOT NULL,
     img2 varchar(255) NOT NULL,
-    img3 varchar(255) NOT NULL
+    img3 varchar(255) NOT NULL,
     lon varchar(255),
     lat varchar(255)
 );
 
 CREATE TABLE IF NOT EXISTS Percorso(
     id int PRIMARY KEY AUTO_INCREMENT,
-	nome varchar(255),
+	nome varchar(255) UNIQUE,
     descrizione varchar(255) NOT NULL
 );
 
@@ -167,7 +167,7 @@ INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (3,
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (4, 1, 3);
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (5, 1, 4);
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (6, 1, 5);
-INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (7, 1. 6);
+INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (7, 1, 6);
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (8, 1, 7);
 
 
