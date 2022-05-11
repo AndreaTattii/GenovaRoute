@@ -84,7 +84,8 @@ if(isset($_POST['percorso'])){
             </div>
             <div class="col-2"">
                 <center>
-                    <a class="navbar-brand" href="mappaStatica.php">
+                    <!-- <a class="navbar-brand" href="mappaStatica.php?percorsi=<?php //echo $_POST['percorso']?>">-->
+                    <a class="navbar-brand" href="mappaStatica.php?percorsi=1">
                         <img src="../../../img/icons/percorsoSfondo.png">
                     </a>
                 </center>
