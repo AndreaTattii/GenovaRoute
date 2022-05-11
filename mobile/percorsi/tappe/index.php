@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(isset($_POST['percorso'])){
-    $_SESSION['nomePercorso'] = $_POST['percorso'];
+if(isset($_POST['idPercorso'])){
+    $_SESSION['idPercorso'] = $_POST['idPercorso'];
 }
 
 
@@ -74,17 +74,16 @@ if(isset($_POST['percorso'])){
     <div class="container" >
         <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px;">
 
-            <div class="col-2">
+            <div class="col -2">
                 <a href="../../percorsi/index.php">
                     <img src="../../../img/icons/back.png">
                 </a>
             </div>
-            <div class="col-8">
+            <div class="col -7">
                 <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;"><?php echo $_SESSION['nomePercorso']  ?> </h1>
             </div>
-            <div class="col-2"">
+            <div class="col s-2">
                 <center>
-                    <!-- <a class="navbar-brand" href="mappaStatica.php?percorsi=<?php //echo $_POST['percorso']?>">-->
                     <a class="navbar-brand" href="mappaStatica.php?percorsi=1">
                         <img src="../../../img/icons/percorsoSfondo.png">
                     </a>
@@ -111,10 +110,10 @@ if(isset($_POST['percorso'])){
             die("Errore: " . $connessione->connect_error);
         }
         $i = 0;
-        $sql = "SELECT tappa.nome, tappa.ordine FROM tappa, Tappa_Appartiene_Percorso, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "' AND Tappa_Appartiene_Percorso.id_tappa=tappa.id AND percorso.id=Tappa_Appartiene_Percorso.id_percorso ";
+        $sql = "SELECT tappa.nome, tappa_appartiene_percorso.ordine FROM tappa, tappa_appartiene_percorso, percorso WHERE tappa.id = tappa_appartiene_percorso.id_tappa AND tappa_appartiene_percorso.id_percorso = percorso.id AND percorso.id = " . $_SESSION['idPercorso'] . " ORDER BY tappa_appartiene_percorso.ordine";
         if ($result = $connessione->query($sql)) {
             if ($result->num_rows > 0) {
-                while ($row = $result->fetch_array()) { //da risolvere il decentramento verticale del bottone in ogni card
+                while ($row = $result->fetch_array()) { 
                     $i++;
                     if ($i % 2 == 0) {
                         $coloreRiga = "white";

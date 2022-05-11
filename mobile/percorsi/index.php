@@ -110,7 +110,7 @@ session_start();
                             <div class="row justify-content-center " style="background-color: ' . $coloreRiga . ';">
                                 <div class="col-xs ">
                                     <div class="row">
-                                        <input type="hidden" name="percorso" value="' . $row['nome'] . '">
+                                        <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
                                         <input type="submit" value="' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:20px; border: none; font-weight: bold; float: left;"> 
                                     </div>
                                 </div>
@@ -147,6 +147,10 @@ session_start();
         <div class="row">
             
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
     </div>
 
 
