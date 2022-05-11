@@ -29,15 +29,19 @@
             $sql = "SELECT email, psw FROM utente WHERE email='$email' AND psw='$vecchiaPsw'";
             $result = mysqli_query($connessione, $sql);
 
-            if ($result->num_rows > 0) {
-                $_SESSION['successo'] = true ;
-                $sql="UPDATE utente SET psw= '".$nuovaPsw."'";
-                mysqli_query($connessione, $sql);
-                
+            if($vecchiaPsw==$nuovaPsw){
+                $_SESSION['stessaPsw'] = true ;
             }else{
-                $_SESSION['errore'] = true ;
+
+                if ($result->num_rows > 0) {
+                    $_SESSION['successo'] = true ;
+                    $sql="UPDATE utente SET psw= '".$nuovaPsw."'";
+                    mysqli_query($connessione, $sql);
+
+                }else{
+                    $_SESSION['errore'] = true ;
+                }
             }
-            
             header("Location: ./");
             
         

@@ -88,7 +88,9 @@ $_SERVER['SERVER_ADDR'];
                         <br><br>
                         <?php
 
-                        if (isset($_SESSION['errore'])) { ?>
+                        if (isset($_SESSION['errore'])) { 
+                            unset($_SESSION['errore']);  
+                        ?>
                             <div class="col-12">
                                 <p style="color: red;">Dati inseriti errati</p>
                             </div>

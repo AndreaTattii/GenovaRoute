@@ -98,16 +98,28 @@ function isMobile() {
             
             if(isset($_SESSION['errore'])){
                 echo '
-                    <p style="color:red;">Vecchia password errata </p>
+                    <p style="color:red;">Vecchia password errata</p>
                 ';
 
                 unset($_SESSION['errore']);
+            }
+            if(isset($_SESSION['stessaPsw'])){
+                echo '
+                    <p style="color:red;">Hai inserito la stessa password!</p>
+                ';
+
+                unset($_SESSION['stessaPsw']);
             }
         ?>
 
 
     </div>
 
+    <script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
 </body>
 
 </html>

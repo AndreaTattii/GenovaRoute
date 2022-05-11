@@ -155,7 +155,7 @@ if ($result = $connessione->query($sql)) {
             
             if(isset($_SESSION['successo'])){
                 echo '
-                    <p>Password cambiata con successo</p>
+                    <p style="color:green;">Password cambiata con successo</p>
                 ';
 
                 unset($_SESSION['successo']);
@@ -163,10 +163,17 @@ if ($result = $connessione->query($sql)) {
             
             if(isset($_SESSION['errore'])){
                 echo '
-                    <p>Vecchia password errata </p>
+                    <p style="color:red;">Vecchia password errata</p>
                 ';
 
                 unset($_SESSION['errore']);
+            }
+            if(isset($_SESSION['stessaPsw'])){
+                echo '
+                    <p style="color:red;">Hai inserito la stessa password!</p>
+                ';
+
+                unset($_SESSION['stessaPsw']);
             }
         ?>
 
