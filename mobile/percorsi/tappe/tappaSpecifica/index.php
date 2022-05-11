@@ -22,13 +22,13 @@ if ($connessione === false) {
     die("Errore: " . $connessione->connect_error);
 }
 
- 
+
 $sql = "SELECT Tappa.nome, Tappa.descrizione, Tappa.img1, Tappa.img2, Tappa.img3, Tappa.via 
         FROM Tappa, Tappa_appartiene_percorso, Percorso
         WHERE Tappa.id = Tappa_appartiene_percorso.id_tappa
             AND Percorso.id =  Tappa_appartiene_percorso.id_percorso
-            AND id_percorso = ". $_SESSION['idPercorso'] ." 
-            AND ordine = ".$_SESSION['ordineTappa']."";
+            AND id_percorso = " . $_SESSION['idPercorso'] . " 
+            AND ordine = " . $_SESSION['ordineTappa'] . "";
 
 if ($result = $connessione->query($sql)) {
     if ($result->num_rows > 0) {
@@ -39,7 +39,7 @@ if ($result = $connessione->query($sql)) {
         $descrizione = $row['descrizione'];
         $dove = $row['via'];
         $nome = $row['nome'];
-    }else{
+    } else {
         die('ERRORE: codice QR non riconosciuto');
     }
 } else {
@@ -48,14 +48,14 @@ if ($result = $connessione->query($sql)) {
 
 $sql = "SELECT MAX(ordine)  
     FROM  Tappa_Appartiene_Percorso
-    WHERE id_percorso =  ".$_SESSION['idPercorso']."";
-    
-    if ($result = $connessione->query($sql)) {
-        $row = $result->fetch_assoc();
-        $_SESSION['quanteTappe'] = $row['MAX(ordine)'];
-    }else {
-        echo "Impossibile eseguire la query2";
-    }
+    WHERE id_percorso =  " . $_SESSION['idPercorso'] . "";
+
+if ($result = $connessione->query($sql)) {
+    $row = $result->fetch_assoc();
+    $_SESSION['quanteTappe'] = $row['MAX(ordine)'];
+} else {
+    echo "Impossibile eseguire la query2";
+}
 
 
 ?>
@@ -91,15 +91,15 @@ $sql = "SELECT MAX(ordine)
 
 
     <!-- NAVBAR BASSA-->
-    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; ">
+    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; padding-bottom:10px;">
         <div class="row  justify-content-center " style="padding-top: 15px;">
             <div class="col .s-4">
                 <center>
                     <!--<a class="navbar-brand" href="../../../index.php">
                         <img src="../../../../img/icons/backRed.png">
                     </a> -->
-                    
-                    <?php 
+
+                    <?php
                     if ($_SESSION['ordineTappa'] != 0) {
                         echo '
                             <form action="decrementaOrdinata.php" method="POST">
@@ -120,11 +120,11 @@ $sql = "SELECT MAX(ordine)
                         </a>
                 </center>
             </div>
-            <div class="col .s-4" style="padding-bottom: 15px; ">
+            <div class="col .s-4" >
                 <center>
-                    
-                    <?php 
-                    if ($_SESSION['ordineTappa'] != $_SESSION['quanteTappe'] ) {
+
+                    <?php
+                    if ($_SESSION['ordineTappa'] != $_SESSION['quanteTappe']) {
                         echo '
                             <form action="incrementaOrdinata.php" method="POST">
                                 <button type="submit" style="background-color: white; border-color:transparent;">
@@ -145,18 +145,22 @@ $sql = "SELECT MAX(ordine)
 
     <!-- NAVBAR ALTA -->
     <div class="container">
-        <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px;">
+        <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px; height:60px">
 
-            <div class="col -2">
+            <div class="col-2">
                 <a href="../index.php">
                     <img src="../../../../img/icons/back.png">
                 </a>
             </div>
-            <div class="col -7">
+            <div class="col-8">
                 <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;  font-size: 20px;"><?php echo $nome;  ?></h1>
             </div>
-            <div class="col -2">
-
+            <div class="col-2">
+                <center>
+                    <a class="navbar-brand" href="mappaStatica.php?percorsi=1">
+                        <img src="../../../../img/icons/percorsoSfondo.png">
+                    </a>
+                </center>
             </div>
         </div>
     </div>
