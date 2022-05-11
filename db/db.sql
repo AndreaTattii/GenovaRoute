@@ -160,6 +160,16 @@ INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3)
             'https://4.bp.blogspot.com/-3YmCKTJPT7w/VtRZuCAwuHI/AAAAAAAACuI/6Iq1QDTKH4U/w1200-h630-p-k-no-nu/ambiente.jpg',
             'https://www.hotelcitygenova.it/resources/images/1c65a6a2-a14f-4049-972e-dc87d804b370/it/FWB/ristorante-pesciolino.jpg'
     );
+INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3)
+    VALUES (    
+            'Duomo di Milano',
+            'Bellissimo duomo di Milano',
+            'Via dei Milani',
+            'Milano',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQguLzVCcKg9eURHqSOtLHg6TXax9dLHSa6Bk3M0SXFWQeoDwOkKeE-n1PzFsGIFv1abpQ&usqp=CAU',
+            'https://4.bp.blogspot.com/-3YmCKTJPT7w/VtRZuCAwuHI/AAAAAAAACuI/6Iq1QDTKH4U/w1200-h630-p-k-no-nu/ambiente.jpg',
+            'https://www.hotelcitygenova.it/resources/images/1c65a6a2-a14f-4049-972e-dc87d804b370/it/FWB/ristorante-pesciolino.jpg'
+    );
 
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (1, 1, 0);
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (2, 1, 1);
@@ -169,6 +179,8 @@ INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (5,
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (6, 1, 5);
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (7, 1, 6);
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (8, 1, 7);
+INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (9, 2, 0);
+INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (8, 2, 1);
 
 
 INSERT INTO Utente (email, nome, cognome, psw, admn) VALUES ('admin@admin', 'admin', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1);
