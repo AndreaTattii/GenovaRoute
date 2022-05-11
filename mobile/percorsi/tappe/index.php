@@ -5,6 +5,21 @@ if(isset($_POST['idPercorso'])){
 }
 
 
+$host = "127.0.0.1";
+$user = "root";
+$pass = "";
+$database = "genovaroute";
+
+$connessione = new mysqli($host, $user, $pass, $database);
+
+$query = "SELECT nome FROM Percorso WHERE id = '".$_SESSION['idPercorso']."'";
+
+if($result = $connessione->query($query)){
+    while($row = $result->fetch_assoc()){
+        
+        $_SESSION['nomePercorso'] = $row['nome'];
+    }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -80,7 +95,7 @@ if(isset($_POST['idPercorso'])){
                 </a>
             </div>
             <div class="col -7">
-                <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;"><?php echo $_SESSION['nomePercorso']  ?> </h1>
+                <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;"><?php echo $_SESSION['nomePercorso'] ?> </h1>
             </div>
             <div class="col s-2">
                 <center>
@@ -96,12 +111,7 @@ if(isset($_POST['idPercorso'])){
         <!-- CONTENUTO PAGINA -->
         <?php
 
-        $host = "127.0.0.1";
-        $user = "root";
-        $pass = "";
-        $database = "genovaroute";
-
-        $connessione = new mysqli($host, $user, $pass, $database);
+        
 
         unset($_SESSION['ordine']);
         //error_reporting(0);
@@ -110,7 +120,11 @@ if(isset($_POST['idPercorso'])){
             die("Errore: " . $connessione->connect_error);
         }
         $i = 0;
-        $sql = "SELECT tappa.nome, tappa_appartiene_percorso.ordine FROM tappa, tappa_appartiene_percorso, percorso WHERE tappa.id = tappa_appartiene_percorso.id_tappa AND tappa_appartiene_percorso.id_percorso = percorso.id AND percorso.id = " . $_SESSION['idPercorso'] . " ORDER BY tappa_appartiene_percorso.ordine";
+
+        
+        
+
+        $sql = "SELECT tappa.nome, tappa_appartiene_percorso.ordine, tappa.id FROM tappa, tappa_appartiene_percorso, percorso WHERE tappa.id = tappa_appartiene_percorso.id_tappa AND tappa_appartiene_percorso.id_percorso = percorso.id AND percorso.id = " . $_SESSION['idPercorso'] . " ORDER BY tappa_appartiene_percorso.ordine";
         if ($result = $connessione->query($sql)) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_array()) { 
@@ -126,7 +140,9 @@ if(isset($_POST['idPercorso'])){
                                                     <div class="card-body">
                                                         <form action="tappaSpecifica/index.php" method="post">
                                                             <p class="card-title">
-                                                                <input type="hidden" name="tappa" value="' . $row['ordine'] . '">
+                                                                <input type="hidden" name="ordineTappa" value="' . $row['ordine'] . '">
+                                                                <input type="hidden" name="idTappa" value="' . $row['id'] . '">
+
                                                                 <input type="submit" value="' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:18px; border: none; font-weight: bold; float: left;"> 
                                                                 <button type="submit" class="btn btn-primary" style="background-color: #B30000; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>
                                                             </p>

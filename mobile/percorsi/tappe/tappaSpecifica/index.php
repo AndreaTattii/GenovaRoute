@@ -3,9 +3,14 @@ session_start();
 /* ACCENTI */
 //error_reporting(0);
 //header('Content-Type: text/html; charset=ISO-8859-1');
-if (isset($_POST['tappa'])) {
-    $_SESSION['ordine'] = $_POST['tappa'];
+if (isset($_POST['ordineTappa'])) {
+    $_SESSION['ordineTappa'] = $_POST['ordineTappa'];
+    $_SESSION['idTappa'] = $_POST['idTappa'];
 }
+
+
+echo $_SESSION['idTappa'];
+echo $_SESSION['ordineTappa'];
 
 $host = "127.0.0.1";
 $user = "root";
@@ -18,10 +23,21 @@ if ($connessione === false) {
     die("Errore: " . $connessione->connect_error);
 }
 
+ /*
+$sql = "SELECT Tappa.nome, Tapppa.descrizione, Tappa.img1, Tappa.img2, Tappa.img3, Tappa.via 
+        FROM Tappa, Tappa_appartiene_percorso, Percorso
+        WHERE Tappa.id = Tappa_appartiene_percorso.id_tappa
+            AND Percorso.id =  Tappa_appartiene_percorso.id_percorso
+            AND id_percorso = ". $_SESSION['idPercorso'] ." 
+            AND ordine = ".$_SESSION['ordineTappa']."";*/
 
+$sql = "SELECT tappa.nome,tappa.img1, tappa.img2, tappa.img3, tappa.descrizione, tappa.via 
+            FROM tappa, tappa_appartiene_percorso, percorso 
+            WHERE tappa.i d= tappa_appartiene_percorso.id_tappa 
+            AND ordine=".$_SESSION['ordineTappa']." 
+            AND percorso.id=tappa_appartiene_percorso.id_percorso 
+            AND percorso.id=". $_SESSION['idPercorso']."";
 
-
-$sql = "SELECT * FROM tappa WHERE ordine = '" . $_SESSION['ordine'] . "'";
 if ($result = $connessione->query($sql)) {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
@@ -78,7 +94,7 @@ $sql = "SELECT MAX(tappa.ordine)  FROM tappa, Tappa_Appartiene_Percorso, percors
 
 
     <!-- NAVBAR BASSA-->
-    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 70px;">
+    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 70px">
         <div class="row  justify-content-center " style="padding-top: 15px;">
             <div class="col .s-4">
                 <center>
@@ -87,7 +103,7 @@ $sql = "SELECT MAX(tappa.ordine)  FROM tappa, Tappa_Appartiene_Percorso, percors
                     </a> -->
                     
                     <?php 
-                    if ($_SESSION['ordine'] != 0) {
+                    if ($_SESSION['ordineTappa'] != 0) {
                         echo '
                             <form action="decrementaOrdinata.php" method="POST">
                                  <button type="submit" style="background-color: white; border-color:transparent;">
@@ -111,7 +127,7 @@ $sql = "SELECT MAX(tappa.ordine)  FROM tappa, Tappa_Appartiene_Percorso, percors
                 <center>
                     
                     <?php 
-                    if ($_SESSION['ordine'] != $_SESSION['quanteTappe'] ) {
+                    if ($_SESSION['ordineTappa'] != $_SESSION['quanteTappe'] ) {
                         echo '
                             <form action="incrementaOrdinata.php" method="POST">
                                 <button type="submit" style="background-color: white; border-color:transparent;">
