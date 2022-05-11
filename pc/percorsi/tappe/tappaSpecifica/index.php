@@ -19,7 +19,11 @@ $connessione = new mysqli($host, $user, $pass, $database);
 if ($connessione === false) {
     die("Errore: " . $connessione->connect_error);
 }
-$sql = "SELECT tappa.nome,tappa.img1, tappa.img2, tappa.img3, tappa.descrizione, tappa.via FROM tappa, tappa_appartiene_percorso WHERE tappa.id=tappa_appartiene_percorso.id_tappa AND ordine='" . $_SESSION['ordineTappa'] . "'";
+$sql = "SELECT tappa.nome,tappa.img1, tappa.img2, tappa.img3, tappa.descrizione, tappa.via 
+        FROM tappa, tappa_appartiene_percorso, percorso 
+        WHERE tappa.id=tappa_appartiene_percorso.id_tappa 
+        AND ordine=".$_SESSION['ordineTappa']." AND percorso.id=tappa_appartiene_percorso.id_percorso 
+        AND percorso.id=". $_SESSION['idPercorso']."";
 if ($result = $connessione->query($sql)) {
     $row = $result->fetch_assoc();
     $img1 = $row['img1'];

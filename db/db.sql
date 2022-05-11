@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS Utente_Percorre_Tappa(
 CREATE TABLE IF NOT EXISTS Tappa_Appartiene_Percorso(
     id_tappa int REFERENCES Tappa(id),
     id_percorso int REFERENCES Percorso(id),
-    ordine int UNIQUE NOT NULL,
+    ordine int NOT NULL,
     PRIMARY KEY (id_tappa, id_percorso)
 );
 
