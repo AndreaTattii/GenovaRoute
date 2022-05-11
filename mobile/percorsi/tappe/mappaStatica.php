@@ -103,7 +103,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
             map.setView(['44.409369955825774', '8.941610113846902'], 14);
             var Icon1 = L.icon({
                             iconUrl: '../../../img/G.png',
-                            iconSize:     [38, 95],
+                            iconSize:     [20, 20],
                         });
             <?php
             if(!empty($_GET["percorsi"])){
