@@ -4,6 +4,9 @@ session_start();
 if (isset($_POST['ordineTappa'])) {
     $_SESSION['ordineTappa'] = $_POST['ordineTappa'];
 }
+if (isset($_POST['idTappa'])) {
+    $_SESSION['idTappa'] = $_POST['idTappa'];
+}
 $host = "127.0.0.1";
 $user = "root";
 $pass = "";
@@ -16,7 +19,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
 if ($connessione === false) {
     die("Errore: " . $connessione->connect_error);
 }
-$sql = "SELECT * FROM tappa WHERE ordine = '" . $_SESSION['ordineTappa'] . "'";
+$sql = "SELECT tappa.nome,tappa.img1, tappa.img2, tappa.img3, tappa.descrizione, tappa.via FROM tappa, tappa_appartiene_percorso WHERE tappa.id=tappa_appartiene_percorso.id_tappa AND ordine='" . $_SESSION['ordineTappa'] . "'";
 if ($result = $connessione->query($sql)) {
     $row = $result->fetch_assoc();
     $img1 = $row['img1'];
@@ -24,21 +27,21 @@ if ($result = $connessione->query($sql)) {
     $img3 = $row['img3'];
     $descrizione = $row['descrizione'];
     $dove = $row['via'];
-    $_SESSION['nomeTappa'] = $row['nome'];
+    $nome = $row['nome'];
 } else {
-    echo "Impossibile eseguire la query";
+    echo "Impossibile eseguire la query nr.1";
 }
-$sql = "SELECT COUNT(ordine) AS numeroTappe FROM tappa, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "'";
+$sql = "SELECT COUNT(tappa_appartiene_percorso.id_tappa) AS numeroTappe FROM tappa, percorso, tappa_appartiene_percorso WHERE percorso.nome='" . $_SESSION['nomePercorso'] . "' AND percorso.id=tappa_appartiene_percorso.id_percorso AND tappa.id=tappa_appartiene_percorso.id_tappa";
 
 if ($result = $connessione->query($sql)) {
     $row = $result->fetch_assoc();
     $_SESSION['quanteTappe'] = $row['numeroTappe'];
 } else {
-    echo "Impossibile eseguire la query";
+    echo "Impossibile eseguire la query nr.2";
 }
 
 /* ACCENTI */
-header('Content-Type: text/html; charset=ISO-8859-1');
+
 //if (isset($_POST['tappa'])) {
 //    $_SESSION['nomeTappa'] = $_POST['tappa'];
 //}else if (isset($_SESSION['nomeTappa'])) {
@@ -97,7 +100,7 @@ header('Content-Type: text/html; charset=ISO-8859-1');
     </nav>
 
     <h2 style="color:#B30000; font-weight:bold; padding-top:15px; padding-left:150px"><?php echo $_SESSION['nomePercorso'] ?></h2>
-    <h1 style="font-weight:bold; padding-left:150px"><?php echo $_SESSION['nomeTappa'] ?></h1>
+    <h1 style="font-weight:bold; padding-left:150px"><?php echo $nome ?></h1>
 
 
     <!-- CONTENUTO PAGINA -->

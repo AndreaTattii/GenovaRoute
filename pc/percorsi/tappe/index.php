@@ -1,7 +1,10 @@
 <?php
 session_start();
-if(isset($_POST['percorso'])){
-    $_SESSION['nomePercorso'] = $_POST['percorso'];
+if(isset($_POST['nomePercorso'])){
+    $_SESSION['nomePercorso'] = $_POST['nomePercorso'];
+}
+if(isset($_POST['idPercorso'])){
+    $_SESSION['idPercorso'] = $_POST['idPercorso'];
 }
 ?>
 <!doctype html>
@@ -75,7 +78,7 @@ if(isset($_POST['percorso'])){
         if ($connessione === false) {
             die("Errore: " . $connessione->connect_error);
         }
-        $sql = "SELECT tappa.nome, ordine FROM tappa, Tappa_Appartiene_Percorso, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "' AND Tappa_Appartiene_Percorso.id_tappa=tappa.id AND percorso.id=Tappa_Appartiene_Percorso.id_percorso ";
+        $sql = "SELECT tappa.nome, ordine, tappa.id FROM tappa, tappa_appartiene_percorso, percorso WHERE percorso.id = '" . $_SESSION['idPercorso'] . "' AND tappa_appartiene_percorso.id_percorso=percorso.id AND tappa.id=tappa_appartiene_percorso.id_tappa ORDER BY ordine";
         if ($result = $connessione->query($sql)) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_array()) {
@@ -85,7 +88,7 @@ if(isset($_POST['percorso'])){
                                 <div class="card-body">
                                     <form action="tappaSpecifica/index.php" method="post">
                                         <p class="card-title">
-                                            <input type="hidden" name="tappa" value="' . $row['nome'] . '">
+                                            <input type="hidden" name="idTappa" value="' . $row['id'] . '">
                                             <input type="hidden" name="ordineTappa" value="' . $row['ordine'] . '">
                                             <input type="submit" value="'.$row['ordine'].'. ' . $row['nome'] . '" style="background-color: #F0F0F0; text-decoration: none; color: #B30000; font-size:20px; border: none; font-weight: bold; float: left;"> 
                                             <button type="submit" class="btn btn-primary" style="background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>

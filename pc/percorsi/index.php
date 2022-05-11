@@ -79,7 +79,8 @@
                             <div class="card-body">
                                 <form action="tappe/index.php" method="post">
                                     <p class="card-title">
-                                        <input type="hidden" name="percorso" value="' . $row['nome'] . '">
+                                        <input type="hidden" name="nomePercorso" value="' . $row['nome'] . '">
+                                        <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
                                         <input type="submit" value="' . $row['nome'] . '" style="background-color: #F0F0F0; text-decoration: none; color: #B30000; font-size:20px; border: none; font-weight: bold; float: left;"> 
                                         <button type="submit" class="btn btn-primary" style="background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>
                                     </p>
