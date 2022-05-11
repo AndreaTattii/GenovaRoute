@@ -4,12 +4,21 @@ if(isset($_POST['percorso'])){
     $_SESSION['nomePercorso'] = $_POST['percorso'];
 }
 
+$host = "127.0.0.1";
+$user = "root";
+$pass = "";
+$database = "genovaroute";
+
+$connessione = new mysqli($host, $user, $pass, $database);
+
 
 ?>
 <!doctype html>
 <html lang="en">
 
 <head>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
@@ -17,12 +26,12 @@ if(isset($_POST['percorso'])){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSS Personale-->
+    <!-- CSS Personale
     <link rel="stylesheet" href="../../../css/style.css">
-
-    <!-- Bootstrap CSS -->
+-->
+    <!-- Bootstrap CSS 
     <link rel="stylesheet" href="../../../bootstrap/css/bootstrap.min.css">
-
+-->
     <!-- font -->
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
 
@@ -36,7 +45,7 @@ if(isset($_POST['percorso'])){
 
 <body class="d-flex flex-column min-vh-100">
 
- <!-- NAVBAR -->
+ <!-- NAVBAR BASSA-->
  <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 70px;">
         <div class="row  justify-content-center" style="padding-top: 15px;">
             <div class="col s-4">
@@ -65,6 +74,35 @@ if(isset($_POST['percorso'])){
             </div>
         </div>
 
+        <div id="osm-map"></div>
+        <script>
+            element = document.getElementById('osm-map');
+            element.style = 'height:'.concat(window.innerHeight, 'px;');
+            var map = L.map(element);
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
+            map.setView(['44.409369955825774', '8.941610113846902'], 14);
+            var Icon1 = L.icon({
+                            iconUrl: '../../../img/G.png',
+                            iconSize:     [38, 95],
+                        });
+            <?php
+            if(!empty($_GET["percorsi"])){
+                $sql = 'SELECT * FROM Tappa, Percorso, Tappa_Appartiene_Percorso Where Tappa.id = Tappa_Appartiene_Percorso.id_tappa AND percorso.id = Tappa_Appartiene_Percorso.id_percorso AND  percorso.id = '.$_GET["percorsi"].';';
+                $result = $connessione->query($sql);
+                $row = $result->fetch_array();
+                while($row = $result->fetch_assoc()){
+                    echo "L.marker(
+                        ['".$row["lon"]."', '".$row["lat"]."'],
+                        {
+                            icon: Icon1
+                        }
+                        ).addTo(map);
+                        ";
+                }
+            }
+            
+                    ?>
+        </script>
 
     </div>
     <!-- NAVBAR ALTA -->
