@@ -30,8 +30,9 @@ $connessione = new mysqli($host, $user, $pass, $database);
     <link rel="stylesheet" href="../../../css/style.css">
 -->
     <!-- Bootstrap CSS 
+    -->
+
     <link rel="stylesheet" href="../../../bootstrap/css/bootstrap.min.css">
--->
     <!-- font -->
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
 
@@ -44,7 +45,23 @@ $connessione = new mysqli($host, $user, $pass, $database);
 </head>
 
 <body class="d-flex flex-column min-vh-100">
+<!-- NAVBAR ALTA -->
+<div class="container fixed-top" >
+        <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px;">
 
+            <div class="col-2">
+                <a href="../tappe/index.php">
+                    <img src="../../../img/icons/back.png">
+                </a>
+            </div>
+            <div class="col-8">
+                <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;"><?php echo $_SESSION['nomePercorso']  ?> </h1>
+            </div>
+            <div class="col-2">
+                 <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;"></h1>
+            </div>
+        </div>
+    </div>
  <!-- NAVBAR BASSA-->
  <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 70px;">
         <div class="row  justify-content-center" style="padding-top: 15px;">
@@ -74,7 +91,10 @@ $connessione = new mysqli($host, $user, $pass, $database);
             </div>
         </div>
 
-        <div id="osm-map"></div>
+        
+
+    </div>
+    <div id="osm-map"></div>
         <script>
             element = document.getElementById('osm-map');
             element.style = 'height:'.concat(window.innerHeight, 'px;');
@@ -103,25 +123,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
             
                     ?>
         </script>
-
-    </div>
-    <!-- NAVBAR ALTA -->
-    <div class="container" >
-        <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px;">
-
-            <div class="col -2">
-                <a href="../tappe/index.php">
-                    <img src="../../../img/icons/back.png">
-                </a>
-            </div>
-            <div class="col -7">
-                <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;"><?php echo $_SESSION['nomePercorso']  ?> </h1>
-            </div>
-            <div class="col -7">
-                 <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;"></h1>
-            </div>
-        </div>
-    </div>
+    
     
 
    

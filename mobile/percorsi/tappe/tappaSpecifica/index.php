@@ -9,8 +9,7 @@ if (isset($_POST['ordineTappa'])) {
 }
 
 
-echo $_SESSION['idTappa'];
-echo $_SESSION['ordineTappa'];
+
 
 $host = "127.0.0.1";
 $user = "root";
@@ -23,20 +22,13 @@ if ($connessione === false) {
     die("Errore: " . $connessione->connect_error);
 }
 
- /*
-$sql = "SELECT Tappa.nome, Tapppa.descrizione, Tappa.img1, Tappa.img2, Tappa.img3, Tappa.via 
+ 
+$sql = "SELECT Tappa.nome, Tappa.descrizione, Tappa.img1, Tappa.img2, Tappa.img3, Tappa.via 
         FROM Tappa, Tappa_appartiene_percorso, Percorso
         WHERE Tappa.id = Tappa_appartiene_percorso.id_tappa
             AND Percorso.id =  Tappa_appartiene_percorso.id_percorso
             AND id_percorso = ". $_SESSION['idPercorso'] ." 
-            AND ordine = ".$_SESSION['ordineTappa']."";*/
-
-$sql = "SELECT tappa.nome,tappa.img1, tappa.img2, tappa.img3, tappa.descrizione, tappa.via 
-            FROM tappa, tappa_appartiene_percorso, percorso 
-            WHERE tappa.i d= tappa_appartiene_percorso.id_tappa 
-            AND ordine=".$_SESSION['ordineTappa']." 
-            AND percorso.id=tappa_appartiene_percorso.id_percorso 
-            AND percorso.id=". $_SESSION['idPercorso']."";
+            AND ordine = ".$_SESSION['ordineTappa']."";
 
 if ($result = $connessione->query($sql)) {
     if ($result->num_rows > 0) {
@@ -54,12 +46,17 @@ if ($result = $connessione->query($sql)) {
     echo "Impossibile eseguire la query";
 }
 
-$sql = "SELECT MAX(tappa.ordine)  FROM tappa, Tappa_Appartiene_Percorso, percorso WHERE percorso.nome = '" . $_SESSION['nomePercorso'] . "' AND Tappa_Appartiene_Percorso.id_tappa=tappa.id AND percorso.id=Tappa_Appartiene_Percorso.id_percorso ";
+$sql = "SELECT MAX(ordine)  
+    FROM  Tappa_Appartiene_Percorso
+    WHERE id_percorso =  ".$_SESSION['idPercorso']."";
     
     if ($result = $connessione->query($sql)) {
         $row = $result->fetch_assoc();
-        $_SESSION['quanteTappe'] = $row['MAX(tappa.ordine)'];
+        $_SESSION['quanteTappe'] = $row['MAX(ordine)'];
+    }else {
+        echo "Impossibile eseguire la query2";
     }
+
 
 ?>
 <!doctype html>
@@ -94,7 +91,7 @@ $sql = "SELECT MAX(tappa.ordine)  FROM tappa, Tappa_Appartiene_Percorso, percors
 
 
     <!-- NAVBAR BASSA-->
-    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 70px">
+    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; ">
         <div class="row  justify-content-center " style="padding-top: 15px;">
             <div class="col .s-4">
                 <center>
