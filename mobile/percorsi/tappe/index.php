@@ -106,6 +106,9 @@ if($result = $connessione->query($query)){
             </div>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
 
     <div class="container" style="margin:0px; padding:0px">
         <!-- CONTENUTO PAGINA -->
