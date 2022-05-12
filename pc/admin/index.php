@@ -39,7 +39,7 @@ header('Content-Type: text/html; charset=ISO-8859-1');
         <div class="container">
             <div class="col">
                 <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center; " href="./">
-                    <h1>Genova Route</h1>
+                    <h1>Genova Route Administration</h1>
                 </a>
             </div>
 
@@ -56,12 +56,12 @@ header('Content-Type: text/html; charset=ISO-8859-1');
             </div>
             <div class="col">
                 <div class="row  " style="margin-top:100px;">
-                    <form action="gestioneP.php" method="POST">
+                    <form action="formP.php" method="POST">
                         <button type="submit" class="btn btn-primary" style="background-color:#B30000; width:100%; border-color:#B30000">Gestisci i percorsi</button>
                     </form>
                 </div>
                 <div class="row" style="margin-top:20px">
-                    <form action="gestioneT.php" method="POST">
+                    <form action="formT.php" method="POST">
                         <button type="submit" class="btn btn-primary" style="background-color:#B30000; width:100%; border-color:#B30000">Gestisci le tappe</button>
                     </form>
                 </div>
@@ -83,10 +83,10 @@ header('Content-Type: text/html; charset=ISO-8859-1');
                 <div class="col-2">
                     <h3>ID</h3>
                 </div>
-                <div class="col-5">
+                <div class="col-4">
                     <h3>Nome</h3>
                 </div>
-                <div class="col-4">
+                <div class="col-5">
                     <h3>Descrizione</h3>
                 </div>
             </div>
@@ -115,16 +115,24 @@ header('Content-Type: text/html; charset=ISO-8859-1');
                     } else {
                         $sfondo = "background-color:white;";
                     }
-                    echo "<div class='row' style='" . $sfondo . " '>";
-                    echo "<div class='col-2'>";
-                    echo $row["id"];
-                    echo "</div>";
-                    echo "<div class='col-5'>";
-                    echo $row["nome"];
-                    echo "</div>";
-                    echo "<div class='col-4'>";
-                    echo $row["descrizione"];
-                    echo "</div>";
+                    echo "<div class='row' style='" . $sfondo . "; padding:10px' >";
+                        echo "<div class='col-2'>";
+                            echo $row["id"];
+                         echo "</div>";
+                        echo "<div class='col-4'>";
+                            echo $row["nome"];
+                        echo "</div>";
+                        echo "<div class='col-5'>";
+                            echo $row["descrizione"];
+                        echo "</div>";
+                        echo "<div class='col-1'>";
+                            echo "
+                                <form action='percorso.php' method='POST'>
+                                    <input type='hidden' name='idPercorso' value='".$row["id"]."'>
+                                    <button type='submit' style='color:white; background-color:#B30000; width:100%; border-color:#B30000'>Gestisci</button>
+                                </form>
+                            ";
+                        echo "</div>";
                     echo "</div>";
                     $i++;
                 }

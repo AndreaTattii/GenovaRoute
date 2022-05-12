@@ -44,10 +44,10 @@
                         <a class="nav-link" href="index.php" style="color: white">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="gestioneP.php" style="color: white">Percorsi</a>
+                        <a class="nav-link" href="formP.php" style="color: white">Percorsi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="gestioneT.php" style="color: white">Tappe</a>
+                        <a class="nav-link" href="formT.php" style="color: white">Tappe</a>
                     </li>
                 </ul>
             </div>
@@ -57,8 +57,7 @@
     <!-- CORPO -->
     <br>
     <br>
-    <br>
-    <br>
+    
     <!-- Fai un form per l'inserimento di records nella tabella tappa nel db-->
     <div class="container">
         <div class="row">
