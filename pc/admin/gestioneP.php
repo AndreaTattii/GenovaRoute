@@ -47,13 +47,13 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="percorsi/index.php" style="color: white">Home</a>
+                        <a class="nav-link" href="index.php" style="color: white">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: white">Percorsi</a>
+                        <a class="nav-link" href="gestioneP.php" style="color: white">Percorsi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="profilo/index.php" style="color: white">Tappe</a>
+                        <a class="nav-link" href="gestioneT.php" style="color: white">Tappe</a>
                     </li>
                 </ul>
             </div>

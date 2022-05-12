@@ -173,32 +173,24 @@ if ($result = $connessione->query($sql)) {
     <div class="container" style="padding-top: 50px; margin:0px; margin-left: 0px; margin-right:0px;">
 
         <!-- CAROSELLO -->
-        <div class="row" style="padding-top: 20px; padding-top: 20px; height:300px;">
+        <div class="row" style="padding-top: 20px; padding-top: 20px; height:225px;">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="<?php echo $img1; ?>" class="d-block w-100" alt="..." style="max-height: 300px; margin-left: auto; margin-right: auto;">
+                        <img src="<?php echo $img1; ?>" class="d-block w-100" alt="..." style="max-height: 200px; margin-left: auto; margin-right: auto;">
                     </div>
                     <div class="carousel-item">
-                        <img src="<?php echo $img2; ?>" class="d-block w-100" alt="..." style=" max-height: 300px; margin-left: auto; margin-right: auto;">
+                        <img src="<?php echo $img2; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
                     </div>
                     <div class="carousel-item">
-                        <img src="<?php echo $img3; ?>" class="d-block w-100" alt="..." style=" max-height: 300px; margin-left: auto; margin-right: auto;">
+                        <img src="<?php echo $img3; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+                
             </div>
-
         </div>
         <!-- DOVE -->
-        <div class="row align-content-center justify-content-center" style=" padding:2px">
+        <div class="row align-content-center justify-content-center" style=" padding-top:0px">
             <p style="text-align:center; text-decoration: underline;"><?php echo $dove; ?></p>
         </div>
         <!-- DESCRIZIONE -->
