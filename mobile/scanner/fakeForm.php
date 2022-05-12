@@ -28,16 +28,15 @@
     session_start();
 
     $risultato=$_GET['risultato'];
-    echo $risultato;
 
     //$risultato contiene il risultato della scansione, cioè due numeri separati da un .
     //Il primo numero è il numero del percorso, il secondo è il numero della tappa
     //estrapola dalla variabile $risultato i due numeri
-    //$pos = strpos($risultato, ".");
-    //$_SESSION['nomePercorso'] = substr($risultato, 0, $pos);
-    //$_SESSION['ordine'] = substr($risultato, $pos+1, strlen($risultato));
+    $pos = strpos($risultato, ".");
+    $_SESSION['idPercorso'] = substr($risultato, 0, $pos);
+    $_SESSION['idTappa'] = substr($risultato, $pos+1, strlen($risultato));
 
-    $_SESSION['idTappa'] = $risultato;
+    //$_SESSION['idTappa'] = $risultato;
 
     $host = "127.0.0.1";
     $user = "root";
@@ -58,35 +57,7 @@
     if ($result = $connessione->query($sql)) {
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_array()) { 
-                
-                $i++;
-                if ($i % 2 == 0) {
-                    $coloreRiga = "white";
-                } else {
-                    $coloreRiga = "#F0F0F0";
-                }
-                echo '
-                <form action="tappe/index.php" method="post">
-                    <div class="container " style="width:100%;  background-color: ' . $coloreRiga . '; padding-bottom: 15px; padding-top: 15px">
-                        <div class="row justify-content-center " style="background-color: ' . $coloreRiga . ';">
-                            <div class="col-xs ">
-                                <div class="row">
-                                    <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
-                                    <input type="submit" value="' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:20px; border: none; font-weight: bold; float: left;"> 
-                                </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <center>
-                                    <p>'.$row['descrizione'].'</p>
-                                </center>                         
-                            </div>
-                            <div class="row justify-content-center" >                               
-                                    <button type="submit" class="btn btn-primary" style="width:100px; background-color: #B30000; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>                                   
-                            </div>
-                        </div>            
-                    </div>
-                </form>
-                ';                                                                            
+                echo '';                                                                            
             }
         } else {
             echo "Non ci sono percorsi salvati nel database che contengono questa tappa";
@@ -95,7 +66,7 @@
         echo "Impossibile eseguire la query";
     }
     //echo 'il percorso è' . $percorso . ' e la tappa è ' . $tappa;
-    //header("Location: ../percorsi/tappe/tappaSpecifica/index.php");
+    header("Location: ../percorsi/tappe/tappaSpecifica/index.php");
     ?>
 </body>
 </html>
