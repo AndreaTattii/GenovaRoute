@@ -38,7 +38,7 @@ header('Content-Type: text/html; charset=ISO-8859-1');
     <nav class="navbar  navbar-expand-lg" style="background-color: #B30000;">
         <div class="container">
             <div class="col">
-                <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center; line-;" href="./">
+                <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center; " href="./">
                     <h1>Genova Route</h1>
                 </a>
             </div>

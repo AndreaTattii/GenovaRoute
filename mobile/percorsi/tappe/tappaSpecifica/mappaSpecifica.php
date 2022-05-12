@@ -50,7 +50,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
         <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px;">
 
             <div class="col-2">
-                <a href="../../tappe/index.php">
+                <a href="index.php">
                     <img src="../../../../img/icons/back.png">
                 </a>
             </div>
@@ -112,7 +112,12 @@ $connessione = new mysqli($host, $user, $pass, $database);
 
             <?php
             if(!empty($_GET["percorsi"])){
-                $sql = 'SELECT lat,lon,Tappa.nome FROM Tappa, Percorso, Tappa_Appartiene_Percorso Where Tappa.id = Tappa_Appartiene_Percorso.id_tappa AND Tappa.id='.$_SESSION['idTappa'].' AND percorso.id = Tappa_Appartiene_Percorso.id_percorso AND  percorso.id = '.$_GET["percorsi"].';';
+                $sql = 'SELECT lat,lon,Tappa.nome 
+                FROM Tappa, Percorso, Tappa_Appartiene_Percorso 
+                Where Tappa.id = Tappa_Appartiene_Percorso.id_tappa 
+                AND Tappa.id='.$_SESSION['idTappa'].' 
+                AND percorso.id = Tappa_Appartiene_Percorso.id_percorso 
+                AND  percorso.id = '.$_GET["percorsi"].';';
                 $result = $connessione->query($sql);
                 $row = $result->fetch_array();
                     echo "L.marker(
