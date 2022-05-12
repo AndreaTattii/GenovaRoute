@@ -32,7 +32,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
     <!-- Bootstrap CSS 
     -->
 
-    <link rel="stylesheet" href="../../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../bootstrap/css/bootstrap.min.css">
     <!-- font -->
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
 
@@ -41,7 +41,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
     <title>Genova Route</title>
-    <link rel="icon" href="../../../img/G.png" type="image/icon type">
+    <link rel="icon" href="../../../../img/G.png" type="image/icon type">
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -50,8 +50,8 @@ $connessione = new mysqli($host, $user, $pass, $database);
         <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px;">
 
             <div class="col-2">
-                <a href="../tappe/index.php">
-                    <img src="../../../img/icons/back.png">
+                <a href="../../tappe/index.php">
+                    <img src="../../../../img/icons/back.png">
                 </a>
             </div>
             <div class="col-8">
@@ -68,7 +68,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
             <div class="col s-4">
                 <center>
                     <a class="navbar-brand" href="../index.php">
-                        <img src="../../../img/icons/percorsoSfondo.png">
+                        <img src="../../../../img/icons/percorsoSfondo.png">
                     </a>
                 </center>
 
@@ -76,7 +76,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
                     <a class="navbar-brand" href="../../scanner/index.php ">
-                        <img src="../../../img/icons/scannerizza.png">
+                        <img src="../../../../img/icons/scannerizza.png">
                     </a>
                 </center>
 
@@ -84,7 +84,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
                     <a class="navbar-brand" href="../../profilo/index.php">
-                        <img src="../../../img/icons/account.png">
+                        <img src="../../../../img/icons/account.png">
                     </a>
                 </center>
 
@@ -105,27 +105,26 @@ $connessione = new mysqli($host, $user, $pass, $database);
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
             map.setView(['44.409369955825774', '8.941610113846902'], 14);
             var Icon1 = L.icon({
-                            iconUrl: '../../../img/icons/marker.png',
+                            iconUrl: '../../../../img/icons/marker.png',
                             iconSize:     [30, 30],
                         });
 
 
             <?php
             if(!empty($_GET["percorsi"])){
-                $sql = 'SELECT lat,lon,Tappa.nome FROM Tappa, Percorso, Tappa_Appartiene_Percorso Where Tappa.id = Tappa_Appartiene_Percorso.id_tappa AND percorso.id = Tappa_Appartiene_Percorso.id_percorso AND  percorso.id = '.$_GET["percorsi"].';';
+                $sql = 'SELECT lat,lon,Tappa.nome FROM Tappa, Percorso, Tappa_Appartiene_Percorso Where Tappa.id = Tappa_Appartiene_Percorso.id_tappa AND Tappa.id='.$_SESSION['idTappa'].' AND percorso.id = Tappa_Appartiene_Percorso.id_percorso AND  percorso.id = '.$_GET["percorsi"].';';
                 $result = $connessione->query($sql);
                 $row = $result->fetch_array();
-                while($row = $result->fetch_assoc()){
                     echo "L.marker(
                         ['".$row["lon"]."', '".$row["lat"]."'],
                         {
                             icon: Icon1
                         }
                         ).addTo(map)   
-                        .bindPopup('".$row["nome"]."');
+                        .bindPopup('".$row["nome"]."')
+                        .openPopup();;
                         ";
                 }
-            }
             
                     ?>
         </script>

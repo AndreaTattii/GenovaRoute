@@ -157,7 +157,7 @@ if ($result = $connessione->query($sql)) {
             </div>
             <div class="col-2">
                 <center>
-                    <a class="navbar-brand" href="mappaStatica.php?percorsi=1">
+                    <a class="navbar-brand" href="mappaSpecifica.php?percorsi=1">
                         <img src="../../../../img/icons/percorsoSfondo.png">
                     </a>
                 </center>
