@@ -66,7 +66,7 @@
                 <h1 class="text-center">Gestione Tappe</h1>
             </div>
         </div>
-        <form action="gestioneT.php" method="POST">
+        <form action="inserimentoT.php" method="POST">
             <div class="form-group">
                 <label for="nome">Nome</label>
                 <input type="text" class="form-control" id="nome" name="nome" placeholder="Inserisci il nome della tappa">
@@ -77,19 +77,27 @@
             </div>
             <div class="form-group">
                 <label for="immagine">Immagine 1</label>
-                <input type="text" class="form-control" id="immagine" name="immagine" placeholder="Inserisci l'url dell' immagine">
+                <input type="text" class="form-control" id="immagine1" name="immagine1" placeholder="Inserisci l'url dell' immagine">
             </div>
             <div class="form-group">
                 <label for="immagine">Immagine 2</label>
-                <input type="text" class="form-control" id="immagine" name="immagine" placeholder="Inserisci l'url dell' immagine">
+                <input type="text" class="form-control" id="immagine2" name="immagine2" placeholder="Inserisci l'url dell' immagine">
             </div>
             <div class="form-group">
                 <label for="immagine">Immagine 3</label>
-                <input type="text" class="form-control" id="immagine" name="immagine" placeholder="Inserisci l'url dell' immagine">
+                <input type="text" class="form-control" id="immagine3" name="immagine3" placeholder="Inserisci l'url dell' immagine">
             </div>
             <div class="form-group">
                 <label for="percorso">Via</label>
-                <input type="text" class="form-control" id="percorso" name="percorso" placeholder="Inserisci l'indirizzo della tappa">
+                <input type="text" class="form-control" id="via" name="via" placeholder="Inserisci l'indirizzo della tappa">
+            </div>
+            <div class="form-group">
+                <label for="percorso">Longitudine</label>
+                <input type="text" class="form-control" id="longitudine" name="longitudine" placeholder="Inserisci la longitudine della tappa">
+            </div>
+            <div class="form-group">
+                <label for="percorso">Latitudine</label>
+                <input type="text" class="form-control" id="latitudine" name="latitudine" placeholder="Inserisci la latitudine della tappa">
             </div>
             <button type="submit" class="btn btn-primary" style="margin-top: 15px; background-color:#B30000; border-color:#B30000;">Inserisci</button>
         </form>

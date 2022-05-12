@@ -46,7 +46,7 @@ if (isMobile()) {
   </nav>
 
   <div class="container pt-5">
-    <div class="row justify-content-md-center " style="font-family: 'Helvetica', 'Arial', sans-serif; padding: 20px;">
+    <div class="row justify-content-md-center " style="font-family: 'Helvetica', 'Arial', sans-serif; padding-right: 20px; padding-left: 20px;">
       <div class="col-sm-12" style=" background-color: white; border-style:solid; border-color:black; border-width:2px; border-radius: 60px;">
         <br>
         
@@ -55,7 +55,7 @@ if (isMobile()) {
         </div>
 
         <!-- form -->
-        <div id="registrazione" style="margin:5px; padding:20px;">
+        <div id="registrazione" style="margin:0px; padding:20px;">
 
           <form class="row g-3" action="registra.php" method="post">
             <div class="col-md-6">

@@ -120,7 +120,7 @@ if ($result = $connessione->query($sql)) {
                         </a>
                 </center>
             </div>
-            <div class="col .s-4" >
+            <div class="col .s-4">
                 <center>
 
                     <?php
@@ -171,6 +171,7 @@ if ($result = $connessione->query($sql)) {
 
     <!-- CONTENUTO PAGINA -->
     <div class="container" style="padding-top: 50px; margin:0px; margin-left: 0px; margin-right:0px;">
+
         <!-- CAROSELLO -->
         <div class="row" style="padding-top: 20px; padding-top: 20px; height:300px;">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -194,25 +195,19 @@ if ($result = $connessione->query($sql)) {
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-        </div>
-        <!-- DESCRIZIONE -->
-        <div class="row" style="padding-top: 1px;  padding-left: 50px; padding-right:50px;">
-            <div class="row">
-                <h2 style="color: #B30000; font-weight: bold;">Descrizione</h2>
-            </div>
-            <div class="row">
-                <p><?php echo $descrizione; ?></p>
-            </div>
+
         </div>
         <!-- DOVE -->
-        <div class="row" style="padding-top: 10px;  padding-left: 50px; padding-right:50px;">
+        <div class="row align-content-center justify-content-center" style=" padding:2px">
+            <p style="text-align:center; text-decoration: underline;"><?php echo $dove; ?></p>
+        </div>
+        <!-- DESCRIZIONE -->
+        <div class="row" style="padding-top: 1px;  padding-left: 10px; padding-right:10px;">
             <div class="row">
-                <h2 style="color: #B30000; font-weight: bold;">Dove</h2>
-            </div>
-            <div class="row">
-                <p><?php echo $dove; ?></p>
+                <p style="text-align:center"><?php echo $descrizione; ?></p>
             </div>
         </div>
+        
         <div class="row " style="padding-top: 10px; padding-bottom:100px">
             <div class="col .s-4">
 
