@@ -94,6 +94,9 @@ $connessione = new mysqli($host, $user, $pass, $database);
         
 
     </div>
+    <br>
+    <br>
+    
     <div id="osm-map"></div>
         <script>
             element = document.getElementById('osm-map');

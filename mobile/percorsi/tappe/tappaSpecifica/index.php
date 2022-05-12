@@ -144,8 +144,8 @@ if ($result = $connessione->query($sql)) {
 
 
     <!-- NAVBAR ALTA -->
-    <div class="container">
-        <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px; height:60px">
+    <div class="container fixed-top">
+        <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px; height:60px;">
 
             <div class="col-2">
                 <a href="../index.php">
@@ -170,19 +170,19 @@ if ($result = $connessione->query($sql)) {
 
 
     <!-- CONTENUTO PAGINA -->
-    <div class="container" style="padding-top: 50px; padding-left: 50px; padding-right:50px;">
+    <div class="container" style="padding-top: 50px; margin:0px; margin-left: 0px; margin-right:0px;">
         <!-- CAROSELLO -->
-        <div class="row" style="padding-top: 20px; padding-top: 20px; height:200px;">
+        <div class="row" style="padding-top: 20px; padding-top: 20px; height:300px;">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="<?php echo $img1; ?>" class="d-block w-100" alt="..." style="max-height: 200px; margin-left: auto; margin-right: auto;">
+                        <img src="<?php echo $img1; ?>" class="d-block w-100" alt="..." style="max-height: 300px; margin-left: auto; margin-right: auto;">
                     </div>
                     <div class="carousel-item">
-                        <img src="<?php echo $img2; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
+                        <img src="<?php echo $img2; ?>" class="d-block w-100" alt="..." style=" max-height: 300px; margin-left: auto; margin-right: auto;">
                     </div>
                     <div class="carousel-item">
-                        <img src="<?php echo $img3; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
+                        <img src="<?php echo $img3; ?>" class="d-block w-100" alt="..." style=" max-height: 300px; margin-left: auto; margin-right: auto;">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -196,7 +196,7 @@ if ($result = $connessione->query($sql)) {
             </div>
         </div>
         <!-- DESCRIZIONE -->
-        <div class="row" style="padding-top: 30px;">
+        <div class="row" style="padding-top: 1px;  padding-left: 50px; padding-right:50px;">
             <div class="row">
                 <h2 style="color: #B30000; font-weight: bold;">Descrizione</h2>
             </div>
@@ -205,7 +205,7 @@ if ($result = $connessione->query($sql)) {
             </div>
         </div>
         <!-- DOVE -->
-        <div class="row" style="padding-top: 10px;">
+        <div class="row" style="padding-top: 10px;  padding-left: 50px; padding-right:50px;">
             <div class="row">
                 <h2 style="color: #B30000; font-weight: bold;">Dove</h2>
             </div>
