@@ -86,7 +86,10 @@ if ($result = $connessione->query($sql)) {
             <h1><?php echo $percorso ?></h1>
         </div>
         <div class="row" style="border-color : black;  border-style: solid; border-width: 1px;">
-            <div class="col-4">
+        <div class="col-1">
+                <h3>Id</h3>
+            </div>
+            <div class="col-3">
                 <h3>Ordine</h3>
             </div>
             <div class="col-4">
@@ -106,7 +109,7 @@ if ($result = $connessione->query($sql)) {
 
 
 
-        $sql = "SELECT  tappa.nome AS nome, tappa.via AS via, tappa_appartiene_percorso.ordine AS ordine 
+        $sql = "SELECT  id, tappa.nome AS nome, tappa.via AS via, tappa_appartiene_percorso.ordine AS ordine 
         FROM tappa, tappa_appartiene_percorso 
         WHERE id_Percorso = '" . $idPercorso . "'
             AND tappa.id = tappa_appartiene_percorso.id_tappa
@@ -121,15 +124,20 @@ if ($result = $connessione->query($sql)) {
                         $sfondo = "background-color:white;";
                     }
                     echo "<div class='row' style='" . $sfondo . "; padding:10px; border-left-style:solid; border-left-width:1px; border-right-style:solid; border-right-width:1px; ' >";
-                    echo "<div class='col-4'>";
-                    echo $row["ordine"];
-                    echo "</div>";
-                    echo "<div class='col-4'>";
-                    echo $row["nome"];
-                    echo "</div>";
-                    echo "<div class='col-4'>";
-                    echo $row["via"];
-                    echo "</div>";
+                        echo "<div class='col-1' style='border-right-style:solid; border-right-width:1px'>";
+                            echo '<b>';
+                            echo $row["id"];
+                            echo '</b>';
+                        echo "</div>";
+                        echo "<div class='col-3'>";
+                            echo $row["ordine"];
+                        echo "</div>";
+                        echo "<div class='col-4'>";
+                            echo $row["nome"];
+                        echo "</div>";
+                        echo "<div class='col-4'>";
+                            echo $row["via"];
+                        echo "</div>";
 
                     echo "</div>";
                     $i++;
@@ -157,8 +165,12 @@ if ($result = $connessione->query($sql)) {
                 <div class="col-4">
                     <input type="text" name="idTappa" placeholder="Inserisci ID tappa">
                 </div>
-                <div class="col-4">
-                    <button type="submit">Includi</button>
+                <div class="col-6">
+                    <input type="text" name="ordineTappa" placeholder="Inserisci la posizione della tappa" style="width: 250px;">
+                </div>
+                <div class="col-2">
+                    <input type="hidden"  name="idPercorso"  value="<?php echo $idPercorso ?>">
+                    <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000">Includi</button>
                 </div>
                 </div>
                 
@@ -181,7 +193,8 @@ if ($result = $connessione->query($sql)) {
                     <input type="text" name="idTappa" placeholder="Inserisci ID tappa">
                 </div>
                 <div class="col-4">
-                    <button type="submit">Escludi</button>
+                    <input type="hidden"  name="idPercorso"  value="<?php echo $idPercorso ?>">
+                    <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000">Escludi</button>
                 </div>
                 </div>
                 

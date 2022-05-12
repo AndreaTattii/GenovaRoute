@@ -95,29 +95,7 @@
     <br>
     <br>
     <br>
-    <!-- Fai un form per associare una tappa ad un percorso -->
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Associa una tappa ad un percorso</h5>
-                        <form action="associa.php" method="POST">
-                            <div class="form-group">
-                                <label for="nomeP">Id percorso</label>
-                                <input type="text" class="form-control" id="idP" name="idP" placeholder="Inserisci l'id del percorso">                             
-                            </div>
-                            <div class="form-group">
-                                <label for="nomeT">Id tappa</label>
-                                <input type="text" class="form-control" id="idT" name="idT" placeholder="Inserisci l'id della tappa">                   
-                            </div>
-                            <button type="submit" class="btn btn-primary" style="background-color:#B30000; border-color:#B30000; margin-top:15px;">Associa</button>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+    
     </div>
     
 

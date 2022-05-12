@@ -57,12 +57,12 @@ header('Content-Type: text/html; charset=ISO-8859-1');
             <div class="col">
                 <div class="row  " style="margin-top:100px;">
                     <form action="formP.php" method="POST">
-                        <button type="submit" class="btn btn-primary" style="background-color:#B30000; width:100%; border-color:#B30000">Gestisci i percorsi</button>
+                        <button type="submit" class="btn btn-primary" style="background-color:#B30000; width:100%; border-color:#B30000">Crea nuovi percorsi</button>
                     </form>
                 </div>
                 <div class="row" style="margin-top:20px">
                     <form action="formT.php" method="POST">
-                        <button type="submit" class="btn btn-primary" style="background-color:#B30000; width:100%; border-color:#B30000">Gestisci le tappe</button>
+                        <button type="submit" class="btn btn-primary" style="background-color:#B30000; width:100%; border-color:#B30000">Crea nuove tappe</button>
                     </form>
                 </div>
             </div>
