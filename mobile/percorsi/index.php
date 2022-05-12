@@ -66,7 +66,7 @@ session_start();
 
 
     <!-- NAVBAR ALTA -->
-    <div class="container">
+    <div class="container fixed-top">
         <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px; height:60px">
 
             <div class="col ">
@@ -80,6 +80,9 @@ session_start();
     <!-- CONTENUTO PAGINA -->
 
     <div class="container" style="margin:0px; padding:0px">
+    <br>
+    <br>
+    <br>
         <?php
         $host = "127.0.0.1";
         $user = "root";

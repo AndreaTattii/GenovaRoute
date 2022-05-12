@@ -86,7 +86,7 @@ if($result = $connessione->query($query)){
 
 
     <!-- NAVBAR ALTA -->
-    <div class="container" >
+    <div class="container fixed-top" >
         <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px; height:60px">
 
             <div class="col-2">
