@@ -7,6 +7,9 @@ if (isset($_POST['ordineTappa'])) {
     $_SESSION['ordineTappa'] = $_POST['ordineTappa'];
     $_SESSION['idTappa'] = $_POST['idTappa'];
 }
+if (isset($_POST['idPercorso'])) {
+    $_SESSION['idPercorso'] = $_POST['idPercorso'];
+}
 
 
 
