@@ -1,6 +1,7 @@
-<?php session_start();
+<?php 
+session_start();
 
-
+header('Content-Type: text/html; charset=ISO-8859-1');
 ?>
 <!doctype html>
 <html lang="en">
@@ -35,30 +36,20 @@
 
     <!-- NAVBAR -->
     <nav class="navbar  navbar-expand-lg" style="background-color: #B30000;">
-        <div class="container p-2">
-            <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold;" href="./">
-                <h1>Genova Route</h1>
-            </a>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="percorsi/index.php" style="color: white">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: white">Percorsi</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="profilo/index.php" style="color: white">Tappe</a>
-                    </li>
-                </ul>
+        <div class="container">
+            <div class="col">
+                <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center; line-;" href="./">
+                    <h1>Genova Route</h1>
+                </a>
             </div>
+
         </div>
     </nav>
 
     <!-- CORPO -->
 
     <div class="container">
-        
+
         <div class="row" style="padding:15px; margin:15px;">
             <div class="col">
 
@@ -84,64 +75,63 @@
         <br>
         <!-- PERCORSI -->
         <div class="row" style="margin-top:20px; padding: 10px; border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; border-bottom-color:#F0F0F0;  border-bottom-style: solid; border-bottom-width: 3px; ">
-            <h2 style="color:#B30000; text-align:center;" >Percorsi</h2>
+            <h2 style="color:#B30000; text-align:center;">Percorsi</h2>
         </div>
         <br>
         <div class="container" style="border-color : black;  border-style: solid; border-width: 1px;">
             <div class="row" style="border-bottom-color : black;  border-bottom-style: solid; border-bottom-width: 1px;">
-            <div class="col-2">
+                <div class="col-2">
                     <h3>ID</h3>
                 </div>
                 <div class="col-5">
                     <h3>Nome</h3>
                 </div>
                 <div class="col-4">
-                    <h3>Descrizione</h3>   
+                    <h3>Descrizione</h3>
                 </div>
             </div>
             <?php
-        
-                $host="127.0.0.1";
-                $user="root";
-                $pass="";
-                $database="GenovaRoute";
-                $connessione = new mysqli($host, $user, $pass , $database);
 
-                $i=0;
-                error_reporting(0);
+            $host = "127.0.0.1";
+            $user = "root";
+            $pass = "";
+            $database = "GenovaRoute";
+            $connessione = new mysqli($host, $user, $pass, $database);
 
-                if($connessione === false){
-                    echo "Errore: ".$connessione->error;
-                }
+            $i = 0;
+            error_reporting(0);
 
-                //stampa tutti i percorsi
-                $sql = "SELECT * FROM percorso";
-                $result = $connessione->query($sql);
-                if($result->num_rows > 0){
-                    while($row = $result->fetch_assoc()){
-                        if($i%2==0){
-                            $sfondo = "background-color:#F0F0F0;";
-                        }
-                        else{
-                            $sfondo = "background-color:white;";
-                        }
-                        echo "<div class='row' style='".$sfondo." '>";
-                        echo "<div class='col-2'>";
-                        echo $row["id"];
-                        echo "</div>";
-                        echo "<div class='col-5'>";
-                        echo $row["nome"];
-                        echo "</div>";
-                        echo "<div class='col-4'>";
-                        echo $row["descrizione"];
-                        echo "</div>";
-                        echo "</div>";
-                        $i++;
+            if ($connessione === false) {
+                echo "Errore: " . $connessione->error;
+            }
+
+            //stampa tutti i percorsi
+            $sql = "SELECT * FROM percorso";
+            $result = $connessione->query($sql);
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    if ($i % 2 == 0) {
+                        $sfondo = "background-color:#F0F0F0;";
+                    } else {
+                        $sfondo = "background-color:white;";
                     }
-                }else{
-                    echo "Nessun percorso presente";
+                    echo "<div class='row' style='" . $sfondo . " '>";
+                    echo "<div class='col-2'>";
+                    echo $row["id"];
+                    echo "</div>";
+                    echo "<div class='col-5'>";
+                    echo $row["nome"];
+                    echo "</div>";
+                    echo "<div class='col-4'>";
+                    echo $row["descrizione"];
+                    echo "</div>";
+                    echo "</div>";
+                    $i++;
                 }
-                $connessione->close();
+            } else {
+                echo "Nessun percorso presente";
+            }
+            $connessione->close();
 
             ?>
         </div>
@@ -150,7 +140,7 @@
         <br>
         <!-- TAPPE -->
         <div class="row" style="margin-top:40px; padding: 10px; border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; border-bottom-color:#F0F0F0;  border-bottom-style: solid; border-bottom-width: 3px; ">
-            <h2 style="color:#B30000; text-align:center;" >Tappe</h2>
+            <h2 style="color:#B30000; text-align:center;">Tappe</h2>
         </div>
         <br>
         <div class="container" style="border-color : black;  border-style: solid; border-width: 1px;">
@@ -162,58 +152,57 @@
                     <h3>Nome</h3>
                 </div>
                 <div class="col-7">
-                    <h3>Descrizione</h3>   
+                    <h3>Descrizione</h3>
                 </div>
                 <div class="col-2">
-                    <h3>Via</h3>   
+                    <h3>Via</h3>
                 </div>
             </div>
             <?php
-        
-                $host="127.0.0.1";
-                $user="root";
-                $pass="";
-                $database="GenovaRoute";
-                $connessione = new mysqli($host, $user, $pass , $database);
-        
-                error_reporting(0);
 
-                if($connessione === false){
-                    echo "Errore: ".$connessione->error;
-                }
+            $host = "127.0.0.1";
+            $user = "root";
+            $pass = "";
+            $database = "GenovaRoute";
+            $connessione = new mysqli($host, $user, $pass, $database);
 
-                //stampa tutte le tappe
-                $sql = "SELECT * FROM tappa";   
-                $result = $connessione->query($sql);
-                if($result->num_rows > 0){
-                    while($row = $result->fetch_assoc()){
-                        if($i%2==0){
-                            $sfondo = "background-color:#F0F0F0;";
-                        }
-                        else{
-                            $sfondo = "background-color:white;";
-                        }
-                        //finisci
-                        echo "<div class='row' style='".$sfondo." padding: 10px;'>";
-                        echo "<div class='col-1'>";
-                        echo $row["id"];
-                        echo "</div>";
-                        echo "<div class='col-2'>";
-                        echo $row["nome"];
-                        echo "</div>";
-                        echo "<div class='col-7'>";
-                        echo $row["descrizione"];
-                        echo "</div>";
-                        echo "<div class='col-2'>";
-                        echo $row["via"];
-                        echo "</div>";
-                        echo "</div>";
-                        $i++;
+            error_reporting(0);
+
+            if ($connessione === false) {
+                echo "Errore: " . $connessione->error;
+            }
+
+            //stampa tutte le tappe
+            $sql = "SELECT * FROM tappa";
+            $result = $connessione->query($sql);
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    if ($i % 2 == 0) {
+                        $sfondo = "background-color:#F0F0F0;";
+                    } else {
+                        $sfondo = "background-color:white;";
                     }
-                }else{
-                    echo "Nessuna tappa presente";
+                    //finisci
+                    echo "<div class='row' style='" . $sfondo . " padding: 10px;'>";
+                    echo "<div class='col-1'>";
+                    echo $row["id"];
+                    echo "</div>";
+                    echo "<div class='col-2'>";
+                    echo $row["nome"];
+                    echo "</div>";
+                    echo "<div class='col-7'>";
+                    echo $row["descrizione"];
+                    echo "</div>";
+                    echo "<div class='col-2'>";
+                    echo $row["via"];
+                    echo "</div>";
+                    echo "</div>";
+                    $i++;
                 }
-                $connessione->close();
+            } else {
+                echo "Nessuna tappa presente";
+            }
+            $connessione->close();
 
 
             ?>
@@ -225,9 +214,9 @@
 
     <!-- stampa tanti br -->
     <?php
-        for($i=0; $i<15; $i++){
-            echo "<br>";
-        }   
+    for ($i = 0; $i < 15; $i++) {
+        echo "<br>";
+    }
     ?>
     <div class="footer-clean" style="background-color:white; border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px; position:fixed; bottom:0px; width:100%;">
         <footer>
