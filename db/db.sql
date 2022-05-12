@@ -70,8 +70,8 @@ INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat)
             'http://www.visitgenoa.it/sites/default/files/gallery/PiazzadellaVittoria%20(2).jpg',
             'https://upload.wikimedia.org/wikipedia/it/3/3e/Genova_piazza_della_Vittoria_anni_trenta.jpg',
             'https://life-globe.com/image/cache/catalog/italia/liguria/genova/ploschad-pobedy/piazza-della-vittoria-genova-8-915x610.jpg',
-            '8.91700',
-            '44.56700'
+            '44.403077306694875',
+            '8.944978513772323'
     );
 INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat) 
     VALUES (
@@ -85,8 +85,8 @@ INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat)
             'https://i.ebayimg.com/images/g/MnEAAOSwPCFeVWvC/s-l400.jpg',
             'https://www.ilmugugnogenovese.it/wp-content/uploads/2016/02/4BD70B00-AE33-4AEE-856F-1F6EA0C4E1BC.jpeg',
             'http://4.bp.blogspot.com/-oKbxGlHoK3I/UdLxW96MtQI/AAAAAAAAC8I/nPJuUpELhqs/s1600/61+P.Monumentale+afdga+Mondani.jpg',
-            '12.91700',
-            '44.56700'
+            '44.40591531858697', 
+            '8.939335738048305'
     );
 INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat) 
     VALUES (
@@ -101,8 +101,8 @@ INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat)
             'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Genoa_fontana_di_piazza_De_Ferrari.jpg/1200px-Genoa_fontana_di_piazza_De_Ferrari.jpg',
             'https://i.ebayimg.com/images/g/jtUAAOSwZFdaja0N/s-l400.jpg',
             'http://www.lavocedigenova.it/typo3temp/pics/p_ed7a0648c8.jpeg',
-            '44.4072247',
-            '8.9334177'
+            '44.40712785099835', 
+            '8.934016640162541'
     );
 INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat) 
     VALUES (
@@ -116,8 +116,8 @@ INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat)
             'https://images.placesonline.com/photos/424010405180500_Genova_772146049.jpg',
             'https://images.fidhouse.com/fidelitynews/wp-content/uploads/sites/9/2014/12/Cattedrale-di-San-Lorenzo-Genova-59994-2.jpg',
             'https://www.mentelocale.it/immagini/schede/462x260/138594.jpg',
-            '56.91700',
-            '88.56700'
+            '44.40763134514167', 
+            '8.931458789833469'
             );
 INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat) 
     VALUES (
@@ -128,8 +128,8 @@ INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat)
             'https://res.cloudinary.com/tf-lab/image/upload/restaurant/890f6db5-56cc-4c67-9d67-acdce6ff1acd/670a4514-f276-40c0-93e0-7012ff008ec9.jpg',
             'https://res.cloudinary.com/tf-lab/image/upload/restaurant/890f6db5-56cc-4c67-9d67-acdce6ff1acd/275a0d5a-2f53-4db4-8bb5-9faf6548b514.jpg',
             'https://res.cloudinary.com/tf-lab/image/upload/restaurant/890f6db5-56cc-4c67-9d67-acdce6ff1acd/de87e653-94dd-4cc6-a394-171089d546ea.jpg',
-            '45.91700',
-            '89.56700'
+            '44.4086854746386', 
+            '8.931197246472893'
     );
 INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat) 
     VALUES (
@@ -143,8 +143,8 @@ INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat)
             'https://www.poli-listaperta.it/wp-content/uploads/2021/11/unnamed.jpg',
             'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/e4/63/cb/acquario-di-genova.jpg?w=1200&h=1200&s=1',
             'https://fai-platform.imgix.net/media/convenzioni/liguria/ge/acquario-di-genova_104669.jpg',
-            '8.91700',
-            '9.56700'
+            '44.41020428824749', 
+            '8.92666193224689'
     );
 INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat)
      VALUES (
@@ -161,8 +161,8 @@ INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat)
              'https://img2.juzaphoto.com/002/shared_files/uploads/2795110.jpg',
              'http://hiddenarchitecture.net/wp-content/uploads/2019/09/raschdorf-017.jpg',
              'https://as2.ftcdn.net/v2/jpg/02/16/81/89/1000_F_216818917_4jbTMQnjEK9MXZ2NvwVVcBBV98HhQ91L.jpg',
-            '56.91700',
-            '1.56700'
+             '44.411243317284956', 
+             '8.932595267635298'
     );
 INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat) 
     VALUES (    
@@ -173,20 +173,8 @@ INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat)
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQguLzVCcKg9eURHqSOtLHg6TXax9dLHSa6Bk3M0SXFWQeoDwOkKeE-n1PzFsGIFv1abpQ&usqp=CAU',
             'https://4.bp.blogspot.com/-3YmCKTJPT7w/VtRZuCAwuHI/AAAAAAAACuI/6Iq1QDTKH4U/w1200-h630-p-k-no-nu/ambiente.jpg',
             'https://www.hotelcitygenova.it/resources/images/1c65a6a2-a14f-4049-972e-dc87d804b370/it/FWB/ristorante-pesciolino.jpg',
-            '16.91700',
-            '90.56700'
-    );
-INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat)
-    VALUES (    
-            'Duomo di Milano',
-            'Bellissimo duomo di Milano',
-            'Via dei Milani',
-            'Milano',
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQguLzVCcKg9eURHqSOtLHg6TXax9dLHSa6Bk3M0SXFWQeoDwOkKeE-n1PzFsGIFv1abpQ&usqp=CAU',
-            'https://4.bp.blogspot.com/-3YmCKTJPT7w/VtRZuCAwuHI/AAAAAAAACuI/6Iq1QDTKH4U/w1200-h630-p-k-no-nu/ambiente.jpg',
-            'https://www.hotelcitygenova.it/resources/images/1c65a6a2-a14f-4049-972e-dc87d804b370/it/FWB/ristorante-pesciolino.jpg',
-            '90.91700',
-            '90.56700'
+            '44.409211995678156', 
+            '8.935454975015281'
     );
 
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (1, 1, 0);
