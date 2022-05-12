@@ -105,7 +105,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
             map.setView(['44.409369955825774', '8.941610113846902'], 14);
             var Icon1 = L.icon({
-                            iconUrl: '../../../img/marker.png',
+                            iconUrl: '../../../img/icons/marker.png',
                             iconSize:     [20, 20],
                         });
             <?php
