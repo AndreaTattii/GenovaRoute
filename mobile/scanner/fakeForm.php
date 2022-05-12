@@ -32,5 +32,9 @@
     $result = $connessione->query($sql);
     $_SESSION['ordineTappa'] = $result->fetch_assoc()['ordine'];
 
+    //fai una query che inserisca nella tabella Utente_Percorre_Tappa la mail dell'utente e l'id della tappa
+    $sql = "INSERT INTO utente_percorre_tappa (email, id_tappa) VALUES ('".$_SESSION['email']."', '".$_SESSION['idTappa']."')";
+    $connessione->query($sql);
+
     header("Location: ../percorsi/tappe/tappaSpecifica/index.php");
 ?>
