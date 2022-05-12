@@ -50,18 +50,18 @@
                         <a class="nav-link" href="index.php" style="color: white">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="gestioneP.php" style="color: white">Percorsi</a>
+                        <a class="nav-link" href="formP.php" style="color: white">Percorsi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="gestioneT.php" style="color: white">Tappe</a>
+                        <a class="nav-link" href="formT.php" style="color: white">Tappe</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
+    <br>
+    <br>
     <!-- CORPO -->
-    <!-- CREA UN FORM PER INSERIMENTO DI percorsi NEL DATABASE -->
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -73,7 +73,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Inserisci un nuovo percorso</h5>
-                        <form action="../../php/gestioneP.php" method="POST">
+                        <form action="inserimentoP.php" method="POST">
                             <div class="form-group">
                                 <label for="nomeP">Nome percorso</label>
                                 <input type="text" class="form-control" id="nomeP" name="nomeP" placeholder="Inserisci il nome del percorso">
@@ -102,30 +102,14 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Associa una tappa ad un percorso</h5>
-                        <form action="../../php/gestioneP.php" method="POST">
+                        <form action="associa.php" method="POST">
                             <div class="form-group">
-                                <label for="nomeP">Nome percorso</label>
-                                <select class="form-control" id="nomeP" name="nomeP">
-                                    <?php
-                                    include '../../php/gestioneP.php';
-                                    //$percorsi = getPercorsi();
-                                    foreach ($percorsi as $percorso) {
-                                        echo "<option value='" . $percorso['nomeP'] . "'>" . $percorso['nomeP'] . "</option>";
-                                    }
-                                    ?>
-                                </select>
+                                <label for="nomeP">Id percorso</label>
+                                <input type="text" class="form-control" id="idP" name="idP" placeholder="Inserisci l'id del percorso">                             
                             </div>
                             <div class="form-group">
-                                <label for="nomeT">Nome tappa</label>
-                                <select class="form-control" id="nomeT" name="nomeT">
-                                    <?php
-                                    include '../../php/gestioneT.php';
-                                    //$tappe = getTappe();
-                                    foreach ($tappe as $tappa) {
-                                        echo "<option value='" . $tappa['nomeT'] . "'>" . $tappa['nomeT'] . "</option>";
-                                    }
-                                    ?>
-                                </select>
+                                <label for="nomeT">Id tappa</label>
+                                <input type="text" class="form-control" id="idT" name="idT" placeholder="Inserisci l'id della tappa">                   
                             </div>
                             <button type="submit" class="btn btn-primary" style="background-color:#B30000; border-color:#B30000; margin-top:15px;">Associa</button>
                         </form>

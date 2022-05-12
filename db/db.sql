@@ -1,5 +1,7 @@
 CREATE DATABASE IF NOT EXISTS GenovaRoute;
 
+USE GenovaRoute;
+
 CREATE TABLE IF NOT EXISTS Utente(
     email varchar(255) PRIMARY KEY,
     nome varchar(255) NOT NULL,
