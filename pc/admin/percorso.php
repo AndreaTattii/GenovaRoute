@@ -171,10 +171,10 @@ if ($result = $connessione->query($sql)) {
         <form action="includiT.php" action="POST">
             <div class="row">
                 <div class="col-4">
-                    <input type="text" name="idTappa" placeholder="Inserisci ID tappa">
+                    <input type="text" name="idTappa" placeholder="Inserisci ID tappa" required>
                 </div>
                 <div class="col-6">
-                    <input type="text" name="ordineTappa" placeholder="Inserisci la posizione della tappa" style="width: 250px;">
+                    <input type="text" name="ordineTappa" placeholder="Inserisci la posizione della tappa" style="width: 250px;" required>
                 </div>
                 <div class="col-2">
                     <input type="hidden" name="idPercorso" value="<?php echo $idPercorso ?>">
@@ -198,7 +198,7 @@ if ($result = $connessione->query($sql)) {
         <form action="escludiT.php" action="POST">
             <div class="row">
                 <div class="col-4">
-                    <input type="text" name="idTappa" placeholder="Inserisci ID tappa">
+                    <input type="text" name="idTappa" placeholder="Inserisci ID tappa" required>
                 </div>
                 <div class="col-4">
                     <input type="hidden" name="idPercorso" value="<?php echo $idPercorso ?>">

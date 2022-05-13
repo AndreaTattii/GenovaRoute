@@ -15,8 +15,7 @@
     $nome = $connessione->real_escape_string($_REQUEST['nomeP']);
     $descrizione = $connessione->real_escape_string($_REQUEST['descrizioneP']);
     
-    //hashing della password
-    $password = hash("sha256", $password);
+    
 
     $sql = "INSERT INTO Percorso (nome, descrizione) VALUES 
     ('".$nome."','".$descrizione."')";
