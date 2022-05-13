@@ -58,23 +58,13 @@ if ($result = $connessione->query($sql)) {
 
     <!-- NAVBAR -->
     <nav class="navbar  navbar-expand-lg" style="background-color: #B30000;">
-        <div class="container p-2">
-            <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold;" href="./">
-                <h1>Genova Route</h1>
-            </a>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php" style="color: white">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="formP.php" style="color: white">Percorsi</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="formT.php" style="color: white">Tappe</a>
-                    </li>
-                </ul>
+        <div class="container">
+            <div class="col">
+                <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center; " href="index.php">
+                    <h1>Genova Route Administration</h1>
+                </a>
             </div>
+
         </div>
     </nav>
     <br>

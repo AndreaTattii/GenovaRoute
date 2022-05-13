@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 $host = "127.0.0.1";
@@ -7,18 +7,19 @@ $pass = "";
 $database = "GenovaRoute";
 $connessione = new mysqli($host, $user, $pass, $database);
 
+if(isset($_POST['idTappa'])){
+    $_SESSION['idTappa'] = $connessione->real_escape_string($_REQUEST['idTappa']);
+}
 
-$idTappa = $connessione->real_escape_string($_REQUEST['idTappa']);   
 
 if ($connessione === false) {
     echo "Errore: " . $connessione->error;
 }
-$sql = "SELECT nome FROM tappa WHERE id = $idTappa";
+$sql = "SELECT nome FROM tappa WHERE id = ".$_SESSION['idTappa']."";
 
 if ($result = $connessione->query($sql)) {
     $row = $result->fetch_assoc();
     $nomeTappa = $row['nome'];
-
 } else {
     echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
 }
@@ -56,30 +57,20 @@ if ($result = $connessione->query($sql)) {
 
     <!-- NAVBAR -->
     <nav class="navbar  navbar-expand-lg" style="background-color: #B30000;">
-        <div class="container p-2">
-            <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold;" href="index.php">
-                <h1>Genova Route</h1>
-            </a>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php" style="color: white">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="formP.php" style="color: white">Percorsi</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="formT.php" style="color: white">Tappe</a>
-                    </li>
-                </ul>
+        <div class="container">
+            <div class="col">
+                <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center; " href="index.php">
+                    <h1>Genova Route Administration</h1>
+                </a>
             </div>
+
         </div>
     </nav>
 
     <!-- CORPO -->
     <br>
     <br>
-    
+
     <!-- Fai un form per l'inserimento di records nella tabella tappa nel db-->
     <div class="container">
         <div class="row">
@@ -87,54 +78,122 @@ if ($result = $connessione->query($sql)) {
                 <h1 class="text-center"> <?php echo $nomeTappa ?></h1>
             </div>
         </div>
-        <form action="modificaT.php" method="POST">
-            <div class="form-group">
-                <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" placeholder="Inserisci il nome della tappa">
+
+
+        <form action="modificaT/modificaNomeT.php" method="POST">
+            <div class="row" style="margin:10px;">
+                <div class="col">
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Nome della tappa">
+                </div>
+                <div class="col">
+                    <?php
+                    echo "<input type='hidden' name='idTappa' value='" . $_SESSION['idTappa'] . "'>"
+                    ?>
+                    <button type="submit" class="btn btn-primary" style=" background-color:#B30000; border-color:#B30000;">Modifica</button>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="descrizione">Descrizione</label>
-                <input type="text" class="form-control" id="descrizione" name="descrizione" placeholder="Inserisci la descrizione della tappa">
-            </div>
-            <div class="form-group">
-                <label for="immagine">Immagine 1</label>
-                <input type="text" class="form-control" id="immagine1" name="immagine1" placeholder="Inserisci l'url dell' immagine">
-            </div>
-            <div class="form-group">
-                <label for="immagine">Immagine 2</label>
-                <input type="text" class="form-control" id="immagine2" name="immagine2" placeholder="Inserisci l'url dell' immagine">
-            </div>
-            <div class="form-group">
-                <label for="immagine">Immagine 3</label>
-                <input type="text" class="form-control" id="immagine3" name="immagine3" placeholder="Inserisci l'url dell' immagine">
-            </div>
-            <div class="form-group">
-                <label for="percorso">Via</label>
-                <input type="text" class="form-control" id="via" name="via" placeholder="Inserisci l'indirizzo della tappa">
-            </div>
-            <div class="form-group">
-                <label for="percorso">Longitudine</label>
-                <input type="text" class="form-control" id="longitudine" name="longitudine" placeholder="Inserisci la longitudine della tappa">
-            </div>
-            <div class="form-group">
-                <label for="percorso">Latitudine</label>
-                <input type="text" class="form-control" id="latitudine" name="latitudine" placeholder="Inserisci la latitudine della tappa">
-            </div>
-            <button type="submit" class="btn btn-primary" style="margin-top: 15px; background-color:#B30000; border-color:#B30000;">Modifica</button>
         </form>
-    </div>
+
+        <form action="modificaT/modificaDescrizioneT.php" method="POST">
+            <div class="row" style="margin:10px;">
+                <div class="col">
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Descrizione della tappa">
+                </div>
+                <div class="col">
+                    <?php
+                    echo "<input type='hidden' name='idTappa' value='" . $_SESSION['idTappa'] . "'>"
+                    ?>
+                    <button type="submit" class="btn btn-primary" style=" background-color:#B30000; border-color:#B30000;">Modifica</button>
+                </div>
+            </div>
+        </form>
+
+        <form action="modificaT/modificaImg1T.php" method="POST">
+            <div class="row" style="margin:10px;">
+                <div class="col">
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Url immagine 1 ">
+                </div>
+                <div class="col">
+                    <?php
+                    echo "<input type='hidden' name='idTappa' value='" . $_SESSION['idTappa'] . "'>"
+                    ?>
+                    <button type="submit" class="btn btn-primary" style=" background-color:#B30000; border-color:#B30000;">Modifica</button>
+                </div>
+            </div>
+        </form>
+
+        <form action="modificaT/modificaImg2T.php" method="POST">
+            <div class="row" style="margin:10px;">
+                <div class="col">
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Url immagine 2">
+                </div>
+                <div class="col">
+                    <?php
+                    echo "<input type='hidden' name='idTappa' value='" . $_SESSION['idTappa'] . "'>"
+                    ?>
+                    <button type="submit" class="btn btn-primary" style=" background-color:#B30000; border-color:#B30000;">Modifica</button>
+                </div>
+            </div>
+        </form>
+
+        <form action="modificaT/modificaImg3T.php" method="POST">
+            <div class="row" style="margin:10px;">
+                <div class="col">
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Url immagine 3">
+                </div>
+                <div class="col">
+                    <?php
+                    echo "<input type='hidden' name='idTappa' value='" . $_SESSION['idTappa'] . "'>"
+                    ?>
+                    <button type="submit" class="btn btn-primary" style=" background-color:#B30000; border-color:#B30000;">Modifica</button>
+                </div>
+            </div>
+        </form>
+
+        <form action="modificaT/modificaViaT.php" method="POST">
+            <div class="row" style="margin:10px;">
+                <div class="col">
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Via">
+                </div>
+                <div class="col">
+                    <?php
+                    echo "<input type='hidden' name='idTappa' value='" . $_SESSION['idTappa'] . "'>"
+                    ?>
+                    <button type="submit" class="btn btn-primary" style=" background-color:#B30000; border-color:#B30000;">Modifica</button>
+                </div>
+            </div>
+        </form>
+
+        <form action="modificaT/modificaLonT.php" method="POST">
+            <div class="row" style="margin:10px;">
+                <div class="col">
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Longitudine">
+                </div>
+                <div class="col">
+                    <?php
+                    echo "<input type='hidden' name='idTappa' value='" . $_SESSION['idTappa'] . "'>"
+                    ?>
+                    <button type="submit" class="btn btn-primary" style=" background-color:#B30000; border-color:#B30000;">Modifica</button>
+                </div>
+            </div>
+        </form>
+        
+        <form action="modificaT/modificaLatT.php" method="POST">
+            <div class="row" style="margin:10px;">
+                <div class="col">
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Latitudine">
+                </div>
+                <div class="col">
+                    <?php
+                    echo "<input type='hidden' name='idTappa' value='" . $_SESSION['idTappa'] . "'>"
+                    ?>
+                    <button type="submit" class="btn btn-primary" style=" background-color:#B30000; border-color:#B30000;">Modifica</button>
+                </div>
+            </div>
+        </form>
 
 
-
-
-
-
-
-
-
-
-
-
+        
 
 
     <!-- stampa tanti br -->
