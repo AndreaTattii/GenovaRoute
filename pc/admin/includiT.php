@@ -13,8 +13,11 @@
     }
 
     $idTappa = $connessione->real_escape_string($_REQUEST['idTappa']);
+    $_SESSION['idTappa'] = $idTappa;
     $idPercorso = $connessione->real_escape_string($_REQUEST['idPercorso']);
+    $_SESSION['idPercorso'] = $idPercorso;
     $ordineTappa = $connessione->real_escape_string($_REQUEST['ordineTappa']);
+    $_SESSION['ordineTappa'] = $ordineTappa;
     
     
     $sql="SELECT * FROM tappa_appartiene_percorso";
@@ -46,7 +49,7 @@
     ('$idTappa','$idPercorso', '$ordineTappa')";
 
     if ($result = $connessione->query($sql)) {
-        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/index.php");
+        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/QRCode.php");
 
 
     } else {
