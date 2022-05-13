@@ -22,7 +22,7 @@
     ('".$nome."','".$descrizione."')";
     
     if($connessione->query($sql) === true){
-        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/formP.php");
+        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/index.php");
     }else{
         echo "Errore durante inserimento: ".$connessione->error;
     }

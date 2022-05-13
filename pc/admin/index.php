@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 header('Content-Type: text/html; charset=ISO-8859-1');
@@ -48,18 +48,15 @@ header('Content-Type: text/html; charset=ISO-8859-1');
 
     <!-- CORPO -->
 
-    <div class="container">
 
+
+    <div class="container">
         <div class="row" style="padding:15px; margin:15px;">
             <div class="col">
 
             </div>
             <div class="col">
-                <div class="row  " style="margin-top:100px;">
-                    <form action="formP.php" method="POST">
-                        <button type="submit" class="btn btn-primary" style="background-color:#B30000; width:100%; border-color:#B30000">Crea nuovi percorsi</button>
-                    </form>
-                </div>
+                
                 <div class="row" style="margin-top:20px">
                     <form action="formT.php" method="POST">
                         <button type="submit" class="btn btn-primary" style="background-color:#B30000; width:100%; border-color:#B30000">Crea nuove tappe</button>
@@ -73,6 +70,8 @@ header('Content-Type: text/html; charset=ISO-8859-1');
         <br>
         <br>
         <br>
+
+
         <!-- PERCORSI -->
         <div class="row" style="margin-top:20px; padding: 10px; border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; border-bottom-color:#F0F0F0;  border-bottom-style: solid; border-bottom-width: 3px; ">
             <h2 style="color:#B30000; text-align:center;">Percorsi</h2>
@@ -80,10 +79,10 @@ header('Content-Type: text/html; charset=ISO-8859-1');
         <br>
         <div class="container" style="border-color : black;  border-style: solid; border-width: 1px;">
             <div class="row" style="border-bottom-color : black;  border-bottom-style: solid; border-bottom-width: 1px;">
-                <div class="col-2">
+                <div class="col-1">
                     <h3>ID</h3>
                 </div>
-                <div class="col-4">
+                <div class="col-2">
                     <h3>Nome</h3>
                 </div>
                 <div class="col-5">
@@ -116,23 +115,37 @@ header('Content-Type: text/html; charset=ISO-8859-1');
                         $sfondo = "background-color:white;";
                     }
                     echo "<div class='row' style='" . $sfondo . "; padding:10px' >";
-                        echo "<div class='col-2'>";
-                            echo $row["id"];
-                         echo "</div>";
-                        echo "<div class='col-4'>";
-                            echo $row["nome"];
-                        echo "</div>";
-                        echo "<div class='col-5'>";
-                            echo $row["descrizione"];
-                        echo "</div>";
-                        echo "<div class='col-1'>";
-                            echo "
+                    echo "<div class='col-1'>";
+                    echo $row["id"];
+                    echo "</div>";
+
+                    echo "<div class='col-2'>";
+                    echo $row["nome"];
+                    echo "</div>";
+
+                    echo "<div class='col-5'>";
+                    echo $row["descrizione"];
+                    echo "</div>";
+
+                    echo "<div class='col-1'>";
+                    echo "
                                 <form action='percorso.php' method='POST'>
-                                    <input type='hidden' name='idPercorso' value='".$row["id"]."'>
+                                    <input type='hidden' name='idPercorso' value='" . $row["id"] . "'>
                                     <button type='submit' style='color:white; background-color:#B30000; width:100%; border-color:#B30000'>Gestisci</button>
                                 </form>
                             ";
-                        echo "</div>";
+                    echo "</div>";
+
+                    echo "<div class='col-2'>";
+                    echo "
+                                <center>
+                                    <form action='eliminaPercorso.php' method='POST'>
+                                        <input type='hidden' name='idPercorso' value='" . $row["id"] . "'>
+                                        <button type='submit' style='color:white; background-color:#B30000; width:50%; border-color:#B30000'>Elimina </button>
+                                    </form>
+                                </center>
+                            ";
+                    echo "</div>";
                     echo "</div>";
                     $i++;
                 }
@@ -141,8 +154,34 @@ header('Content-Type: text/html; charset=ISO-8859-1');
             }
             $connessione->close();
 
+            if ($i % 2 == 0) {
+                $sfondo = "background-color:#F0F0F0;";
+            } else {
+                $sfondo = "background-color:white;";
+            }
+
             ?>
+
+            <div class='row' style="<?php echo $sfondo ?>; padding:10px; border-style:solid; border-width:1px; ">
+                <form action="inserimentoP.php" action="POST">
+                    <div class="row">
+                        <div class="col-4">
+                            <input type="text" name="nomeP" placeholder="Inserisci il nome">
+                        </div>
+                        <div class="col-6">
+                            <input type="text" name="descrizioneP" placeholder="Inserisci la descrizione" style="width: 250px;">
+                        </div>
+                        <div class="col-2">
+                            <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000; width:150px;">Inserisci</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
         </div>
+
+
+
         <br>
         <br>
         <br>

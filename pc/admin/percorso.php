@@ -82,18 +82,15 @@ if ($result = $connessione->query($sql)) {
     <br>
 
     <div class="container">
-        <form action="eliminaPercorso.php" method="POST">
+        
             <div class="row">
                 <div class="col-8">
                     <h1><?php echo $percorso ?></h1>
                 </div>
                 <div class="col-4">
-                    <div class="col-2">
-                        <input type="hidden" name="idPercorso" value="<?php echo $idPercorso ?>">
-                        <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000; width:150px; margin-top:30px">Elimina percorso</button>
-                    </div>
+                    
                 </div>
-        </form>
+       
 
     </div>
     <div class="row" style="border-color : black;  border-style: solid; border-width: 1px;">
