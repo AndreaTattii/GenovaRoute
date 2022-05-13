@@ -1,8 +1,6 @@
 <?php
 session_start();
-if(isset($_POST['percorso'])){
-    $_SESSION['nomePercorso'] = $_POST['percorso'];
-}
+
 
 $host = "127.0.0.1";
 $user = "root";
@@ -45,6 +43,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
 </head>
 
 <body class="d-flex flex-column min-vh-100">
+
 <!-- NAVBAR ALTA -->
 <div class="container fixed-top" >
         <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px;">
@@ -112,12 +111,12 @@ $connessione = new mysqli($host, $user, $pass, $database);
 
             <?php
             if(!empty($_GET["percorsi"])){
-                $sql = 'SELECT lat,lon,Tappa.nome 
+                $sql = 'SELECT lat,lon,Tappa.nome
                 FROM Tappa, Percorso, Tappa_Appartiene_Percorso 
-                Where Tappa.id = Tappa_Appartiene_Percorso.id_tappa 
-                AND Tappa.id='.$_SESSION['idTappa'].' 
+                Where ordine = '.$_SESSION['ordineTappa'].'  
                 AND percorso.id = Tappa_Appartiene_Percorso.id_percorso 
-                AND  percorso.id = '.$_GET["percorsi"].';';
+                AND  percorso.id = '.$_SESSION['idPercorso'].'
+                AND tappa.id=id_tappa ';
                 $result = $connessione->query($sql);
                 $row = $result->fetch_array();
                     echo "L.marker(
@@ -131,7 +130,8 @@ $connessione = new mysqli($host, $user, $pass, $database);
                         ";
                 }
             
-                    ?>
+            
+            ?>
         </script>
     
     
