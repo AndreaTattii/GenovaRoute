@@ -62,6 +62,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
             </div>
         </div>
     </div>
+
  <!-- NAVBAR BASSA-->
  <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 70px;">
         <div class="row  justify-content-center" style="padding-top: 15px;">
@@ -106,7 +107,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
             map.setView(['44.409369955825774', '8.941610113846902'], 14);
             var Icon1 = L.icon({
                             iconUrl: '../../../img/icons/marker.png',
-                            iconSize:     [30, 30],
+                            iconSize:     [35, 35],
                         });
 
 
