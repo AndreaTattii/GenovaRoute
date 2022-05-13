@@ -136,11 +136,6 @@ $connessione = new mysqli($host, $user, $pass, $database);
     
     
 
-   
-
-
-
-
 
 </body>
 </html>

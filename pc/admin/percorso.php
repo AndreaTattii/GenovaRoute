@@ -82,86 +82,97 @@ if ($result = $connessione->query($sql)) {
     <br>
 
     <div class="container">
-        <div class="row">
-            <h1><?php echo $percorso ?></h1>
-        </div>
-        <div class="row" style="border-color : black;  border-style: solid; border-width: 1px;">
+        <form action="eliminaPercorso.php" method="POST">
+            <div class="row">
+                <div class="col-8">
+                    <h1><?php echo $percorso ?></h1>
+                </div>
+                <div class="col-4">
+                    <div class="col-2">
+                        <input type="hidden" name="idPercorso" value="<?php echo $idPercorso ?>">
+                        <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000; width:150px; margin-top:30px">Elimina percorso</button>
+                    </div>
+                </div>
+        </form>
+
+    </div>
+    <div class="row" style="border-color : black;  border-style: solid; border-width: 1px;">
         <div class="col-1">
-                <h3>Id</h3>
-            </div>
-            <div class="col-3">
-                <h3>Ordine</h3>
-            </div>
-            <div class="col-4">
-                <h3>Nome</h3>
-            </div>
-            <div class="col-4">
-                <h3>Via</h3>
-            </div>
+            <h3>Id</h3>
         </div>
-        <?php
+        <div class="col-3">
+            <h3>Ordine</h3>
+        </div>
+        <div class="col-4">
+            <h3>Nome</h3>
+        </div>
+        <div class="col-4">
+            <h3>Via</h3>
+        </div>
+    </div>
+    <?php
 
 
 
-        $i = 0;
-        //error_reporting(0);
+    $i = 0;
+    //error_reporting(0);
 
 
 
 
-        $sql = "SELECT  id, tappa.nome AS nome, tappa.via AS via, tappa_appartiene_percorso.ordine AS ordine 
+    $sql = "SELECT  id, tappa.nome AS nome, tappa.via AS via, tappa_appartiene_percorso.ordine AS ordine 
         FROM tappa, tappa_appartiene_percorso 
         WHERE id_Percorso = '" . $idPercorso . "'
             AND tappa.id = tappa_appartiene_percorso.id_tappa
             ORDER BY ordine";
 
-        if ($result = $connessione->query($sql)) {
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    if ($i % 2 == 0) {
-                        $sfondo = "background-color:#F0F0F0;";
-                    } else {
-                        $sfondo = "background-color:white;";
-                    }
-                    echo "<div class='row' style='" . $sfondo . "; padding:10px; border-left-style:solid; border-left-width:1px; border-right-style:solid; border-right-width:1px; ' >";
-                        echo "<div class='col-1' style='border-right-style:solid; border-right-width:1px'>";
-                            echo '<b>';
-                            echo $row["id"];
-                            echo '</b>';
-                        echo "</div>";
-                        echo "<div class='col-3'>";
-                            echo $row["ordine"];
-                        echo "</div>";
-                        echo "<div class='col-4'>";
-                            echo $row["nome"];
-                        echo "</div>";
-                        echo "<div class='col-4'>";
-                            echo $row["via"];
-                        echo "</div>";
-
-                    echo "</div>";
-                    $i++;
+    if ($result = $connessione->query($sql)) {
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                if ($i % 2 == 0) {
+                    $sfondo = "background-color:#F0F0F0;";
+                } else {
+                    $sfondo = "background-color:white;";
                 }
-            } else {
-                echo "Nessun percorso presente";
+                echo "<div class='row' style='" . $sfondo . "; padding:10px; border-left-style:solid; border-left-width:1px; border-right-style:solid; border-right-width:1px; ' >";
+                echo "<div class='col-1' style='border-right-style:solid; border-right-width:1px'>";
+                echo '<b>';
+                echo $row["id"];
+                echo '</b>';
+                echo "</div>";
+                echo "<div class='col-3'>";
+                echo $row["ordine"];
+                echo "</div>";
+                echo "<div class='col-4'>";
+                echo $row["nome"];
+                echo "</div>";
+                echo "<div class='col-4'>";
+                echo $row["via"];
+                echo "</div>";
+
+                echo "</div>";
+                $i++;
             }
         } else {
-            echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
+            echo "Nessun percorso presente";
         }
+    } else {
+        echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
+    }
 
-        $connessione->close();
+    $connessione->close();
 
-        if ($i % 2 == 0) {
-            $sfondo = "background-color:#F0F0F0;";
-        } else {
-            $sfondo = "background-color:white;";
-        }
+    if ($i % 2 == 0) {
+        $sfondo = "background-color:#F0F0F0;";
+    } else {
+        $sfondo = "background-color:white;";
+    }
 
 
-        ?>
-        <div class='row' style="<?php echo $sfondo ?>; padding:10px; border-style:solid; border-width:1px; " >
-            <form action="includiT.php" action="POST">
-                <div class="row">
+    ?>
+    <div class='row' style="<?php echo $sfondo ?>; padding:10px; border-style:solid; border-width:1px; ">
+        <form action="includiT.php" action="POST">
+            <div class="row">
                 <div class="col-4">
                     <input type="text" name="idTappa" placeholder="Inserisci ID tappa">
                 </div>
@@ -169,36 +180,36 @@ if ($result = $connessione->query($sql)) {
                     <input type="text" name="ordineTappa" placeholder="Inserisci la posizione della tappa" style="width: 250px;">
                 </div>
                 <div class="col-2">
-                    <input type="hidden"  name="idPercorso"  value="<?php echo $idPercorso ?>">
-                    <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000">Includi</button>
+                    <input type="hidden" name="idPercorso" value="<?php echo $idPercorso ?>">
+                    <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000; width:150px;">Includi</button>
                 </div>
-                </div>
-                
-            </form>
-        </div>
-        
-        <?php 
-            $i++;
-            if ($i % 2 == 0) {
-                $sfondo = "background-color:#F0F0F0;";
-            } else {
-                $sfondo = "background-color:white;";
-            }
-        ?>
+            </div>
 
-        <div class='row' style="<?php echo $sfondo ?>; padding:10px; border-style:solid; border-width:1px; " >
-            <form action="escludiT.php" action="POST">
-                <div class="row">
+        </form>
+    </div>
+
+    <?php
+    $i++;
+    if ($i % 2 == 0) {
+        $sfondo = "background-color:#F0F0F0;";
+    } else {
+        $sfondo = "background-color:white;";
+    }
+    ?>
+
+    <div class='row' style="<?php echo $sfondo ?>; padding:10px; border-style:solid; border-width:1px; ">
+        <form action="escludiT.php" action="POST">
+            <div class="row">
                 <div class="col-4">
                     <input type="text" name="idTappa" placeholder="Inserisci ID tappa">
                 </div>
                 <div class="col-4">
-                    <input type="hidden"  name="idPercorso"  value="<?php echo $idPercorso ?>">
-                    <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000">Escludi</button>
+                    <input type="hidden" name="idPercorso" value="<?php echo $idPercorso ?>">
+                    <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000; width:150px;">Escludi</button>
                 </div>
-                </div>
-                
-            </form>
-        </div>
+            </div>
+
+        </form>
+    </div>
     </div>
 </body>
