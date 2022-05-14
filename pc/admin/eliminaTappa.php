@@ -45,7 +45,6 @@
                     WHERE ordine >= $ordineTappa
                     AND id_percorso = ".$rowPercorso['id']."
                 ";
-                echo $query;
                 if ($result = $connessione->query($query)) {
             
             

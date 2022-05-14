@@ -42,9 +42,9 @@
     } else {
         echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
     }
-    */
-    $sql="UPDATE tappa_appartiene_percorso SET ordine =(ordine+1)
-            WHERE id_tappa > ".$ordineTappa."
+    */  
+    $sql="UPDATE tappa_appartiene_percorso SET ordine = (ordine+1)
+            WHERE ordine >= ".$ordineTappa."
             AND id_percorso = ".$idPercorso;
 
     if ($result = $connessione->query($sql)) {
