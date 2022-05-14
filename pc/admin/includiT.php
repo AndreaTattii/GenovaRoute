@@ -19,7 +19,7 @@
     $ordineTappa = $connessione->real_escape_string($_REQUEST['ordineTappa']);
     $_SESSION['ordineTappa'] = $ordineTappa;
     
-    
+    /*
     $sql="SELECT * FROM tappa_appartiene_percorso";
     if ($result = $connessione->query($sql)) {
         if ($result->num_rows > 0) {
@@ -42,8 +42,16 @@
     } else {
         echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
     }
+    */
+    $sql="UPDATE tappa_appartiene_percorso SET ordine =(ordine+1)
+            WHERE id_tappa > ".$ordineTappa."
+            AND id_percorso = ".$idPercorso;
 
+    if ($result = $connessione->query($sql)) {
 
+    } else {
+        echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
+    }
 
     $sql = "INSERT  INTO tappa_appartiene_percorso (id_tappa, id_percorso, ordine) VALUES 
     ('$idTappa','$idPercorso', '$ordineTappa')";

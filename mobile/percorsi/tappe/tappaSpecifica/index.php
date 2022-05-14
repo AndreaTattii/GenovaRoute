@@ -43,7 +43,8 @@ if ($result = $connessione->query($sql)) {
         $dove = $row['via'];
         $nome = $row['nome'];
     } else {
-        die('ERRORE: codice QR non riconosciuto');
+        echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
+        //die('ERRORE: codice QR non riconosciuto');
     }
 } else {
     echo "Impossibile eseguire la query";

@@ -54,72 +54,81 @@ if ($result = $connessione->query($sql)) {
 </head>
 
 <body class="d-flex flex-column min-vh-100">
+
+    <!-- NAVBAR ALTA -->
     <nav class="navbar  navbar-expand-lg" style="background-color: #B30000;">
         <div class="container p-2">
             <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold;" href="../index.php">
                 <h1>Genova Route</h1>
             </a>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-	    		<ul class="navbar-nav">
-	    			<li class="nav-item">
-	    				<a class="nav-link" href="../percorsi/index.php" style="color: white">Percorsi</a>
-	    			</li>
-	    			<li class="nav-item">
-	    				<a class="nav-link" href="#" style="color: white">Preferiti</a>
-	    			</li>
-	    			<li class="nav-item">
-	    				<a class="nav-link" href="#" style="color: white">Account</a>
-	    			</li>
-	    		</ul>
-	    	</div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../percorsi/index.php" style="color: white">Percorsi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: white">Preferiti</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: white">Account</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
     <!--- Corpo del sito -->
-    
+
     <div class="container">
         <div class="row justify-content-center align-item-center" style="padding-top: 20px">
-            <div class="col" id="immagineProfilo">
+            <div class="col-4" id="immagineProfilo">
                 <img src="../../img/FotoProfilo.png">
             </div>
-            <div class="col -" id="nomeUtente" style="padding-top: 10px;">
-                <?php echo  ' <h1 style="font-weight: bold; font-size: 30px; color: black; text-align: center;">' . $nome . ' ' . $cognome . '</h1> ';  ?>
+
+            <div class="col" id="nomeUtente" style="padding-top: 10px;">
+                <?php echo  ' <h1 style="font-weight: bold; font-size: 30px; color: black; text-align: left;">' . $nome . ' ' . $cognome . '</h1> ';  ?>
             </div>
         </div>
-                <div class="row">
-            <div class="col -3">
-                
+
+        <div class="row justify-content-center align-item-center">
+            <div class="col-4">
+
             </div>
-            <div class="col -3"></div>
+            <div class="col-4">
                 <form action="logout/logout.php" method="POST">
-                    <button type="submit" class="btn btn-primary button-profile" style="background-color: white; border-color:#B30000; font-size: 15px; color:#B30000 ; text-align: center; ">Log out</button>
+                        <button type="submit" class="btn btn-primary button-profile" style="background-color: white; border-color:#B30000; font-size: 15px; color:#B30000 ; text-align: center; ">Log out</button>
                 </form>
             </div>
-            <div class="col -6" >
-                <form action="cambiaPsw/index.php" method="POST" >
-                    <button type="submit" class="btn btn-primary button-profile" style="background-color: white; border-color:#B30000; font-size: 15px; color:#B30000 ; text-align: center; ">Password</button>
+            <div class="col-4">
+                <form action="cambiaPsw/index.php" method="POST">
+                        <button type="submit" class="btn btn-primary button-profile" style="background-color: white; border-color:#B30000; font-size: 15px; color:#B30000 ; text-align: center; ">Password</button>
                 </form>
+
             </div>
+
+
+
+
         </div>
-    </div>     
-    
+    </div>
+
 
     <div class="footer-clean" style="border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px; position:fixed; bottom:0px; width:100%;">
-		<footer>
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-4 ">
-					</div>
-					<div class="col-4" ></div>
-						<center>
-							<p style="text-decoration: none; color:black">Partita Iva: 02070920992</p>
-							<p>GenovaRoute ©</p> 
-						</center>
-					</div>
-				</div>
-			</div>
-		</footer>
-	</div>
+        <footer>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-4 ">
+                    </div>
+                    <div class="col-4"></div>
+                    <center>
+                        <p style="text-decoration: none; color:black">Partita Iva: 02070920992</p>
+                        <p>GenovaRoute ©</p>
+                    </center>
+                </div>
+            </div>
+    </div>
+    </footer>
+    </div>
 
 </body>
 
