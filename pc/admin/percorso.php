@@ -122,20 +122,32 @@ if ($result = $connessione->query($sql)) {
                     $sfondo = "background-color:white;";
                 }
                 echo "<div class='row' style='" . $sfondo . "; padding:10px; border-left-style:solid; border-left-width:1px; border-right-style:solid; border-right-width:1px; ' >";
-                echo "<div class='col-1' style='border-right-style:solid; border-right-width:1px'>";
-                echo '<b>';
-                echo $row["id"];
-                echo '</b>';
-                echo "</div>";
-                echo "<div class='col-3'>";
-                echo $row["ordine"];
-                echo "</div>";
-                echo "<div class='col-4'>";
-                echo $row["nome"];
-                echo "</div>";
-                echo "<div class='col-4'>";
-                echo $row["via"];
-                echo "</div>";
+                    echo "<div class='col-1' style='border-right-style:solid; border-right-width:1px'>";
+                        echo '<b>';
+                            echo $row["id"];
+                        echo '</b>';
+                    echo "</div>";
+                    echo "<div class='col-2'>";
+                        echo $row["ordine"];
+                    echo "</div>";
+                    echo "<div class='col-4'>";
+                        echo $row["nome"];
+                    echo "</div>";
+                    echo "<div class='col-4'>";
+                        echo $row["via"];
+                    echo "</div>";
+                    echo "<div class='col-1'>";
+                            echo "
+                                    <center>
+                                        <form action='visualizzaQR.php' method='POST'>
+                                            <input type='hidden' name='idTappa' value='" . $row["id"] . "'>
+                                            <input type='hidden' name='idPercorso' value='" . $idPercorso . "'>
+                                            <input type='hidden' name='nomePercorso' value='" . $percorso . "'>
+                                            <button type='submit' style='color:white; background-color:#B30000; width:50px; border-color:#B30000; border-radius:50px'> QR </button>
+                                        </form>
+                                    </center>
+                                ";
+                    echo "</div>";
 
                 echo "</div>";
                 $i++;
@@ -199,4 +211,8 @@ if ($result = $connessione->query($sql)) {
         </form>
     </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
 </body>

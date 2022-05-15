@@ -31,7 +31,7 @@
                 ";
                 if($result = $connessione->query($query)) {  
                     
-                    if($resultPercorso->num_rows > 0){
+                    if($result->num_rows > 0){
                         $row = $result->fetch_assoc();
                         $ordineTappa = $row['ordine'];
                     } 
