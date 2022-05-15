@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-header('Content-Type: text/html; charset=ISO-8859-1');
+//header('Content-Type: text/html; charset=ISO-8859-1');
 ?>
 <!doctype html>
 <html lang="en">
@@ -51,7 +51,7 @@ header('Content-Type: text/html; charset=ISO-8859-1');
 
 
     <div class="container">
-        
+
         <br>
         <br>
         <br>
@@ -100,29 +100,29 @@ header('Content-Type: text/html; charset=ISO-8859-1');
                         $sfondo = "background-color:white;";
                     }
                     echo "<div class='row' style='" . $sfondo . "; padding:10px' >";
-                        echo "<div class='col-1'>";
-                            echo $row["id"];
-                        echo "</div>";
+                    echo "<div class='col-1'>";
+                    echo $row["id"];
+                    echo "</div>";
 
-                        echo "<div class='col-2'>";
-                            echo $row["nome"];
-                        echo "</div>";
+                    echo "<div class='col-2'>";
+                    echo $row["nome"];
+                    echo "</div>";
 
-                        echo "<div class='col-5'>";
-                            echo $row["descrizione"];
-                        echo "</div>";
+                    echo "<div class='col-5'>";
+                    echo $row["descrizione"];
+                    echo "</div>";
 
-                        echo "<div class='col-2'>";
-                            echo "
+                    echo "<div class='col-2'>";
+                    echo "
                                     <form action='percorso.php' method='POST'>
                                         <input type='hidden' name='idPercorso' value='" . $row["id"] . "'>
                                         <button type='submit' style='color:white; background-color:#B30000; width:100%; border-color:#B30000; border-radius:50px'>Gestisci</button>
                                     </form>
                                 ";
-                        echo "</div>";
+                    echo "</div>";
 
-                        echo "<div class='col-2'>";
-                            echo "
+                    echo "<div class='col-2'>";
+                    echo "
                                     <center>
                                         <form action='eliminaPercorso.php' method='POST'>
                                             <input type='hidden' name='idPercorso' value='" . $row["id"] . "'>
@@ -130,7 +130,7 @@ header('Content-Type: text/html; charset=ISO-8859-1');
                                         </form>
                                     </center>
                                 ";
-                        echo "</div>";
+                    echo "</div>";
                     echo "</div>";
                     $i++;
                 }
@@ -148,18 +148,54 @@ header('Content-Type: text/html; charset=ISO-8859-1');
             ?>
 
             <div class='row' style="<?php echo $sfondo ?>; padding:10px; border-style:solid; border-width:1px; ">
+                <form action="modificaP/modificaNomeP.php" action="POST">
+                    <div class="row">
+                        <div class="col-3">
+                            <input type="text" name="idPercorso" placeholder="Inserisci l'id" required>
+                        </div>
+                        <div class="col-7">
+                            <input type="text" name="nuovoNome" placeholder="Inserisci nome" style="width: 90%;" required>
+                        </div>
+                        <div class="col-1">
+                            <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000; width:150px;">Modifica</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            
+
+            <div class='row' style="<?php echo $sfondo ?>; padding:10px; border-style:solid; border-width:1px; ">
+                <form action="modificaP/modificaDescrizioneP.php" action="POST">
+                    <div class="row">
+                        <div class="col-3">
+                            <input type="text" name="idPercorso" placeholder="Inserisci l'id" required>
+                        </div>
+                        <div class="col-7">
+                            <input type="text" name="nuovaDescrizione" placeholder="Inserisci descrizione" style="width: 90%;" required>
+                        </div>
+                        <div class="col-1">
+                            <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000; width:150px;">Modifica</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class='row' style="<?php echo $sfondo ?>; padding:10px; border-style:solid; border-width:1px; ">
                 <form action="inserimentoP.php" action="POST">
                     <div class="row">
-                        <div class="col-2">
+                        <div class="col-3">
                             <input type="text" name="nomeP" placeholder="Inserisci il nome" required>
                         </div>
                         <div class="col-4">
                             <input type="text" name="descrizioneP" placeholder="Inserisci la descrizione" style="width: 90%;" required>
                         </div>
-                        <div class="col-2">
+                        <div class="col-3">
                             <input type="text" name="idTappa" placeholder="Inserisci id tappa" required>
                         </div>
-                        <div class="col-2">
+                        <div class="col-1">
                             <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000; width:150px;">Inserisci</button>
                         </div>
                     </div>
@@ -183,7 +219,7 @@ header('Content-Type: text/html; charset=ISO-8859-1');
 
             </div>
             <div class="col">
-                
+
                 <div class="row" style="margin-top:20px">
                     <form action="formT.php" method="POST">
                         <button type="submit" class="btn btn-primary" style="background-color:#B30000; width:100%; border-color:#B30000">Crea nuove tappe</button>
@@ -234,22 +270,22 @@ header('Content-Type: text/html; charset=ISO-8859-1');
                         $sfondo = "background-color:white;";
                     }
                     echo "<div class='row' style='" . $sfondo . " padding: 10px;'>";
-                        echo "<div class='col-1'>";
-                            echo $row["id"];
-                        echo "</div>";
-                        echo "<div class='col-2'>";
-                            echo $row["nome"];
-                        echo "</div>";
-                        echo "<div class='col-4'>";
-                            echo $row["descrizione"];
-                        echo "</div>";
-                        echo "<div class='col-1'>";
-                            echo $row["via"];
-                        echo "</div>";
-                        
+                    echo "<div class='col-1'>";
+                    echo $row["id"];
+                    echo "</div>";
+                    echo "<div class='col-2'>";
+                    echo $row["nome"];
+                    echo "</div>";
+                    echo "<div class='col-4'>";
+                    echo $row["descrizione"];
+                    echo "</div>";
+                    echo "<div class='col-1'>";
+                    echo $row["via"];
+                    echo "</div>";
 
-                        echo "<div class='col-2'>";
-                            echo "
+
+                    echo "<div class='col-2'>";
+                    echo "
                                     <center>
                                         <form action='formModificaT.php' method='POST'>
                                             <input type='hidden' name='idTappa' value='" . $row["id"] . "'>
@@ -257,9 +293,9 @@ header('Content-Type: text/html; charset=ISO-8859-1');
                                         </form>
                                     </center>
                                 ";
-                        echo "</div>";
-                        echo "<div class='col-2'>";
-                            echo "
+                    echo "</div>";
+                    echo "<div class='col-2'>";
+                    echo "
                                     <center>
                                         <form action='eliminaTappa.php' method='POST'>
                                             <input type='hidden' name='idTappa' value='" . $row["id"] . "'>
@@ -267,7 +303,7 @@ header('Content-Type: text/html; charset=ISO-8859-1');
                                         </form>
                                     </center>
                                 ";
-                        echo "</div>";
+                    echo "</div>";
                     echo "</div>";
                     $i++;
                 }
@@ -276,7 +312,7 @@ header('Content-Type: text/html; charset=ISO-8859-1');
             }
             $connessione->close();
 
-            
+
 
             ?>
 
