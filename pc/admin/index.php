@@ -150,11 +150,14 @@ header('Content-Type: text/html; charset=ISO-8859-1');
             <div class='row' style="<?php echo $sfondo ?>; padding:10px; border-style:solid; border-width:1px; ">
                 <form action="inserimentoP.php" action="POST">
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-2">
                             <input type="text" name="nomeP" placeholder="Inserisci il nome" required>
                         </div>
-                        <div class="col-5">
+                        <div class="col-4">
                             <input type="text" name="descrizioneP" placeholder="Inserisci la descrizione" style="width: 90%;" required>
+                        </div>
+                        <div class="col-2">
+                            <input type="text" name="idTappa" placeholder="Inserisci id tappa" required>
                         </div>
                         <div class="col-2">
                             <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000; width:150px;">Inserisci</button>

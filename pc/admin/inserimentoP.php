@@ -14,12 +14,41 @@
 
     $nome = $connessione->real_escape_string($_REQUEST['nomeP']);
     $descrizione = $connessione->real_escape_string($_REQUEST['descrizioneP']);
+    $idTappa = $connessione->real_escape_string($_REQUEST['idTappa']);
     
     
 
-    $sql = "INSERT INTO Percorso (nome, descrizione) VALUES 
-    ('".$nome."','".$descrizione."')";
     
+    $sql="INSERT INTO Percorso (nome, descrizione) VALUES ('$nome', '$descrizione')";
+    if ($result = $connessione->query($sql)) {
+        echo "Percorso inserito con successo";
+    } else {
+        echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
+    }
+
+
+    //restituisci ultimo percroso inserito
+    $sql="SELECT id FROM Percorso
+        WHERE nome = '$nome'
+        AND descrizione = '$descrizione'
+    ";
+    if ($result = $connessione->query($sql)) {
+        if($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $idPercorso = $row['id'];
+            }
+        } else {
+            echo "Nessun percorso presente";
+        }
+    } else {
+        echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
+    }
+
+
+
+    $sql = "INSERT INTO tappa_appartiene_percorso (id_tappa, id_percorso, ordine) VALUES 
+    ('".$idTappa."','".$idPercorso."', 0)";
+
     if($connessione->query($sql) === true){
         header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/index.php");
     }else{
@@ -27,5 +56,5 @@
     }
 
 
-    
+    $connessione->close();
 ?>
