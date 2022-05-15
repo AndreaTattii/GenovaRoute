@@ -69,7 +69,7 @@
     //if (isset($_REQUEST['level']) && in_array($_REQUEST['level'], array('L','M','Q','H')))
     //    $errorCorrectionLevel = $_REQUEST['level'];    
 
-    $matrixPointSize = 5;
+    $matrixPointSize = 7;
     //if (isset($_REQUEST['size']))
     //    $matrixPointSize = min(max((int)$_REQUEST['size'], 1), 10);
 
