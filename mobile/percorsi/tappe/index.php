@@ -127,7 +127,7 @@ if($result = $connessione->query($query)){
         
         
 
-        $sql = "SELECT tappa.nome, tappa_appartiene_percorso.ordine, tappa.id FROM tappa, tappa_appartiene_percorso, percorso WHERE tappa.id = tappa_appartiene_percorso.id_tappa AND tappa_appartiene_percorso.id_percorso = percorso.id AND percorso.id = " . $_SESSION['idPercorso'] . " ORDER BY tappa_appartiene_percorso.ordine";
+        $sql = "SELECT tappa.nome, tappa_appartiene_percorso.ordine, tappa.id FROM tappa, tappa_appartiene_percorso, percorso WHERE tappa.id = tappa_appartiene_percorso.id_tappa AND tappa_appartiene_percorso.id_percorso = percorso.id AND percorso.id = " . $_SESSION['idPercorso'] . " ORDER BY tappa_appartiene_percorso.ordine;";
         if ($result = $connessione->query($sql)) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_array()) { 
@@ -137,23 +137,39 @@ if($result = $connessione->query($query)){
                     } else {
                         $coloreRiga = "#F0F0F0";
                     }
+                    //query per selezionare solo le tappe che sono state visitate e quindi scannerizzate
+                    //$sql2 = "SELECT * FROM utente_percorre_tappa WHERE id_tappa = " . $row['id'] . " AND email = " . $_SESSION['email'] ."";
+                    //fai una query per controllare se l'utente ha già scannerizzato la tappa, ovvero se la sua la variabile di sessione email è presente nella tabella utente_percorre_tappa, se è presente allora la tappa è stata scannerizzata, altrimenti non è stata scannerizzata
+                    $sql2 = "SELECT * FROM utente_percorre_tappa WHERE id_tappa = " . $row['id'] . " AND email = '" . $_SESSION['email'] . "';";
+                    if ($result2 = $connessione->query($sql2)) {
+                        if ($result2->num_rows > 0) {
+                            while ($row2 = $result2->fetch_array()) {
+                                $coloreBottone = "white";
+                                $coloreScritta = "#B30000";
+                            }
+                        } else {
+                            $coloreBottone = "#B30000";
+                            $coloreScritta = "white";
+                        }
+                    } else {
+                        echo "Errore: " . $connessione->error;
+                    }
                     echo '
-                                            <div class="col-sm align-self-center" style="width:100%;">       
-                                                <div class="card text-center align-self-center" style="width:100%;  background-color: ' . $coloreRiga . ';">
-                                                    <div class="card-body">
-                                                        <form action="tappaSpecifica/index.php" method="post">
-                                                            <p class="card-title">
-                                                                <input type="hidden" name="ordineTappa" value="' . $row['ordine'] . '">
-                                                                <input type="hidden" name="idTappa" value="' . $row['id'] . '">
-
-                                                                <input type="submit" value="' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:18px; border: none; font-weight: bold; float: left;"> 
-                                                                <button type="submit" class="btn btn-primary" style="background-color: #B30000; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>
-                                                            </p>
-                                                        </form>
-                                                    </div>
-                                                </div>                                        
-                                            </div>
-                                            ';
+                        <div class="col-sm align-self-center" style="width:100%;">       
+                            <div class="card text-center align-self-center" style="width:100%;  background-color: ' . $coloreRiga . ';">
+                                <div class="card-body">
+                                    <form action="tappaSpecifica/index.php" method="post">
+                                        <p class="card-title">
+                                            <input type="hidden" name="ordineTappa" value="' . $row['ordine'] . '">
+                                            <input type="hidden" name="idTappa" value="' . $row['id'] . '">
+                                            <input type="submit" value="' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:18px; border: none; font-weight: bold; float: left;"> 
+                                            <button type="submit" class="btn btn-primary" style="background-color: '.$coloreBottone.'; border-color:#B30000; font-size: 15px; color:'.$coloreScritta.' ; text-align: center; float: right;">Visualizza</button>
+                                        </p>
+                                    </form>
+                                </div>
+                            </div>                                        
+                        </div>
+                        ';
                 }
             } else {
                 echo "Non ci sono tappe salvate nel database";
