@@ -179,8 +179,8 @@ if ($result = $connessione->query($sql)) {
         <!-- CAROSELLO -->
         <div class="row" style="padding-top: 20px; padding-top: 20px; height:225px;">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
+                <div class="carousel-inner" style="align-items: center;">
+                    <div class="carousel-item active" >
                         <img src="<?php echo $img1; ?>" class="d-block w-100" alt="..." style="max-height: 200px; margin-left: auto; margin-right: auto;">
                     </div>
                     <div class="carousel-item">
@@ -195,12 +195,12 @@ if ($result = $connessione->query($sql)) {
         </div>
         <!-- DOVE -->
         <div class="row align-content-center justify-content-center" style=" padding-top:0px">
-            <p style="text-align:center; text-decoration: underline;"><?php echo $dove; ?></p>
+            <p style="text-align:center; font-weight: bold;"><?php echo $dove; ?></p>
         </div>
         <!-- DESCRIZIONE -->
         <div class="row" style="padding-top: 1px;  padding-left: 10px; padding-right:10px;">
-            <div class="row">
-                <p style="text-align:center"><?php echo $descrizione; ?></p>
+            <div class="row" style="margin: auto;">
+                <p style="text-align:justify"><?php echo $descrizione; ?></p>
             </div>
         </div>
         
