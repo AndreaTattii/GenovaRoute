@@ -177,7 +177,7 @@ if ($result = $connessione->query($sql)) {
     
 
         <!-- CARD -->
-        <div class="card " style="margin-top:20px; border-radius:0px; text-align: left; padding-top:60px; margin:0px">
+        <div class="card text-center" style="margin-top:20px; border-radius:0px; text-align: left; padding-top:60px; margin:0px">
 
             <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px">
                 <p class="card-title" style="font-weight: bold; margin-left: 10px;"><img src="../../../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; "><?php echo $dove; ?></p>
@@ -211,47 +211,8 @@ if ($result = $connessione->query($sql)) {
             </div>
         </div>
 
-        <!-- CAROSELLO -->
-        <div class="row" style="padding-top: 20px; padding-top: 20px; height:225px;">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner" style="align-items: center;">
-                    <div class="carousel-item active">
-                        <img src="<?php echo $img1; ?>" class="d-block w-100" alt="..." style="max-height: 200px; margin-left: auto; margin-right: auto;">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="<?php echo $img2; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="<?php echo $img3; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <!-- DOVE -->
-        <div class="row" style="padding-top: 10px;">
-
-            <div class="row align-content-center justify-content-center" style=" padding-top:0px ;padding-bottom:20px">
-                <div class="col-2" style="padding-left:40px;margin:auto;">
-                    <img src="../../../../img/icons/marker.png" style="width: 40px;">
-                </div>
-                <div class="col-10" style="margin:auto;padding-top:25px">
-                    <p style="text-align:center; font-weight: bold;"><?php echo $dove; ?></p>
-                </div>
-            </div>
-            <!-- DESCRIZIONE -->
-            <div class="row" style="padding-top: 1px;  padding-left: 0px; padding-right:0px;  margin-left: 0px; margin-right:0px;">
-                <div class="row" style="margin: auto;">
-                    <p style="text-align:justify"><?php echo $descrizione; ?></p>
-                </div>
-            </div>
-
-            <div class="row " style="padding-top: 10px; padding-bottom:100px">
-                <div class="col .s-4">
-
-                </div>
-            </div>
-        </div>
+        
+        
         <script>
             if (window.history.replaceState) {
                 window.history.replaceState(null, null, window.location.href);
