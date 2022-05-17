@@ -83,7 +83,7 @@ if ($result = $connessione->query($sql)) {
         <form action="modificaT/modificaNomeT.php" method="POST">
             <div class="row" style="margin:10px;">
                 <div class="col">
-                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Nome della tappa">
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Nome della tappa" maxlength="20" required>
                 </div>
                 <div class="col">
                     <?php
@@ -97,7 +97,7 @@ if ($result = $connessione->query($sql)) {
         <form action="modificaT/modificaDescrizioneT.php" method="POST">
             <div class="row" style="margin:10px;">
                 <div class="col">
-                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Descrizione della tappa">
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Descrizione della tappa" maxlength="2000" required>
                 </div>
                 <div class="col">
                     <?php
@@ -111,7 +111,7 @@ if ($result = $connessione->query($sql)) {
         <form action="modificaT/modificaImg1T.php" method="POST">
             <div class="row" style="margin:10px;">
                 <div class="col">
-                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Url immagine 1 ">
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Url immagine 1 " required>
                 </div>
                 <div class="col">
                     <?php
@@ -125,7 +125,7 @@ if ($result = $connessione->query($sql)) {
         <form action="modificaT/modificaImg2T.php" method="POST">
             <div class="row" style="margin:10px;">
                 <div class="col">
-                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Url immagine 2">
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Url immagine 2" required>
                 </div>
                 <div class="col">
                     <?php
@@ -139,7 +139,7 @@ if ($result = $connessione->query($sql)) {
         <form action="modificaT/modificaImg3T.php" method="POST">
             <div class="row" style="margin:10px;">
                 <div class="col">
-                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Url immagine 3">
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Url immagine 3" required>
                 </div>
                 <div class="col">
                     <?php
@@ -153,7 +153,7 @@ if ($result = $connessione->query($sql)) {
         <form action="modificaT/modificaViaT.php" method="POST">
             <div class="row" style="margin:10px;">
                 <div class="col">
-                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Via">
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Via" maxlength="30" required>
                 </div>
                 <div class="col">
                     <?php
@@ -167,7 +167,7 @@ if ($result = $connessione->query($sql)) {
         <form action="modificaT/modificaLonT.php" method="POST">
             <div class="row" style="margin:10px;">
                 <div class="col">
-                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Longitudine">
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Longitudine" maxlength="100" required>
                 </div>
                 <div class="col">
                     <?php
@@ -181,7 +181,7 @@ if ($result = $connessione->query($sql)) {
         <form action="modificaT/modificaLatT.php" method="POST">
             <div class="row" style="margin:10px;">
                 <div class="col">
-                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Latitudine">
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Latitudine" maxlength="100" required>
                 </div>
                 <div class="col">
                     <?php
