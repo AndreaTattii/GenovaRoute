@@ -154,6 +154,7 @@ if($result = $connessione->query($query)){
                     } else {
                         echo "Errore: " . $connessione->error;
                     }
+                    $row['ordine']=$row['ordine']+1;
                     echo '
                         <div class="col-sm align-self-center" style="width:100%;">       
                             <div class="card text-center align-self-center" style="width:100%;  background-color: ' . $coloreRiga . ';">
@@ -162,8 +163,8 @@ if($result = $connessione->query($query)){
                                         <p class="card-title">
                                             <input type="hidden" name="ordineTappa" value="' . $row['ordine'] . '">
                                             <input type="hidden" name="idTappa" value="' . $row['id'] . '">
-                                            <input type="submit" value="' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:18px; border: none; font-weight: bold; float: left;"> 
-                                            <button type="submit" class="btn btn-primary" style="background-color: '.$coloreBottone.'; border-color:#B30000; font-size: 15px; color:'.$coloreScritta.' ; text-align: center; float: right;">Visualizza</button>
+                                            <input type="submit" value="' . $row['ordine'] . '. ' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:18px; border: none; font-weight: bold; float: left;"> 
+                                            <button type="submit" class="btn btn-primary" style="background-color: '.$coloreBottone.'; border-color:#B30000; font-size: 13px; color:'.$coloreScritta.' ; text-align: center; float: right;">Visualizza</button>
                                         </p>
                                     </form>
                                 </div>
