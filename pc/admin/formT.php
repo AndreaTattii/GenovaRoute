@@ -58,11 +58,11 @@
         <form action="inserimentoT.php" method="POST">
             <div class="form-group">
                 <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" placeholder="Inserisci il nome della tappa" required>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Inserisci il nome della tappa" maxlength="20" required>
             </div>
             <div class="form-group">
                 <label for="descrizione">Descrizione</label>
-                <input type="text" class="form-control" id="descrizione" name="descrizione" placeholder="Inserisci la descrizione della tappa" required>
+                <textarea class="form-control" placeholder="Inserisci descrizione" name="nuovaDescrizione" maxlength="2000"  required></textarea>
             </div>
             <div class="form-group">
                 <label for="immagine">Immagine 1</label>
@@ -78,15 +78,15 @@
             </div>
             <div class="form-group">
                 <label for="percorso">Via</label>
-                <input type="text" class="form-control" id="via" name="via" placeholder="Inserisci l'indirizzo della tappa" required>
+                <input type="text" class="form-control" id="via" name="via" placeholder="Inserisci l'indirizzo della tappa" maxlength="30" required>
             </div>
             <div class="form-group">
                 <label for="percorso">Longitudine</label>
-                <input type="text" class="form-control" id="longitudine" name="longitudine" placeholder="Inserisci la longitudine della tappa" required>
+                <input type="text" class="form-control" id="longitudine" name="longitudine" placeholder="Inserisci la longitudine della tappa" maxlength="100" required>
             </div>
             <div class="form-group">
                 <label for="percorso">Latitudine</label>
-                <input type="text" class="form-control" id="latitudine" name="latitudine" placeholder="Inserisci la latitudine della tappa" required>
+                <input type="text" class="form-control" id="latitudine" name="latitudine" placeholder="Inserisci la latitudine della tappa" maxlength="100" required>
             </div>
             <button type="submit" class="btn btn-primary" style="margin-top: 15px; background-color:#B30000; border-color:#B30000;">Inserisci</button>
         </form>

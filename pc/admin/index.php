@@ -154,7 +154,7 @@ session_start();
                             <input type="text" name="idPercorso" placeholder="Inserisci l'id" required>
                         </div>
                         <div class="col-7">
-                            <input type="text" name="nuovoNome" placeholder="Inserisci nome" style="width: 90%;" required>
+                            <input type="text" name="nuovoNome" placeholder="Inserisci nome" style="width: 90%;" maxlength="20" required>
                         </div>
                         <div class="col-1">
                             <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000; width:150px;">Modifica</button>
@@ -173,7 +173,9 @@ session_start();
                             <input type="text" name="idPercorso" placeholder="Inserisci l'id" required>
                         </div>
                         <div class="col-7">
-                            <input type="text" name="nuovaDescrizione" placeholder="Inserisci descrizione" style="width: 90%;" required>
+                            <input type="text" name="nuovaDescrizione" placeholder="Inserisci descrizione" style="width: 90%;" maxlength="80"  required>
+                            
+
                         </div>
                         <div class="col-1">
                             <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000; width:150px;">Modifica</button>
@@ -187,16 +189,16 @@ session_start();
                 <form action="inserimentoP.php" action="POST">
                     <div class="row">
                         <div class="col-3">
-                            <input type="text" name="nomeP" placeholder="Inserisci il nome" required>
+                            <input type="text" name="nomeP" placeholder="Inserisci il nome" maxlength="20" required>
                         </div>
                         <div class="col-4">
-                            <input type="text" name="descrizioneP" placeholder="Inserisci la descrizione" style="width: 90%;" required>
+                            <input type="text" name="descrizioneP" placeholder="Inserisci la descrizione" style="width: 90%;" maxlength="80" required>
                         </div>
                         <div class="col-3">
                             <input type="text" name="idTappa" placeholder="Inserisci id tappa" required>
                         </div>
                         <div class="col-1">
-                            <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000; width:150px;">Inserisci</button>
+                            <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000; width:150px;">Crea</button>
                         </div>
                     </div>
 
