@@ -132,30 +132,19 @@ session_start();
                         echo "Errore: " . $connessione->error;
                     }
                     echo '
-                    <form action="tappe/index.php" method="post">
-                        <div class="container " style="width:100%;  background-color: ' . $coloreRiga . '; padding-bottom: 15px; padding-top: 15px">
-                            <div class="row justify-content-center " style="background-color: ' . $coloreRiga . ';">
-                                <div class="col-xs ">
-                                    <div class="row">
-                                        <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
-                                        <input type="submit" value="' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:20px; border: none; font-weight: bold; float: left;"> 
-                                    </div>
-                                </div>
-                                <div class="row justify-content-center">
-                                    <center>
-                                        <p>'.$row['descrizione'].'</p>
-                                    </center>
-                                    
-                                </div>
-                                <div class="row justify-content-center" >                               
-                                        <button type="submit" class="btn btn-primary" style="width:100px; background-color: '.$coloreBottone.'; border-color:#B30000; font-size: 15px; color: '.$coloreScritta.' ; text-align: center; float: right;">Visualizza</button>                                   
 
-                                </div>
+                    <form action="tappe/index.php" method="post">
+                        <div class="card text-center" style="">
+                            <img src="'.$row['copertina'].'" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><input type="submit" value=" ' . $row['nome'] . '" style=" text-decoration: none; color: #B30000; font-size:18px; border: none; background-color:white"></h5>
+                                <p class="card-text">'.$row['descrizione'].'</p>
                             </div>
-                            
                             
                         </div>
                     </form>
+
+                    
                     
 
                                             

@@ -205,7 +205,7 @@ if ($result = $connessione->query($sql)) {
                 </div>
             </div>
             <!-- DESCRIZIONE -->
-            <div class="row" style="padding-top: 1px;  padding-left: 10px; padding-right:10px;">
+            <div class="row" style="padding-top: 1px;  padding-left: 0px; padding-right:0px;  margin-left: 0px; margin-right:0px;">
                 <div class="row" style="margin: auto;">
                     <p style="text-align:justify"><?php echo $descrizione; ?></p>
                 </div>
