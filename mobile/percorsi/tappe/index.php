@@ -99,7 +99,7 @@ if($result = $connessione->query($query)){
             </div>
             <div class="col-2">
                 <center>
-                    <a class="navbar-brand" href="mappaStatica.php?$_SESSION['idPercorso']">
+                    <a class="navbar-brand" href="mappaStatica.php?percorsi=<?php echo $_SESSION['idPercorso']; ?>">
                         <img src="../../../img/icons/percorsoSfondo.png">
                     </a>
                 </center>
