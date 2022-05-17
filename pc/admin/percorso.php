@@ -153,7 +153,7 @@ if ($result = $connessione->query($sql)) {
                 $i++;
             }
         } else {
-            echo "Nessun percorso presente";
+            echo "Nessun tappa è inclusa nel percorso";
         }
     } else {
         echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
@@ -176,7 +176,7 @@ if ($result = $connessione->query($sql)) {
                     <input type="text" name="idTappa" placeholder="Inserisci ID tappa" required>
                 </div>
                 <div class="col-6">
-                    <input type="text" name="ordineTappa" placeholder="Inserisci la posizione della tappa" style="width: 250px;" required>
+                    <input type="text" name="ordineTappa" placeholder="Inserisci l'ordine della tappa" style="width: 250px;" required>
                 </div>
                 <div class="col-2">
                     <input type="hidden" name="idPercorso" value="<?php echo $idPercorso ?>">
