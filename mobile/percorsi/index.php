@@ -34,7 +34,7 @@ session_start();
 
 
     <!-- NAVBAR -->
-    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 70px;">
+    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 1px; height: 70px;">
         <div class="row  justify-content-center" style="padding-top: 15px;">
             <div class="col s-4">
                 <center>
@@ -134,7 +134,7 @@ session_start();
                     echo '
 
                     <form action="tappe/index.php" method="post">
-                        <div class="card text-center" style="">
+                        <div class="card text-center" style="border-top-color:black;  border-top-style: solid; border-top-width: 2px;">
                             <img src="'.$row['copertina'].'" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title"><input type="submit" value=" ' . $row['nome'] . '" style=" text-decoration: none; color: #B30000; font-size:18px; border: none; background-color:white"></h5>
