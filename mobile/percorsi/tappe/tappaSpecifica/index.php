@@ -180,7 +180,7 @@ if ($result = $connessione->query($sql)) {
         <div class="card " style="margin-top:20px; border-radius:0px; text-align: left; padding-top:60px; margin:0px">
 
             <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px">
-                <p class="card-title" style="font-weight: bold; margin-left: 10px;"><?php echo $dove; ?><img src="../../../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; "></p>
+                <p class="card-title" style="font-weight: bold; margin-left: 10px;"><img src="../../../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; "><?php echo $dove; ?></p>
 
             </div>
 

@@ -57,7 +57,7 @@ if ($result = $connessione->query($sql)) {
 
 
     <!-- NAVBAR BASSA -->
-    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 70px;">
+    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 1px; height: 70px;">
         <div class="row  justify-content-center" style="padding-top: 15px;">
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
@@ -70,7 +70,9 @@ if ($result = $connessione->query($sql)) {
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
                     <a class="navbar-brand" href="../scanner/index.php">
-                        <img src="../../img/icons/scannerizza.png">
+                            
+                            <img src="../../img/icons/scannerizza.png">    
+
                     </a>
                 </center>
 
@@ -91,7 +93,7 @@ if ($result = $connessione->query($sql)) {
 
     <div class="container">
         <!-- NAVBAR ALTA -->
-        <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px; height:60px">
+        <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
             
             <div class="col ">
                 <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;">Profilo</h1>
