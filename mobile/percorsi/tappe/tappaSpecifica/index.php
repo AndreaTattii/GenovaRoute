@@ -194,15 +194,22 @@ if ($result = $connessione->query($sql)) {
             </div>
         </div>
         <!-- DOVE -->
-        <div class="row align-content-center justify-content-center" style=" padding-top:0px">
-            <p style="text-align:center; font-weight: bold;"><?php echo $dove; ?></p>
-        </div>
-        <!-- DESCRIZIONE -->
-        <div class="row" style="padding-top: 1px;  padding-left: 10px; padding-right:10px;">
-            <div class="row" style="margin: auto;">
-                <p style="text-align:justify"><?php echo $descrizione; ?></p>
+        <div class="row" style="padding-top: 10px;">
+
+            <div class="row align-content-center justify-content-center" style=" padding-top:0px ;padding-bottom:20px">
+                <div class="col-2" style="padding-left:40px;margin:auto;">
+                    <img src="../../../../img/icons/marker.png" style="width: 40px;">
+                </div>
+                <div class="col-10" style="margin:auto;padding-top:25px">
+                    <p style="text-align:center; font-weight: bold;"><?php echo $dove; ?></p>
+                </div>
             </div>
-        </div>
+            <!-- DESCRIZIONE -->
+            <div class="row" style="padding-top: 1px;  padding-left: 10px; padding-right:10px;">
+                <div class="row" style="margin: auto;">
+                    <p style="text-align:justify"><?php echo $descrizione; ?></p>
+                </div>
+            </div>
         
         <div class="row " style="padding-top: 10px; padding-bottom:100px">
             <div class="col .s-4">
