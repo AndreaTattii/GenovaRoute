@@ -62,7 +62,7 @@
             </div>
             <div class="form-group">
                 <label for="descrizione">Descrizione</label>
-                <input type="text" class="form-control" id="descrizione" name="descrizione" placeholder="Inserisci la descrizione della tappa" maxlength="2000" required>
+                <textarea class="form-control" placeholder="Inserisci descrizione" name="nuovaDescrizione" maxlength="2000"  required></textarea>
             </div>
             <div class="form-group">
                 <label for="immagine">Immagine 1</label>

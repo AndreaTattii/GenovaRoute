@@ -174,6 +174,8 @@ session_start();
                         </div>
                         <div class="col-7">
                             <input type="text" name="nuovaDescrizione" placeholder="Inserisci descrizione" style="width: 90%;" maxlength="80"  required>
+                            
+
                         </div>
                         <div class="col-1">
                             <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000; width:150px;">Modifica</button>

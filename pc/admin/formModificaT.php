@@ -101,6 +101,8 @@ if ($result = $connessione->query($sql)) {
                 </div>
                 <div class="col">
                     <?php
+
+                    //<textarea class="form-control" placeholder="Inserisci descrizione" name="nuovaDescrizione" maxlength="2000"  required></textarea>
                     echo "<input type='hidden' name='idTappa' value='" . $_SESSION['idTappa'] . "'>"
                     ?>
                     <button type="submit" class="btn btn-primary" style=" background-color:#B30000; border-color:#B30000;">Modifica</button>
