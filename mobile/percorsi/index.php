@@ -144,7 +144,7 @@ session_start();
                         <form action="tappe/index.php" method="post">
                             <div class="card " style="'.$border.' border-radius:0px;  text-align: left;">
                                 <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px">
-                                    <p class="card-title"><input type="submit" value="'.$primaCitta.'" style="text-align: left; text-decoration: none; color: black;  border: none; background-color:white"></p>
+                                    <p class="card-title"><img src="../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; ">'.$primaCitta.'</p>
                                 </div>
                                 <img src="'.$row['copertina']. '" class="card-img-top" alt="..." style=" border-radius:0px">
                                 <div class="card-body" style="text-align: center;">
