@@ -58,7 +58,6 @@ session_start();
                         <img src="../../img/icons/account.png">
                     </a>
                 </center>
-
             </div>
         </div>
     </div>
@@ -70,7 +69,7 @@ session_start();
         <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
 
             <div class="col ">
-                <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;">Genova Route</h1>
+                <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;">GrovaGo</h1>
             </div>
         </div>
     </div>
