@@ -156,6 +156,9 @@ if($result = $connessione->query($query)){
                     }
                     //$row['ordine']=$row['ordine']+1;
                     echo '
+                        
+                        
+
                         <div class="col-sm align-self-center" style="width:100%;">       
                             <div class="card text-center align-self-center" style="width:100%;  background-color: ' . $coloreRiga . ';">
                                 <div class="card-body">
