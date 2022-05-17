@@ -135,7 +135,7 @@ session_start();
 
                     <form action="tappe/index.php" method="post">
                         <div class="card text-center" style="">
-                            <img src="../../img/PorcoAntico.png" class="card-img-top" alt="...">
+                            <img src="'.$row['copertina'].'" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title"><input type="submit" value=" ' . $row['nome'] . '" style=" text-decoration: none; color: #B30000; font-size:18px; border: none; background-color:white"></h5>
                                 <p class="card-text">'.$row['descrizione'].'</p>

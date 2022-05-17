@@ -49,18 +49,16 @@ CREATE TABLE IF NOT EXISTS Tappa_Appartiene_Percorso(
     PRIMARY KEY (id_tappa, id_percorso)
 );
 
-INSERT INTO Percorso (nome, descrizione) VALUES ('Visita a Genova', 'Percorso per i monumenti, musei e ristoranti di Genova');
-INSERT INTO Percorso (nome, descrizione) VALUES ('Vicolata', 'Percorso per la vicolata');
-INSERT INTO Percorso (nome, descrizione) VALUES ('Chiese di Genova', 'Percorso per le chiese di Genova');
-INSERT INTO Percorso (nome, descrizione) VALUES ('Musei di Genova', 'Percorso per i musei di Genova');
-INSERT INTO Percorso (nome, descrizione) VALUES ('Fontane di Genova', 'Percorso per le fontane di Genova');
-INSERT INTO Percorso (nome, descrizione) VALUES ('Visita a Dublino', 'Percorso per i monumenti, musei e ristoranti di Dublino');
-INSERT INTO Percorso (nome, descrizione) VALUES ('Chiese di Dublino', 'Percorso per le chiese di Dublino');
-INSERT INTO Percorso (nome, descrizione) VALUES ('Musei di Dublino', 'Percorso per i musei di Dublino');
-INSERT INTO Percorso (nome, descrizione) VALUES ('Visita a Pisa', 'Percorso per i monumenti, musei e ristoranti di Pisa');
-INSERT INTO Percorso (nome, descrizione) VALUES ('Chiese di Pisa', 'Percorso per le chiese di Pisa');
+INSERT INTO Percorso (nome, descrizione, copertina) VALUES ('Visita a Genova', 'Percorso per i monumenti, musei e ristoranti di Genova', 'https://www.italia.it/storage/small/202105/20210506124258_shutterstock_1410992927.jpg');
+INSERT INTO Percorso (nome, descrizione, copertina) VALUES ('Vicolata', 'Percorso per la vicolata', 'https://static2-viaggi.corriereobjects.it/wp-content/uploads/2022/03/iStock-1290281526-Genova.jpg?v=461667');
+INSERT INTO Percorso (nome, descrizione, copertina) VALUES ('Chiese di Genova', 'Percorso per le chiese di Genova','https://static.open.online/wp-content/uploads/2020/04/GENOVA-TAG-1.jpg');
+INSERT INTO Percorso (nome, descrizione, copertina) VALUES ('Musei di Genova', 'Percorso per i musei di Genova', 'https://www.genovatoday.it/~media/horizontal-hi/2468738590240/boccadasse-genova-3.jpeg');
+INSERT INTO Percorso (nome, descrizione, copertina) VALUES ('Fontane di Genova', 'Percorso per le fontane di Genova', 'https://famelab-italy.it/wp-content/uploads/2018/12/genova-1300.jpg');
+INSERT INTO Percorso (nome, descrizione, copertina) VALUES ('Visita a Dublino', 'Percorso per i monumenti, musei e ristoranti di Dublino', 'https://www.fulltravel.it/wp-content/uploads/2015/10/dublino-irlanda.jpg');
+INSERT INTO Percorso (nome, descrizione, copertina) VALUES ('Chiese di Dublino', 'Percorso per le chiese di Dublino', 'https://www.viaggipronti.it/wp-content/uploads/2019/11/dublin-3848404_1920.jpg');
 
-INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat) 
+ 
+INSERT INTO Tappa (nome, descrizione, vi a, città, img1, img2, img3, lon, lat) 
     VALUES (
             'Arco della Vittoria', 
             "
