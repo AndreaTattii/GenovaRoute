@@ -91,7 +91,7 @@ if ($result = $connessione->query($sql)) {
     <link rel="icon" href="../../../../img/G.png" type="image/icon type">
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body >
 
 
     <!-- NAVBAR BASSA-->
@@ -174,19 +174,19 @@ if ($result = $connessione->query($sql)) {
 
 
     <!-- CONTENUTO PAGINA -->
-    <div class="container" style="padding-top: 50px; margin:0px; margin-left: 0px; margin-right:0px; padding:0px">
+    
 
         <!-- CARD -->
-        <div class="card " style="margin-top:20px; border-radius:0px; text-align: left; padding-top:60px">
+        <div class="card " style="margin-top:20px; border-radius:0px; text-align: left; padding-top:60px; margin:0px">
 
             <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px">
-                <p class="card-title" style="font-weight: bold;"><?php echo $dove; ?></p>
+                <p class="card-title" style="font-weight: bold;"><?php echo $dove; ?><img src="../../../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px;"></p>
 
             </div>
 
             <div class="row" style=" height:225px;">
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators" style=" ">
+                    <div class="carousel-indicators" >
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
