@@ -184,21 +184,21 @@ if ($result = $connessione->query($sql)) {
 
             </div>
 
-            <div class="row">
+            <div class="row" style=" height:225px;">
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators" style=" margin:0px">
+                    <div class="carousel-indicators" style=" ">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner" style="align-items: center;">
-                        <div class="carousel-item active">
+                        <div class="carousel-item active" data-bs-interval="9999999999999999">
                             <img src="<?php echo $img1; ?>" class="d-block w-100" alt="..." style="max-height: 200px; margin-left: auto; margin-right: auto;">
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-item" data-bs-interval="9999999999999999">
                             <img src="<?php echo $img2; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-item" data-bs-interval="9999999999999999">
                             <img src="<?php echo $img3; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
                         </div>
                     </div>
