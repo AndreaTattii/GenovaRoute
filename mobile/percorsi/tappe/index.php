@@ -154,7 +154,7 @@ if($result = $connessione->query($query)){
                     } else {
                         echo "Errore: " . $connessione->error;
                     }
-                    $row['ordine']=$row['ordine']+1;
+                    //$row['ordine']=$row['ordine']+1;
                     echo '
                         <div class="col-sm align-self-center" style="width:100%;">       
                             <div class="card text-center align-self-center" style="width:100%;  background-color: ' . $coloreRiga . ';">
