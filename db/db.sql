@@ -26,7 +26,8 @@ CREATE TABLE IF NOT EXISTS Tappa(
 CREATE TABLE IF NOT EXISTS Percorso(
     id int PRIMARY KEY AUTO_INCREMENT,
 	nome varchar(255) UNIQUE,
-    descrizione varchar(255) NOT NULL
+    descrizione varchar(255) NOT NULL,
+    copertina varchar(255)
 );
 
 CREATE TABLE IF NOT EXISTS Qr_Code(

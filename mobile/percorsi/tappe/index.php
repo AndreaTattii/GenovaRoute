@@ -154,7 +154,7 @@ if($result = $connessione->query($query)){
                     } else {
                         echo "Errore: " . $connessione->error;
                     }
-                    //$row['ordine']=$row['ordine']+1;
+                    $row['ordine']=$row['ordine']+1;
                     echo '
                         
                         
