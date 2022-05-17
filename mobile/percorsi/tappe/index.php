@@ -53,7 +53,7 @@ if($result = $connessione->query($query)){
 
 
     <!-- NAVBAR -->
-    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 70px;">
+    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 1px; height: 70px;">
         <div class="row  justify-content-center" style="padding-top: 15px;">
             <div class="col s-4">
                 <center>
@@ -87,7 +87,7 @@ if($result = $connessione->query($query)){
 
     <!-- NAVBAR ALTA -->
     <div class="container fixed-top" >
-        <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px; height:60px">
+        <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
 
             <div class="col-2">
                 <a href="../../percorsi/index.php">

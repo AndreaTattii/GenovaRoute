@@ -135,14 +135,18 @@ session_start();
                     } else {
                         echo "Errore nella query: " . $primaCittaQuery . "<br>" . $connessione->error;
                     }
+                    $border="border-top:none;";
+                    if($i == 0){
+                        $border = "";
+                    }
 
                     echo '
                         <form action="tappe/index.php" method="post">
-                            <div class="card " style="margin-top:20px; border-radius:0px; text-align: left;">
+                            <div class="card " style="'.$border.' border-radius:0px;  text-align: left;">
                                 <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px">
                                     <p class="card-title"><input type="submit" value="'.$primaCitta.'" style="text-align: left; text-decoration: none; color: black;  border: none; background-color:white"></p>
                                 </div>
-                                <img src="'.$row['copertina']. '" class="card-img-top" alt="...">
+                                <img src="'.$row['copertina']. '" class="card-img-top" alt="..." style=" border-radius:0px">
                                 <div class="card-body" style="text-align: center;">
                                     <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
                                     <h5 class="card-title"><input type="submit" value=" ' . $row['nome'] . '" style=" text-decoration: none; color: #B30000; font-size:18px; border: none; background-color:white"></h5>
