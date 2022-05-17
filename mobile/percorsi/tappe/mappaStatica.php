@@ -120,7 +120,8 @@ $connessione = new mysqli($host, $user, $pass, $database);
                 AND  percorso.id = '.$_GET["percorsi"].';';
 
                 $result = $connessione->query($sql);
-                $row = $result->fetch_array();
+               // $row = $result->fetch_array();
+
                 while($row = $result->fetch_assoc()){
                     echo "L.marker(
                         ['".$row["lon"]."', '".$row["lat"]."'],
