@@ -113,7 +113,12 @@ $connessione = new mysqli($host, $user, $pass, $database);
 
             <?php
             if(!empty($_GET["percorsi"])){
-                $sql = 'SELECT lat,lon,Tappa.nome FROM Tappa, Percorso, Tappa_Appartiene_Percorso Where Tappa.id = Tappa_Appartiene_Percorso.id_tappa AND percorso.id = Tappa_Appartiene_Percorso.id_percorso AND  percorso.id = '.$_GET["percorsi"].';';
+                $sql = 'SELECT lat,lon,Tappa.nome 
+                FROM Tappa, Percorso, Tappa_Appartiene_Percorso 
+                Where Tappa.id = Tappa_Appartiene_Percorso.id_tappa 
+                AND percorso.id = Tappa_Appartiene_Percorso.id_percorso 
+                AND  percorso.id = '.$_GET["percorsi"].';';
+
                 $result = $connessione->query($sql);
                 $row = $result->fetch_array();
                 while($row = $result->fetch_assoc()){
@@ -128,7 +133,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
                 }
             }
             
-                    ?>
+            ?>
         </script>
     
     
