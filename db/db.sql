@@ -58,7 +58,7 @@ INSERT INTO Percorso (nome, descrizione, copertina) VALUES ('Visita a Dublino', 
 INSERT INTO Percorso (nome, descrizione, copertina) VALUES ('Chiese di Dublino', 'Percorso per le chiese di Dublino', 'https://www.viaggipronti.it/wp-content/uploads/2019/11/dublin-3848404_1920.jpg');
 
  
-INSERT INTO Tappa (nome, descrizione, vi a, città, img1, img2, img3, lon, lat) 
+INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat) 
     VALUES (
             'Arco della Vittoria', 
             "
