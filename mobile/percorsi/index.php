@@ -107,6 +107,30 @@ session_start();
                     } else {
                         $coloreRiga = "#F0F0F0";
                     }
+                    $sql2 = "SELECT * FROM utente_percorre_tappa WHERE email = '" . $_SESSION['email'] . "' AND id_tappa IN (SELECT id_tappa FROM tappa_appartiene_percorso, percorso WHERE id_percorso=" . $row['id'] . ");";
+                    $quanteTappeQuery = "SELECT MAX(ordine)  
+                    FROM  Tappa_Appartiene_Percorso
+                    WHERE id_percorso =  " . $row['id'] . ";";
+    
+            if ($risultato = $connessione->query($quanteTappeQuery)) {
+                $row3 = $risultato->fetch_assoc();
+                $quanteTappe = $row3['MAX(ordine)']+1;
+            } else {
+                echo "Impossibile eseguire la quante tappe query";
+            }
+                    if ($result2 = $connessione->query($sql2)) {
+                        if ($result2->num_rows == $quanteTappe) {
+                            while ($row2 = $result2->fetch_array()) {
+                                $coloreBottone = "white";
+                                $coloreScritta = "#B30000";
+                            }
+                        } else {
+                            $coloreBottone = "#B30000";
+                            $coloreScritta = "white";
+                        }
+                    } else {
+                        echo "Errore: " . $connessione->error;
+                    }
                     echo '
                     <form action="tappe/index.php" method="post">
                         <div class="container " style="width:100%;  background-color: ' . $coloreRiga . '; padding-bottom: 15px; padding-top: 15px">
@@ -124,7 +148,7 @@ session_start();
                                     
                                 </div>
                                 <div class="row justify-content-center" >                               
-                                        <button type="submit" class="btn btn-primary" style="width:100px; background-color: #B30000; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>                                   
+                                        <button type="submit" class="btn btn-primary" style="width:100px; background-color: '.$coloreBottone.'; border-color:#B30000; font-size: 15px; color: '.$coloreScritta.' ; text-align: center; float: right;">Visualizza</button>                                   
 
                                 </div>
                             </div>
