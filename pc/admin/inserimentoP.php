@@ -14,12 +14,14 @@
 
     $nome = $connessione->real_escape_string($_REQUEST['nomeP']);
     $descrizione = $connessione->real_escape_string($_REQUEST['descrizioneP']);
+    $copertina = $connessione->real_escape_string($_REQUEST['copertina']);
+
     $idTappa = $connessione->real_escape_string($_REQUEST['idTappa']);
     
     
 
     
-    $sql="INSERT INTO Percorso (nome, descrizione) VALUES ('$nome', '$descrizione')";
+    $sql="INSERT INTO Percorso (nome, descrizione, copertina) VALUES ('$nome', '$descrizione', '$copertina')";
     if ($result = $connessione->query($sql)) {
         echo "Percorso inserito con successo";
     } else {

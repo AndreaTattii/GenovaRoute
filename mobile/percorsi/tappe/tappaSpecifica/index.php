@@ -174,13 +174,43 @@ if ($result = $connessione->query($sql)) {
 
 
     <!-- CONTENUTO PAGINA -->
-    <div class="container" style="padding-top: 50px; margin:0px; margin-left: 0px; margin-right:0px;">
+    <div class="container" style="padding-top: 50px; margin:0px; margin-left: 0px; margin-right:0px; padding:0px">
+
+        <!-- CARD -->
+        <div class="card " style="margin-top:20px; border-radius:0px; text-align: left; padding-top:60px">
+
+            <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px">
+                <p class="card-title" style="font-weight: bold;"><?php echo $dove; ?></p>
+
+            </div>
+
+            <div class="row" >
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner" style="align-items: center;">
+                        <div class="carousel-item active">
+                            <img src="<?php echo $img1; ?>" class="d-block w-100" alt="..." style="max-height: 200px; margin-left: auto; margin-right: auto;">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="<?php echo $img2; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="<?php echo $img3; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body" style="text-align: center;">
+                <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
+                <p class="card-text" style="text-align:justify"><?php echo $descrizione; ?></p>
+            </div>
+        </div>
 
         <!-- CAROSELLO -->
         <div class="row" style="padding-top: 20px; padding-top: 20px; height:225px;">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" style="align-items: center;">
-                    <div class="carousel-item active" >
+                    <div class="carousel-item active">
                         <img src="<?php echo $img1; ?>" class="d-block w-100" alt="..." style="max-height: 200px; margin-left: auto; margin-right: auto;">
                     </div>
                     <div class="carousel-item">
@@ -190,7 +220,7 @@ if ($result = $connessione->query($sql)) {
                         <img src="<?php echo $img3; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
                     </div>
                 </div>
-                
+
             </div>
         </div>
         <!-- DOVE -->
@@ -210,26 +240,26 @@ if ($result = $connessione->query($sql)) {
                     <p style="text-align:justify"><?php echo $descrizione; ?></p>
                 </div>
             </div>
-        
-        <div class="row " style="padding-top: 10px; padding-bottom:100px">
-            <div class="col .s-4">
 
+            <div class="row " style="padding-top: 10px; padding-bottom:100px">
+                <div class="col .s-4">
+
+                </div>
             </div>
         </div>
-    </div>
-    <script>
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
-        }
-        window.addEventListener("orientationchange", function() {
-            if (window.orientation == 90 || window.orientation == -90) {
-                alert("Gira lo schermo in verticale!!!")
-                //window.orientation = 0;
-                //document.getElementById("orientation").style.display = "none";
-                //window.location.reload();
+        <script>
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, window.location.href);
             }
-        });
-    </script>
+            window.addEventListener("orientationchange", function() {
+                if (window.orientation == 90 || window.orientation == -90) {
+                    alert("Gira lo schermo in verticale!!!")
+                    //window.orientation = 0;
+                    //document.getElementById("orientation").style.display = "none";
+                    //window.location.reload();
+                }
+            });
+        </script>
 </body>
 
 </html>

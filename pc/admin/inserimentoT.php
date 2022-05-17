@@ -18,14 +18,15 @@
     $img1 = $connessione->real_escape_string($_REQUEST['immagine1']);
     $img2 = $connessione->real_escape_string($_REQUEST['immagine2']);
     $img3 = $connessione->real_escape_string($_REQUEST['immagine3']);
+    $città = $connessione->real_escape_string($_REQUEST['città']);
     $lon = $connessione->real_escape_string($_REQUEST['longitudine']);
     $lat = $connessione->real_escape_string($_REQUEST['latitudine']);
     
     //hashing della password
     $password = hash("sha256", $password);
 
-    $sql = "INSERT INTO Tappa (nome, descrizione, via, img1, img2, img3, lon, lat) VALUES 
-    ('".$nome."','".$descrizione."', '".$via."', '".$img1."','".$img2."','".$img3."','".$lon."','".$lat."')";
+    $sql = "INSERT INTO Tappa (nome, descrizione, via, img1, img2, img3,città, lon, lat) VALUES 
+    ('".$nome."','".$descrizione."', '".$via."', '".$img1."','".$img2."','".$img3."','".$città."','".$lon."','".$lat."')";
     
     if($connessione->query($sql) === true){
         header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/formT.php");
