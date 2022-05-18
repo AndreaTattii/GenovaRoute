@@ -15,6 +15,7 @@
         if($connessione === false){
             echo "Errore: ".$connessione->error;
         }
+        if(!(isset($_POST['nome']))){
             $email = $_POST['mail'];
             $password = $_POST['password'];
             $password = hash("sha256", $password);
@@ -43,6 +44,33 @@
                 $_SESSION['errore'] = 1;
                 header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/index.php");
             }
+        }
+        else{
+            $nome = $connessione->real_escape_string($_REQUEST['nome']);
+            $cognome = $connessione->real_escape_string($_REQUEST['cognome']);
+            $mail = $connessione->real_escape_string($_REQUEST['mail']);
+            $password = $connessione->real_escape_string($_REQUEST['password']);
+            
+            //hashing della password
+            $password = hash("sha256", $password);
         
+            $sql = "INSERT INTO utente (nome, cognome, email, psw) VALUES 
+            ('$nome','$cognome', '$mail', '$password')";
+        
+            
+            if($connessione->query($sql) === true){
+                $_SESSION['email']= $mail;
+                if($_SESSION['dispositivo']=='mobile'){
+                    header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/mobile/percorsi/index.php");
+                }
+                else{
+                    header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/index.php");
+                }
+                //header("location: ../".$_SESSION['dispositivo']."/percorsi/index.php");
+                echo "Utente inserito con successo";
+            }else{
+                echo "Errore durante inserimento: ".$connessione->error;
+            } 
+        }
     ?>
 		

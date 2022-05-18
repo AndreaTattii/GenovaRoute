@@ -22,7 +22,7 @@ $_SERVER['SERVER_ADDR'];
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS Personale-->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./style.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
@@ -36,9 +36,107 @@ $_SERVER['SERVER_ADDR'];
 
     <title>Genova Route</title>
     <link rel="icon" href="img/g.png" type="image/icon type">
+
+    <style type="text/css" media="screen">
+
+.login-page {
+  width: 90%;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+button {
+  text-transform: uppercase;
+  outline: 0;
+  background: white;
+  width: 100%;
+  border: 1px solid #B30000;
+  padding: 15px;
+  color: #B30000;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+button:hover,button:active,button:focus {
+  background: #B30000;
+  color: white;
+}
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form .message a {
+  color: #B30000;
+  text-decoration: none;
+}
+.form .register-form {
+  display: none;
+}
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.container:before, .container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.container .info {
+  margin: 50px auto;
+  text-align: center;
+}
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+.container .info span {
+  color: #4d4d4d;
+  font-size: 12px;
+}
+.container .info span a {
+  color: #000000;
+  text-decoration: none;
+}
+.container .info span .fa {
+  color: #EF3B3A;
+}
+body {
+  background: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+}
+
+    </style>
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="">
     <!--style="background-image: url('img/foto_epoca_genova.png'); background-repeat: no-repeat; background-size: cover;"-->
 
     <nav class="navbar  navbar-expand-lg " style="background-color: #B30000;">
@@ -48,67 +146,42 @@ $_SERVER['SERVER_ADDR'];
             </a>
         </div>
     </nav>
-    <div class="container pt-5  p-1">
-        <div class="row justify-content-md-center " style="font-family: 'Helvetica', 'Arial', sans-serif; padding: 20px; margin: 20px;">
-            <div class="col-sm-6" style=" background-color: white; border-style:solid; border-color:black; border-width:2px; border-radius: 60px;">
-                <br>
-                <div class="row justify-content-md-center">
-                    <h1 style="font-weight: bold; font-size: 30px; color: black; text-align: center;">Login</h1>
-                </div>
-                <!-- form -->
-                <div id="login" style="margin:5px; padding:20px; ">
+    <br><br>
+    <center><h1>Benvenuto</h1></center>
+    
+    <div class="login-page">
+        <div class="form" action="registra.php" method="post">
+          <form class="register-form" action="loginUtente.php" method="post">
+            <input name="nome" type="text" placeholder="nome" required/>
+            <input name="cognome" type="text" placeholder="cognome" required/>
+            <input name="mail" type="email" placeholder="email" required/>
+            <input name="password" type="password" placeholder="password" required/>
+            <button>Registrati</button>
+            <p class="message">Già registrato? <a href="#">Accedi</a></p>
+          </form>
+          <form class="login-form" action="loginUtente.php" method="post">
+            <input name="mail" type="email" placeholder="email" required/>
+            <input name="password" type="password" placeholder="password" required/>
+            <?php
 
-                    <form class="row g-3" action="loginUtente.php" method="post">
-
-                        <div class="col-12">
-
-                            <label for="inputAddress" class="form-label">Mail</label>
-                            <input type="email" class="form-control" id="mail" name="mail" required>
-
-                        </div>
-
-                        <div class="col-12">
-
-                            <label for="inputAddress2" class="form-label">Password </label>
-                            <input type="password" class="form-control" id="password" name="password" required>
-
-                        </div>
-
-                        <div class="col-12">
-                            <div class="form-check">
-
-                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                <label class="form-check-label" for="gridCheck">
-                                    Ricordami
-                                </label>
-
-                            </div>
-                        </div>
-
-                        <br><br>
-                        <?php
-
-                        if (isset($_SESSION['errore'])) { 
-                            unset($_SESSION['errore']);  
-                        ?>
-                            <div class="col-12">
-                                <p style="color: red;">Dati inseriti errati</p>
-                            </div>
-                        <?php
-                        }
-                        ?>
-                        <div class="col-12">
-                            <br>
-                            <button type="submit" class="btn btn-primary" style="background-color: #B30000; border-color: black;">Accedi</button>
-                            <br><br>
-                        </div>
-                    </form>
-                    <p>Non hai un account? <a href="registra/formRegistra.php" style="color: #B30000; ">Registrati</a> </p>
-                </div>
-
-            </div>
+            if (isset($_SESSION['errore'])) { 
+                unset($_SESSION['errore']);  
+            ?>                
+                <p style="color: red;">Dati inseriti errati</p>
+            <?php
+            }
+            ?>
+            <button>Accedi</button>
+            <p class="message">Non sei registrato? <a href="#">Registrati</a></p>
+          </form>
         </div>
     </div>
+
+    <script>
+        $('.message a').click(function(){
+           $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+        });
+    </script>
 </body>
 
 </html>
