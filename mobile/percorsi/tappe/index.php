@@ -53,7 +53,7 @@ if($result = $connessione->query($query)){
 
 
     <!-- NAVBAR -->
-    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 70px;">
+    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 1px; height: 70px;">
         <div class="row  justify-content-center" style="padding-top: 15px;">
             <div class="col s-4">
                 <center>
@@ -87,7 +87,7 @@ if($result = $connessione->query($query)){
 
     <!-- NAVBAR ALTA -->
     <div class="container fixed-top" >
-        <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px; height:60px">
+        <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
 
             <div class="col-2">
                 <a href="../../percorsi/index.php">
@@ -154,7 +154,7 @@ if($result = $connessione->query($query)){
                     } else {
                         echo "Errore: " . $connessione->error;
                     }
-                    $row['ordine']=$row['ordine']+1;
+                    $row['ordine']=$row['ordine'];
                     echo '
                         
                         
@@ -166,7 +166,7 @@ if($result = $connessione->query($query)){
                                         <p class="card-title">
                                             <input type="hidden" name="ordineTappa" value="' . $row['ordine'] . '">
                                             <input type="hidden" name="idTappa" value="' . $row['id'] . '">
-                                            <input type="submit" value="' . $row['ordine'] . '. ' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:18px; border: none; font-weight: bold; float: left;"> 
+                                            <input type="submit" value="' . $row['ordine']+1 . '. ' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:18px; border: none; font-weight: bold; float: left;"> 
                                             <button type="submit" class="btn btn-primary" style="background-color: '.$coloreBottone.'; border-color:#B30000; font-size: 13px; color:'.$coloreScritta.' ; text-align: center; float: right;">Visualizza</button>
                                         </p>
                                     </form>

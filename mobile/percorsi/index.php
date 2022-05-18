@@ -34,7 +34,7 @@ session_start();
 
 
     <!-- NAVBAR -->
-    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 70px;">
+    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 1px; height: 70px;">
         <div class="row  justify-content-center" style="padding-top: 15px;">
             <div class="col s-4">
                 <center>
@@ -58,7 +58,6 @@ session_start();
                         <img src="../../img/icons/account.png">
                     </a>
                 </center>
-
             </div>
         </div>
     </div>
@@ -67,10 +66,10 @@ session_start();
 
     <!-- NAVBAR ALTA -->
     <div class="container fixed-top">
-        <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px; height:60px">
+        <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
 
             <div class="col ">
-                <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;">Genova Route</h1>
+                <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;">GrovaGO</h1>
             </div>
         </div>
     </div>
@@ -96,6 +95,9 @@ session_start();
         if ($connessione === false) {
             die("Errore: " . $connessione->connect_error);
         }
+
+
+
         $i = 0;
         $sql = "SELECT * FROM percorso ORDER BY (SELECT COUNT(*) AS numero_tappe FROM percorso, tappa, tappa_appartiene_percorso WHERE id_percorso=percorso.id AND id_tappa=tappa.id)";
         if ($result = $connessione->query($sql)) {
@@ -108,47 +110,50 @@ session_start();
                         $coloreRiga = "#F0F0F0";
                     }
                     $sql2 = "SELECT * FROM utente_percorre_tappa WHERE email = '" . $_SESSION['email'] . "' AND id_tappa IN (SELECT id_tappa FROM tappa_appartiene_percorso, percorso WHERE id_percorso=" . $row['id'] . ");";
+                    
                     $quanteTappeQuery = "SELECT MAX(ordine)  
-                    FROM  Tappa_Appartiene_Percorso
-                    WHERE id_percorso =  " . $row['id'] . ";";
-    
-            if ($risultato = $connessione->query($quanteTappeQuery)) {
-                $row3 = $risultato->fetch_assoc();
-                $quanteTappe = $row3['MAX(ordine)']+1;
-            } else {
-                echo "Impossibile eseguire la quante tappe query";
-            }
+                        FROM  Tappa_Appartiene_Percorso
+                        WHERE id_percorso =  " . $row['id'] . ";";
+
+                    if ($risultato = $connessione->query($quanteTappeQuery)) {
+                        $row3 = $risultato->fetch_assoc();
+                        $quanteTappe = $row3['MAX(ordine)']+1;
+                    } else {
+                        echo "Impossibile eseguire la quante tappe query";
+                    }
                     if ($result2 = $connessione->query($sql2)) {
-                        if ($result2->num_rows == $quanteTappe) {
-                            while ($row2 = $result2->fetch_array()) {
-                                $coloreBottone = "white";
-                                $coloreScritta = "#B30000";
-                            }
-                        } else {
-                            $coloreBottone = "#B30000";
-                            $coloreScritta = "white";
-                        }
+                        
                     } else {
                         echo "Errore: " . $connessione->error;
                     }
+
+                    $primaCittaQuery = "SELECT città FROM tappa WHERE id IN (SELECT id_tappa FROM tappa_appartiene_percorso WHERE id_percorso = " . $row['id'] . " AND ordine = 0);";
+                    if ($risultato = $connessione->query($primaCittaQuery)) {
+                        $riga = $risultato->fetch_assoc();
+                        $primaCitta = $riga['città'];
+                    } else {
+                        echo "Errore nella query: " . $primaCittaQuery . "<br>" . $connessione->error;
+                    }
+                    $border="border-top:none;";
+                    if($i == 0){
+                        $border = "";
+                    }
+
                     echo '
-
-                    <form action="tappe/index.php" method="post">
-                        <div class="card text-center" style="">
-                            <img src="'.$row['copertina'].'" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><input type="submit" value=" ' . $row['nome'] . '" style=" text-decoration: none; color: #B30000; font-size:18px; border: none; background-color:white"></h5>
-                                <p class="card-text">'.$row['descrizione'].'</p>
+                        <form action="tappe/index.php" method="post">
+                            <div class="card " style="'.$border.' border-radius:0px;  text-align: left;">
+                                <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px">
+                                    <p class="card-title"><img src="../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; ">'.$primaCitta.'</p>
+                                </div>
+                                <img src="'.$row['copertina']. '" class="card-img-top" alt="..." style=" border-radius:0px">
+                                <div class="card-body" style="text-align: center;">
+                                    <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
+                                    <h5 class="card-title"><input type="submit" value=" ' . $row['nome'] . '" style=" text-decoration: none; color: #B30000; font-size:18px; border: none; background-color:white"></h5>
+                                    <p class="card-text">'.$row['descrizione'].'</p>
+                                </div>
                             </div>
-                            
-                        </div>
-                    </form>
-
-                    
-                    
-
-                                            
-                                            ';
+                        </form>
+                    ';
                 }
             } else {
                 echo "Non ci sono percorsi salvati nel database";

@@ -188,11 +188,14 @@ session_start();
             <div class='row' style="<?php echo $sfondo ?>; padding:10px; border-style:solid; border-width:1px; ">
                 <form action="inserimentoP.php" action="POST">
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-2">
                             <input type="text" name="nomeP" placeholder="Inserisci il nome" maxlength="20" required>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <input type="text" name="descrizioneP" placeholder="Inserisci la descrizione" style="width: 90%;" maxlength="80" required>
+                        </div>
+                        <div class="col-2">
+                            <input type="text" name="copertina" placeholder="Inserisci url immagine" style="width: 90%;" maxlength="80" required>
                         </div>
                         <div class="col-3">
                             <input type="text" name="idTappa" placeholder="Inserisci id tappa" required>

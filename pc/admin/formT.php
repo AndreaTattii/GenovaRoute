@@ -58,7 +58,7 @@
         <form action="inserimentoT.php" method="POST">
             <div class="form-group">
                 <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" placeholder="Inserisci il nome della tappa" maxlength="20" required>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Inserisci il nome della tappa" maxlength="30" required>
             </div>
             <div class="form-group">
                 <label for="descrizione">Descrizione</label>
@@ -79,6 +79,10 @@
             <div class="form-group">
                 <label for="percorso">Via</label>
                 <input type="text" class="form-control" id="via" name="via" placeholder="Inserisci l'indirizzo della tappa" maxlength="30" required>
+            </div>
+            <div class="form-group">
+                <label for="nome">Città</label>
+                <input type="text" class="form-control" id="città" name="città" placeholder="Inserisci la città della tappa" maxlength="30" required>
             </div>
             <div class="form-group">
                 <label for="percorso">Longitudine</label>
