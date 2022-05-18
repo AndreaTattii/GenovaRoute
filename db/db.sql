@@ -42,6 +42,12 @@ CREATE TABLE IF NOT EXISTS Utente_Percorre_Tappa(
     data TIMESTAMP NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS Utente_Preferisce_Tappa(
+    email varchar(255) REFERENCES Utente(email),
+    id_percorso int REFERENCES Percorso(id),
+    PRIMARY KEY (email, id_percorso),
+);
+
 CREATE TABLE IF NOT EXISTS Tappa_Appartiene_Percorso(
     id_tappa int REFERENCES Tappa(id),
     id_percorso int REFERENCES Percorso(id),
