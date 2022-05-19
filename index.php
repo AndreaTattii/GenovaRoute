@@ -161,7 +161,8 @@ body {
             if (isset($_SESSION['erroreR'])) { 
             ?>
                 <script>
-                  $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+                  //$('.message a').click
+                  //$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
                 </script>
             <?php
                 unset($_SESSION['erroreR']);  
@@ -171,7 +172,7 @@ body {
             }
             ?>
             <button>Registrati</button>
-            <p class="message">Già registrato? <a href="#">Accedi</a></p>
+            <p class="message">Già registrato? <a id="ao" href="#">Accedi</a></p>
           </form>
           <form class="login-form" action="loginUtente.php" method="post">
             <input name="mail" type="text" placeholder="email/username" required/>
@@ -186,7 +187,7 @@ body {
             }
             ?>
             <button>Accedi</button>
-            <p class="message">Non sei registrato? <a href="#">Registrati</a></p>
+            <p class="message">Non sei registrato? <a id="ao" href="#">Registrati</a></p>
           </form>
         </div>
     </div>
