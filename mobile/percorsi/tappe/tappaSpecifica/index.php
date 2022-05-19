@@ -184,12 +184,12 @@ if ($result = $connessione->query($sql)) {
 
             </div>
 
-            <div class="row" style=" height:225px;">
-                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators" >
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <div class="row" style=" height:225px; border-bottom-style: solid; border-bottom-width: 1px;">
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" >
+                    <div class="carousel-indicators" style="background-color:white; width:100%; margin:auto">
+                        <button style="background-color:#B30000;color:#B30000" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button style="background-color:#B30000;color:#B30000" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button style="background-color:#B30000;color:#B30000" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner" style="align-items: center;">
                         <div class="carousel-item active" data-bs-interval="9999999999999999">
@@ -210,8 +210,12 @@ if ($result = $connessione->query($sql)) {
                 <p class="card-text" style="text-align:justify"><?php echo $descrizione; ?></p>
             </div>
         </div>
-
-        
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         
         <script>
             if (window.history.replaceState) {

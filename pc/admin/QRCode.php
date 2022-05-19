@@ -45,7 +45,9 @@
 
 <?php    
     session_start();
-    
+    $idPercorso=$_SESSION['idPercorso'];
+    $idTappa=$_SESSION['idTappa'];
+    $pathQR = "qrCodes/".$idPercorso . "." . $idTappa . ".png";
     echo '<b><h1 style="text-align:center;">QR Code generato</h1></b><br><br><br><br><br><br>';
     
     //set it to writable location, a place for temp generated PNG files
@@ -99,6 +101,9 @@
         &nbsp;<input type="hidden" name="" value="'.$_SESSION['idPercorso'].'.'.$_SESSION['idTappa'].''.'" readonly=""/>&nbsp;
         </form>';
 ?>
+        <div style="text-align:center; ">
+            <a style="color:#B30000; font-size:30px;" href="<?php echo $pathQR; ?>" download="<?php echo $idPercorso.'.'.$idTappa.'.png' ?>">Scarica</a>
+        </div>
 <script>
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );

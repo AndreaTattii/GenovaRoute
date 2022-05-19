@@ -85,11 +85,13 @@ echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
         
         <div class="row justify-content-center">
             <div class="col-3">
-                <img src="<?php echo $pathQR ?>" alt="qr code" width="300" height="300">
+                <img src="<?php echo $pathQR; ?>" alt="qr code" width="300" height="300">
             </div>
 
         </div>
-
+        <div style="text-align:center; ">
+            <a style="color:#B30000; font-size:30px;" href="<?php echo $pathQR; ?>" download="<?php echo $idPercorso.'.'.$idTappa.'.png' ?>">Scarica</a>
+        </div>
         <div class="row">
             <b><p>N.B.</p></b>
             <p>Il QR-CODE identifica una tappa in un percorso. Una tappa, quindi, ha un QR-CODE diverso per ogni percorso.</p>
