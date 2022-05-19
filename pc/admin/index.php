@@ -262,7 +262,7 @@ session_start();
                 </div>
                 <div class="col-1">
                     <form action="formT.php" method="POST">
-                        <button type="submit" class="btn btn-primary" style="background-color:white; width:100%; border-color:white"> <img src="../../img/icons/insert.png" alt="inserisci" style="width:30px; height:30px;"></button>
+                        <button type="submit" class="btn btn-primary" style="background-color:white; width:100%; border-color:white">➕</button>
                     </form>
                 </div>
             </div>
@@ -425,7 +425,7 @@ session_start();
                     $i++;
                 }
             } else {
-                echo "Nessuna tappa presente";
+                echo "Nessuna citta presente";
             }
 
             $connessione->close();
