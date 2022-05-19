@@ -48,7 +48,7 @@ session_start();
 
     <!-- CORPO -->
 
-
+    <!-- crea un bottone che porta in questa pagina nel punto dove inizia la tabella delle tappee -->
 
     <div class="container">
 
@@ -219,22 +219,7 @@ session_start();
             <h2 style="color:#B30000; text-align:center;">Tappe</h2>
         </div>
         <br>
-        <div class="row" style="padding:15px; margin:15px;">
-            <div class="col">
-
-            </div>
-            <div class="col">
-
-                <div class="row" style="margin-top:20px">
-                    <form action="formT.php" method="POST">
-                        <button type="submit" class="btn btn-primary" style="background-color:#B30000; width:100%; border-color:#B30000">Crea nuove tappe</button>
-                    </form>
-                </div>
-            </div>
-            <div class="col">
-
-            </div>
-        </div>
+        
         <div class="container" style="border-color : black;  border-style: solid; border-width: 1px;">
             <div class="row" style="border-bottom-color : black;  border-bottom-style: solid; border-bottom-width: 1px;">
                 <div class="col-1">
@@ -246,8 +231,13 @@ session_start();
                 <div class="col-4">
                     <h3>Descrizione</h3>
                 </div>
-                <div class="col-1">
+                <div class="col-4">
                     <h3>Via</h3>
+                </div>
+                <div class="col-1">
+                    <form action="formT.php" method="POST">
+                        <button type="submit" class="btn btn-primary" style="background-color:white; width:100%; border-color:white"> <img src="../../img/icons/insert.png" alt="inserisci" style="width:30px; height:30px;"></button>
+                    </form>
                 </div>
             </div>
             <?php
@@ -315,16 +305,111 @@ session_start();
             } else {
                 echo "Nessuna tappa presente";
             }
+
             $connessione->close();
 
 
+?>
 
+
+            
+    </div>
+
+    <br>
+        <br>
+        <br>
+        <!-- CITTA' -->
+        <div class="row" style="margin-top:40px; padding: 10px; border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; border-bottom-color:#F0F0F0;  border-bottom-style: solid; border-bottom-width: 3px; ">
+            <h2 style="color:#B30000; text-align:center;">Città</h2>
+        </div>
+        <br>
+    <div class="container" style="border-color : black;  border-style: solid; border-width: 1px;">
+            <div class="row" style="border-bottom-color : black;  border-bottom-style: solid; border-bottom-width: 1px;">
+                <div class="col-2">
+                    <h3>Nome</h3>
+                </div>
+                <div class="col-3">
+                    <h3>Longitudine</h3>
+                </div>
+                <div class="col-4">
+                    <h3>Latitudine</h3>
+                </div>
+                <div class="col-3" style="position: relative; right: 0px;">
+                    <form action="formC.php" method="POST">
+                        <button type="submit" class="btn btn-primary" style="background-color:white; width:100%; border-color:white; position: relative; right: 50px;">  <img src="../../img/icons/insert.png" alt="inserisci" style="width:30px; height:30px;"></button>
+                    </form>
+                </div>
+            </div>
+            <?php
+
+            $host = "127.0.0.1";
+            $user = "root";
+            $pass = "";
+            $database = "GenovaRoute";
+            $connessione = new mysqli($host, $user, $pass, $database);
+
+            error_reporting(0);
+
+            if ($connessione === false) {
+                echo "Errore: " . $connessione->error;
+            }
+
+            $sql = "SELECT * FROM citta";
+            $result = $connessione->query($sql);
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    if ($i % 2 == 0) {
+                        $sfondo = "background-color:#F0F0F0;";
+                    } else {
+                        $sfondo = "background-color:white;";
+                    }
+                    echo "<div class='row' style='" . $sfondo . " padding: 10px;'>";
+                        echo "<div class='col-2'>";
+                            echo $row["nome"];
+                        echo "</div>";
+                        echo "<div class='col-3'>";
+                            echo $row["x"];
+                        echo "</div>";
+                        echo "<div class='col-3'>";
+                            echo $row["y"];
+                        echo "</div>";
+
+
+                        echo "<div class='col-2'>";
+                        echo "
+                                        <center>
+                                            <form action='formModificaC.php' method='POST'>
+                                                <input type='hidden' name='nomeCitta' value='" . $row["nome"] . "'>
+                                                <button type='submit' style='color:white; background-color:white; width:50px; border-color:black; border-radius:50px'> ⚙ </button>
+                                            </form>
+                                        </center>
+                                    ";
+                        echo "</div>";
+                        echo "<div class='col-2'>";
+                        echo "
+                                        <center>
+                                            <form action='eliminaCitta.php' method='POST'>
+                                                <input type='hidden' name='nomeCitta' value='" . $row["nome"] . "'>
+                                                <button type='submit' style='color:white; background-color:white; width:50px; border-color:black; border-radius:50px'> 🗑 </button>
+                                            </form>
+                                        </center>
+                                    ";
+                        echo "</div>";
+                    echo "</div>";
+                    $i++;
+                }
+            } else {
+                echo "Nessuna tappa presente";
+            }
+
+            $connessione->close();
             ?>
+
+          
 
         </div>
     </div>
-
-
+    </div>
 
 
     <!-- stampa tanti br -->
