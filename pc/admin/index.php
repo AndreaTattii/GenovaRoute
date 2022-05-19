@@ -325,18 +325,18 @@ session_start();
         <br>
     <div class="container" style="border-color : black;  border-style: solid; border-width: 1px;">
             <div class="row" style="border-bottom-color : black;  border-bottom-style: solid; border-bottom-width: 1px;">
-                <div class="col-2">
+                <div class="col-3">
                     <h3>Nome</h3>
                 </div>
                 <div class="col-3">
                     <h3>Longitudine</h3>
                 </div>
-                <div class="col-4">
+                <div class="col-5">
                     <h3>Latitudine</h3>
                 </div>
-                <div class="col-3" style="position: relative; right: 0px;">
+                <div class="col-1" >
                     <form action="formC.php" method="POST">
-                        <button type="submit" class="btn btn-primary" style="background-color:white; width:100%; border-color:white; position: relative; right: 50px;">  <img src="../../img/icons/insert.png" alt="inserisci" style="width:30px; height:30px;"></button>
+                        <button type="submit" class="btn btn-primary" style="background-color:white; width:100%; border-color:white; ">  <img src="../../img/icons/insert.png" alt="inserisci" style="width:30px; height:30px;"></button>
                     </form>
                 </div>
             </div>
@@ -364,13 +364,13 @@ session_start();
                         $sfondo = "background-color:white;";
                     }
                     echo "<div class='row' style='" . $sfondo . " padding: 10px;'>";
-                        echo "<div class='col-2'>";
+                        echo "<div class='col-3'>";
                             echo $row["nome"];
                         echo "</div>";
                         echo "<div class='col-3'>";
                             echo $row["x"];
                         echo "</div>";
-                        echo "<div class='col-3'>";
+                        echo "<div class='col-2'>";
                             echo $row["y"];
                         echo "</div>";
 
