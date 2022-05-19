@@ -33,7 +33,7 @@ if ($result = $connessione->query($sql)) {
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta charset="ansi">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS Personale-->

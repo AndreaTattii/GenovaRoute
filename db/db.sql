@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS Tappa(
     nome varchar(255) UNIQUE NOT NULL,
     descrizione mediumtext NOT NULL,
     via varchar(255) NOT NULL,
-    città varchar(255),
+    citta varchar(255),
     img1 varchar(255) NOT NULL,
     img2 varchar(255) NOT NULL,
     img3 varchar(255) NOT NULL,
@@ -71,7 +71,7 @@ INSERT INTO Percorso (nome, descrizione, copertina) VALUES ('Visita a Dublino', 
 INSERT INTO Percorso (nome, descrizione, copertina) VALUES ('Chiese di Dublino', 'Percorso per le chiese di Dublino', 'https://www.viaggipronti.it/wp-content/uploads/2019/11/dublin-3848404_1920.jpg');
 
  
-INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat) 
+INSERT INTO Tappa (nome, descrizione, via, citta, img1, img2, img3, lon, lat) 
     VALUES (
             'Arco della Vittoria', 
             "
@@ -87,7 +87,7 @@ INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat)
             '44.403077306694875',
             '8.944978513772323'
     );
-INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat) 
+INSERT INTO Tappa (nome, descrizione, via, citta, img1, img2, img3, lon, lat) 
     VALUES (
             'Ponte monumentale', 
             "  
@@ -102,13 +102,13 @@ INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat)
             '44.40591531858697', 
             '8.939335738048305'
     );
-INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat) 
+INSERT INTO Tappa (nome, descrizione, via, citta, img1, img2, img3, lon, lat) 
     VALUES (
             'Fontana de Ferrari', 
             "
                 La piazza, intitolata al politico e banchiere genovese Luigi Raffaele De Ferrari, prese forma nei primi decenni del XX secolo in seguito alla realizzazione di via XX Settembre e Via Dante e allo sbancamento del colle di Sant'Andrea.
                 Fin dai primi anni sorse il problema di come arredare il centro della piazza per permettere la realizzazione di una rotatoria intorno alla quale incanalare i veicoli provenienti dalle varie direzioni. Venne inizialmente realizzata una grande aiuola con palmizi, ma la soluzione non risultò convincente e agli inizi degli anni trenta l'architetto Giuseppe Crosa di Vergagni fu incaricato di ideare una nuova sistemazione.
-                Il progetto di Crosa di Vergagni prevedeva una grande fontana costituita da una vasca centrale in bronzo posizionata al centro di una serie di vasche concentriche rivestite in travertino. Il bacile in bronzo fu donato alla città dall'ingegnere Carlo Piaggio per esaudire il desiderio testamentario del padre - il banchiere e armatore Erasmo Piaggio - di lasciare qualcosa di duraturo in dono alla città. La vasca venne fusa negli stabilimenti Tirreno di Genova-Le Grazie e trasportata in Piazza De Ferrari il 23 aprile 1936. Il trasporto del manufatto si rivelò particolarmente impegnativo perché la vasca, composta da un unico elemento di 11 metri di diametro e 36 tonnellate di peso, non poteva passare tra i vicoli del centro storico genovese. Il bacile fu quindi caricato su un pontone e trainato fino alla zona della Foce, da dove un trattore lo trasportò lungo il futuro Viale Brigate Partigiane e Via XX Settembre fino alla sua destinazione finale.
+                Il progetto di Crosa di Vergagni prevedeva una grande fontana costituita da una vasca centrale in bronzo posizionata al centro di una serie di vasche concentriche rivestite in travertino. Il bacile in bronzo fu donato alla citta dall'ingegnere Carlo Piaggio per esaudire il desiderio testamentario del padre - il banchiere e armatore Erasmo Piaggio - di lasciare qualcosa di duraturo in dono alla citta. La vasca venne fusa negli stabilimenti Tirreno di Genova-Le Grazie e trasportata in Piazza De Ferrari il 23 aprile 1936. Il trasporto del manufatto si rivelò particolarmente impegnativo perché la vasca, composta da un unico elemento di 11 metri di diametro e 36 tonnellate di peso, non poteva passare tra i vicoli del centro storico genovese. Il bacile fu quindi caricato su un pontone e trainato fino alla zona della Foce, da dove un trattore lo trasportò lungo il futuro Viale Brigate Partigiane e Via XX Settembre fino alla sua destinazione finale.
             ", 
             'Piazza Raffaele de Ferrari', 
             'Genova',
@@ -118,12 +118,12 @@ INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat)
             '44.40712785099835', 
             '8.934016640162541'
     );
-INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat) 
+INSERT INTO Tappa (nome, descrizione, via, citta, img1, img2, img3, lon, lat) 
     VALUES (
             'Cattedrale di San Lorenzo', 
             "
                 È stata consacrata al santo il 10 ottobre del 1118 da papa Gelasio II quando ne esistevano solo l'altare e una zona circostante, riservata alla preghiera, ma nessuna struttura in elevato. Nel corso del XII secolo fu costruita, ma ancora nel terzo quarto del secolo restava incompiuta e priva di una facciata vera e propria.
-                Una prima basilica vi sorse intorno al VI-VII secolo[3] Una leggenda vuole che in città si siano fermati San Lorenzo e papa Sisto II, diretti in Spagna, venendo ospitati in una casa sita nella zona dell'attuale cattedrale, dove, dopo la loro uccisione, sarebbero sorte una cappella e poi una chiesa dedicate al santo.
+                Una prima basilica vi sorse intorno al VI-VII secolo[3] Una leggenda vuole che in citta si siano fermati San Lorenzo e papa Sisto II, diretti in Spagna, venendo ospitati in una casa sita nella zona dell'attuale cattedrale, dove, dopo la loro uccisione, sarebbero sorte una cappella e poi una chiesa dedicate al santo.
             ", 
             'Piazza San Lorenzo', 
             'Genova',
@@ -133,7 +133,7 @@ INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat)
             '44.40763134514167', 
             '8.931458789833469'
             );
-INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat) 
+INSERT INTO Tappa (nome, descrizione, via, citta, img1, img2, img3, lon, lat) 
     VALUES (
             'Ombre Rosse', 
             'Ottimo ristorante con piatti tipici genovesi', 
@@ -145,7 +145,7 @@ INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat)
             '44.4086854746386', 
             '8.931197246472893'
     );
-INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat) 
+INSERT INTO Tappa (nome, descrizione, via, citta, img1, img2, img3, lon, lat) 
     VALUES (
             'Acquario di Genova', 
             "
@@ -160,11 +160,11 @@ INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat)
             '44.41020428824749', 
             '8.92666193224689'
     );
-INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat)
+INSERT INTO Tappa (nome, descrizione, via, citta, img1, img2, img3, lon, lat)
      VALUES (
             'Palazzo Doria Tursi', 
             "
-                Il palazzo Doria-Tursi, o palazzo Niccolò Grimaldi, è un edificio sito in via Garibaldi al civico 9 nel centro storico di Genova, inserito il 13 luglio del 2006 nella lista tra i 42 palazzi iscritti ai Rolli di Genova, divenuti in tale data Patrimonio dell'umanità dell'UNESCO. L'edificio è sede del Comune di Genova e fa parte del polo museale della città.
+                Il palazzo Doria-Tursi, o palazzo Niccolò Grimaldi, è un edificio sito in via Garibaldi al civico 9 nel centro storico di Genova, inserito il 13 luglio del 2006 nella lista tra i 42 palazzi iscritti ai Rolli di Genova, divenuti in tale data Patrimonio dell'umanità dell'UNESCO. L'edificio è sede del Comune di Genova e fa parte del polo museale della citta.
                 Il palazzo, il maggiore per estensione in Strada Nuova, come era detta all'epoca via Giuseppe Garibaldi, fu eretto a partire dal 1565 dai fratelli Domenico e Giovanni Ponzello, architetti manieristi discepoli di Galeazzo Alessi, per Niccolò Grimaldi, appellato 'il Monarca' per il novero di titoli nobiliari di cui poteva vantarsi, e ai quali sommava gli innumerevoli crediti che aveva nei confronti di Filippo II, di cui era il principale banchiere.
                 È l'edificio più maestoso della via, unico edificato su ben tre lotti di terreno, con due ampi giardini a incorniciare il corpo centrale. Le ampie logge affacciate sulla strada vennero aggiunte nel 1597, quando il palazzo divenne proprietà di Giovanni Andrea Doria che lo acquisì per il figlio cadetto Carlo, duca di Tursi, al quale si deve l'attuale denominazione.
                 A seguito dell'annessione della Repubblica di Genova nel Regno di Sardegna, fu acquistato da Vittorio Emanuele I di Savoia nel 1820, ed in tale occasione ristrutturato dall'architetto di corte Carlo Randoni, cui è dovuta la costruzione della torretta dell'orologio.
@@ -178,7 +178,7 @@ INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat)
              '44.411243317284956', 
              '8.932595267635298'
     );
-INSERT INTO Tappa (nome, descrizione, via, città, img1, img2, img3, lon, lat) 
+INSERT INTO Tappa (nome, descrizione, via, citta, img1, img2, img3, lon, lat) 
     VALUES (    
             'Pesciolino', 
             'Ristorante di buonissimo pesce genovese', 

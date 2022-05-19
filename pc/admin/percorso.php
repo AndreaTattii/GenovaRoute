@@ -61,7 +61,7 @@ if ($result = $connessione->query($sql)) {
         <div class="container">
             <div class="col">
                 <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center; " href="index.php">
-                    <h1>Genova Route Administration</h1>
+                    <h1>GrovaGO Administration</h1>
                 </a>
             </div>
 

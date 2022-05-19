@@ -127,10 +127,10 @@ session_start();
                         echo "Errore: " . $connessione->error;
                     }
 
-                    $primaCittaQuery = "SELECT città FROM tappa WHERE id IN (SELECT id_tappa FROM tappa_appartiene_percorso WHERE id_percorso = " . $row['id'] . " AND ordine = 0);";
+                    $primaCittaQuery = "SELECT citta FROM tappa WHERE id IN (SELECT id_tappa FROM tappa_appartiene_percorso WHERE id_percorso = " . $row['id'] . " AND ordine = 0);";
                     if ($risultato = $connessione->query($primaCittaQuery)) {
                         $riga = $risultato->fetch_assoc();
-                        $primaCitta = $riga['città'];
+                        $primaCitta = $riga['citta'];
                     } else {
                         echo "Errore nella query: " . $primaCittaQuery . "<br>" . $connessione->error;
                     }
