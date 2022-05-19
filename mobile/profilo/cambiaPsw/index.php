@@ -93,33 +93,21 @@ if ($result = $connessione->query($sql)) {
     <div class="container">
 
         <!-- NAVBAR ALTA -->
-        <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px;">
-            <div class="col -2">
-                <a href="../index.php">
-                    <img src="../../../img/icons/back.png">
+        <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
+            <div class="col-2">
+                <a href="../settings.php">
+                    <img style="padding-bottom:8px" src="../../../img/icons/back.png">
                 </a>
             </div>
-            <div class="col -7">
+            <div class="col-8 ">
                 <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;">Profilo</h1>
             </div>
-            <div class="col -2">
-                
+            <div class="col-2 ">
             </div>
         </div>
 
         <!-- INTESTAZIONE -->
-        <div class="row justify-content-center" style="padding-top: 20px">
-            <div class="col s-2" id="immagineProfilo">
-                <img src="../../../img/FotoProfilo.png">
-            </div>
-
-            <div class="col" id="nomeUtente" style="padding-top: 10px; padding-right:80px">
-
-                <?php echo  ' <h1 style="font-weight: bold; font-size: 30px; color: black; text-align: center;">' . $nome . ' ' . $cognome . '</h1> ';  ?>
-
-
-            </div>
-        </div>
+        <br>
 
         <!-- CONTENUTO PAGINA -->
         <div class="row justify-content-start" style="padding-top: 10px;">

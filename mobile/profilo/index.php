@@ -12,12 +12,13 @@ if ($connessione === false) {
     die("Errore: " . $connessione->connect_error);
 }
 
-$sql = "SELECT nome, cognome FROM utente WHERE email = '" . $_SESSION['email'] . "'";
+$sql = "SELECT nome, cognome, username FROM utente WHERE email = '" . $_SESSION['email'] . "'";
 
 if ($result = $connessione->query($sql)) {
     $row = $result->fetch_array();
     $nome = $row['nome'];
     $cognome = $row['cognome'];
+    $username = $row['username'];
 } else {
     echo "Impossibile eseguire la query";
 }
@@ -94,41 +95,33 @@ if ($result = $connessione->query($sql)) {
     <div class="container">
         <!-- NAVBAR ALTA -->
         <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
-            
-            <div class="col ">
-                <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;">Profilo</h1>
+            <div class="col-2">
+            </div>
+            <div class="col-8 ">
+                <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;"><?php echo $username; ?></h1>
+            </div>
+            <div class="col-2 ">
+                <a class="navbar-brand" href="settings.php">
+                    <img style="padding-bottom:10px; padding-left:10px" src="../../img/icons/setting.png">
+                </a>
             </div>
         </div>
         <!-- INTESTAZIONE  -->
         <div class="row justify-content-center" style="padding-top: 20px">
             <div class="col s-2" id="immagineProfilo">
-                <img src="../../img/FotoProfilo.png">
+                <img style="width:100px;height:100px; border-radius: 50%" src="../../img/propics/<?php echo $_SESSION['email'];?>.png">
             </div>
 
-            <div class="col" id="nomeUtente" style="padding-top: 10px; padding-right:80px">
+            <div class="col" id="nomeUtente" style="padding-top: 25px; padding-right:80px">
 
-                <?php echo  ' <h1 style="font-weight: bold; font-size: 30px; color: black; text-align: center;">' . $nome . ' ' . $cognome . '</h1> ';  ?>
+                <?php echo  ' <h1 style="font-weight: bold; font-size: 20px; color: black; text-align: left;">' . $nome . ' ' . $cognome . '</h1> ';  ?>
 
 
             </div>
         </div>
 
         <!-- CONTENUTO PAGINA -->
-        <div class="row justify-content-end " style="border-bottom-color:#E4E4E4;  border-bottom-style: solid; border-bottom-width: 2px; ">
-            <div class="col -3">
-                
-            </div>
-            <div class="col -3" style="padding-bottom: 10px;">
-                <form action="logout/logout.php" method="POST">
-                    <button type="submit" class="btn btn-primary" style="background-color: white; border-color:#B30000; font-size: 15px; color:#B30000 ; text-align: center; ">Log out</button>
-                </form>
-            </div>
-            <div class="col -6" style="padding-bottom: 10px;">
-                <form action="cambiaPsw/index.php" method="POST" >
-                    <button type="submit" class="btn btn-primary" style="background-color: white; border-color:#B30000; font-size: 15px; color:#B30000 ; text-align: center; ">Password</button>
-                </form>
-            </div>
-        </div>
+
 
 
         <br>
