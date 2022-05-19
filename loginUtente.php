@@ -20,7 +20,7 @@
             $password = $_POST['password'];
             $password = hash("sha256", $password);
 
-            $sql = "SELECT * FROM utente WHERE email='$email' AND psw='$password'";
+            $sql = "SELECT * FROM utente WHERE (email='$email' OR username='$email') AND psw='$password'";
             $result = mysqli_query($connessione, $sql);
 
             if ($result->num_rows > 0) {
@@ -50,27 +50,38 @@
             $cognome = $connessione->real_escape_string($_REQUEST['cognome']);
             $mail = $connessione->real_escape_string($_REQUEST['mail']);
             $password = $connessione->real_escape_string($_REQUEST['password']);
+            $username= $connessione->real_escape_string($_REQUEST['username']);
             
             //hashing della password
             $password = hash("sha256", $password);
-        
-            $sql = "INSERT INTO utente (nome, cognome, email, psw) VALUES 
-            ('$nome','$cognome', '$mail', '$password')";
-        
             
-            if($connessione->query($sql) === true){
-                $_SESSION['email']= $mail;
-                if($_SESSION['dispositivo']=='mobile'){
-                    header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/mobile/percorsi/index.php");
-                }
-                else{
-                    header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/index.php");
-                }
-                //header("location: ../".$_SESSION['dispositivo']."/percorsi/index.php");
-                echo "Utente inserito con successo";
-            }else{
-                echo "Errore durante inserimento: ".$connessione->error;
-            } 
+            $sql = "SELECT * FROM utente WHERE email='$email' OR username='$username'";
+            $result = mysqli_query($connessione, $sql);
+
+            if ($result->num_rows > 0) {
+                    $_SESSION['erroreR']=12;
+                    header("Location: index.php");
+            }
+            else{
+
+                $sql = "INSERT INTO utente (nome, cognome, email, psw, username) VALUES 
+                ('$nome','$cognome', '$mail', '$password','$username')";
+            
+                
+                if($connessione->query($sql) === true){
+                    $_SESSION['email']= $mail;
+                    if($_SESSION['dispositivo']=='mobile'){
+                        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/mobile/percorsi/index.php");
+                    }
+                    else{
+                        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/index.php");
+                    }
+                    //header("location: ../".$_SESSION['dispositivo']."/percorsi/index.php");
+                    echo "Utente inserito con successo";
+                }else{
+                    echo "Errore durante inserimento: ".$connessione->error;
+                } 
+            }
         }
     ?>
 		

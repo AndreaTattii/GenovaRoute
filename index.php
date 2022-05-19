@@ -152,15 +152,29 @@ body {
     <div class="login-page">
         <div class="form" action="registra.php" method="post">
           <form class="register-form" action="loginUtente.php" method="post">
+            <input type="text" placeholder="username" name="username" required>
             <input name="nome" type="text" placeholder="nome" required/>
             <input name="cognome" type="text" placeholder="cognome" required/>
             <input name="mail" type="email" placeholder="email" required/>
             <input name="password" type="password" placeholder="password" required/>
+            <?php
+            if (isset($_SESSION['erroreR'])) { 
+            ?>
+                <script>
+                  $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+                </script>
+            <?php
+                unset($_SESSION['erroreR']);  
+            ?>                
+                <p style="color: red;">Username o mail già esistenti</p>
+            <?php
+            }
+            ?>
             <button>Registrati</button>
             <p class="message">Già registrato? <a href="#">Accedi</a></p>
           </form>
           <form class="login-form" action="loginUtente.php" method="post">
-            <input name="mail" type="email" placeholder="email" required/>
+            <input name="mail" type="text" placeholder="email/username" required/>
             <input name="password" type="password" placeholder="password" required/>
             <?php
 

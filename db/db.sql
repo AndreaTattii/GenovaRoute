@@ -4,6 +4,7 @@ USE GenovaRoute;
 
 CREATE TABLE IF NOT EXISTS Utente(
     email varchar(255) PRIMARY KEY,
+    username varchar(255) NOT NULL UNIQUE,
     nome varchar(255) NOT NULL,
     cognome varchar(255) NOT NULL,
     psw varchar(255) NOT NULL,
@@ -196,4 +197,4 @@ INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (9,
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (8, 2, 1);
 
 
-INSERT INTO Utente (email, nome, cognome, psw, admn) VALUES ('admin@admin', 'admin', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1);
+INSERT INTO Utente (email, username, nome, cognome, psw, admn) VALUES ('admin@admin','admin', 'admin', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1);
