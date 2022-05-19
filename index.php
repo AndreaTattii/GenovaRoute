@@ -142,7 +142,7 @@ body {
     <nav class="navbar  navbar-expand-lg " style="background-color: #B30000;">
         <div class="container p-2">
             <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold;" href="./">
-                <h1>Genova Route</h1>
+                <h1>GrovaGO</h1>
             </a>
         </div>
     </nav>
