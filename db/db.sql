@@ -56,6 +56,12 @@ CREATE TABLE IF NOT EXISTS Tappa_Appartiene_Percorso(
     PRIMARY KEY (id_tappa, id_percorso)
 );
 
+CREATE TABLE IF NOT EXISTS citta(
+    nome varchar(255) PRIMARY KEY,
+    x varchar(255),
+    y varchar(255)
+);
+
 INSERT INTO Percorso (nome, descrizione, copertina) VALUES ('Visita a Genova', 'Percorso per i monumenti, musei e ristoranti di Genova', 'https://www.italia.it/storage/small/202105/20210506124258_shutterstock_1410992927.jpg');
 INSERT INTO Percorso (nome, descrizione, copertina) VALUES ('Vicolata', 'Percorso per la vicolata', 'https://static2-viaggi.corriereobjects.it/wp-content/uploads/2022/03/iStock-1290281526-Genova.jpg?v=461667');
 INSERT INTO Percorso (nome, descrizione, copertina) VALUES ('Chiese di Genova', 'Percorso per le chiese di Genova','https://static.open.online/wp-content/uploads/2020/04/GENOVA-TAG-1.jpg');
