@@ -29,7 +29,14 @@ session_start();
 
     <title>Genova Route</title>
     <link rel="icon" href="../../img/Admin.png" type="image/icon type">
+    <style>
+        button:hover{
+            background-color: white;
+            color: #B30000;
+        }
 
+        
+    </style>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -46,14 +53,14 @@ session_start();
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-4" style="text-align:center; padding-bottom:10px;  ">
-                    <button onclick="toPercorsi()" style="background-color:#B30000; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;">Percorsi</button>
+            <div class="col-4"  style="text-align:center; padding-bottom:10px;  ">
+                    <button class="buttonNav" onclick="toPercorsi()" style="background-color:#B30000; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; ">Percorsi</button>
             </div>
             <div class="col-4" style="text-align:center; padding-bottom:10px">
-                <button onclick="toTappe()" style="background-color:#B30000; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;">Tappe</button>
+                <button class="buttonNav" onclick="toTappe()" style="background-color:#B30000; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;">Tappe</button>
             </div>
             <div class="col-4" style="text-align:center; padding-bottom:10px">
-                <button onclick="toCitta()" style="background-color:#B30000; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;">Città</button>
+                <button class="buttonNav" onclick="toCitta()" style="background-color:#B30000; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;">Città</button>
             </div>
         </div>
 

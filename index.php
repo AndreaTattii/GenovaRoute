@@ -153,8 +153,8 @@ body {
         <div class="form" action="registra.php" method="post">
           <form class="register-form" action="loginUtente.php" method="post">
             <input type="text" placeholder="username" name="username" required>
-            <input name="nome" type="text" placeholder="nome" required/>
-            <input name="cognome" type="text" placeholder="cognome" required/>
+            <input name="nome" type="text" placeholder="nome" maxlenght="8" required/>
+            <input name="cognome" type="text" placeholder="cognome" maxlenght="8" required/>
             <input name="mail" type="email" placeholder="email" required/>
             <input name="password" type="password" placeholder="password" required/>
             <?php
