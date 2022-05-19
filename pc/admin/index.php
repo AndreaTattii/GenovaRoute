@@ -35,16 +35,29 @@ session_start();
 <body class="d-flex flex-column min-vh-100">
 
     <!-- NAVBAR -->
-    <nav class="navbar  navbar-expand-lg" style="background-color: #B30000;">
-        <div class="container">
-            <div class="col">
+
+    <div class="container" style="background-color: #B30000; position:fixed; top:0px; left:0px; right:0px; width:100%;">
+        <div class="row">
+            <div class="col-12">
                 <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center; " href="./">
                     <h1>GrovaGO Administration</h1>
                 </a>
             </div>
-
         </div>
-    </nav>
+
+        <div class="row justify-content-center">
+            <div class="col-4" style="text-align:center; padding-bottom:10px;  ">
+                    <button onclick="toPercorsi()" style="background-color:#B30000; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;">Percorsi</button>
+            </div>
+            <div class="col-4" style="text-align:center; padding-bottom:10px">
+                <button onclick="toTappe()" style="background-color:#B30000; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;">Tappe</button>
+            </div>
+            <div class="col-4" style="text-align:center; padding-bottom:10px">
+                <button onclick="toCitta()" style="background-color:#B30000; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;">Città</button>
+            </div>
+        </div>
+
+    </div>
 
     <!-- CORPO -->
 
@@ -55,14 +68,20 @@ session_start();
         <br>
         <br>
         <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 
 
         <!-- PERCORSI -->
-        <div class="row" style="margin-top:20px; padding: 10px; border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; border-bottom-color:#F0F0F0;  border-bottom-style: solid; border-bottom-width: 3px; ">
+        <div class="row" id="percorsi" style="margin-top:20px; padding: 10px; border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; border-bottom-color:#F0F0F0;  border-bottom-style: solid; border-bottom-width: 3px;">
             <h2 style="color:#B30000; text-align:center;">Percorsi</h2>
         </div>
         <br>
-        <div class="container" style="border-color : black;  border-style: solid; border-width: 1px;">
+        <div class="container" id="divPercorsi" style="border-color : black;  border-style: solid; border-width: 1px;">
             <div class="row" style="border-bottom-color : black;  border-bottom-style: solid; border-bottom-width: 1px;">
                 <div class="col-1">
                     <h3>ID</h3>
@@ -215,12 +234,12 @@ session_start();
         <br>
         <br>
         <!-- TAPPE -->
-        <div class="row" style="margin-top:40px; padding: 10px; border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; border-bottom-color:#F0F0F0;  border-bottom-style: solid; border-bottom-width: 3px; ">
+        <div class="row" id="tappe" style="margin-top:40px; padding: 10px; border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; border-bottom-color:#F0F0F0;  border-bottom-style: solid; border-bottom-width: 3px; ">
             <h2 style="color:#B30000; text-align:center;">Tappe</h2>
         </div>
         <br>
-        
-        <div class="container" style="border-color : black;  border-style: solid; border-width: 1px;">
+
+        <div class="container" id="divTappe" style="border-color : black;  border-style: solid; border-width: 1px;">
             <div class="row" style="border-bottom-color : black;  border-bottom-style: solid; border-bottom-width: 1px;">
                 <div class="col-1">
                     <h3>ID</h3>
@@ -309,21 +328,21 @@ session_start();
             $connessione->close();
 
 
-?>
+            ?>
 
 
-            
-    </div>
 
-    <br>
+        </div>
+
+        <br>
         <br>
         <br>
         <!-- CITTA' -->
-        <div class="row" style="margin-top:40px; padding: 10px; border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; border-bottom-color:#F0F0F0;  border-bottom-style: solid; border-bottom-width: 3px; ">
+        <div class="row" id="citta" id="divCitta" style="margin-top:40px; padding: 10px; border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; border-bottom-color:#F0F0F0;  border-bottom-style: solid; border-bottom-width: 3px; ">
             <h2 style="color:#B30000; text-align:center;">Città</h2>
         </div>
         <br>
-    <div class="container" style="border-color : black;  border-style: solid; border-width: 1px;">
+        <div class="container" style="border-color : black;  border-style: solid; border-width: 1px;">
             <div class="row" style="border-bottom-color : black;  border-bottom-style: solid; border-bottom-width: 1px;">
                 <div class="col-3">
                     <h3>Nome</h3>
@@ -334,9 +353,9 @@ session_start();
                 <div class="col-5">
                     <h3>Latitudine</h3>
                 </div>
-                <div class="col-1" >
+                <div class="col-1">
                     <form action="formC.php" method="POST">
-                        <button type="submit" class="btn btn-primary" style="background-color:white; width:100%; border-color:white; ">  <img src="../../img/icons/insert.png" alt="inserisci" style="width:30px; height:30px;"></button>
+                        <button type="submit" class="btn btn-primary" style="background-color:white; width:100%; border-color:white; "> <img src="../../img/icons/insert.png" alt="inserisci" style="width:30px; height:30px;"></button>
                     </form>
                 </div>
             </div>
@@ -364,19 +383,19 @@ session_start();
                         $sfondo = "background-color:white;";
                     }
                     echo "<div class='row' style='" . $sfondo . " padding: 10px;'>";
-                        echo "<div class='col-3'>";
-                            echo $row["nome"];
-                        echo "</div>";
-                        echo "<div class='col-3'>";
-                            echo $row["x"];
-                        echo "</div>";
-                        echo "<div class='col-2'>";
-                            echo $row["y"];
-                        echo "</div>";
+                    echo "<div class='col-3'>";
+                    echo $row["nome"];
+                    echo "</div>";
+                    echo "<div class='col-3'>";
+                    echo $row["x"];
+                    echo "</div>";
+                    echo "<div class='col-2'>";
+                    echo $row["y"];
+                    echo "</div>";
 
 
-                        echo "<div class='col-2'>";
-                        echo "
+                    echo "<div class='col-2'>";
+                    echo "
                                         <center>
                                             <form action='formModificaC.php' method='POST'>
                                                 <input type='hidden' name='nomeCitta' value='" . $row["nome"] . "'>
@@ -384,9 +403,9 @@ session_start();
                                             </form>
                                         </center>
                                     ";
-                        echo "</div>";
-                        echo "<div class='col-2'>";
-                        echo "
+                    echo "</div>";
+                    echo "<div class='col-2'>";
+                    echo "
                                         <center>
                                             <form action='eliminaCitta.php' method='POST'>
                                                 <input type='hidden' name='nomeCitta' value='" . $row["nome"] . "'>
@@ -394,7 +413,7 @@ session_start();
                                             </form>
                                         </center>
                                     ";
-                        echo "</div>";
+                    echo "</div>";
                     echo "</div>";
                     $i++;
                 }
@@ -405,7 +424,7 @@ session_start();
             $connessione->close();
             ?>
 
-          
+
 
         </div>
     </div>
@@ -418,7 +437,7 @@ session_start();
         echo "<br>";
     }
     ?>
-    <div class="footer-clean" style="background-color:white; border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px; position:fixed; bottom:0px; width:100%;">
+    <div class="footer-clean" style="background-color:white; border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px;  width:100%;">
         <footer>
 
             <div class="container">
@@ -434,6 +453,23 @@ session_start();
             </div>
         </footer>
     </div>
+
+    <script>
+        function toPercorsi() {
+            const element = document.getElementById("percorsi");
+            element.scrollIntoView();
+        }
+
+        function toTappe() {
+            const element = document.getElementById("tappe");
+            element.scrollIntoView();
+        }
+
+        function toCitta() {
+            const element = document.getElementById("citta");
+            element.scrollIntoView();
+        }
+    </script>
 
 </body>
 
