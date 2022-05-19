@@ -112,11 +112,11 @@ session_start();
                     echo $row["descrizione"];
                     echo "</div>";
 
-                    echo "<div class='col-2'>";
+                    echo "<div class='col-2'>"; 
                     echo "
                                     <form action='percorso.php' method='POST'>
                                         <input type='hidden' name='idPercorso' value='" . $row["id"] . "'>
-                                        <button type='submit' style='color:white; background-color:#B30000; width:100%; border-color:#B30000; border-radius:50px'>Gestisci</button>
+                                        <button     onmouseover='this.style.background-color='#B30000'' type='submit' style='color:white; background-color:white; border-color:#B30000;width:50px; border-radius:50px'> ⚙ </button>
                                     </form>
                                 ";
                     echo "</div>";
@@ -126,7 +126,7 @@ session_start();
                                     <center>
                                         <form action='eliminaPercorso.php' method='POST'>
                                             <input type='hidden' name='idPercorso' value='" . $row["id"] . "'>
-                                            <button type='submit' style='color:white; background-color:#B30000; width:50px; border-color:#B30000; border-radius:50px'> - </button>
+                                            <button type='submit' onmouseover='background-color:#B30000' style='color:white; background-color: white; width:50px; border-color:#B30000; border-radius:50px'> 🗑 </button>
                                         </form>
                                     </center>
                                 ";
@@ -294,7 +294,7 @@ session_start();
                                     <center>
                                         <form action='formModificaT.php' method='POST'>
                                             <input type='hidden' name='idTappa' value='" . $row["id"] . "'>
-                                            <button type='submit' style='color:white; background-color:#B30000; width:50%; border-color:#B30000; border-radius:50px'>Modifica </button>
+                                            <button type='submit' style='color:white; background-color:white; width:50px; border-color:#B30000; border-radius:50px'> ⚙ </button>
                                         </form>
                                     </center>
                                 ";
@@ -304,7 +304,7 @@ session_start();
                                     <center>
                                         <form action='eliminaTappa.php' method='POST'>
                                             <input type='hidden' name='idTappa' value='" . $row["id"] . "'>
-                                            <button type='submit' style='color:white; background-color:#B30000; width:50px; border-color:#B30000; border-radius:50px'> - </button>
+                                            <button type='submit' style='color:white; background-color:white; width:50px; border-color:#B30000; border-radius:50px'> 🗑 </button>
                                         </form>
                                     </center>
                                 ";
