@@ -37,7 +37,7 @@
         <div class="container">
             <div class="col">
                 <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center; " href="index.php">
-                    <h1>Genova Route Administration</h1>
+                    <h1>GrovaGO Administration</h1>
                 </a>
             </div>
 
@@ -125,7 +125,7 @@
                     <div class="col-4"></div>
                     <center>
                         <p style="text-decoration: none; color:black">Partita Iva: 02070920992</p>
-                        <p>GenovaRoute ©</p>
+                        <p>GrovaGO©</p>
                     </center>
                 </div>
             </div>

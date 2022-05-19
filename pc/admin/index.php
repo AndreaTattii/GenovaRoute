@@ -39,7 +39,7 @@ session_start();
         <div class="container">
             <div class="col">
                 <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center; " href="./">
-                    <h1>Genova Route Administration</h1>
+                    <h1>GrovaGO Administration</h1>
                 </a>
             </div>
 
@@ -112,11 +112,11 @@ session_start();
                     echo $row["descrizione"];
                     echo "</div>";
 
-                    echo "<div class='col-2'>"; 
+                    echo "<div class='col-2'>";
                     echo "
                                     <form action='percorso.php' method='POST'>
                                         <input type='hidden' name='idPercorso' value='" . $row["id"] . "'>
-                                        <button     onmouseover='this.style.background-color='#B30000'' type='submit' style='color:white; background-color:white; border-color:#B30000;width:50px; border-radius:50px'> ⚙ </button>
+                                        <button     onmouseover='this.style.background-color='#B30000'' type='submit' style='color:white; background-color:white; border-color:black; ;width:50px; border-radius:50px; shadow:none'> ⚙ </button>
                                     </form>
                                 ";
                     echo "</div>";
@@ -126,7 +126,7 @@ session_start();
                                     <center>
                                         <form action='eliminaPercorso.php' method='POST'>
                                             <input type='hidden' name='idPercorso' value='" . $row["id"] . "'>
-                                            <button type='submit' onmouseover='background-color:#B30000' style='color:white; background-color: white; width:50px; border-color:#B30000; border-radius:50px'> 🗑 </button>
+                                            <button type='submit' onmouseover='background-color:#B30000' style='color:white; background-color: white; width:50px; border-color:black; border-radius:50px'> 🗑 </button>
                                         </form>
                                     </center>
                                 ";
@@ -164,7 +164,7 @@ session_start();
                 </form>
             </div>
 
-            
+
 
             <div class='row' style="<?php echo $sfondo ?>; padding:10px; border-style:solid; border-width:1px; ">
                 <form action="modificaP/modificaDescrizioneP.php" action="POST">
@@ -173,8 +173,8 @@ session_start();
                             <input type="text" name="idPercorso" placeholder="Inserisci l'id" required>
                         </div>
                         <div class="col-7">
-                            <input type="text" name="nuovaDescrizione" placeholder="Inserisci descrizione" style="width: 90%;" maxlength="80"  required>
-                            
+                            <input type="text" name="nuovaDescrizione" placeholder="Inserisci descrizione" style="width: 90%;" maxlength="80" required>
+
 
                         </div>
                         <div class="col-1">
@@ -294,7 +294,7 @@ session_start();
                                     <center>
                                         <form action='formModificaT.php' method='POST'>
                                             <input type='hidden' name='idTappa' value='" . $row["id"] . "'>
-                                            <button type='submit' style='color:white; background-color:white; width:50px; border-color:#B30000; border-radius:50px'> ⚙ </button>
+                                            <button type='submit' style='color:white; background-color:white; width:50px; border-color:black; border-radius:50px'> ⚙ </button>
                                         </form>
                                     </center>
                                 ";
@@ -304,7 +304,7 @@ session_start();
                                     <center>
                                         <form action='eliminaTappa.php' method='POST'>
                                             <input type='hidden' name='idTappa' value='" . $row["id"] . "'>
-                                            <button type='submit' style='color:white; background-color:white; width:50px; border-color:#B30000; border-radius:50px'> 🗑 </button>
+                                            <button type='submit' style='color:white; background-color:white; width:50px; border-color:black; border-radius:50px'> 🗑 </button>
                                         </form>
                                     </center>
                                 ";
@@ -343,12 +343,11 @@ session_start();
                     <div class="col-4"></div>
                     <center>
                         <p style="text-decoration: none; color:black">Partita Iva: 02070920992</p>
-                        <p>GenovaRoute ©</p>
+                        <p>GrovaGO©</p>
                     </center>
                 </div>
             </div>
-    </div>
-    </footer>
+        </footer>
     </div>
 
 </body>

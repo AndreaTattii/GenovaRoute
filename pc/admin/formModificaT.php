@@ -60,7 +60,7 @@ if ($result = $connessione->query($sql)) {
         <div class="container">
             <div class="col">
                 <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center; " href="index.php">
-                    <h1>Genova Route Administration</h1>
+                    <h1>GrovaGO Administration</h1>
                 </a>
             </div>
 
@@ -204,24 +204,8 @@ if ($result = $connessione->query($sql)) {
         echo "<br>";
     }
     ?>
-    <div class="footer-clean" style="background-color:white; border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px; position:fixed; bottom:0px; width:100%;">
-        <footer>
-
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-4 ">
-                    </div>
-                    <div class="col-4"></div>
-                    <center>
-                        <p style="text-decoration: none; color:black">Partita Iva: 02070920992</p>
-                        <p>GenovaRoute ©</p>
-                    </center>
-                </div>
-            </div>
+        
     </div>
-    </footer>
-    </div>
-
 </body>
 
 </html>
