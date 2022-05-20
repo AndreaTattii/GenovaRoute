@@ -110,10 +110,25 @@ if ($result = $connessione->query($sql)) {
             </div>
         </form>
 
-        <form action="modificaT/modificaImg1T.php" method="POST">
+        <form action="modificaT/modificaImg1T.php" method="POST" enctype="multipart/form-data">
             <div class="row" style="margin:10px;">
                 <div class="col">
-                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Url immagine 1 " required>
+                    <div class='row'>
+                        <input type='file' name='img1' required>
+                    </div>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary" style=" background-color:#B30000; border-color:#B30000;">Modifica</button>
+                </div>
+            </div>
+        </form>
+
+        <form action="modificaT/modificaImg2T.php" method="POST" enctype="multipart/form-data">
+            <div class="row" style="margin:10px;">
+                <div class="col">
+                    <div class="row">
+                        <input type='file' name='img2' required>
+                    </div>
                 </div>
                 <div class="col">
                     <?php
@@ -124,24 +139,12 @@ if ($result = $connessione->query($sql)) {
             </div>
         </form>
 
-        <form action="modificaT/modificaImg2T.php" method="POST">
+        <form action="modificaT/modificaImg3T.php" method="POST" enctype="multipart/form-data">
             <div class="row" style="margin:10px;">
                 <div class="col">
-                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Url immagine 2" required>
-                </div>
-                <div class="col">
-                    <?php
-                    echo "<input type='hidden' name='idTappa' value='" . $_SESSION['idTappa'] . "'>"
-                    ?>
-                    <button type="submit" class="btn btn-primary" style=" background-color:#B30000; border-color:#B30000;">Modifica</button>
-                </div>
-            </div>
-        </form>
-
-        <form action="modificaT/modificaImg3T.php" method="POST">
-            <div class="row" style="margin:10px;">
-                <div class="col">
-                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Url immagine 3" required>
+                    <div class='row'>
+                        <input type='file' name='img3' required>
+                    </div>
                 </div>
                 <div class="col">
                     <?php

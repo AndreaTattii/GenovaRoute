@@ -1,34 +1,29 @@
 <?php
-	session_start();
+session_start();
 
-    $host="127.0.0.1";
-    $user="root";
-    $password="";
-    $database="GenovaRoute";
 
-    $connessione= new mysqli($host, $user, $password , $database);
-
-    if($connessione === false){
-        die("Errore di connessione: ".$connessione->connect_error);
+if (isset($_FILES['img3'])) {
+    $errors = array();
+    $file_name = $_FILES['img3']['name'];
+    $file_size = $_FILES['img3']['size'];
+    $file_tmp = $_FILES['img3']['tmp_name'];
+    $file_type = $_FILES['img3']['type'];
+    $file_ext = strtolower(end(explode('.', $_FILES['img3']['name'])));
+    $expensions = array("jpeg", "jpg", "png");
+    if (in_array($file_ext, $expensions) === false) {
+        $errors[] = "extension not allowed, please choose a JPEG or PNG file.";
     }
-
-    $idTappa = $connessione->real_escape_string($_REQUEST['idTappa']);
-    $contenuto = $connessione->real_escape_string($_REQUEST['contenuto']);
-    
-    
-    $sql="UPDATE tappa SET img3 = '".$contenuto."'
-            WHERE id = ".$idTappa;
-    if ($result = $connessione->query($sql)) {
-        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/formModificaT.php");
-        
+    if ($file_size > 10000000) {
+        $errors[] = 'File size must be excately 10 MB';
+    }
+    if (empty($errors) == true) {
+        move_uploaded_file($file_tmp, "../../../img/tappe/$_SESSION['idTappa'].3.png");
+        echo "Success";
     } else {
-        echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
+        print_r($errors);
     }
-
-
-
-    $connessione->close();
-/**/
+}
+header("location: formModificaT.php");
 
     
 ?>
