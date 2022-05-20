@@ -54,7 +54,7 @@
                 <h1 class="text-center">Inserimento nuovo percorso</h1>
             </div>
         </div>
-        <form action="inserimentoP.php" method="POST">
+        <form action="inserimentoP.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="nome">Nome</label>
                 <input type="text" class="form-control" id="nome" name="nome" placeholder="Inserisci il nome del percorso" maxlength="30" required>
@@ -65,10 +65,12 @@
             </div>
             <div class="form-group">
                 <label for="coperrtina">Copertina</label>
-                <input type="text" class="form-control" id="copertina" name="copertina" placeholder="Inserisci l'immagine" required>
+                <div class="row">
+                    <input type="file" name="copertina" required>
+                </div>
             </div>
             <div class="form-group">
-                <label for="immagine">Tappa</label>
+                <label for="immagine">Tappa iniziale</label>
                 <input type="text" class="form-control" id="idTappa" name="idTappa" placeholder="Inserisci l'id della tappa" required>
             </div>
             

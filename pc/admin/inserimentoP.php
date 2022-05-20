@@ -14,7 +14,6 @@
 
     $nome = $connessione->real_escape_string($_REQUEST['nome']);
     $descrizione = $connessione->real_escape_string($_REQUEST['descrizione']);
-
     $idTappa = $connessione->real_escape_string($_REQUEST['idTappa']);
     
     
@@ -51,11 +50,34 @@
     ('".$idTappa."','".$idPercorso."', 0)";
 
     if($connessione->query($sql) === true){
-        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/index.php");
+        echo "New record created successfully";
     }else{
         echo "Errore durante inserimento: ".$connessione->error;
     }
 
+    if (isset($_FILES['copertina'])) {
+        $errors = array();
+        $file_name = $_FILES['copertina']['name'];
+        $file_size = $_FILES['copertina']['size'];
+        $file_tmp = $_FILES['copertina']['tmp_name'];
+        $file_type = $_FILES['copertina']['type'];
+        $file_ext = strtolower(end(explode('.', $_FILES['copertina']['name'])));
+        $expensions = array("jpeg", "jpg", "png");
+        if (in_array($file_ext, $expensions) === false) {
+            $errors[] = "extension not allowed, please choose a JPEG or PNG file.";
+        }
+        if ($file_size > 10000000) {
+            $errors[] = 'File size must be excately 10 MB';
+        }
+        if (empty($errors) == true) {
+            move_uploaded_file($file_tmp, "../../img/percorsi/$idPercorso.png");
+            echo "Success";
+        } else {
+            print_r($errors);
+        }
+    }
 
     $connessione->close();
+    header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/formP.php");
+
 ?>

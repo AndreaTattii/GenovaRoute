@@ -47,7 +47,7 @@
     <!-- CORPO -->
     <br>
     <br>
-    
+
     <!-- Fai un form per l'inserimento di records nella tabella tappa nel db-->
     <div class="container">
         <div class="row">
@@ -55,7 +55,7 @@
                 <h1 class="text-center">Inserimento nuova tappa</h1>
             </div>
         </div>
-        <form action="inserimentoT.php" method="POST">
+        <form action="inserimentoT.php" enctype="multipart/form-data" method="POST">
             <div class="form-group">
                 <label for="nome">Nome</label>
                 <input type="text" class="form-control" id="nome" name="nome" placeholder="Inserisci il nome della tappa" maxlength="30" required>
@@ -66,15 +66,21 @@
             </div>
             <div class="form-group">
                 <label for="immagine">Immagine 1</label>
-                <input type="text" class="form-control" id="immagine1" name="immagine1" placeholder="Inserisci l'url dell' immagine" required>
+                <div class="row">
+                    <input type="file" name="img1" required>
+                </div>
             </div>
             <div class="form-group">
                 <label for="immagine">Immagine 2</label>
-                <input type="text" class="form-control" id="immagine2" name="immagine2" placeholder="Inserisci l'url dell' immagine" required>
+                <div class="row">
+                    <input type="file" name="img2" required>
+                </div>
             </div>
             <div class="form-group">
                 <label for="immagine">Immagine 3</label>
-                <input type="text" class="form-control" id="immagine3" name="immagine3" placeholder="Inserisci l'url dell' immagine" required>
+                <div class="row">
+                    <input type="file" name="img3" required>
+                </div>
             </div>
             <div class="form-group">
                 <label for="percorso">Via</label>
@@ -94,21 +100,7 @@
             </div>
             <button type="submit" class="btn btn-primary" style="margin-top: 15px; background-color:#B30000; border-color:#B30000;">Inserisci</button>
         </form>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    </div>  <!-- fine container -->
     <!-- stampa tanti br -->
     <?php
     for ($i = 0; $i < 15; $i++) {
