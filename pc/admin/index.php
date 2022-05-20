@@ -43,16 +43,16 @@ session_start();
 
     <!-- NAVBAR -->
 
-    <div class="container" style="background-color: #B30000; position:fixed; top:0px; left:0px; right:0px; width:100%;">
+    <div class="container" style="background-color: #B30000; position:fixed; top:0px; left:0px; right:0px; width:100%; height: 120px; ">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" style="height:50px">
                 <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center; " href="./">
                     <h1>GrovaGO Administration</h1>
                 </a>
             </div>
         </div>
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="margin-top: 0px; padding-top: 0px;">
             <div class="col-4"  style="text-align:center; padding-bottom:10px;  ">
                     <button class="buttonNav" onclick="toPercorsi()" style="background-color:#B30000; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; ">Percorsi</button>
             </div>
@@ -96,8 +96,14 @@ session_start();
                 <div class="col-2">
                     <h3>Nome</h3>
                 </div>
-                <div class="col-5">
+                <div class="col-8">
                     <h3>Descrizione</h3>
+                </div>
+
+                <div class="col-1">
+                    <form action="formP.php" method="POST">
+                        <button type="submit" class="btn btn-primary" style="background-color:white; width:100%; border-color:white">➕</button>
+                    </form>
                 </div>
             </div>
             <?php
@@ -211,28 +217,7 @@ session_start();
             </div>
 
 
-            <div class='row' style="<?php echo $sfondo ?>; padding:10px; border-style:solid; border-width:1px; ">
-                <form action="inserimentoP.php" action="POST">
-                    <div class="row">
-                        <div class="col-2">
-                            <input type="text" name="nomeP" placeholder="Inserisci il nome" maxlength="20" required>
-                        </div>
-                        <div class="col-3">
-                            <input type="text" name="descrizioneP" placeholder="Inserisci la descrizione" style="width: 90%;" maxlength="80" required>
-                        </div>
-                        <div class="col-2">
-                            <input type="text" name="copertina" placeholder="Inserisci url immagine" style="width: 90%;" maxlength="80" required>
-                        </div>
-                        <div class="col-3">
-                            <input type="text" name="idTappa" placeholder="Inserisci id tappa" required>
-                        </div>
-                        <div class="col-1">
-                            <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000; width:150px;">Crea</button>
-                        </div>
-                    </div>
-
-                </form>
-            </div>
+            
         </div>
 
 

@@ -12,8 +12,8 @@
         die("Errore di connessione: ".$connessione->connect_error);
     }
 
-    $nome = $connessione->real_escape_string($_REQUEST['nomeP']);
-    $descrizione = $connessione->real_escape_string($_REQUEST['descrizioneP']);
+    $nome = $connessione->real_escape_string($_REQUEST['nome']);
+    $descrizione = $connessione->real_escape_string($_REQUEST['descrizione']);
     $copertina = $connessione->real_escape_string($_REQUEST['copertina']);
 
     $idTappa = $connessione->real_escape_string($_REQUEST['idTappa']);
