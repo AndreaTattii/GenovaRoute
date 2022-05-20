@@ -109,25 +109,40 @@ session_start();
                     } else {
                         $coloreRiga = "#F0F0F0";
                     }
-                    $sql2 = "SELECT * FROM utente_percorre_tappa WHERE email = '" . $_SESSION['email'] . "' AND id_tappa IN (SELECT id_tappa FROM tappa_appartiene_percorso, percorso WHERE id_percorso=" . $row['id'] . ");";
+
+                    //query per vedere se utente ha completato percorso
+                    $sql2 = "SELECT * FROM utente_percorre_tappa 
+                            WHERE email = '" . $_SESSION['email'] . "' 
+                            AND id_tappa IN (SELECT id_tappa FROM tappa_appartiene_percorso, percorso 
+                                            WHERE id_percorso=" . $row['id'] . ");
+                            ";
                     
+                    if ($result2 = $connessione->query($sql2)) {
+                        
+                    } else {
+                        echo "Errore: " . $connessione->error;
+                    }
+                    
+                    //query per vedere quante tappe 
                     $quanteTappeQuery = "SELECT MAX(ordine)  
                         FROM  Tappa_Appartiene_Percorso
                         WHERE id_percorso =  " . $row['id'] . ";";
-
                     if ($risultato = $connessione->query($quanteTappeQuery)) {
                         $row3 = $risultato->fetch_assoc();
                         $quanteTappe = $row3['MAX(ordine)']+1;
                     } else {
                         echo "Impossibile eseguire la quante tappe query";
                     }
-                    if ($result2 = $connessione->query($sql2)) {
-                        
-                    } else {
-                        echo "Errore: " . $connessione->error;
-                    }
 
-                    $primaCittaQuery = "SELECT citta FROM tappa WHERE id IN (SELECT id_tappa FROM tappa_appartiene_percorso WHERE id_percorso = " . $row['id'] . " AND ordine = 0);";
+                    //query per vedere la prima città del percorso
+                    $primaCittaQuery = "SELECT citta FROM tappa 
+                                        WHERE id IN (SELECT Tappa.id 
+                                                    FROM tappa_appartiene_percorso, tappa 
+                                                    WHERE id_percorso = " . $row['id'] . " 
+                                                            AND ordine = 0
+                                                            AND tappa.id = tappa_appartiene_percorso.id_tappa
+                                                    );
+                                    ";
                     if ($risultato = $connessione->query($primaCittaQuery)) {
                         $riga = $risultato->fetch_assoc();
                         $primaCitta = $riga['citta'];
@@ -145,7 +160,7 @@ session_start();
                                 <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px">
                                     <p class="card-title"><img src="../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; ">'.$primaCitta.'</p>
                                 </div>
-                                <img src="'.$row['copertina']. '" class="card-img-top" alt="..." style=" border-radius:0px">
+                                <img src="img/percorsi/'.$row['id'].'" class="card-img-top" alt="..." style=" border-radius:0px">
                                 <div class="card-body" style="text-align: center;">
                                     <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
                                     <h5 class="card-title"><input type="submit" value=" ' . $row['nome'] . '" style=" text-decoration: none; color: #B30000; font-size:18px; border: none; background-color:white"></h5>

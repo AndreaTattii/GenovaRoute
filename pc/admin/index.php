@@ -216,7 +216,21 @@ session_start();
                 </form>
             </div>
 
-
+            <div class='row' style="<?php echo $sfondo ?>; padding:10px; border-style:solid; border-width:1px; ">
+                <form action="modificaP/modificaDescrizioneP.php" action="POST">
+                    <div class="row">
+                        <div class="col-3">
+                            <input type="text" name="idPercorso" placeholder="Inserisci l'id" required>
+                        </div>
+                        <div class="col-7">
+                            <input type="image" name="nuovaDescrizione" placeholder="Immagine" style="width: 90%;"  required>
+                        </div>
+                        <div class="col-1">
+                            <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000; width:150px;">Modifica</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
             
         </div>
 
