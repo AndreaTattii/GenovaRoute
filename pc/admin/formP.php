@@ -61,7 +61,7 @@
             </div>
             <div class="form-group">
                 <label for="descrizione">Descrizione</label>
-                <textarea class="form-control" placeholder="Inserisci descrizione" name="nuovaDescrizione" maxlength="2000"  required></textarea>
+                <textarea class="form-control" placeholder="Inserisci descrizione" name="descrizione" maxlength="2000"  required></textarea>
             </div>
             <div class="form-group">
                 <label for="coperrtina">Copertina</label>
