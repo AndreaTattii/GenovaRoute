@@ -22,13 +22,6 @@ CREATE TABLE IF NOT EXISTS Tappa(
     nome varchar(255) UNIQUE NOT NULL,
     descrizione mediumtext NOT NULL,
     via varchar(255) NOT NULL,
-<<<<<<< HEAD
-    img1 varchar(255) NOT NULL,
-    img2 varchar(255) NOT NULL,
-    img3 varchar(255) NOT NULL,
-=======
-    citta varchar(255) REFERENCES Citta(nome),
->>>>>>> f3c48f6c2a682ce3171f28df0455c4cb046cd6a0
     lon varchar(255),
     lat varchar(255)
 );
@@ -255,11 +248,7 @@ INSERT INTO Percorso (nome, descrizione) VALUES ('Visita a Dublino', 'Percorso p
 INSERT INTO Percorso (nome, descrizione) VALUES ('Chiese di Dublino', 'Percorso per le chiese di Dublino');
 
  
-<<<<<<< HEAD
-INSERT INTO Tappa (nome, descrizione, via,  img1, img2, img3, lon, lat) 
-=======
-INSERT INTO Tappa (nome, descrizione, via, citta, lon, lat) 
->>>>>>> f3c48f6c2a682ce3171f28df0455c4cb046cd6a0
+INSERT INTO Tappa (nome, descrizione, via,  lon, lat) 
     VALUES (
             'Arco della Vittoria', 
             "
@@ -268,21 +257,10 @@ INSERT INTO Tappa (nome, descrizione, via, citta, lon, lat)
                 Il disegno originale del 1924 venne poi modificato dallo stesso Piacentini due anni dopo, rendendo il monumento ad arco più semplice e asciutto. Le opere per la costruzione del monumento furono eseguite dall'azienda locale 'Impresa Garbarino e Sciaccaluga, dirette personalmente dall'architetto Piacentini.
             ", 
             'Piazza della Vittoria', 
-<<<<<<< HEAD
-            'http://www.visitgenoa.it/sites/default/files/gallery/PiazzadellaVittoria%20(2).jpg',
-            'https://upload.wikimedia.org/wikipedia/it/3/3e/Genova_piazza_della_Vittoria_anni_trenta.jpg',
-            'https://life-globe.com/image/cache/catalog/italia/liguria/genova/ploschad-pobedy/piazza-della-vittoria-genova-8-915x610.jpg',
             '44.403077306694875',
             '8.944978513772323'
     );
-INSERT INTO Tappa (nome, descrizione, via,  img1, img2, img3, lon, lat) 
-=======
-            'Genova',
-            '44.403077306694875',
-            '8.944978513772323'
-    );
-INSERT INTO Tappa (nome, descrizione, via, citta, lon, lat) 
->>>>>>> f3c48f6c2a682ce3171f28df0455c4cb046cd6a0
+INSERT INTO Tappa (nome, descrizione, via,  lon, lat) 
     VALUES (
             'Ponte monumentale', 
             "  
@@ -290,21 +268,10 @@ INSERT INTO Tappa (nome, descrizione, via, citta, lon, lat)
                 Il Ponte attraversa in senso longitudinale via XX Settembre ed è alto 21 metri, la struttura portante è costituita da un grande arco di mattoni, le arcate sottostanti sono sorrette da colonne in marmo sulle quali è posta una decorazione scultorea in pietra.
             ", 
             "Corso Andrea Podesta'",
-<<<<<<< HEAD
-            'https://i.ebayimg.com/images/g/MnEAAOSwPCFeVWvC/s-l400.jpg',
-            'https://www.ilmugugnogenovese.it/wp-content/uploads/2016/02/4BD70B00-AE33-4AEE-856F-1F6EA0C4E1BC.jpeg',
-            'http://4.bp.blogspot.com/-oKbxGlHoK3I/UdLxW96MtQI/AAAAAAAAC8I/nPJuUpELhqs/s1600/61+P.Monumentale+afdga+Mondani.jpg',
             '44.40591531858697', 
             '8.939335738048305'
     );
-INSERT INTO Tappa (nome, descrizione, via, img1, img2, img3, lon, lat) 
-=======
-            'Genova',
-            '44.40591531858697', 
-            '8.939335738048305'
-    );
-INSERT INTO Tappa (nome, descrizione, via, citta, lon, lat) 
->>>>>>> f3c48f6c2a682ce3171f28df0455c4cb046cd6a0
+INSERT INTO Tappa (nome, descrizione, via, lon, lat) 
     VALUES (
             'Fontana de Ferrari', 
             "
@@ -313,21 +280,10 @@ INSERT INTO Tappa (nome, descrizione, via, citta, lon, lat)
                 Il progetto di Crosa di Vergagni prevedeva una grande fontana costituita da una vasca centrale in bronzo posizionata al centro di una serie di vasche concentriche rivestite in travertino. Il bacile in bronzo fu donato alla citta dall'ingegnere Carlo Piaggio per esaudire il desiderio testamentario del padre - il banchiere e armatore Erasmo Piaggio - di lasciare qualcosa di duraturo in dono alla citta. La vasca venne fusa negli stabilimenti Tirreno di Genova-Le Grazie e trasportata in Piazza De Ferrari il 23 aprile 1936. Il trasporto del manufatto si rivelò particolarmente impegnativo perché la vasca, composta da un unico elemento di 11 metri di diametro e 36 tonnellate di peso, non poteva passare tra i vicoli del centro storico genovese. Il bacile fu quindi caricato su un pontone e trainato fino alla zona della Foce, da dove un trattore lo trasportò lungo il futuro Viale Brigate Partigiane e Via XX Settembre fino alla sua destinazione finale.
             ", 
             'Piazza Raffaele de Ferrari', 
-<<<<<<< HEAD
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Genoa_fontana_di_piazza_De_Ferrari.jpg/1200px-Genoa_fontana_di_piazza_De_Ferrari.jpg',
-            'https://i.ebayimg.com/images/g/jtUAAOSwZFdaja0N/s-l400.jpg',
-            'http://www.lavocedigenova.it/typo3temp/pics/p_ed7a0648c8.jpeg',
             '44.40712785099835', 
             '8.934016640162541'
     );
-INSERT INTO Tappa (nome, descrizione, via,  img1, img2, img3, lon, lat) 
-=======
-            'Genova',
-            '44.40712785099835', 
-            '8.934016640162541'
-    );
-INSERT INTO Tappa (nome, descrizione, via, citta, lon, lat) 
->>>>>>> f3c48f6c2a682ce3171f28df0455c4cb046cd6a0
+INSERT INTO Tappa (nome, descrizione, via,  lon, lat) 
     VALUES (
             'Cattedrale di San Lorenzo', 
             "
@@ -335,40 +291,18 @@ INSERT INTO Tappa (nome, descrizione, via, citta, lon, lat)
                 Una prima basilica vi sorse intorno al VI-VII secolo[3] Una leggenda vuole che in citta si siano fermati San Lorenzo e papa Sisto II, diretti in Spagna, venendo ospitati in una casa sita nella zona dell'attuale cattedrale, dove, dopo la loro uccisione, sarebbero sorte una cappella e poi una chiesa dedicate al santo.
             ", 
             'Piazza San Lorenzo', 
-<<<<<<< HEAD
-            'https://images.placesonline.com/photos/424010405180500_Genova_772146049.jpg',
-            'https://images.fidhouse.com/fidelitynews/wp-content/uploads/sites/9/2014/12/Cattedrale-di-San-Lorenzo-Genova-59994-2.jpg',
-            'https://www.mentelocale.it/immagini/schede/462x260/138594.jpg',
             '44.40763134514167', 
             '8.931458789833469'
             );
-INSERT INTO Tappa (nome, descrizione, via,  img1, img2, img3, lon, lat) 
-=======
-            'Genova',
-            '44.40763134514167', 
-            '8.931458789833469'
-            );
-INSERT INTO Tappa (nome, descrizione, via, citta, lon, lat) 
->>>>>>> f3c48f6c2a682ce3171f28df0455c4cb046cd6a0
+INSERT INTO Tappa (nome, descrizione, via,  lon, lat) 
     VALUES (
             'Ombre Rosse', 
             'Ottimo ristorante con piatti tipici genovesi', 
             'Vico degli Indoratori', 
-<<<<<<< HEAD
-            'https://res.cloudinary.com/tf-lab/image/upload/restaurant/890f6db5-56cc-4c67-9d67-acdce6ff1acd/670a4514-f276-40c0-93e0-7012ff008ec9.jpg',
-            'https://res.cloudinary.com/tf-lab/image/upload/restaurant/890f6db5-56cc-4c67-9d67-acdce6ff1acd/275a0d5a-2f53-4db4-8bb5-9faf6548b514.jpg',
-            'https://res.cloudinary.com/tf-lab/image/upload/restaurant/890f6db5-56cc-4c67-9d67-acdce6ff1acd/de87e653-94dd-4cc6-a394-171089d546ea.jpg',
             '44.4086854746386', 
             '8.931197246472893'
     );
-INSERT INTO Tappa (nome, descrizione, via,  img1, img2, img3, lon, lat) 
-=======
-            'Genova',
-            '44.4086854746386', 
-            '8.931197246472893'
-    );
-INSERT INTO Tappa (nome, descrizione, via, citta, lon, lat) 
->>>>>>> f3c48f6c2a682ce3171f28df0455c4cb046cd6a0
+INSERT INTO Tappa (nome, descrizione, via,  lon, lat) 
     VALUES (
             'Acquario di Genova', 
             "
@@ -376,21 +310,10 @@ INSERT INTO Tappa (nome, descrizione, via, citta, lon, lat)
                 Il percorso di 2 ore e 30 minuti comprende 39 vasche cui si aggiungono le 4 a cielo aperto del Padiglione Cetacei inaugurato nell'estate del 2013. La superficie totale della struttura è di 27 000 metri quadrati. Le vasche ospitano circa 15 000 animali di 400 specie diverse tra pesci, mammiferi marini, uccelli, rettili, anfibi, invertebrati in ambienti che riproducono quelli originari delle singole specie con evidenti finalità didattiche.
             ", 
             'Porto Antico, Molo Ponte Calvi', 
-<<<<<<< HEAD
-            'https://www.poli-listaperta.it/wp-content/uploads/2021/11/unnamed.jpg',
-            'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/e4/63/cb/acquario-di-genova.jpg?w=1200&h=1200&s=1',
-            'https://fai-platform.imgix.net/media/convenzioni/liguria/ge/acquario-di-genova_104669.jpg',
             '44.41020428824749', 
             '8.92666193224689'
     );
-INSERT INTO Tappa (nome, descrizione, via,  img1, img2, img3, lon, lat)
-=======
-            'Genova',
-            '44.41020428824749', 
-            '8.92666193224689'
-    );
-INSERT INTO Tappa (nome, descrizione, via, citta, lon, lat)
->>>>>>> f3c48f6c2a682ce3171f28df0455c4cb046cd6a0
+INSERT INTO Tappa (nome, descrizione, via,  lon, lat)
      VALUES (
             'Palazzo Doria Tursi', 
             "
@@ -401,32 +324,15 @@ INSERT INTO Tappa (nome, descrizione, via, citta, lon, lat)
                 Dal 1848 è sede del municipio genovese.
             ",
              'Via Garibaldi', 
-<<<<<<< HEAD
-             'https://img2.juzaphoto.com/002/shared_files/uploads/2795110.jpg',
-             'http://hiddenarchitecture.net/wp-content/uploads/2019/09/raschdorf-017.jpg',
-             'https://as2.ftcdn.net/v2/jpg/02/16/81/89/1000_F_216818917_4jbTMQnjEK9MXZ2NvwVVcBBV98HhQ91L.jpg',
-             '44.411243317284956', 
-             '8.932595267635298'
-    );
-INSERT INTO Tappa (nome, descrizione, via,  img1, img2, img3, lon, lat) 
-=======
              'Genova',
              '44.411243317284956', 
              '8.932595267635298'
     );
-INSERT INTO Tappa (nome, descrizione, via, citta, lon, lat) 
->>>>>>> f3c48f6c2a682ce3171f28df0455c4cb046cd6a0
+INSERT INTO Tappa (nome, descrizione, via,  lon, lat) 
     VALUES (    
             'Pesciolino', 
             'Ristorante di buonissimo pesce genovese', 
             'Vico Domoculta', 
-<<<<<<< HEAD
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQguLzVCcKg9eURHqSOtLHg6TXax9dLHSa6Bk3M0SXFWQeoDwOkKeE-n1PzFsGIFv1abpQ&usqp=CAU',
-            'https://4.bp.blogspot.com/-3YmCKTJPT7w/VtRZuCAwuHI/AAAAAAAACuI/6Iq1QDTKH4U/w1200-h630-p-k-no-nu/ambiente.jpg',
-            'https://www.hotelcitygenova.it/resources/images/1c65a6a2-a14f-4049-972e-dc87d804b370/it/FWB/ristorante-pesciolino.jpg',
-=======
-            'Genova',
->>>>>>> f3c48f6c2a682ce3171f28df0455c4cb046cd6a0
             '44.409211995678156', 
             '8.935454975015281'
     );
