@@ -160,7 +160,7 @@ session_start();
                                 <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px">
                                     <p class="card-title"><img src="../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; ">'.$primaCitta.'</p>
                                 </div>
-                                <img src="img/percorsi/'.$row['id'].'" class="card-img-top" alt="..." style=" border-radius:0px">
+                                <img src="img/percorsi/'.$row['id'].'.png" class="card-img-top" alt="..." style=" border-radius:0px">
                                 <div class="card-body" style="text-align: center;">
                                     <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
                                     <h5 class="card-title"><input type="submit" value=" ' . $row['nome'] . '" style=" text-decoration: none; color: #B30000; font-size:18px; border: none; background-color:white"></h5>
