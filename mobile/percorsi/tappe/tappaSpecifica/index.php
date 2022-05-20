@@ -26,7 +26,7 @@ if ($connessione === false) {
 }
 
 
-$sql = "SELECT Tappa.nome, Tappa.descrizione, Tappa.img1, Tappa.img2, Tappa.img3, Tappa.via 
+$sql = "SELECT Tappa.id ,Tappa.nome, Tappa.descrizione,  Tappa.via 
         FROM Tappa, Tappa_appartiene_percorso, Percorso
         WHERE Tappa.id = Tappa_appartiene_percorso.id_tappa
             AND Percorso.id =  Tappa_appartiene_percorso.id_percorso
@@ -36,9 +36,8 @@ $sql = "SELECT Tappa.nome, Tappa.descrizione, Tappa.img1, Tappa.img2, Tappa.img3
 if ($result = $connessione->query($sql)) {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $img1 = $row['img1'];
-        $img2 = $row['img2'];
-        $img3 = $row['img3'];
+        $id = $row['id'];
+        
         $descrizione = $row['descrizione'];
         $dove = $row['via'];
         $nome = $row['nome'];
@@ -193,13 +192,13 @@ if ($result = $connessione->query($sql)) {
                     </div>
                     <div class="carousel-inner" style="align-items: center;">
                         <div class="carousel-item active" data-bs-interval="9999999999999999">
-                            <img src="<?php echo $img1; ?>" class="d-block w-100" alt="..." style="max-height: 200px; margin-left: auto; margin-right: auto;">
+                            <img src="../../../../img/tappe/<?php echo $id ?>.1.png" class="d-block w-100" alt="..." style="max-height: 200px; margin-left: auto; margin-right: auto;">
                         </div>
                         <div class="carousel-item" data-bs-interval="9999999999999999">
-                            <img src="<?php echo $img2; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
+                            <img src="../../../../img/tappe/<?php echo $id ?>.2.png" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
                         </div>
                         <div class="carousel-item" data-bs-interval="9999999999999999">
-                            <img src="<?php echo $img3; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
+                            <img src="../../../../img/tappe/<?php echo $id ?>.3.png" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
                         </div>
                     </div>
                 </div>
