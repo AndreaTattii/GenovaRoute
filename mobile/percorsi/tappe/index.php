@@ -127,7 +127,11 @@ if($result = $connessione->query($query)){
         
         
 
-        $sql = "SELECT tappa.nome, tappa_appartiene_percorso.ordine, tappa.id FROM tappa, tappa_appartiene_percorso, percorso WHERE tappa.id = tappa_appartiene_percorso.id_tappa AND tappa_appartiene_percorso.id_percorso = percorso.id AND percorso.id = " . $_SESSION['idPercorso'] . " ORDER BY tappa_appartiene_percorso.ordine;";
+        $sql = "SELECT tappa.nome AS nome, tappa_appartiene_percorso.ordine AS ordine, tappa.id AS id 
+                FROM tappa, tappa_appartiene_percorso, percorso 
+                WHERE tappa.id = tappa_appartiene_percorso.id_tappa 
+                    AND tappa_appartiene_percorso.id_percorso = percorso.id 
+                    AND percorso.id = " . $_SESSION['idPercorso'] . " ORDER BY tappa_appartiene_percorso.ordine;";
         if ($result = $connessione->query($sql)) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_array()) { 
@@ -154,7 +158,7 @@ if($result = $connessione->query($query)){
                     } else {
                         echo "Errore: " . $connessione->error;
                     }
-                    $row['ordine']=$row['ordine'];
+                    $ordineVisualizza=$row['ordine']+1;
                     echo '
                         
                         
@@ -166,7 +170,7 @@ if($result = $connessione->query($query)){
                                         <p class="card-title">
                                             <input type="hidden" name="ordineTappa" value="' . $row['ordine'] . '">
                                             <input type="hidden" name="idTappa" value="' . $row['id'] . '">
-                                            <input type="submit" value="' . $row['ordine']+1 . '. ' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:18px; border: none; font-weight: bold; float: left;"> 
+                                            <input type="submit" value="' . $ordineVisualizza . '. ' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:18px; border: none; font-weight: bold; float: left;"> 
                                             <button type="submit" class="btn btn-primary" style="background-color: '.$coloreBottone.'; border-color:#B30000; font-size: 13px; color:'.$coloreScritta.' ; text-align: center; float: right;">Visualizza</button>
                                         </p>
                                     </form>
