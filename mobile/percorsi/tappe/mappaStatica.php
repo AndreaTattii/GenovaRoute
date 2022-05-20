@@ -105,15 +105,21 @@ $connessione = new mysqli($host, $user, $pass, $database);
             var map = L.map(element);
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
             map.setView(['44.409369955825774', '8.941610113846902'], 14);
-            var Icon1 = L.icon({
-                            iconUrl: '../../../img/icons/marker.png',
-                            iconSize:     [35, 35],
-                        });
+
 
 
             <?php
+            for($i=0;$i<10;$i++){
+                $n = $i+1;
+                echo"
+                var Icon".$i." = L.icon({
+                    iconUrl: '../../../img/icons/markers/marker".$n.".png',
+                    iconSize:     [35, 40],
+                });
+                ";
+            }
             if(!empty($_GET["percorsi"])){
-                $sql = 'SELECT lat,lon,Tappa.nome 
+                $sql = 'SELECT lat,lon,Tappa.nome, ordine
                 FROM Tappa, Percorso, Tappa_Appartiene_Percorso 
                 Where Tappa.id = Tappa_Appartiene_Percorso.id_tappa 
                 AND percorso.id = Tappa_Appartiene_Percorso.id_percorso 
@@ -126,7 +132,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
                     echo "L.marker(
                         ['".$row["lon"]."', '".$row["lat"]."'],
                         {
-                            icon: Icon1
+                            icon: Icon".$row["ordine"]."
                         }
                         ).addTo(map)   
                         .bindPopup('".$row["nome"]."');
