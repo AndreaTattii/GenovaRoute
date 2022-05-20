@@ -324,7 +324,6 @@ INSERT INTO Tappa (nome, descrizione, via,  lon, lat)
                 Dal 1848 è sede del municipio genovese.
             ",
              'Via Garibaldi', 
-             'Genova',
              '44.411243317284956', 
              '8.932595267635298'
     );
