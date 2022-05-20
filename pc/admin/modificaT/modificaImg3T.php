@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+$idTappa=$_SESSION['idTappa'];
 
 if (isset($_FILES['img3'])) {
     $errors = array();
@@ -17,13 +17,13 @@ if (isset($_FILES['img3'])) {
         $errors[] = 'File size must be excately 10 MB';
     }
     if (empty($errors) == true) {
-        move_uploaded_file($file_tmp, "../../../img/tappe/$_SESSION['idTappa'].3.png");
+        move_uploaded_file($file_tmp, "../../../img/tappe/$idTappa.3.png");
         echo "Success";
     } else {
         print_r($errors);
     }
 }
-header("location: formModificaT.php");
+header("location: ../formModificaT.php");
 
     
 ?>
