@@ -31,7 +31,7 @@ if(isset($_POST['idPercorso'])){
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
-    <title>Genova Route</title>
+    <title>GrovaGO</title>
     <link rel="icon" href="../../../img/g.png" type="image/icon type">
 
 </head>
@@ -40,7 +40,7 @@ if(isset($_POST['idPercorso'])){
     <nav class="navbar  navbar-expand-lg" style="background-color: #B30000;">
         <div class="container p-2">
             <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold;" href="../../index.php">
-                <h1>Genova Route</h1>
+                <h1>GrovaGO</h1>
             </a>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
 	    		<ul class="navbar-nav">
