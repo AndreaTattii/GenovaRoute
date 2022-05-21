@@ -176,7 +176,7 @@ session_start();
                                     <p class="card-title"><img src="../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; ">'.$primaCitta.'</p>
                                 </div>
                                 <button style=" background-color: transparent; border:none;"><img style="border: 3px solid #B30000" src="../../img/percorsi/'.$row['id'].'.png" class="card-img-top" alt="..." style=" border-radius:0px;"></button>
-                                <div class="card-body" style="text-align: center; border-bottom: 3px dotted black;">
+                                <div class="card-body" style="text-align: center; border-bottom: 2px dotted #f400a1;">
 
                                 <img class="preferito" id="' . $row['id'] . '" style="width:8%; margin:auto; padding-bottom:3px;" src= "'.$immagine.'" >
 
