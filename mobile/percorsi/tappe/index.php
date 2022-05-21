@@ -58,7 +58,7 @@ if($result = $connessione->query($query)){
             <div class="col s-4">
                 <center>
                     <a class="navbar-brand" href="../index.php">
-                        <img src="../../../img/icons/percorsoSfondo.png">
+                        <img  id="percorsoSfondo" src="../../../img/icons/percorsoSfondo.png">
                     </a>
                 </center>
 
@@ -66,7 +66,7 @@ if($result = $connessione->query($query)){
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
                     <a class="navbar-brand" href="../../scanner/index.php ">
-                        <img src="../../../img/icons/scannerizza.png">
+                        <img  id="scannerizza" src="../../../img/icons/scannerizza.png">
                     </a>
                 </center>
 
@@ -74,7 +74,7 @@ if($result = $connessione->query($query)){
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
                     <a class="navbar-brand" href="../../profilo/index.php">
-                        <img src="../../../img/icons/account.png">
+                        <img id="account" src="../../../img/icons/account.png">
                     </a>
                 </center>
 
@@ -91,7 +91,7 @@ if($result = $connessione->query($query)){
 
             <div class="col-2">
                 <a href="../../percorsi/index.php">
-                    <img src="../../../img/icons/back.png">
+                    <img id="back" src="../../../img/icons/back.png">
                 </a>
             </div>
             <div class="col-8">
@@ -100,7 +100,7 @@ if($result = $connessione->query($query)){
             <div class="col-2">
                 <center>
                     <a class="navbar-brand" href="mappaStatica.php?percorsi=<?php echo $_SESSION['idPercorso']; ?>">
-                        <img src="../../../img/icons/percorsoSfondo.png">
+                        <img id="percorsoSfondo" src="../../../img/icons/percorsoSfondo.png">
                     </a>
                 </center>
             </div>

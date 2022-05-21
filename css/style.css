@@ -64,6 +64,43 @@
     color: green;
 }
 
+#scannerizzaSfondo{
+  width:35px;
+}
+
+#scannerizza{
+  width: 25px;
+}
+
+#percorsoSfondo{
+  width:35px;
+}
+
+#percorso{
+  width:23px;
+  padding-bottom: 3px;
+}
+
+#accountSfondo{
+  width:35px;
+}
+
+#account{
+  width:19px;
+}
+
+#setting{
+  width:25px;
+  padding-left:5px;
+  padding-bottom:10px;
+}
+
+#back{
+  width:20px;
+  padding-bottom:10px;
+}
+
+
 /* * {
   box-sizing: border-box
 }  */

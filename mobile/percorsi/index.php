@@ -39,7 +39,7 @@ session_start();
             <div class="col s-4">
                 <center>
                     <a class="navbar-brand" href="./">
-                        <img src="../../img/icons/percorsoSfondo.png">
+                        <img id="percorsoSfondo" src="../../img/icons/percorsoSfondo.png">
                     </a>
                 </center>
 
@@ -47,7 +47,7 @@ session_start();
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
                     <a class="navbar-brand" href="../scanner/index.php ">
-                        <img src="../../img/icons/scannerizza.png">
+                        <img style="width:25px" src="../../img/icons/scannerizza.png">
                     </a>
                 </center>
 
@@ -55,7 +55,7 @@ session_start();
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
                     <a class="navbar-brand" href="../profilo/index.php">
-                        <img src="../../img/icons/account.png">
+                        <img id="account" src="../../img/icons/account.png">
                     </a>
                 </center>
             </div>

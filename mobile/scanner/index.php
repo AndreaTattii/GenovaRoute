@@ -39,7 +39,7 @@
             <div class="col s-4" style="padding-top: 15px;  ">
                 <center>
                     <a class="navbar-brand" href="../percorsi/index.php">
-                        <img src="../../img/icons/percorso.png">
+                        <img  id="percorso" src="../../img/icons/percorso.png">
                     </a>
                 </center>
 
@@ -47,7 +47,7 @@
             <div class="col s-4" >
                 <center>
                     <a class="navbar-brand" href="./">
-                        <img src="../../img/icons/scannerizzaSfondo.png">
+                        <img id="scannerizzaSfondo" src="../../img/icons/scannerizzaSfondo.png">
                     </a>
                 </center>
 
@@ -55,7 +55,7 @@
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
                     <a class="navbar-brand" href="../profilo/index.php">
-                        <img src="../../img/icons/account.png">
+                        <img id="account" src="../../img/icons/account.png">
                     </a>
                 </center>
 
