@@ -172,7 +172,7 @@ session_start();
                         <br>
                         <form action="tappe/index.php" method="post">
                             <div class="card " style="border:none;  text-align: left;">
-                                <div class="card-header" style="border:none; background-color:white; margin-left:0px; padding-left:0px; ">
+                                <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px;border:none; ">
                                     <p class="card-title"><img src="../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; ">'.$primaCitta.'</p>
                                 </div>
                                 <button style=" background-color: transparent; border:none;"><img style="border: 3px solid #B30000" src="../../img/percorsi/'.$row['id'].'.png" class="card-img-top" alt="..." style=" border-radius:0px;"></button>
