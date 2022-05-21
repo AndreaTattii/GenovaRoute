@@ -138,7 +138,7 @@ if ($result = $connessione->query($sql)) {
                         <input type="text" class="form-control" name="username" value="<?php echo $username;?>" required>
                 </div>
                 <div class="col-2">
-                        <button style="background-color: #B30000" type="submit" class="btn btn-primary">✏</button>
+                        <button style="background-color: #B30000; border:1px solid black;" type="submit" class="btn btn-primary">✏</button>
                     </form>
                 </div>
             </div>
@@ -152,7 +152,7 @@ if ($result = $connessione->query($sql)) {
                         <input type="text" class="form-control" name="nome" value="<?php echo $nome;?>" maxlenght="8" required>
                 </div>
                 <div class="col-2">
-                        <button style="background-color: #B30000" type="submit" class="btn btn-primary">✏</button>
+                        <button style="background-color: #B30000; border:1px solid black;" type="submit" class="btn btn-primary">✏</button>
                     </form>
                 </div>
             </div>
@@ -166,7 +166,7 @@ if ($result = $connessione->query($sql)) {
                         <input type="text" class="form-control" name="cognome" value="<?php echo $cognome;?>" maxlenght="8" required>
                 </div>
                 <div class="col-2">
-                        <button style="background-color: #B30000" type="submit" class="btn btn-primary">✏</button>
+                        <button style="background-color: #B30000; border:1px solid black;" type="submit" class="btn btn-primary">✏</button>
                     </form>
                 </div>
             </div>

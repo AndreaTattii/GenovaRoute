@@ -114,7 +114,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
                 echo"
                 var Icon".$i." = L.icon({
                     iconUrl: '../../../img/icons/markers/marker".$n.".png',
-                    iconSize:     [35, 40],
+                    iconSize:     [30, 40],
                 });
                 ";
             }
