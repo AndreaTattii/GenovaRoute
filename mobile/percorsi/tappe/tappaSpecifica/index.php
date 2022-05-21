@@ -183,30 +183,29 @@ if ($result = $connessione->query($sql)) {
 
             </div>
 
-            <div class="row" style=" height:225px; border-bottom-style: solid; border-bottom-width: 1px;">
-                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" >
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="margin:none; padding:none; height:225px;">
                     <div class="carousel-indicators" style="background-color:white; width:100%; margin:auto">
                         <button style="background-color:#B30000;color:#B30000" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button style="background-color:#B30000;color:#B30000" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         <button style="background-color:#B30000;color:#B30000" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner" style="align-items: center;">
-                        <div class="carousel-item active" data-bs-interval="9999999999999999">
+                        <div class="carousel-item active" data-bs-interval="9999999999999999" style="align-items:center">
                             <img src="../../../../img/tappe/<?php echo $id ?>.1.png" class="d-block w-100" alt="..." style="max-height: 200px; margin-left: auto; margin-right: auto;">
                         </div>
-                        <div class="carousel-item" data-bs-interval="9999999999999999">
+                        <div class="carousel-item" data-bs-interval="9999999999999999" style="align-items:center">
                             <img src="../../../../img/tappe/<?php echo $id ?>.2.png" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
                         </div>
-                        <div class="carousel-item" data-bs-interval="9999999999999999">
+                        <div class="carousel-item" data-bs-interval="9999999999999999" style="align-items:center">
                             <img src="../../../../img/tappe/<?php echo $id ?>.3.png" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div id="gestureZone" class="card-body" style="text-align: center;">
+            <div id="gestureZone" class="card-body" style="text-align: center; border:none;">
                 <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
-                <p  class="card-text" style="text-align:justify"><?php echo $descrizione; ?></p>
+                <p  class="card-text" style="text-align:justify; border:none;"><?php echo $descrizione; ?></p>
             </div>
         </div>
         <br>
