@@ -26,9 +26,8 @@ $connessione = new mysqli($host, $user, $pass, $database);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSS Personale
+
     <link rel="stylesheet" href="../../../css/style.css">
--->
     <!-- Bootstrap CSS 
     -->
 
@@ -51,7 +50,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
 
             <div class="col-2">
                 <a href="../tappe/index.php">
-                    <img src="../../../img/icons/back.png">
+                    <img id="back" src="../../../img/icons/back.png">
                 </a>
             </div>
             <div class="col-8">
@@ -69,7 +68,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
             <div class="col s-4">
                 <center>
                     <a class="navbar-brand" href="../index.php">
-                        <img src="../../../img/icons/percorsoSfondo.png">
+                        <img id="percorsoSfondo" src="../../../img/icons/percorsoSfondo.png">
                     </a>
                 </center>
 
@@ -77,7 +76,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
                     <a class="navbar-brand" href="../../scanner/index.php ">
-                        <img src="../../../img/icons/scannerizza.png">
+                        <img id="scannerizza" src="../../../img/icons/scannerizza.png">
                     </a>
                 </center>
 
@@ -85,7 +84,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
                     <a class="navbar-brand" href="../../profilo/index.php">
-                        <img src="../../../img/icons/account.png">
+                        <img id="account" src="../../../img/icons/account.png">
                     </a>
                 </center>
 
