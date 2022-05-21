@@ -70,15 +70,8 @@ if ($result = $connessione->query($sql)) {
             </div>
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
-<<<<<<< HEAD
-                    <a class="navbar-brand" href="../scanner/index.php">
-
-                        <img src="../../img/icons/scannerizza.png">
-
-=======
                     <a class="navbar-brand" href="../scanner/index.php"> 
                         <img id="scannerizza" src="../../img/icons/scannerizza.png">    
->>>>>>> 1528b91c5049ddd09ccbcacfeada3a30a5bd2501
                     </a>
                 </center>
 
@@ -129,9 +122,13 @@ if ($result = $connessione->query($sql)) {
         </div>
 
         <!-- CONTENUTO PAGINA -->
-        <div class="row" style="margin:none; padding:none; border: solid 1px #C4C4C4">
-            <div class="col-3">
-
+        <div class="row" style="margin:none; padding:none; border: solid 1px #C4C4C4; height:50px">
+            <div class="col-3" >
+                <center>
+                    <a class="navbar-brand" href="index.php">
+                        <img  src="../../img/icons/cuorePieno.png">
+                    </a>
+                </center>            
             </div>
             <div class="col-3">
 
