@@ -70,8 +70,8 @@ if ($result = $connessione->query($sql)) {
             </div>
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
-                    <a class="navbar-brand" href="../scanner/index.php"> 
-                        <img id="scannerizza" src="../../img/icons/scannerizza.png">    
+                    <a class="navbar-brand" href="../scanner/index.php">
+                        <img id="scannerizza" src="../../img/icons/scannerizza.png">
                     </a>
                 </center>
 
@@ -122,21 +122,23 @@ if ($result = $connessione->query($sql)) {
         </div>
 
         <!-- CONTENUTO PAGINA -->
-        <div class="row" style="margin:none; padding:none; border: solid 1px #C4C4C4; height:50px">
-            <div class="col-3" >
+        <div class="row" style="margin:none; padding:none; border: solid 2px #C4C4C4; height:50px">
+            <div class="col-4" style="border-right: solid 1px #C4C4C4; text-align:center; padding:0px; display:flex; align-items: center; margin:auto;">
                 <center>
-                    <a class="navbar-brand" href="index.php">
-                        <img  src="../../img/icons/cuorePieno.png">
-                    </a>
-                </center>            
-            </div>
-            <div class="col-3">
+                <img src="../../img/icons/cuorePieno.png" style="height:40px">
 
+                </center>
             </div>
-            <div class="col-3">
-
+            <div class="col-4" style="text-align:center; ">
+                <img src="../../img/icons/occhioCancellato.png" style="height:40px; vertical-align:middle;">
+            </div>
+            <div class="col-4" style="border-left: solid 1px #C4C4C4; text-align:center;">
+                <img src="../../img/icons/emptyStarRed.png" style="height:50px">
             </div>
         </div>
+
+
+
 
 
         <br>
