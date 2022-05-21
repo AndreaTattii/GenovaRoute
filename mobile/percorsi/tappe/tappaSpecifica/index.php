@@ -235,11 +235,11 @@ if ($result = $connessione->query($sql)) {
             }, false); 
             
             function handleGesture() {
-                if (touchendX+75 <= touchstartX) {
+                if (touchendX+45 <= touchstartX) {
                     document.getElementsByClassName("swipeForward")[0].click();
                 }
                 
-                if (touchendX-75 >= touchstartX) {
+                if (touchendX-45 >= touchstartX) {
                     document.getElementsByClassName("swipeBack")[0].click();
                 }
             }

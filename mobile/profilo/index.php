@@ -71,8 +71,8 @@ if ($result = $connessione->query($sql)) {
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
                     <a class="navbar-brand" href="../scanner/index.php">
-                            
-                            <img src="../../img/icons/scannerizza.png">    
+
+                        <img src="../../img/icons/scannerizza.png">
 
                     </a>
                 </center>
@@ -106,10 +106,13 @@ if ($result = $connessione->query($sql)) {
                 </a>
             </div>
         </div>
+
+
+
         <!-- INTESTAZIONE  -->
-        <div class="row justify-content-center" style="padding-top: 20px">
+        <div class="row justify-content-center" style="padding-top: 20px; padding-bottom: 20px; ">
             <div class="col s-2" id="immagineProfilo">
-                <img style="width:100px;height:100px; border-radius: 50%" src="../../img/propics/<?php echo $_SESSION['email'];?>.png">
+                <img style="width:100px;height:100px; border-radius: 50%" src="../../img/propics/<?php echo $_SESSION['email']; ?>.png">
             </div>
 
             <div class="col" id="nomeUtente" style="padding-top: 25px; padding-right:80px">
@@ -121,11 +124,21 @@ if ($result = $connessione->query($sql)) {
         </div>
 
         <!-- CONTENUTO PAGINA -->
+        <div class="row" style="margin:none; padding:none; border: solid 1px #C4C4C4">
+            <div class="col-3">
 
+            </div>
+            <div class="col-3">
+
+            </div>
+            <div class="col-3">
+
+            </div>
+        </div>
 
 
         <br>
-        
+
     </div>
     <script>
         window.addEventListener("orientationchange", function() {
