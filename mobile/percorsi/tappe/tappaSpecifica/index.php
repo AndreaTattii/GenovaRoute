@@ -107,7 +107,7 @@ if ($result = $connessione->query($sql)) {
                         echo '
                             <form action="decrementaOrdinata.php" method="POST">
                                  <button class="swipeBack" type="submit" style="background-color: white; border-color:transparent;">
-                                    <img src="../../../../img/icons/backRed.png">
+                                    <img style="width:10px" src="../../../../img/icons/backRed.png">
                                 </button>
                             </form>
                         ';
@@ -119,7 +119,7 @@ if ($result = $connessione->query($sql)) {
                 <center>
                     <a class="navbar-brand" href="../../../scanner/">
                         <a class="navbar-brand" href="../../../scanner/index.php">
-                            <img src="../../../../img/icons/scannerizza.png">
+                            <img id="scannerizza" src="../../../../img/icons/scannerizza.png">
                         </a>
                 </center>
             </div>
@@ -131,7 +131,7 @@ if ($result = $connessione->query($sql)) {
                         echo '
                             <form action="incrementaOrdinata.php" method="POST">
                                 <button class="swipeForward" type="submit" style="background-color: white; border-color:transparent;">
-                                    <img src="../../../../img/icons/nextRed.png">
+                                    <img style="width:10px" src="../../../../img/icons/nextRed.png">
                                 </button>
                             </form>
                         ';
@@ -152,7 +152,7 @@ if ($result = $connessione->query($sql)) {
 
             <div class="col-2">
                 <a href="../index.php">
-                    <img src="../../../../img/icons/back.png">
+                    <img id="back" src="../../../../img/icons/back.png">
                 </a>
             </div>
             <div class="col-8">
@@ -161,7 +161,7 @@ if ($result = $connessione->query($sql)) {
             <div class="col-2">
                 <center>
                     <a class="navbar-brand" href="mappaSpecifica.php?percorsi=1">
-                        <img src="../../../../img/icons/percorsoSfondo.png" style="height:100%">
+                        <img id="percorsoSfondo" src="../../../../img/icons/percorsoSfondo.png">
                     </a>
                 </center>
             </div>

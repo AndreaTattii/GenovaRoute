@@ -63,7 +63,7 @@ if ($result = $connessione->query($sql)) {
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
                     <a class="navbar-brand" href="../../percorsi/index.php">
-                        <img src="../../../img/icons/percorso.png">
+                        <img  id="percorso" src="../../../img/icons/percorso.png">
                     </a>
                 </center>
 
@@ -71,7 +71,7 @@ if ($result = $connessione->query($sql)) {
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
                     <a class="navbar-brand" href="../../scanner/index.php">
-                        <img src="../../../img/icons/scannerizza.png">
+                        <img id="scannerizza" src="../../../img/icons/scannerizza.png">
                     </a>
                 </center>
 
@@ -79,7 +79,7 @@ if ($result = $connessione->query($sql)) {
             <div class="col s-4">
                 <center>
                     <a class="navbar-brand" href="../index.php">
-                        <img src="../../../img/icons/accountSfondo.png">
+                        <img id="accountSfondo" src="../../../img/icons/accountSfondo.png">
                     </a>
                 </center>
 
@@ -96,7 +96,7 @@ if ($result = $connessione->query($sql)) {
         <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
             <div class="col-2">
                 <a href="../settings.php">
-                    <img style="padding-bottom:8px" src="../../../img/icons/back.png">
+                    <img id="back" style="padding-bottom:8px" src="../../../img/icons/back.png">
                 </a>
             </div>
             <div class="col-8 ">
