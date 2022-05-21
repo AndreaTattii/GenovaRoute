@@ -106,7 +106,7 @@ if ($result = $connessione->query($sql)) {
                     if ($_SESSION['ordineTappa'] != 0) {
                         echo '
                             <form action="decrementaOrdinata.php" method="POST">
-                                 <button type="submit" style="background-color: white; border-color:transparent;">
+                                 <button class="swipeBack" type="submit" style="background-color: white; border-color:transparent;">
                                     <img src="../../../../img/icons/backRed.png">
                                 </button>
                             </form>
@@ -130,7 +130,7 @@ if ($result = $connessione->query($sql)) {
                     if ($_SESSION['ordineTappa'] != $_SESSION['quanteTappe']) {
                         echo '
                             <form action="incrementaOrdinata.php" method="POST">
-                                <button type="submit" style="background-color: white; border-color:transparent;">
+                                <button class="swipeForward" type="submit" style="background-color: white; border-color:transparent;">
                                     <img src="../../../../img/icons/nextRed.png">
                                 </button>
                             </form>
@@ -204,9 +204,9 @@ if ($result = $connessione->query($sql)) {
                 </div>
             </div>
 
-            <div class="card-body" style="text-align: center;">
+            <div id="gestureZone" class="card-body" style="text-align: center;">
                 <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
-                <p class="card-text" style="text-align:justify"><?php echo $descrizione; ?></p>
+                <p  class="card-text" style="text-align:justify"><?php echo $descrizione; ?></p>
             </div>
         </div>
         <br>
@@ -215,7 +215,35 @@ if ($result = $connessione->query($sql)) {
         <br>
         <br>
         <br>
-        
+        <script>
+            let touchstartX = 0;
+            let touchstartY = 0;
+            let touchendX = 0;
+            let touchendY = 0;
+                            
+            const gestureZone = document.getElementById('gestureZone');
+                            
+            gestureZone.addEventListener('touchstart', function(event) {
+                touchstartX = event.changedTouches[0].screenX;
+                touchstartY = event.changedTouches[0].screenY;
+            }, false);
+            
+            gestureZone.addEventListener('touchend', function(event) {
+                touchendX = event.changedTouches[0].screenX;
+                touchendY = event.changedTouches[0].screenY;
+                handleGesture();
+            }, false); 
+            
+            function handleGesture() {
+                if (touchendX+150 <= touchstartX) {
+                    document.getElementsByClassName("swipeForward")[0].click();
+                }
+                
+                if (touchendX-150 >= touchstartX) {
+                    document.getElementsByClassName("swipeBack")[0].click();
+                }
+            }
+        </script>
         <script>
             if (window.history.replaceState) {
                 window.history.replaceState(null, null, window.location.href);
