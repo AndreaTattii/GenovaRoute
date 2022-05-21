@@ -123,8 +123,11 @@ if ($result = $connessione->query($sql)) {
 
         <!-- CONTENUTO PAGINA -->
         <div class="row" style="margin:none; padding:none; border: solid 2px #C4C4C4; height:50px">
-            <div class="col-4" style="border-right: solid 1px #C4C4C4; text-align:center; padding:0px">
+            <div class="col-4" style="border-right: solid 1px #C4C4C4; text-align:center; padding:0px; display:flex; align-items: center; margin:auto;">
+                <center>
                 <img src="../../img/icons/cuorePieno.png" style="height:40px">
+
+                </center>
             </div>
             <div class="col-4" style="text-align:center; ">
                 <img src="../../img/icons/occhioCancellato.png" style="height:40px; vertical-align:middle;">
