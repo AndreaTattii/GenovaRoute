@@ -19,16 +19,14 @@ $connessione = new mysqli($host, $user, $pass, $database);
 if ($connessione === false) {
     die("Errore: " . $connessione->connect_error);
 }
-$sql = "SELECT tappa.nome,tappa.img1, tappa.img2, tappa.img3, tappa.descrizione, tappa.via 
+$sql = "SELECT tappa.nome, tappa.descrizione, tappa.via 
         FROM tappa, tappa_appartiene_percorso, percorso 
         WHERE tappa.id=tappa_appartiene_percorso.id_tappa 
         AND ordine=".$_SESSION['ordineTappa']." AND percorso.id=tappa_appartiene_percorso.id_percorso 
         AND percorso.id=". $_SESSION['idPercorso']."";
 if ($result = $connessione->query($sql)) {
     $row = $result->fetch_assoc();
-    $img1 = $row['img1'];
-    $img2 = $row['img2'];
-    $img3 = $row['img3'];
+
     $descrizione = $row['descrizione'];
     $dove = $row['via'];
     $nome = $row['nome'];
@@ -120,18 +118,17 @@ if ($result = $connessione->query($sql)) {
                     <p><?php echo $descrizione; ?></p>
                 </div>
             </div>
-
             <div class="col-md-4" style="height:200px;">
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="<?php echo $img1; ?>" class="d-block w-100" alt="..." style="max-height: 200px; margin-left: auto; margin-right: auto;">
+                            <img src="../../../../img/tappe/<?php echo $id ?>.1.png" class="d-block w-100" alt="..." style="max-height: 200px; margin-left: auto; margin-right: auto;">
                         </div>
                         <div class="carousel-item">
-                            <img src="<?php echo $img2; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
+                            <img src="../../../../img/tappe/<?php echo $id ?>.1.png" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
                         </div>
                         <div class="carousel-item">
-                            <img src="<?php echo $img3; ?>" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
+                            <img src="../../../../img/tappe/<?php echo $id ?>.1.png" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
