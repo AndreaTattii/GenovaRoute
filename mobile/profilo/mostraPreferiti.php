@@ -29,6 +29,7 @@
                         </div>
                     </div>";
         }
+        echo"<br><br><br><br>";
     } else {
         echo "Non hai aggiunto nessun percorso ai preferiti";
     }

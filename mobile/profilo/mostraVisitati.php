@@ -22,12 +22,13 @@
                                 <div class='card-body'>
                                     <h5 class='card-title'>".$row['nome']."</h5>
                                     <p class='card-text'>".$row['descrizione']."</p>
-                                    <a href='../../percorso/mostraPercorso.php?id=".$row['id']."' class='btn btn-primary'>Vai al percorso</a>
+                                    <a href='../../percorso/mostraPercorso.php?id=".$row['id']."' class='btn btn-primary'>Vai alla tappa</a>
                                 </div>
                             </div>
                         </div>
                     </div>";
         }
+        echo"<br><br><br><br>";
     } else {
         echo "Non hai visitato nessun percorso";
     }
