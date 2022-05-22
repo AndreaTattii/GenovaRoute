@@ -1,5 +1,9 @@
 <?php session_start();
 
+if(isset($_GET['emailUtente'])){
+    $emailUtente=$_GET['emailUtente'];
+}
+
 $host = "127.0.0.1";
 $user = "root";
 $pass = "";
@@ -11,9 +15,12 @@ $connessione = new mysqli($host, $user, $pass, $database);
 if ($connessione === false) {
     die("Errore: " . $connessione->connect_error);
 }
-
-$sql = "SELECT nome, cognome, username FROM utente WHERE email = '" . $_SESSION['email'] . "'";
-
+if(isset($_GET['emailUtente'])){
+    $sql = "SELECT nome, cognome, username FROM utente WHERE email = '" . $emailUtente . "'";
+}
+else{
+    $sql = "SELECT nome, cognome, username FROM utente WHERE email = '" . $_SESSION['email'] . "'";
+}
 if ($result = $connessione->query($sql)) {
     $row = $result->fetch_array();
     $nome = $row['nome'];
@@ -94,17 +101,36 @@ if ($result = $connessione->query($sql)) {
         <!-- NAVBAR ALTA -->
         <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
             <div class="col-2">
+                <?php
+                    if(isset($_GET['emailUtente'])){
+                ?>
+                <a href="search.php">
+                    <img id="back" style="padding-bottom:8px" src="../../img/icons/back.png">
+                </a>
+                <?php
+                    }
+                    else{
+                ?>
                 <a class="navbar-brand" href="search.php">
                     <img id="setting" src="../../img/icons/search.png">
                 </a>
+                <?php
+                }
+                ?>
             </div>
             <div class="col-8 ">
                 <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;"><?php echo $username; ?></h1>
             </div>
             <div class="col-2 ">
+                <?php
+                    if(!(isset($_GET['emailUtente']))){
+                ?>
                 <a class="navbar-brand" href="settings.php">
                     <img id="setting" src="../../img/icons/setting.png">
                 </a>
+                <?php
+                    }
+                ?>
             </div>
         </div>
 
@@ -113,7 +139,18 @@ if ($result = $connessione->query($sql)) {
         <!-- INTESTAZIONE  -->
         <div class="row justify-content-center" style="padding-top: 20px; padding-bottom: 20px; ">
             <div class="col s-2" id="immagineProfilo">
+                <?php
+                    if(isset($_GET['emailUtente'])){
+                ?>
+                <img style="width:100px;height:100px; border-radius: 50%" src="../../img/propics/<?php echo $emailUtente; ?>.png">
+                <?php
+                    }
+                    else{
+                ?>
                 <img style="width:100px;height:100px; border-radius: 50%" src="../../img/propics/<?php echo $_SESSION['email']; ?>.png">
+                <?php
+                }
+                ?>
             </div>
 
             <div class="col" id="nomeUtente" style="padding-top: 25px; padding-right:80px">
@@ -155,7 +192,14 @@ if ($result = $connessione->query($sql)) {
                     type: "POST",
                     url: "mostraLike.php",
                     data: {
-                        email: "<?php echo $_SESSION['email']; ?>"
+                        email: "<?php 
+                            if(isset($_GET['emailUtente'])){
+                                echo $emailUtente;
+                            }
+                            else{
+                                echo $_SESSION['email'];
+                            } 
+                             ?>"
                     },
                     success: function(data) {
                         $("#contenuto").html(data);
@@ -172,7 +216,14 @@ if ($result = $connessione->query($sql)) {
                     type: "POST",
                     url: "mostraVisitati.php",
                     data: {
-                        email: "<?php echo $_SESSION['email']; ?>"
+                        email: "<?php 
+                            if(isset($_GET['emailUtente'])){
+                                echo $emailUtente;
+                            }
+                            else{
+                                echo $_SESSION['email'];
+                            } 
+                             ?>"
                     },
                     success: function(data) {
                         $("#contenuto").html(data);
@@ -188,7 +239,14 @@ if ($result = $connessione->query($sql)) {
                     type: "POST",
                     url: "mostraPreferiti.php",
                     data: {
-                        email: "<?php echo $_SESSION['email']; ?>"
+                        email: "<?php 
+                            if(isset($_GET['emailUtente'])){
+                                echo $emailUtente;
+                            }
+                            else{
+                                echo $_SESSION['email'];
+                            } 
+                             ?>"
                     },
                     success: function(data) {
                         //alert(data);

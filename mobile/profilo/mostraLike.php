@@ -11,7 +11,7 @@
     if($connessione === false){
         echo "Errore: ".$connessione->error;
     }
-
+    $email=$_POST['email'];
     //$sql = "";
     //$result = $connessione->query($sql);
 

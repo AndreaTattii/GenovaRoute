@@ -11,8 +11,8 @@
     if($connessione === false){
         echo "Errore: ".$connessione->error;
     }
-
-    $sql="SELECT * FROM utente_percorre_tappa, tappa WHERE email = '" . $_SESSION['email'] . "' AND tappa.id=id_tappa";
+    $email=$_POST['email'];
+    $sql="SELECT * FROM utente_percorre_tappa, tappa WHERE email = '" . $email . "' AND tappa.id=id_tappa";
     $result = $connessione->query($sql);
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
@@ -30,7 +30,12 @@
         }
         echo"<br><br><br><br>";
     } else {
-        echo "Non hai visitato nessun percorso";
+        if($_SESSION['email']==$email){
+            echo "Non hai visitato nessuna tappa";
+        }
+        else{
+            echo "Non ha visitato nessuna tappa";
+        }
     }
     //header("Location: ../percorsi/index.php");
 ?>

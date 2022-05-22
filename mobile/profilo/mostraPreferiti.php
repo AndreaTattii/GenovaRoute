@@ -11,9 +11,9 @@
     if($connessione === false){
         echo "Errore: ".$connessione->error;
     }
-
+    $email=$_POST['email'];
     //mostra i percorsi aggiunti ai preferiti
-    $sql = "SELECT * FROM utente_preferisce_percorso, percorso WHERE email = '" . $_SESSION['email'] . "' AND percorso.id=id_percorso";
+    $sql = "SELECT * FROM utente_preferisce_percorso, percorso WHERE email = '" . $email . "' AND percorso.id=id_percorso";
     $result = $connessione->query($sql);
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
@@ -31,7 +31,12 @@
         }
         echo"<br><br><br><br>";
     } else {
-        echo "Non hai aggiunto nessun percorso ai preferiti";
+        if($_SESSION['email']==$email){
+            echo "Non hai aggiunto nessun percorso ai preferiti";
+        }
+        else{
+            echo "Non ha aggiunto nessun percorso ai preferiti";
+        }
     }
 
     //header("Location: ../percorsi/index.php");
