@@ -123,27 +123,85 @@ if ($result = $connessione->query($sql)) {
 
         <!-- CONTENUTO PAGINA -->
         <div class="row" style="margin:none; padding:none; border: solid 2px #C4C4C4; height:50px">
-            <div class="col-4" style="border-right: solid 1px #C4C4C4; text-align:center; padding:0px; display:flex; align-items: center; margin:auto;">
-                <center>
-                <img src="../../img/icons/cuorePieno.png" style="height:40px">
-
-                </center>
+            <div class="col-4" style="border-right: solid 1px #C4C4C4; text-align:center; padding:0px; margin:auto;">
+                <img class="cuore" src="../../img/icons/cuorePieno.png" style="width:30px">
             </div>
-            <div class="col-4" style="text-align:center; ">
-                <img src="../../img/icons/occhioCancellato.png" style="height:40px; vertical-align:middle;">
+            <div class="col-4" style="text-align:center;  padding:0px; margin:auto; ">
+                <img class="occhio" src="../../img/icons/occhioCancellato.png" style="width:35px;">
             </div>
-            <div class="col-4" style="border-left: solid 1px #C4C4C4; text-align:center;">
-                <img src="../../img/icons/emptyStarRed.png" style="height:50px">
+            <div class="col-4" style="border-left: solid 1px #C4C4C4; text-align:center; padding:0px; margin:auto;">
+                <img class="star" src="../../img/icons/emptyStarRed.png" style="width:30px">
             </div>
         </div>
-
-
-
-
-
         <br>
+        
+
+    <div id="contenuto"></div>
 
     </div>
+    <script>
+        $(document).ready(function() {
+            
+            // opzionale, refresha all'infinito la pagina
+            $.ajaxSetup ({
+                cache: false
+            });
+
+            //quando clicco sull'immagine del cuore pieno cambia l'immagine in un cuore vuoto e viceversa, ed esegui la query mostraLike.php
+            $(".cuore").click(function() {
+                $.ajax({
+                    type: "POST",
+                    url: "mostraLike.php",
+                    data: {
+                        email: "<?php echo $_SESSION['email']; ?>"
+                    },
+                    success: function(data) {
+                        $("#contenuto").html(data);
+                        $(".cuore").attr("src", "../../img/icons/cuorePieno.png");
+                        $(".occhio").attr("src", "../../img/icons/occhioCancellato.png");
+                        $(".star").attr("src", "../../img/icons/emptyStarRed.png");
+
+                    }
+                });
+            });
+
+            $(".occhio").click(function() {
+
+                $.ajax({
+                    type: "POST",
+                    url: "mostraVisitati.php",
+                    data: {
+                        email: "<?php echo $_SESSION['email']; ?>"
+                    },
+                    success: function(data) {
+                        $("#contenuto").html(data);
+                        $(".cuore").attr("src", "../../img/icons/cuoreVuoto.png");
+                        $(".occhio").attr("src", "../../img/icons/occhioAperto.png");
+                        $(".star").attr("src", "../../img/icons/emptyStarRed.png");
+                    }
+                });
+            });
+
+            $(".star").click(function() {
+                <?php $_SESSION['preferiti']=1;?>
+                $.ajax({
+                    type: "POST",
+                    url: "mostraPreferiti.php",
+                    data: {
+                        email: "<?php echo $_SESSION['email']; ?>"
+                    },
+                    success: function(data) {
+                        //alert(data);
+                        $("#contenuto").html(data);
+                        $(".cuore").attr("src", "../../img/icons/cuoreVuoto.png");
+                        $(".occhio").attr("src", "../../img/icons/occhioCancellato.png");
+                        $(".star").attr("src", "../../img/icons/fullStarRed.png");
+
+                    }
+                });
+            });
+        });
+    </script>
     <script>
         window.addEventListener("orientationchange", function() {
             if (window.orientation == 90 || window.orientation == -90) {

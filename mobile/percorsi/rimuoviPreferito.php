@@ -19,5 +19,4 @@
     else{
         echo "error";
     }
-    header("Location:index.php");
 ?>
