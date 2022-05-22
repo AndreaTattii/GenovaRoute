@@ -83,10 +83,9 @@ session_start();
     <br>
     <br>
     <br>
-        
-        <input type="text" name="ricerca">
-        <button id="cerca">Cerca</button>
-
+        <div style="margin:0;">
+            <input style="text-align-center; margin:0;" type="text" placeholder="Cerca un percorso..." name="ricerca">
+        </div>
         <div id="contenuto"></div>
         
         <?php

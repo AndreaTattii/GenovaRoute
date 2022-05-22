@@ -107,7 +107,7 @@
                     ';
                 }
             } else {
-                echo "Non ci sono percorsi salvati nel database";
+                echo "Nessun risultato...";
             }
         } else {
             echo "Impossibile eseguire la query";
