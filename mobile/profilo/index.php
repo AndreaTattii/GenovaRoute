@@ -94,6 +94,9 @@ if ($result = $connessione->query($sql)) {
         <!-- NAVBAR ALTA -->
         <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
             <div class="col-2">
+                <a class="navbar-brand" href="search.php">
+                    <img id="setting" src="../../img/icons/search.png">
+                </a>
             </div>
             <div class="col-8 ">
                 <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;"><?php echo $username; ?></h1>

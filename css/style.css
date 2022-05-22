@@ -1,6 +1,6 @@
 /*Tendina*/
 .dropbtn {
-    background-color: #00E1A5;
+    background-color: #B30000;
     color: rgb(0, 0, 0);
     padding: 20px;
     font-size: 20px;
@@ -35,7 +35,7 @@
   
   .dropdown:hover .dropdown-content {display: block; border-radius: 25px; text-align: center;}
   
-  .dropdown:hover .dropbtn {background-color: #00c591;}
+  .dropdown:hover .dropbtn {background-color: #B30000;}
 
   div.center-text  {
     
