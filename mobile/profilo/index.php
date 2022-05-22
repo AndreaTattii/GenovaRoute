@@ -122,7 +122,7 @@ if ($result = $connessione->query($sql)) {
         </div>
 
         <!-- CONTENUTO PAGINA -->
-        <div class="row" style="margin:none; padding:none; border: solid 2px #C4C4C4; height:50px">
+        <div class="row" style="margin:none; padding:none; border: solid 2px #C4C4C4; ">
             <div class="col-4" style="border-right: solid 1px #C4C4C4; text-align:center; padding:0px; margin:auto;">
                 <img class="cuore" src="../../img/icons/cuorePieno.png" style="width:30px">
             </div>
@@ -135,7 +135,7 @@ if ($result = $connessione->query($sql)) {
         </div>
         <br>
         
-
+    <!-- QUI STAMPO IN BASE AL BOTTONE PREMUTO -->
     <div id="contenuto"></div>
 
     </div>
@@ -147,7 +147,6 @@ if ($result = $connessione->query($sql)) {
                 cache: false
             });
 
-            //quando clicco sull'immagine del cuore pieno cambia l'immagine in un cuore vuoto e viceversa, ed esegui la query mostraLike.php
             $(".cuore").click(function() {
                 $.ajax({
                     type: "POST",
@@ -166,7 +165,6 @@ if ($result = $connessione->query($sql)) {
             });
 
             $(".occhio").click(function() {
-
                 $.ajax({
                     type: "POST",
                     url: "mostraVisitati.php",
@@ -183,7 +181,6 @@ if ($result = $connessione->query($sql)) {
             });
 
             $(".star").click(function() {
-                <?php $_SESSION['preferiti']=1;?>
                 $.ajax({
                     type: "POST",
                     url: "mostraPreferiti.php",
