@@ -81,6 +81,10 @@
                 }else{
                     echo "Errore durante inserimento: ".$connessione->error;
                 } 
+                //automatically assign user the basic profile image by copying the default one
+                $path = "img/propics/";
+                $path = $path.$mail.".png";
+                copy("img/propics/default.png", $path);
             }
         }
     ?>
