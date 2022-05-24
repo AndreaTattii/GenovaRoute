@@ -45,7 +45,7 @@ function isMobile() {
 	    				<a class="nav-link" href="percorsi/index.php" style="color: white">Percorsi</a>
 	    			</li>
 	    			<li class="nav-item">
-	    				<a class="nav-link" href="#" style="color: white">Preferiti</a>
+	    				<a class="nav-link" href="preferiti/index.php" style="color: white">Preferiti</a>
 	    			</li>
 	    			<li class="nav-item">
 	    				<a class="nav-link" href="profilo/index.php" style="color: white">Account</a>

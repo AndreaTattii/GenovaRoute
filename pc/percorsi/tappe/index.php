@@ -48,7 +48,7 @@ if(isset($_POST['idPercorso'])){
 	    				<a class="nav-link" href="../index.php" style="color: white">Percorsi</a>
 	    			</li>
 	    			<li class="nav-item">
-	    				<a class="nav-link" href="#" style="color: white">Preferiti</a>
+	    				<a class="nav-link" href="../../preferiti/index.php" style="color: white">Preferiti</a>
 	    			</li>
 	    			<li class="nav-item">
 	    				<a class="nav-link" href="../../profilo/index.php" style="color: white">Account</a>
@@ -89,9 +89,11 @@ if(isset($_POST['idPercorso'])){
                                     <form action="tappaSpecifica/index.php" method="post">
                                         <p class="card-title">
                                             <input type="hidden" name="idTappa" value="' . $row['id'] . '">
-                                            <input type="hidden" name="ordineTappa" value="' . $row['ordine'] . '">
-                                            <input type="submit" value="'.$row['ordine'].'. ' . $row['nome'] . '" style="background-color: #F0F0F0; text-decoration: none; color: #B30000; font-size:20px; border: none; font-weight: bold; float: left;"> 
-                                            <button type="submit" class="btn btn-primary" style="background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>
+                                            <input type="hidden" name="ordineTappa" value="' . $row['ordine'] . '">';
+                                            $row['ordine']++;
+                                            echo '<input type="submit" value="'.$row['ordine'].'. ' . $row['nome'] . '" style="background-color: #F0F0F0; text-decoration: none; color: #B30000; font-size:20px; border: none; font-weight: bold; float: left;">'; 
+                                            $row['ordine']--;
+                                            echo'<button type="submit" class="btn btn-primary" style="background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>
                                         </p>
                                     </form>
                                 </div>
