@@ -148,10 +148,10 @@ if($result = $connessione->query($query)){
                     if ($result2 = $connessione->query($sql2)) {
                         if ($result2->num_rows > 0) {
                             $coloreBordo = " #B30000; padding:4px";
-                            $linea=" border-left: 2px solid #B30000; height: 80px;   position: relative; left: 70%; margin-left: -3px; top: 0; ";
+                            $linea=" border-left: 2px solid #B30000; height: 80px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
                         } else {
                             $coloreBordo = "white";
-                            $linea=" border-left: 2px dashed #B30000; height: 80px;   position: relative; left: 70%; margin-left: -3px; top: 0; ";
+                            $linea=" border-left: 2px dashed #B30000; height: 80px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
 
                         }
                     } else {
@@ -169,7 +169,7 @@ if($result = $connessione->query($query)){
                             <input type="hidden" name="idTappa" value="' . $row['id'] . '">
                         </form>
 
-                        <div class="row" onclick="submit()">
+                        <div class="row" onclick="submit()" style="margin:none; padding:none">
                             <div class="col-3">
                                 <img src="../../../img/tappe/'.$row['id'].'.1.png" style="height:100px; width:100px; border-radius: 50%; border: 2px solid '.$coloreBordo.';  margin-left:10px">
                             </div>
