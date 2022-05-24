@@ -119,7 +119,7 @@ if ($result = $connessione->query($sql)) {
                 ?>
             </div>
             <div class="col-8 ">
-                <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;"><?php echo $username; ?></h1>
+                <h1 style=" color: white; font-weight: bold; text-align: center;"><?php echo $username; ?></h1>
             </div>
             <div class="col-2 ">
                 <?php
