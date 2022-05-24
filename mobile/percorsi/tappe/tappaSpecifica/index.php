@@ -62,13 +62,25 @@ if ($result = $connessione->query($sql)) {
 // CONTROLLO SE UTENTE HA SCANNERIZZATO TAPPA
 $sql = "SELECT * FROM utente_percorre_tappa
         WHERE email = '" . $_SESSION['email'] . "'
-        AND id_tappa = ".$id."
-    ";
+        AND id_tappa = ".$id."";
 
 $visitata = false;
 if ($result = $connessione->query($sql)) {
     if ($result->num_rows > 0) {
         $visitata = true;
+    }
+}
+
+// CONTROLLO SE UTENTE HA MESSO MI PIACE A TAPPAS
+$sql = "SELECT * FROM utente_percorre_tappa
+        WHERE email = '" . $_SESSION['email'] . "'
+        AND id_tappa = ".$id."
+        AND piace = 1";
+
+$piace = "../../../../img/icons/cuoreVuoto.png";
+if ($result = $connessione->query($sql)) {
+    if ($result->num_rows > 0) {
+        $piace = "../../../../img/icons/cuorePieno.png";
     }
 }
 ?>
@@ -199,7 +211,7 @@ if ($result = $connessione->query($sql)) {
                 <button style="background-color:#B30000;color:#B30000" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button style="background-color:#B30000;color:#B30000" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-            <div class="carousel-inner" style="align-items: center;">
+            <div class="carousel-inner double-tap" id="double-tap" style="align-items: center;">
                 <div class="carousel-item active" data-bs-interval="9999999999999999" style="align-items:center">
                     <img src="../../../../img/tappe/<?php echo $id ?>.1.png" class="d-block w-100" alt="..." style="max-height: 200px; margin-left: auto; margin-right: auto;">
                 </div>
@@ -215,16 +227,16 @@ if ($result = $connessione->query($sql)) {
 
     <!-- BARRA LIKE COMMENTO -->
     <?php
-    if ($visitata== true) {
+    if ($visitata) {
         echo'
-            <div class="row justify-content-center" >
-                <div class="col-2" id="miPiace" style="margin-left: 10px; ;">
-                    <img class="cuore" src="../../../../img/icons/cuoreVuoto.png" style="width:40px; vertical-align: text-top">
-                </div>
-                <div class="col-2" id="commento">
-                    <img class="cuore" src="../../../../img/icons/commentoVuoto.png" style="width:40px; margin-top:6px">                  
-                </div>
+        <div class="row justify-content-center" style="width:100%" >
+            <div class="col-2" id="miPiace" style="margin-left: 10px; ">
+                <img class="cuore" src="'.$piace.'" style="width:40px; vertical-align: text-top">
             </div>
+            <div class="col-2" id="commento">
+                <img  src="../../../../img/icons/commentoVuoto.png" style="width:40px; margin-top:6px">                  
+            </div>
+        </div>
         ';
     }
     ?>
@@ -241,6 +253,72 @@ if ($result = $connessione->query($sql)) {
     <br>
     <br>
     <br>
+    <script>
+    $(function(){
+    
+        // opzionale, refresha all'infinito la pagina
+        $.ajaxSetup ({
+            cache: false
+        });
+    
+        //quando clicco il bottone o quando faccio doppio tap sul carousel
+
+        $(".cuore").click(function(){
+            var idTappa = <?php echo $id; ?>;
+            if($(".cuore").attr("src") == "../../../../img/icons/cuoreVuoto.png"){ 
+                var url = "aggiungiLike.php";
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: {idTappa: idTappa},
+                    success: function(data){
+                        $(".cuore").attr("src","../../../../img/icons/cuorePieno.png");
+                    }
+                });
+            }
+            else{ 
+            var url = "rimuoviLike.php";
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: {idTappa: idTappa},
+                    success: function(data){
+                        $(".cuore").attr("src","../../../../img/icons/cuoreVuoto.png");
+                    }
+                });
+            }
+        });
+        $(".double-tap").dblclick(function(){
+            var idTappa = <?php echo $id; ?>;
+            if($(".cuore").attr("src") == "../../../../img/icons/cuoreVuoto.png"){ 
+                var url = "aggiungiLike.php";
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: {idTappa: idTappa},
+                    success: function(data){
+                        $(".cuore").attr("src","../../../../img/icons/cuorePieno.png");
+                    }
+                });
+            }
+            else{ 
+            var url = "rimuoviLike.php";
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: {idTappa: idTappa},
+                    success: function(data){
+                        $(".cuore").attr("src","../../../../img/icons/cuoreVuoto.png");
+                    }
+                });
+            }
+        });
+    });
+
+
+        
+
+    </script>
     <script>
         let touchstartX = 0;
         let touchstartY = 0;
@@ -261,27 +339,14 @@ if ($result = $connessione->query($sql)) {
         }, false);
 
         function handleGesture() {
-            if (touchendX + 45 <= touchstartX) {
+            if (touchendX + 75 <= touchstartX) {
                 document.getElementsByClassName("swipeForward")[0].click();
             }
 
-            if (touchendX - 45 >= touchstartX) {
+            if (touchendX - 75 >= touchstartX) {
                 document.getElementsByClassName("swipeBack")[0].click();
             }
         }
-    </script>
-    <script>
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
-        }
-        window.addEventListener("orientationchange", function() {
-            if (window.orientation == 90 || window.orientation == -90) {
-                alert("Gira lo schermo in verticale!!!")
-                //window.orientation = 0;
-                //document.getElementById("orientation").style.display = "none";
-                //window.location.reload();
-            }
-        });
     </script>
 </body>
 
