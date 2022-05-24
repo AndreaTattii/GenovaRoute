@@ -125,7 +125,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
                 AND  percorso.id = '.$_GET["percorsi"].';';
 
                 $result = $connessione->query($sql);
-               // $row = $result->fetch_array();
+              
 
                 while($row = $result->fetch_assoc()){
                     echo "L.marker(
@@ -134,7 +134,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
                             icon: Icon".$row["ordine"]."
                         }
                         ).addTo(map)   
-                        .bindPopup('".$row["nome"]."');
+                        .bindPopup('".$row["nome"]."')
                         ";
                 }
             }
