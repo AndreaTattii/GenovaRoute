@@ -84,7 +84,7 @@ session_start();
     <br>
     <br>
         <div style="margin:0;display: flex; justify-content: center;">
-            <input style="text-align-center; margin:0;" type="text" placeholder="Cerca un percorso..." name="ricerca">
+            <input style="text-align:center; margin:0;" type="text" placeholder="Cerca un percorso..." name="ricerca">
         </div>
         <div id="contenuto"></div>
         

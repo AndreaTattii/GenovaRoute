@@ -12,8 +12,6 @@ if (isset($_POST['idPercorso'])) {
 }
 
 
-
-
 $host = "127.0.0.1";
 $user = "root";
 $pass = "";
@@ -26,6 +24,7 @@ if ($connessione === false) {
 }
 
 
+// CATTURO DA DB INFORMAZIONI DELLA TAPPA
 $sql = "SELECT Tappa.id ,Tappa.nome, Tappa.descrizione,  Tappa.via 
         FROM Tappa, Tappa_appartiene_percorso, Percorso
         WHERE Tappa.id = Tappa_appartiene_percorso.id_tappa
@@ -37,7 +36,7 @@ if ($result = $connessione->query($sql)) {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $id = $row['id'];
-        
+
         $descrizione = $row['descrizione'];
         $dove = $row['via'];
         $nome = $row['nome'];
@@ -60,7 +59,18 @@ if ($result = $connessione->query($sql)) {
     echo "Impossibile eseguire la query2";
 }
 
+// CONTROLLO SE UTENTE HA SCANNERIZZATO TAPPA
+$sql = "SELECT * FROM utente_percorre_tappa
+        WHERE email = '" . $_SESSION['email'] . "'
+        AND id_tappa = ".$id."
+    ";
 
+$visitata = false;
+if ($result = $connessione->query($sql)) {
+    if ($result->num_rows > 0) {
+        $visitata = true;
+    }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -90,7 +100,7 @@ if ($result = $connessione->query($sql)) {
     <link rel="icon" href="../../../../img/G.png" type="image/icon type">
 </head>
 
-<body >
+<body>
 
 
     <!-- NAVBAR BASSA-->
@@ -173,89 +183,106 @@ if ($result = $connessione->query($sql)) {
 
 
     <!-- CONTENUTO PAGINA -->
-    
 
-        <!-- CARD -->
-        <div class="card text-center" style="margin-top:20px; border-radius:0px; text-align: left; padding-top:60px; margin:0px">
 
-            <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px">
-                <p class="card-title" style="font-weight: bold; margin-left: 10px;"><img src="../../../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; "><?php echo $dove; ?></p>
+    <!-- CARD -->
+    <div class="card text-center" style="margin-top:20px; border-radius:0px; text-align: left; padding-top:60px; margin:0px; border:none;">
 
+        <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px">
+            <p class="card-title" style="font-weight: bold; margin-left: 10px;"><img src="../../../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; "><?php echo $dove; ?></p>
+
+        </div>
+
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="margin:none; padding:none; height:225px;">
+            <div class="carousel-indicators" style="background-color:white; width:100%; margin:auto">
+                <button style="background-color:#B30000;color:#B30000" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button style="background-color:#B30000;color:#B30000" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button style="background-color:#B30000;color:#B30000" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-
-                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="margin:none; padding:none; height:225px;">
-                    <div class="carousel-indicators" style="background-color:white; width:100%; margin:auto">
-                        <button style="background-color:#B30000;color:#B30000" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button style="background-color:#B30000;color:#B30000" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button style="background-color:#B30000;color:#B30000" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
-                    <div class="carousel-inner" style="align-items: center;">
-                        <div class="carousel-item active" data-bs-interval="9999999999999999" style="align-items:center">
-                            <img src="../../../../img/tappe/<?php echo $id ?>.1.png" class="d-block w-100" alt="..." style="max-height: 200px; margin-left: auto; margin-right: auto;">
-                        </div>
-                        <div class="carousel-item" data-bs-interval="9999999999999999" style="align-items:center">
-                            <img src="../../../../img/tappe/<?php echo $id ?>.2.png" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
-                        </div>
-                        <div class="carousel-item" data-bs-interval="9999999999999999" style="align-items:center">
-                            <img src="../../../../img/tappe/<?php echo $id ?>.3.png" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
-                        </div>
-                    </div>
+            <div class="carousel-inner" style="align-items: center;">
+                <div class="carousel-item active" data-bs-interval="9999999999999999" style="align-items:center">
+                    <img src="../../../../img/tappe/<?php echo $id ?>.1.png" class="d-block w-100" alt="..." style="max-height: 200px; margin-left: auto; margin-right: auto;">
+                </div>
+                <div class="carousel-item" data-bs-interval="9999999999999999" style="align-items:center">
+                    <img src="../../../../img/tappe/<?php echo $id ?>.2.png" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
+                </div>
+                <div class="carousel-item" data-bs-interval="9999999999999999" style="align-items:center">
+                    <img src="../../../../img/tappe/<?php echo $id ?>.3.png" class="d-block w-100" alt="..." style=" max-height: 200px; margin-left: auto; margin-right: auto;">
                 </div>
             </div>
-
-            <div id="gestureZone" class="card-body" style="text-align: center; border:none;">
-                <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
-                <p  class="card-text" style="text-align:justify; border:none;"><?php echo $descrizione; ?></p>
-            </div>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <script>
-            let touchstartX = 0;
-            let touchstartY = 0;
-            let touchendX = 0;
-            let touchendY = 0;
-                            
-            const gestureZone = document.getElementById('gestureZone');
-                            
-            gestureZone.addEventListener('touchstart', function(event) {
-                touchstartX = event.changedTouches[0].screenX;
-                touchstartY = event.changedTouches[0].screenY;
-            }, false);
-            
-            gestureZone.addEventListener('touchend', function(event) {
-                touchendX = event.changedTouches[0].screenX;
-                touchendY = event.changedTouches[0].screenY;
-                handleGesture();
-            }, false); 
-            
-            function handleGesture() {
-                if (touchendX+45 <= touchstartX) {
-                    document.getElementsByClassName("swipeForward")[0].click();
-                }
-                
-                if (touchendX-45 >= touchstartX) {
-                    document.getElementsByClassName("swipeBack")[0].click();
-                }
+    </div>
+
+    <!-- BARRA LIKE COMMENTO -->
+    <?php
+    if ($visitata== true) {
+        echo'
+            <div class="row justify-content-center" >
+                <div class="col-2" id="miPiace" style="margin-left: 10px; ;">
+                    <img class="cuore" src="../../../../img/icons/cuoreVuoto.png" style="width:40px; vertical-align: text-top">
+                </div>
+                <div class="col-2" id="commento">
+                    <img class="cuore" src="../../../../img/icons/commentoVuoto.png" style="width:40px; margin-top:6px">                  
+                </div>
+            </div>
+        ';
+    }
+    ?>
+
+    <div id="gestureZone" class="card-body" style="text-align: center; border:none; height:800px">
+        <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
+        <p class="card-text" style="text-align:justify; border:none;"><?php echo $descrizione; ?></p>
+    </div>
+    
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <script>
+        let touchstartX = 0;
+        let touchstartY = 0;
+        let touchendX = 0;
+        let touchendY = 0;
+
+        const gestureZone = document.getElementById('gestureZone');
+
+        gestureZone.addEventListener('touchstart', function(event) {
+            touchstartX = event.changedTouches[0].screenX;
+            touchstartY = event.changedTouches[0].screenY;
+        }, false);
+
+        gestureZone.addEventListener('touchend', function(event) {
+            touchendX = event.changedTouches[0].screenX;
+            touchendY = event.changedTouches[0].screenY;
+            handleGesture();
+        }, false);
+
+        function handleGesture() {
+            if (touchendX + 45 <= touchstartX) {
+                document.getElementsByClassName("swipeForward")[0].click();
             }
-        </script>
-        <script>
-            if (window.history.replaceState) {
-                window.history.replaceState(null, null, window.location.href);
+
+            if (touchendX - 45 >= touchstartX) {
+                document.getElementsByClassName("swipeBack")[0].click();
             }
-            window.addEventListener("orientationchange", function() {
-                if (window.orientation == 90 || window.orientation == -90) {
-                    alert("Gira lo schermo in verticale!!!")
-                    //window.orientation = 0;
-                    //document.getElementById("orientation").style.display = "none";
-                    //window.location.reload();
-                }
-            });
-        </script>
+        }
+    </script>
+    <script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+        window.addEventListener("orientationchange", function() {
+            if (window.orientation == 90 || window.orientation == -90) {
+                alert("Gira lo schermo in verticale!!!")
+                //window.orientation = 0;
+                //document.getElementById("orientation").style.display = "none";
+                //window.location.reload();
+            }
+        });
+    </script>
 </body>
 
 </html>
