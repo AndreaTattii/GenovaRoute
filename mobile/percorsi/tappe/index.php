@@ -127,7 +127,7 @@ if($result = $connessione->query($query)){
         
         
 
-        $sql = "SELECT tappa.nome AS nome, tappa_appartiene_percorso.ordine AS ordine, tappa.id AS id 
+        $sql = "SELECT tappa.nome AS nome, tappa_appartiene_percorso.ordine AS ordine, tappa.id AS id, via 
                 FROM tappa, tappa_appartiene_percorso, percorso 
                 WHERE tappa.id = tappa_appartiene_percorso.id_tappa 
                     AND tappa_appartiene_percorso.id_percorso = percorso.id 
@@ -147,13 +147,12 @@ if($result = $connessione->query($query)){
                     $sql2 = "SELECT * FROM utente_percorre_tappa WHERE id_tappa = " . $row['id'] . " AND email = '" . $_SESSION['email'] . "';";
                     if ($result2 = $connessione->query($sql2)) {
                         if ($result2->num_rows > 0) {
-                            while ($row2 = $result2->fetch_array()) {
-                                $coloreBottone = "white";
-                                $coloreScritta = "#B30000";
-                            }
+                            $coloreBordo = " #B30000; padding:4px";
+                            $linea=" border-left: 2px solid #B30000; height: 80px;   position: relative; left: 70%; margin-left: -3px; top: 0; ";
                         } else {
-                            $coloreBottone = "#B30000";
-                            $coloreScritta = "white";
+                            $coloreBordo = "white";
+                            $linea=" border-left: 2px dashed #B30000; height: 80px;   position: relative; left: 70%; margin-left: -3px; top: 0; ";
+
                         }
                     } else {
                         echo "Errore: " . $connessione->error;
@@ -163,19 +162,33 @@ if($result = $connessione->query($query)){
                         
                         
 
-                        <div class="col-sm align-self-center" style="width:100%;">       
-                            <div class="card text-center align-self-center" style="width:100%;  background-color: ' . $coloreRiga . ';">
-                                <div class="card-body">
-                                    <form action="tappaSpecifica/index.php" method="post">
-                                        <p class="card-title">
-                                            <input type="hidden" name="ordineTappa" value="' . $row['ordine'] . '">
-                                            <input type="hidden" name="idTappa" value="' . $row['id'] . '">
-                                            <input type="submit" value="' . $ordineVisualizza . '. ' . $row['nome'] . '" style="background-color: ' . $coloreRiga . '; text-decoration: none; color: #B30000; font-size:18px; border: none; font-weight: bold; float: left;"> 
-                                            <button type="submit" class="btn btn-primary" style="background-color: '.$coloreBottone.'; border-color:#B30000; font-size: 13px; color:'.$coloreScritta.' ; text-align: center; float: right;">Visualizza</button>
-                                        </p>
-                                    </form>
+                        
+
+                        <form action="tappaSpecifica/index.php" method="post" id="form">
+                            <input type="hidden" name="ordineTappa" value="' . $row['ordine'] . '">
+                            <input type="hidden" name="idTappa" value="' . $row['id'] . '">
+                        </form>
+
+                        <div class="row" onclick="submit()">
+                            <div class="col-3">
+                                <img src="../../../img/tappe/'.$row['id'].'.1.png" style="height:100px; width:100px; border-radius: 50%; border: 2px solid '.$coloreBordo.';  margin-left:10px">
+                            </div>
+                            <div class="col-9">
+                                <div class="container">
+                                    <div class="row" style="text-align:center;">
+                                        <h3 style="color:#b30000">'.$row['nome'].'</h3>
+                                    </div>
+                                    <div class="row" style="text-align:center;">
+                                        <p class="card-title" style="font-weight: bold; margin-left: 10px;"><img src="../../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; ">'.$row['via'].'</p>
+                                    </div>
                                 </div>
-                            </div>                                        
+                            </div>
+                        </div>
+                        <div class="row" >
+                            <div class="col-3">
+                                <div style=" '.$linea.' "></div>
+                            </div>
+                            
                         </div>
                         ';
                 }
@@ -214,6 +227,10 @@ if($result = $connessione->query($query)){
                 //window.location.reload();
             }
         });
+
+        function submit(){
+            document.forms["form"].submit();
+        }
     </script>
 </body>
 

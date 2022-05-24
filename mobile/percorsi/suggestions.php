@@ -1,5 +1,6 @@
 <?php
     session_start();
+    error_reporting(0);
         $host = "127.0.0.1";
         $user = "root";
         $pass = "";
