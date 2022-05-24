@@ -15,7 +15,7 @@
     
     $search = $connessione->real_escape_string($_POST['query']);
     //seleziona tutti gli utenti che hanno un nome, cognome o username che contengono $search
-    $sql = "SELECT * FROM utente WHERE (nome LIKE '%$search%' OR cognome LIKE '%$search%' OR username LIKE '%$search%') AND email != '" . $_SESSION['email'] . "'";
+    $sql = "SELECT * FROM utente WHERE (nome LIKE '%$search%' OR cognome LIKE '%$search%' OR username LIKE '%$search%') AND email != '" . $_SESSION['email'] . "' AND email!='admin@admin'";
     if($result = $connessione->query($sql)){
         if($result->num_rows > 0){
             while($row = $result->fetch_array()){
@@ -36,17 +36,29 @@
                 else{
                     echo "Impossibile eseguire la query";
                 }
-                echo "<br><div class='card' style='background-color:white'>";
-                echo "<div class='card-body'>";
-                echo "<h5 class='card-title'>" . $row['nome'] . " " . $row['cognome'] . "</h5>";
-                echo "<img style='width:100px;height:100px; border-radius: 50%' src='../../img/propics/".$row['email'].".png'>";
-                echo "<p style='font-size:20px' class='card-text'>" . $row['username'] . "</p>";
-                echo "<p class='card-text'></p>";
-                echo "<p class='card-text'> 0<img style='width:25px' src='../../img/icons/cuorePieno.png'>   " . $tappe . "<img style='width:25px' src='../../img/icons/occhioAperto.png'>   " . $preferiti . "<img style='width:25px' src='../../img/icons/fullStarRed.png'>    </p>";
-                echo "<p class='card-text'></p>";
-                echo "<a href='index.php?emailUtente=" . $row['email'] . "' class='btn btn-primary' style='background-color:#B30000; border:none'>Vai al profilo</a>";
-                echo "</div>";
-                echo "</div>";
+                //fai una query per vedere a quante tappe l'utente ha messo mi piace
+                $sql4 = "SELECT COUNT(*) AS likeTappe FROM utente_percorre_tappa WHERE email = '" . $row['email'] . "' AND piace=1";
+                if($result4 = $connessione->query($sql4)){
+                    $row4 = $result4->fetch_array();
+                    $likeTappe = $row4['likeTappe'];
+                }
+                else{
+                    echo "Impossibile eseguire la query";
+                }
+                    echo"<br>
+                    <a style='text-decoration:none; color:black;' href='index.php?emailUtente=" . $row['email'] . "'>
+                        <div class='row' style='border-bottom:1px solid black'>
+                            <div class='col-4'>
+                                <img style='width:100px;height:100px; border-radius: 50%' src='../../img/propics/".$row['email'].".png'>
+                            </div>
+                            <div class='col-8'>
+                                <h5>".$row['username']."</h5>
+                                <p>".$row['nome']." ".$row['cognome']."</p>
+                                <p class='card-text'>".$likeTappe."<img style='width:25px' src='../../img/icons/cuorePieno.png'>   " . $tappe . "<img style='width:25px' src='../../img/icons/occhioAperto.png'>   " . $preferiti . "<img style='width:25px' src='../../img/icons/fullStarRed.png'>    </p>
+                                <br>
+                            </div>    
+                        </div>
+                    </a>";
             }
             echo"<br><br><br><br>";
         } else {
