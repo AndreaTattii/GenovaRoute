@@ -38,10 +38,10 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: white">Percorsi</a>
+                        <a class="nav-link" href="../percorsi/index.php" style="color: white">Percorsi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../preferiti/index.php" style="color: white">Preferiti</a>
+                        <a class="nav-link" href="#" style="color: white">Preferiti</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../profilo/index.php" style="color: white">Account</a>
@@ -51,7 +51,7 @@
         </div>
     </nav>
 
-    <h1 style="font-weight:bold; padding-top:15px; padding-left:150px">Scegli un percorso</h1>
+    <h1 style="font-weight:bold; padding-top:15px; padding-left:150px">Scegli un percorso tra i tuoi preferiti</h1>
 
 
     <div class="container" style="padding-top:30px; margin-bottom: 100px;">
@@ -68,7 +68,7 @@
         if ($connessione === false) {
             die("Errore: " . $connessione->connect_error);
         }
-        $sql = "SELECT * FROM percorso ORDER BY (SELECT COUNT(*) AS numero_tappe FROM percorso, tappa, tappa_appartiene_percorso WHERE id_percorso=percorso.id AND id_tappa=tappa.id)";
+        $sql = "SELECT * FROM percorso, utente_preferisce_percorso ORDER BY (SELECT COUNT(*) AS numero_tappe FROM percorso, tappa, tappa_appartiene_percorso, utente_preferisce_percorso WHERE tappa_appartiene_percorso.id_percorso=percorso.id AND id_tappa=tappa.id AND utente_preferisce_percorso.id_percorso=percorso.id AND utente_preferisce_percorso.email='" . $_SESSION['email'] . "')";
         if ($result = $connessione->query($sql)) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_array()) {
@@ -91,7 +91,7 @@
                     ';
                 }
             } else {
-                echo "<p style='text-align: center'>Non ci sono percorsi salvati nel database</p>";
+                echo "<p style='text-align: center'>Non hai nessun percorso tra i preferiti</p>";
             }
         } else {
             echo "Impossibile eseguire la query";
