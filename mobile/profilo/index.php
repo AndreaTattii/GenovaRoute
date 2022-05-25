@@ -162,21 +162,21 @@ if ($result = $connessione->query($sql)) {
         </div>
 
         <!-- CONTENUTO PAGINA -->
-        <div class="row" style="margin:none; padding:none; border: solid 2px #C4C4C4; ">
-            <div class="col-4" style="border-right: solid 1px #C4C4C4; text-align:center; padding:0px; margin:auto;">
+        <div class="row" style="margin:none; padding:none;  ">
+            <div class="col-4" id="colCuore" style="border-bottom:2px solid #b30000; text-align:center; padding:0px; margin:auto;">
                 <img class="cuore" src="../../img/icons/cuorePieno.png" style="width:30px">
             </div>
-            <div class="col-4" style="text-align:center;  padding:0px; margin:auto; ">
+            <div class="col-4" id="colOcchio"  style="text-align:center;  padding:0px; margin:auto; ">
                 <img class="occhio" src="../../img/icons/occhioCancellato.png" style="width:35px;">
             </div>
-            <div class="col-4" style="border-left: solid 1px #C4C4C4; text-align:center; padding:0px; margin:auto;">
-                <img class="star" src="../../img/icons/emptyStarRed.png" style="width:30px">
+            <div class="col-4" id="colStar"  style=" text-align:center; padding:0px; margin:auto;">
+                <img class="star"  src="../../img/icons/emptyStarRed.png" style="width:30px">
             </div>
         </div>
         <br>
         
     <!-- QUI STAMPO IN BASE AL BOTTONE PREMUTO -->
-    <div id="contenuto">
+    <div id="contenuto" style="padding:0px; margin:0px">
     <?php
     if(isset($_GET['emailUtente'])){
         $email=$_GET['emailUtente'];
@@ -185,36 +185,43 @@ if ($result = $connessione->query($sql)) {
         $email=$_SESSION['email'];
     }
 
-    $sql="SELECT * FROM utente_percorre_tappa, tappa WHERE email = '" . $email . "' AND tappa.id=id_tappa AND piace=1";
-    $result = $connessione->query($sql);
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            echo   "<div class='row'>
-                        <div class='col-sm-12'>
-                            <div class='card'>
-                                <div class='card-body'>
-                                    <h5 class='card-title'>".$row['nome']."</h5>
-                                    <p class='card-text'>".$row['descrizione']."</p>
-                                    <a href='../../percorso/mostraPercorso.php?id=".$row['id']."' class='btn btn-primary'>Vai alla tappa</a>
-                                </div>
-                            </div>
+    $i=0;
+    $sql = "SELECT * FROM utente_percorre_tappa, tappa WHERE email = '" . $email . "' AND tappa.id=id_tappa AND piace=1 ORDER BY (utente_percorre_tappa.data)DESC";
+$result = $connessione->query($sql);
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        if ($i % 3 == 0 && $i!=0) {
+            echo '</div>';
+        }
+        if ($i % 3 == 0 || $i = 0) {
+            echo '<div class="row" style="width:100%; padding:0px; margin:0px;">';
+        }
+        echo   "
+                        <div class='col-4' style='height: 130px; padding:0px; margin:0px;' onclick='submit()'>
+                            <img src='../../img/tappe/" . $row['id'] . ".1.png' style='width:100%; height: 100%;padding:1px; margin:5px;' >
                         </div>
-                    </div>";
-        }
-        echo"<br><br><br><br>";
-    } else {
-        if($_SESSION['email']==$email){
-            echo "Non hai messo mi piace a nessuna tappa";
-        }
-        else{
-            echo "Non ha messo mi piace a nessuna tappa";
-        }
+                        
+                    ";
+        
+        $i++;
     }
+    
+    echo "<br><br><br><br>";
+} else {
+    if ($_SESSION['email'] == $email) {
+        echo "Non hai messo mi piace a nessuna tappa";
+    } else {
+        echo "Non ha messo mi piace a nessuna tappa";
+    }
+}
     ?>
     </div>
 
     </div>
     <script>
+
+
+
         $(document).ready(function() {
             
             // opzionale, refresha all'infinito la pagina
@@ -242,6 +249,9 @@ if ($result = $connessione->query($sql)) {
                         $(".occhio").attr("src", "../../img/icons/occhioCancellato.png");
                         $(".star").attr("src", "../../img/icons/emptyStarRed.png");
 
+                        $("#colCuore").css("border-bottom", "2px solid #b30000");
+                        $("#colOcchio").css("border-bottom", "none");
+                        $("#colStar").css("border-bottom", "none");
                     }
                 });
             });
@@ -265,6 +275,10 @@ if ($result = $connessione->query($sql)) {
                         $(".cuore").attr("src", "../../img/icons/cuoreVuoto.png");
                         $(".occhio").attr("src", "../../img/icons/occhioAperto.png");
                         $(".star").attr("src", "../../img/icons/emptyStarRed.png");
+
+                        $("#colCuore").css("border-bottom", "none");
+                        $("#colOcchio").css("border-bottom", "2px solid #b30000");
+                        $("#colStar").css("border-bottom", "none");
                     }
                 });
             });
@@ -289,6 +303,10 @@ if ($result = $connessione->query($sql)) {
                         $(".cuore").attr("src", "../../img/icons/cuoreVuoto.png");
                         $(".occhio").attr("src", "../../img/icons/occhioCancellato.png");
                         $(".star").attr("src", "../../img/icons/fullStarRed.png");
+
+                        $("#colCuore").css("border-bottom", "none");
+                        $("#colOcchio").css("border-bottom", "none");
+                        $("#colStar").css("border-bottom", "2px solid #b30000");
 
                     }
                 });
