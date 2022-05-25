@@ -170,17 +170,22 @@ if ($result = $connessione->query($sql)) {
                         echo "Errore: " . $connessione->error;
                     }
                     // GESTIONE LINEA
+
+                    //controllo tappa precedente
                     $sql2 = "SELECT * 
                             FROM utente_percorre_tappa, tappa_appartiene_percorso 
-                            WHERE Utente_percorre_tappa.id_tappa = " . $row['id'] . " 
+                            WHERE utente_percorre_tappa.id_tappa = " . $row['id'] . " 
                             AND email = '" . $_SESSION['email'] . "'
-                            AND Utente_percorre_tappa.id_tappa = tappa_appartiene_percorso.id_tappa
-                            AND tappa_appartiene_percorso.ordine = ".$i." 
+                            AND utente_percorre_tappa.id_tappa = tappa_appartiene_percorso.id_tappa
+                            AND tappa_appartiene_percorso.ordine = ".($i-1)." 
                             ;";
                     if ($result2 = $connessione->query($sql2)) {
                         if ($result2->num_rows > 0) {
+                            echo' vist prec';
                             $visualizzataPrec = true;
                         } else {
+                            echo' no prec';
+
                             $visualizzataPrec = false;
 
                         }
@@ -188,6 +193,8 @@ if ($result = $connessione->query($sql)) {
                         echo "Errore: " . $connessione->error;
                     }
 
+                    
+                    //controllo tappa sucessiva
                     $sql2 = "SELECT * 
                             FROM utente_percorre_tappa, tappa_appartiene_percorso 
                             WHERE Utente_percorre_tappa.id_tappa = " . $row['id'] . " 
@@ -197,8 +204,12 @@ if ($result = $connessione->query($sql)) {
                             ;";
                     if ($result2 = $connessione->query($sql2)) {
                         if ($result2->num_rows > 0) {
+                            echo' vist succ';
+
                             $visualizzataSuc = true;
                         } else {
+                            echo' no succ';
+
                             $visualizzataSuc = false;
 
                         }
@@ -244,7 +255,7 @@ if ($result = $connessione->query($sql)) {
                         
                         ';
                         if($i != ($quanteTappe-1)){
-                            echo '
+                            echo $i.'
                                 <div class="row" style="width:100%;">
                                     <div class="col-3">
                                         <div style=" '.$linea.' "></div>
