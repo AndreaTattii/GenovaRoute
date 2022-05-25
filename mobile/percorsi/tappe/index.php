@@ -3,7 +3,9 @@ session_start();
 if(isset($_POST['idPercorso'])){
     $_SESSION['idPercorso'] = $_POST['idPercorso'];
 }
-
+if(isset($_GET['idPercorso'])){
+    $_SESSION['idPercorso'] = $_GET['idPercorso'];
+}
 
 $host = "127.0.0.1";
 $user = "root";

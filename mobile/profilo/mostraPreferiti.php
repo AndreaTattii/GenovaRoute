@@ -26,7 +26,9 @@
             }
             echo   "
                     <div class='col-4' style='height: 130px; padding:0px; margin:0px;' onclick='submit()'>
-                        <img src='../../img/percorsi/" . $row['id'] . ".png' style='width:100%; height: 100%;padding:1px; margin:5px;' >
+                        <a  href='../percorsi/tappe/index.php?idPercorso=".$row['id']."'>
+                            <img src='../../img/percorsi/" . $row['id'] . ".png' style='width:100%; height: 100%;padding:1px; margin:5px;' >
+                        </a>
                     </div>
                     
                 ";
