@@ -24,7 +24,7 @@
                 echo '<div class="row" style="width:100%; padding:0px; margin:0px;">';
             }
             echo   "
-                    <div class='col-4' style='height: 130px; padding:0px; margin:0px;'>
+                    <div class='col-4' style='height: 90px; padding:0px; margin:0px;'>
                         <a  href='mostraTappa.php?idTappa=".$row['id']."'>   
                             <img src='../../img/tappe/" . $row['id'] . ".1.png' style='width:100%; height: 100%;padding:1px; margin:5px;'> 
                         </a>
