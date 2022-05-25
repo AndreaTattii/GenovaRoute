@@ -97,7 +97,7 @@ if ($result = $connessione->query($sql)) {
     </div>
 
 
-    <div class="container">
+    <div class="container" style="margin-bottom:100px">
         <!-- NAVBAR ALTA -->
         <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
             <div class="col-2">
@@ -210,7 +210,7 @@ if ($result = $connessione->query($sql)) {
             $i++;
         }
         
-        echo "<br><br><br><br>";
+        echo "<br><br><br><br><br><br><br>";
     } else {
         if ($_SESSION['email'] == $email) {
             echo "Non hai messo mi piace a nessuna tappa";
@@ -220,6 +220,8 @@ if ($result = $connessione->query($sql)) {
     }
     ?>
     </div>
+    <br>
+    <br>
     <br>
     <br>
     <br>
