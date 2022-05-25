@@ -69,7 +69,7 @@ error_reporting(0);
         <div  onclick="toCima()" class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
 
             <div class="col ">
-                <h1  style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;">GrovaGO</h1>
+                <h1  style=" color: white; font-weight: bold; text-align: center;">GrovaGO</h1>
             </div>
         </div>
     </div>
