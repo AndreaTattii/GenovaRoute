@@ -101,8 +101,10 @@ $connessione = new mysqli($host, $user, $pass, $database);
         <script>
             element = document.getElementById('osm-map');
             element.style = 'height:'.concat(window.innerHeight, 'px;');
-            var map = L.map(element);
-            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
+            var map = L.map(element, {
+                zoomControl: false
+            });
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {minZoom: 14}).addTo(map);
             map.setView(['44.409369955825774', '8.941610113846902'], 14);
 
 
