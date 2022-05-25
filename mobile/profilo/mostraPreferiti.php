@@ -12,22 +12,26 @@
         echo "Errore: ".$connessione->error;
     }
     $email=$_POST['email'];
+    $i = 0;
     //mostra i percorsi aggiunti ai preferiti
-    $sql = "SELECT * FROM utente_preferisce_percorso, percorso WHERE email = '" . $email . "' AND percorso.id=id_percorso";
+    $sql = "SELECT * FROM utente_preferisce_percorso, percorso WHERE email = '" . $email . "' AND percorso.id=id_percorso ORDER BY (data)DESC";
     $result = $connessione->query($sql);
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            echo   "<div class='row'>
-                        <div class='col-sm-12'>
-                            <div class='card'>
-                                <div class='card-body'>
-                                    <h5 class='card-title'>".$row['nome']."</h5>
-                                    <p class='card-text'>".$row['descrizione']."</p>
-                                    <a href='../../percorso/mostraPercorso.php?id=".$row['id']."' class='btn btn-primary'>Vai al percorso</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>";
+            if ($i % 3 == 0 && $i!=0) {
+                echo '</div>';
+            }
+            if ($i % 3 == 0 || $i = 0) {
+                echo '<div class="row" style="width:100%; padding:0px; margin:0px;">';
+            }
+            echo   "
+                    <div class='col-4' style='height: 130px; padding:0px; margin:0px;' onclick='submit()'>
+                        <img src='../../img/percorsi/" . $row['id'] . ".png' style='width:100%; height: 100%;padding:1px; margin:5px;' >
+                    </div>
+                    
+                ";
+            
+            $i++;
         }
         echo"<br><br><br><br>";
     } else {

@@ -212,22 +212,22 @@ if ($result = $connessione->query($sql)) {
                     }
 
                     if(($visualizzataPrec ||  $i == 0) && $visualizzata ){
-                        $linea=" border-left: 3px solid #B30000; height: 40px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
+                        $linea=" border-left: 3px solid #B30000; height: 40px;   position: relative; left: 62px; margin-left: -3px; top: 0; ";
 
                         if($visualizzataSuc){
-                            $linea2=" border-left: 3px solid #B30000; height: 40px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
+                            $linea2=" border-left: 3px solid #B30000; height: 40px;   position: relative; left: 62px; margin-left: -3px; top: 0;  ";
                         }else{
-                            $linea2=" border-left: 3px dashed #B30000; height: 40px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
+                            $linea2=" border-left: 3px dashed #B30000; height: 40px;   position: relative; left: 62px; margin-left: -3px; top: 0; margin-top:5px";
 
                         }
                         
                     }else{
                         if($visualizzataSuc  && $visualizzata){
-                            $linea=" border-left: 3px solid #B30000; height: 40px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
-                            $linea2=" border-left: 3px solid #B30000; height: 80px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
+                            $linea=" border-left: 3px solid #B30000; height: 40px;   position: relative; left: 62px; margin-left: -3px; top: 0; ";
+                            $linea2=" border-left: 3px solid #B30000; height: 80px;   position: relative; left: 62px; margin-left: -3px; top: 0; ";
                         }else{
-                            $linea=" border-left: 3px dashed #B30000; height: 40px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
-                            $linea2=" border-left: 3px dashed #B30000; height: 40px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
+                            $linea=" border-left: 3px dashed #B30000; height: 40px;   position: relative; left: 62px; margin-left: -3px; top: 0; margin-bottom:px";
+                            $linea2=" border-left: 3px dashed #B30000; height: 40px;   position: relative; left: 62px; margin-left: -3px; top: 0; ";
 
                         }
                         
@@ -265,7 +265,7 @@ if ($result = $connessione->query($sql)) {
                         ';
                         if($i != ($quanteTappe-1)){
                             echo '
-                                <div class="row" style="width:100%;">
+                                <div class="row" style="width:100%; ">
                                     <div class="col-3">
                                         <div style=" '.$linea.' "></div>
                                     </div>
