@@ -44,6 +44,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
 </head>
 
 <body class="d-flex flex-column min-vh-100">
+
 <!-- NAVBAR ALTA -->
 <div class="container fixed-top" >
         <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px;">
@@ -104,8 +105,23 @@ $connessione = new mysqli($host, $user, $pass, $database);
             var map = L.map(element, {
                 zoomControl: false
             });
-            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {minZoom: 14}).addTo(map);
-            map.setView(['44.409369955825774', '8.941610113846902'], 14);
+
+            <?php
+            $sql = 'SELECT x,y 
+            FROM citta, Tappa, Percorso, Tappa_Appartiene_Percorso
+            WHERE  Tappa.id = Tappa_Appartiene_Percorso.id_tappa
+            AND  percorso.id = Tappa_Appartiene_Percorso.id_percorso 
+            AND  percorso.id = '.$_GET["percorsi"].'
+            AND citta.nome=Tappa.citta;';
+            
+            $result = $connessione->query($sql);
+
+            $row = $result->fetch_assoc();
+
+            ?>
+
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
+            map.setView(['<?php echo $row["x"];?>', '<?php echo $row["y"]?>'], 12);
 
 
 
