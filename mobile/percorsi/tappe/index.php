@@ -211,11 +211,26 @@ if ($result = $connessione->query($sql)) {
                         echo "Errore: " . $connessione->error;
                     }
 
-                    if(($visualizzataSuc ||  $i == 0) && $visualizzata ){
-                        $linea=" border-left: 2px solid #B30000; height: 80px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
+                    if(($visualizzataPrec ||  $i == 0) && $visualizzata ){
+                        $linea=" border-left: 2px solid #B30000; height: 40px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
+
+                        if($visualizzataSuc){
+                            $linea2=" border-left: 2px solid #B30000; height: 40px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
+                        }else{
+                            $linea2=" border-left: 2px dashed #B30000; height: 40px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
+
+                        }
                         
                     }else{
-                        $linea=" border-left: 2px dashed #B30000; height: 80px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
+                        if($visualizzataSuc  && $visualizzata){
+                            $linea=" border-left: 2px solid #B30000; height: 40px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
+                            $linea2=" border-left: 2px solid #B30000; height: 80px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
+                        }else{
+                            $linea=" border-left: 2px dashed #B30000; height: 40px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
+                            $linea2=" border-left: 2px dashed #B30000; height: 40px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
+
+                        }
+                        
 
                     }
                     $ordineVisualizza=$row['ordine']+1;
@@ -254,7 +269,12 @@ if ($result = $connessione->query($sql)) {
                                     <div class="col-3">
                                         <div style=" '.$linea.' "></div>
                                     </div>
-                                
+                                </div>
+
+                                <div class="row" style="width:100%;">
+                                    <div class="col-3">
+                                        <div style=" '.$linea2.' "></div>
+                                    </div>
                                 </div>
                             ';
                         }
