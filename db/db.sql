@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS Tappa_Appartiene_Percorso(
 );
 
 
-INSERT INTO citta (nome, x, y) VALUES
+INSERT INTO citta (nome, y, x) VALUES
 ('Genova', '8.9881', '44.4074'),
 ('Milano', '9.1899', '45.4642'),
 ('Roma', '12.5674', '41.8719'),
@@ -132,7 +132,7 @@ INSERT INTO citta (nome, x, y) VALUES
 ('Bergamo', '9.8833', '45.6667'),
 ('Sondrio', '9.9333', '46.2');
 
-INSERT INTO citta (nome, x, y) VALUES
+INSERT INTO citta (nome, y, x) VALUES
 ('Paris', '2.3522', '48.8566'),
 ('Lyon', '4.8333', '45.7'),
 ('Marseille', '5.3667', '43.3'),
@@ -159,7 +159,7 @@ INSERT INTO citta (nome, x, y) VALUES
 ('Rouen', '1.0833', '49.4333'),
 ('Nantes', '1.7', '47.2');
 
-INSERT INTO citta (nome, x, y) VALUES
+INSERT INTO citta (nome, y, x) VALUES
 ('Berlin', '13.3833', '52.5167'),
 ('Hamburg', '9.9667', '53.6'),
 ('Munich', '11.55', '48.15'),
@@ -188,7 +188,7 @@ INSERT INTO citta (nome, x, y) VALUES
 ('Aachen', '6.0833', '50.7333'),
 ('Kiel', '10.1333', '54.3333');
 
-INSERT INTO citta (nome, x, y) VALUES
+INSERT INTO citta (nome, y, x) VALUES
 ('London', '-0.1333', '51.5'),
 ('Manchester', '-2.2', '53.5'),
 ('Liverpool', '-2.9667', '53.4667'),
@@ -212,7 +212,7 @@ INSERT INTO citta (nome, x, y) VALUES
 ('Cambridge', '0.1167', '52.2'),
 ('Oxford', '1.25', '51.8667');
 
-INSERT INTO citta (nome, x, y) VALUES
+INSERT INTO citta (nome, y, x) VALUES
 ('Brussels', '4.35', '50.8333'),
 ('Antwerp', '4.4667', '51.2167'),
 ('Ghent', '3.7', '51.0333'),
@@ -222,7 +222,7 @@ INSERT INTO citta (nome, x, y) VALUES
 ('Bruges', '3.2', '51.2'),
 ('Mons', '3.9667', '50.45'),
 ('Bruxelles', '4.35', '50.8333');
-INSERT INTO citta (nome, x, y) VALUES
+INSERT INTO citta (nome, y, x) VALUES
 ('Zagreb', '15.9167', '45.8'),
 ('Split', '15.5', '43.5667'),
 ('Rijeka', '15.45', '45.35'),
