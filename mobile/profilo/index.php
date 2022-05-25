@@ -97,7 +97,11 @@ if ($result = $connessione->query($sql)) {
     </div>
 
 
+<<<<<<< HEAD
     <div class="container" >
+=======
+    <div class="container" style="margin-bottom:100px">
+>>>>>>> 413a39d32f8184a302589fb25a1b80caa6713bb1
         <!-- NAVBAR ALTA -->
         <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
             <div class="col-2">
@@ -219,6 +223,8 @@ if ($result = $connessione->query($sql)) {
     }
     ?>
     </div>
+    <br>
+    <br>
     <br>
     <br>
     <br>
