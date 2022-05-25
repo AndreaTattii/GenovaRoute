@@ -164,19 +164,23 @@ if ($result = $connessione->query($sql)) {
         <!-- CONTENUTO PAGINA -->
         <div class="row" style="margin:none; padding:none;  ">
             <div class="col-4" id="colCuore" style="border-bottom:2px solid #b30000; text-align:center; padding:0px; margin:auto;">
-                <img class="cuore" src="../../img/icons/cuorePieno.png" style="width:30px">
+                <img class="cuore" id="cuore" src="../../img/icons/cuorePieno.png" style="width:30px">
             </div>
             <div class="col-4" id="colOcchio"  style="text-align:center;  padding:0px; margin:auto; ">
-                <img class="occhio" src="../../img/icons/occhioCancellato.png" style="width:35px;">
+                <img class="occhio" id="occhio" src="../../img/icons/occhioCancellato.png" style="width:35px;">
             </div>
             <div class="col-4" id="colStar"  style=" text-align:center; padding:0px; margin:auto;">
-                <img class="star"  src="../../img/icons/emptyStarRed.png" style="width:30px">
+                <img class="star"  id="star" src="../../img/icons/emptyStarRed.png" style="width:30px">
             </div>
         </div>
         <br>
         
     <!-- QUI STAMPO IN BASE AL BOTTONE PREMUTO -->
     <div id="contenuto" style="padding:0px; margin:0px">
+
+    
+
+
     <?php
     if(isset($_GET['emailUtente'])){
         $email=$_GET['emailUtente'];
@@ -187,37 +191,41 @@ if ($result = $connessione->query($sql)) {
 
     $i=0;
     $sql = "SELECT * FROM utente_percorre_tappa, tappa WHERE email = '" . $email . "' AND tappa.id=id_tappa AND piace=1 ORDER BY (utente_percorre_tappa.data)DESC";
-$result = $connessione->query($sql);
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        if ($i % 3 == 0 && $i!=0) {
-            echo '</div>';
+    $result = $connessione->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            if ($i % 3 == 0 && $i!=0) {
+                echo '</div>';
+            }
+            if ($i % 3 == 0 || $i = 0) {
+                echo '<div class="row" style="width:100%; padding:0px; margin:0px;">';
+            }
+            echo   "
+                            <div class='col-4' style='height: 130px; padding:0px; margin:0px;' >
+                                <a  href='mostraTappa.php?idTappa=".$row['id']."'>   <img src='../../img/tappe/" . $row['id'] . ".1.png' style='width:100%; height: 100%;padding:1px; margin:5px;' > </a>
+                            </div>
+                            
+                        ";
+            
+            $i++;
         }
-        if ($i % 3 == 0 || $i = 0) {
-            echo '<div class="row" style="width:100%; padding:0px; margin:0px;">';
-        }
-        echo   "
-                        <div class='col-4' style='height: 130px; padding:0px; margin:0px;' onclick='submit()'>
-                            <img src='../../img/tappe/" . $row['id'] . ".1.png' style='width:100%; height: 100%;padding:1px; margin:5px;' >
-                        </div>
-                        
-                    ";
         
-        $i++;
-    }
-    
-    echo "<br><br><br><br>";
-} else {
-    if ($_SESSION['email'] == $email) {
-        echo "Non hai messo mi piace a nessuna tappa";
+        echo "<br><br><br><br>";
     } else {
-        echo "Non ha messo mi piace a nessuna tappa";
+        if ($_SESSION['email'] == $email) {
+            echo "Non hai messo mi piace a nessuna tappa";
+        } else {
+            echo "Non ha messo mi piace a nessuna tappa";
+        }
     }
-}
     ?>
     </div>
 
     </div>
+
+
+    
+
     <script>
 
 
@@ -323,6 +331,9 @@ if ($result->num_rows > 0) {
             }
         });
     </script>
+
+
+    
 </body>
 
 </html>
