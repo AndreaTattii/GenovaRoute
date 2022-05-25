@@ -11,7 +11,8 @@ if(isset($_POST['idPercorso'])){
 <html lang="en">
 
 <head>
-
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../../../bootstrap/js/bootstrap.min.js"></script>
     <!-- Required meta tags -->
@@ -81,9 +82,10 @@ if(isset($_POST['idPercorso'])){
         $sql = "SELECT tappa.nome, ordine, tappa.id FROM tappa, tappa_appartiene_percorso, percorso WHERE percorso.id = '" . $_SESSION['idPercorso'] . "' AND tappa_appartiene_percorso.id_percorso=percorso.id AND tappa.id=tappa_appartiene_percorso.id_tappa ORDER BY ordine";
         if ($result = $connessione->query($sql)) {
             if ($result->num_rows > 0) {
+                echo'<div class="row"><div class="col-6">';
                 while ($row = $result->fetch_array()) {
                     echo '
-                        <div class="col-sm align-self-center" style="width:60%; padding-top:30px; ">       
+                        <div class="row-sm align-self-center" style="width:60%; padding-top:30px; ">       
                             <div class="card text-center align-self-center" style="width:100%;  background-color: #F0F0F0;">
                                 <div class="card-body">
                                     <form action="tappaSpecifica/index.php" method="post">
@@ -101,7 +103,7 @@ if(isset($_POST['idPercorso'])){
                         </div>
                         ';
                 }
-            } else {
+            } else { 
                 echo "<p style='text-align: center'>Non ci sono tappe salvate nel database</p>";
             }
         } else {
@@ -114,6 +116,54 @@ if(isset($_POST['idPercorso'])){
         <div class="row">
 
         </div>
+
+        </div>
+        
+        <div class="col-6" style="padding-top:25px" ><div id="osm-map"></div></div>
+        </div>
+        <script>
+            element = document.getElementById('osm-map');
+            element.style = 'height:'.concat(500, 'px;');
+            var map = L.map(element);
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {minZoom: 14}).addTo(map);
+            map.setView(['44.409369955825774', '8.941610113846902'], 14);
+
+
+
+            <?php
+            for($i=0;$i<10;$i++){
+                $n = $i+1;
+                echo"
+                var Icon".$i." = L.icon({
+                    iconUrl: '../../../img/icons/markers/marker".$n.".png',
+                    iconSize:     [30, 40],
+                });
+                ";
+            }
+
+                $sql = 'SELECT lat,lon,Tappa.nome, ordine
+                FROM Tappa, Percorso, Tappa_Appartiene_Percorso 
+                Where Tappa.id = Tappa_Appartiene_Percorso.id_tappa 
+                AND percorso.id = Tappa_Appartiene_Percorso.id_percorso 
+                AND  percorso.id = '.$_SESSION['idPercorso'].';';
+
+                $result = $connessione->query($sql);
+              
+
+                while($row = $result->fetch_assoc()){
+                    echo "L.marker(
+                        ['".$row["lon"]."', '".$row["lat"]."'],
+                        {
+                            icon: Icon".$row["ordine"]."
+                        }
+                        ).addTo(map)   
+                        .bindPopup('".$row["nome"]."')
+                        ";
+                }
+            
+            
+            ?>
+        </script>
     </div>
     
 
