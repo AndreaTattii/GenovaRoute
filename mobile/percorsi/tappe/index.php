@@ -20,6 +20,18 @@ if($result = $connessione->query($query)){
         $_SESSION['nomePercorso'] = $row['nome'];
     }
 }
+
+// NUMERO DI TAPPE
+$sql = "SELECT MAX(ordine)  
+    FROM  Tappa_Appartiene_Percorso
+    WHERE id_percorso =  " . $_SESSION['idPercorso'] . "";
+
+if ($result = $connessione->query($sql)) {
+    $row = $result->fetch_assoc();
+    $quanteTappe = $row['MAX(ordine)']+1;
+} else {
+    echo "Impossibile eseguire la query2";
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -135,7 +147,6 @@ if($result = $connessione->query($query)){
         if ($result = $connessione->query($sql)) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_array()) { 
-                    $i++;
                     if ($i % 2 == 0) {
                         $coloreRiga = "white";
                     } else {
@@ -147,15 +158,60 @@ if($result = $connessione->query($query)){
                     $sql2 = "SELECT * FROM utente_percorre_tappa WHERE id_tappa = " . $row['id'] . " AND email = '" . $_SESSION['email'] . "';";
                     if ($result2 = $connessione->query($sql2)) {
                         if ($result2->num_rows > 0) {
+                            $visualizzata = true;
                             $coloreBordo = " #B30000; padding:4px";
-                            $linea=" border-left: 2px solid #B30000; height: 80px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
                         } else {
+                            $visualizzata = false;
+
                             $coloreBordo = "white";
-                            $linea=" border-left: 2px dashed #B30000; height: 80px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
 
                         }
                     } else {
                         echo "Errore: " . $connessione->error;
+                    }
+                    // GESTIONE LINEA
+                    $sql2 = "SELECT * 
+                            FROM utente_percorre_tappa, tappa_appartiene_percorso 
+                            WHERE Utente_percorre_tappa.id_tappa = " . $row['id'] . " 
+                            AND email = '" . $_SESSION['email'] . "'
+                            AND Utente_percorre_tappa.id_tappa = tappa_appartiene_percorso.id_tappa
+                            AND tappa_appartiene_percorso.ordine = ".$i." 
+                            ;";
+                    if ($result2 = $connessione->query($sql2)) {
+                        if ($result2->num_rows > 0) {
+                            $visualizzataPrec = true;
+                        } else {
+                            $visualizzataPrec = false;
+
+                        }
+                    } else {
+                        echo "Errore: " . $connessione->error;
+                    }
+
+                    $sql2 = "SELECT * 
+                            FROM utente_percorre_tappa, tappa_appartiene_percorso 
+                            WHERE Utente_percorre_tappa.id_tappa = " . $row['id'] . " 
+                            AND email = '" . $_SESSION['email'] . "'
+                            AND Utente_percorre_tappa.id_tappa = tappa_appartiene_percorso.id_tappa
+                            AND tappa_appartiene_percorso.ordine = ".($i+1)." 
+                            ;";
+                    if ($result2 = $connessione->query($sql2)) {
+                        if ($result2->num_rows > 0) {
+                            $visualizzataSuc = true;
+                        } else {
+                            $visualizzataSuc = false;
+
+                        }
+                    } else {
+                        echo "Errore: " . $connessione->error;
+                    }
+
+                    if(($visualizzataSuc || $visualizzataPrec || $i == 0) && $visualizzata ){
+                        $linea=" border-left: 2px solid #B30000; height: 80px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
+                        
+                    }else{
+                        $linea=" border-left: 2px dashed #B30000; height: 80px;   position: relative; left: 60px; margin-left: -3px; top: 0; ";
+
                     }
                     $ordineVisualizza=$row['ordine']+1;
                     echo '
@@ -164,12 +220,12 @@ if($result = $connessione->query($query)){
 
                         
 
-                        <form action="tappaSpecifica/index.php" method="post" id="form">
+                        <form action="tappaSpecifica/index.php" method="post" id="'.$i.'" >
                             <input type="hidden" name="ordineTappa" value="' . $row['ordine'] . '">
                             <input type="hidden" name="idTappa" value="' . $row['id'] . '">
                         </form>
 
-                        <div class="row" onclick="submit()" style="margin:none; padding:none">
+                        <div class="row" onclick="submit('.$i.')" style="margin:none; padding:none; height: 100px; width:100%">
                             <div class="col-3">
                                 <img src="../../../img/tappe/'.$row['id'].'.1.png" style="height:100px; width:100px; border-radius: 50%; border: 2px solid '.$coloreBordo.';  margin-left:10px">
                             </div>
@@ -184,13 +240,21 @@ if($result = $connessione->query($query)){
                                 </div>
                             </div>
                         </div>
-                        <div class="row" >
-                            <div class="col-3">
-                                <div style=" '.$linea.' "></div>
-                            </div>
-                            
-                        </div>
+
+                        
                         ';
+                        if($i != ($quanteTappe-1)){
+                            echo '
+                                <div class="row" style="width:100%;">
+                                    <div class="col-3">
+                                        <div style=" '.$linea.' "></div>
+                                    </div>
+                                
+                                </div>
+                            ';
+                        }
+                    $i++;
+
                 }
             } else {
                 echo "Non ci sono tappe salvate nel database";
@@ -228,8 +292,9 @@ if($result = $connessione->query($query)){
             }
         });
 
-        function submit(){
-            document.forms["form"].submit();
+        function submit( idForm){
+            var id= idForm;
+            document.forms[id].submit();
         }
     </script>
 </body>

@@ -66,10 +66,10 @@ error_reporting(0);
 
     <!-- NAVBAR ALTA -->
     <div class="container fixed-top">
-        <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
+        <div  onclick="toCima()" class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
 
             <div class="col ">
-                <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;">GrovaGO</h1>
+                <h1  style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;">GrovaGO</h1>
             </div>
         </div>
     </div>
@@ -84,7 +84,7 @@ error_reporting(0);
     <br>
     <br>
         <div style="margin:0;display: flex; justify-content: center;">
-            <input style="text-align:center; margin:0;" type="text" placeholder="Cerca un percorso..." name="ricerca">
+            <input style="text-align:center; margin:0;" type="text" placeholder="Cerca un percorso..." name="ricerca" id="Logo">
         </div>
         <div id="contenuto"></div>
         
@@ -289,6 +289,11 @@ error_reporting(0);
                 //window.location.reload();
             }
         });
+
+        function toCima() {
+            const element = document.getElementById("Logo");
+            element.scrollIntoView();
+        }
     </script>
 </body>
 
