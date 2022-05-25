@@ -97,7 +97,7 @@ if ($result = $connessione->query($sql)) {
     </div>
 
 
-    <div class="container">
+    <div class="container" >
         <!-- NAVBAR ALTA -->
         <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
             <div class="col-2">
@@ -176,7 +176,7 @@ if ($result = $connessione->query($sql)) {
         <br>
         
     <!-- QUI STAMPO IN BASE AL BOTTONE PREMUTO -->
-    <div id="contenuto" style="padding:0px; margin:0px">
+    <div id="contenuto">
 
     
 
@@ -198,13 +198,12 @@ if ($result = $connessione->query($sql)) {
                 echo '</div>';
             }
             if ($i % 3 == 0 || $i = 0) {
-                echo '<div class="row" style="width:100%; padding:0px; margin:0px;">';
+                echo '<div class="row" style="width:100%; padding:0px; margin:0px; ">';
             }
             echo   "
-                            <div class='col-4' style='height: 90px; padding:0px; margin:0px;' >
-                                <a  href='mostraTappa.php?idTappa=".$row['id']."'>   <img src='../../img/tappe/" . $row['id'] . ".1.png' style='width:100%; height: 100%;padding:1px; margin:5px;' > </a>
+                            <div class='col-4' style='height: 90px; padding:0px; margin:0px; position: relative; left: 0px;' >
+                                <a  href='mostraTappa.php?idTappa=".$row['id']."'>   <img src='../../img/tappe/" . $row['id'] . ".1.png' style='width:100%; height: 100%;padding:1px; margin:5px; ' > </a>
                             </div>
-                            
                         ";
             
             $i++;
