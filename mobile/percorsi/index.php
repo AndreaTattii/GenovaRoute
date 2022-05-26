@@ -106,7 +106,7 @@ error_reporting(0);
 
 
             $i = 0;
-            $sql = "SELECT * FROM percorso ORDER BY (SELECT COUNT(*) AS numero_tappe FROM percorso, tappa, tappa_appartiene_percorso WHERE id_percorso=percorso.id AND id_tappa=tappa.id)";
+            $sql = "SELECT * FROM percorso ORDER BY (dataInserimento)DESC";
             if ($result = $connessione->query($sql)) {
                 if ($result->num_rows > 0) {
                     echo '<div id="mostra">';

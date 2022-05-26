@@ -53,6 +53,20 @@ if ($result = $connessione->query($sql)) {
 
     <title>Genova Route</title>
     <link rel="icon" href="img/g.png" type="image/icon type">
+
+
+    <style>
+        input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -72,7 +86,7 @@ if ($result = $connessione->query($sql)) {
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
                     <a class="navbar-brand" href="../scanner/index.php">
-                        <img id="scannerizza" src="../../img/icons/scannerizza.png">    
+                        <img id="scannerizza" src="../../img/icons/scannerizza.png">
                     </a>
                 </center>
 
@@ -110,70 +124,75 @@ if ($result = $connessione->query($sql)) {
         <br>
         <br>
         <div class="container">
-            <div class="row">
-                <div class="col" id="immagineProfilo" style="margin:auto; text-align: center;">
-                    <img style="width:100px;height:100px; border-radius: 50%" src="../../img/propics/<?php echo $_SESSION['email'];?>.png">
-                </div>
-            </div>
+            
             <br>
-            <div class="row">
-                <div class="col" style="margin:auto;">
+            <div class="row" style="padding: 0px; margin:0px">
+                <div class="col" style="margin:auto; text-align:center; padding: 0px; margin:0px">
                     <form method="post" enctype="multipart/form-data" action="salvaImg.php">
-                        <input type="file" name="propic">
+                        <label class="custom-file-upload" style="width:100px;height:100px; border-radius: 50%;background-size: cover; background-image: url('../../img/propics/<?php echo $_SESSION['email']; ?>.png');">
+                            <input type="file" name="propic" />
+                            
+                        </label>
                 </div>
             </div>
             <br>
             <div class="row">
-                        <input style="background-color: #B30000; color:white" type="submit" name="submit" value="Carica">
-                    </form>
+                <input style="background-color: #B30000; color:white" type="submit" name="submit" value="Carica immagine profilo">
+                </form>
             </div>
             <br>
-            <div class="row">
+            <div class="row" style="margin-top: 50px;">
                 <div class="col-3" style="padding-top: 5px;">
-                    <b><p>Username</p></b>
+                    <b>
+                        <p>Username</p>
+                    </b>
                 </div>
                 <div class="col-7" style="text-align: center">
                     <!-- form per cambiare username -->
                     <form action="cambiaUsername.php" method="post">
-                        <input type="text" class="form-control" name="username" value="<?php echo $username;?>" required>
+                        <input type="text" class="form-control" name="username" value="<?php echo $username; ?>" required>
                 </div>
                 <div class="col-2">
-                        <button style="background-color: #B30000; border:1px solid black;" type="submit" class="btn btn-primary">✏</button>
+                    <button style="background-color: #B30000; border:1px solid black;" type="submit" class="btn btn-primary">✏</button>
                     </form>
                 </div>
             </div>
             <div class="row">
                 <div class="col-3" style="padding-top: 5px;">
-                    <b><p>Nome</p></b>
+                    <b>
+                        <p>Nome</p>
+                    </b>
                 </div>
                 <div class="col-7" style="text-align: center">
                     <!-- form per cambiare username -->
                     <form action="cambiaNome.php" method="post">
-                        <input type="text" class="form-control" name="nome" value="<?php echo $nome;?>" maxlenght="8" required>
+                        <input type="text" class="form-control" name="nome" value="<?php echo $nome; ?>" maxlenght="8" required>
                 </div>
                 <div class="col-2">
-                        <button style="background-color: #B30000; border:1px solid black;" type="submit" class="btn btn-primary">✏</button>
+                    <button style="background-color: #B30000; border:1px solid black;" type="submit" class="btn btn-primary">✏</button>
                     </form>
                 </div>
             </div>
             <div class="row">
                 <div class="col-3" style="padding-top: 5px;">
-                    <b><p>Cognome</p></b>
+                    <b>
+                        <p>Cognome</p>
+                    </b>
                 </div>
                 <div class="col-7" style="text-align: center">
                     <!-- form per cambiare username -->
                     <form action="cambiaCognome.php" method="post">
-                        <input type="text" class="form-control" name="cognome" value="<?php echo $cognome;?>" maxlenght="8" required>
+                        <input type="text" class="form-control" name="cognome" value="<?php echo $cognome; ?>" maxlenght="8" required>
                 </div>
                 <div class="col-2">
-                        <button style="background-color: #B30000; border:1px solid black;" type="submit" class="btn btn-primary">✏</button>
+                    <button style="background-color: #B30000; border:1px solid black;" type="submit" class="btn btn-primary">✏</button>
                     </form>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-6" style="text-align:center;">
-                    <form action="cambiaPsw/index.php" method="POST" >
+                    <form action="cambiaPsw/index.php" method="POST">
                         <button type="submit" class="btn btn-primary" style="background-color: white; border-color:#B30000; font-size: 15px; color:#B30000 ;">Password</button>
                     </form>
                 </div>
@@ -190,7 +209,7 @@ if ($result = $connessione->query($sql)) {
         <br>
         <br>
         <br>
-        
+
     </div>
     <script>
         window.addEventListener("orientationchange", function() {

@@ -30,7 +30,8 @@ CREATE TABLE IF NOT EXISTS Tappa(
 CREATE TABLE IF NOT EXISTS Percorso(
     id int PRIMARY KEY AUTO_INCREMENT,
 	nome varchar(255) UNIQUE,
-    descrizione varchar(255) NOT NULL
+    descrizione varchar(255) NOT NULL,
+    dataInserimento TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS Utente_Percorre_Tappa(
