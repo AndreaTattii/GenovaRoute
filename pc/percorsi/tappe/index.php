@@ -74,9 +74,6 @@ if ($result = $connessione->query($sql)) {
 	    				<a class="nav-link" href="../index.php" style="color: white">Percorsi</a>
 	    			</li>
 	    			<li class="nav-item">
-	    				<a class="nav-link" href="../../preferiti/index.php" style="color: white">Preferiti</a>
-	    			</li>
-	    			<li class="nav-item">
 	    				<a class="nav-link" href="../../profilo/index.php" style="color: white">Account</a>
 	    			</li>
 	    		</ul>
