@@ -66,7 +66,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
         <div class="row  justify-content-center" style="padding-top: 15px;">
             <div class="col s-4">
                 <center>
-                    <a class="navbar-brand" href="../index.php">
+                    <a class="navbar-brand" href="../../index.php">
                         <img id="percorsoSfondo" src="../../../../img/icons/percorsoSfondo.png">
                     </a>
                 </center>
@@ -74,7 +74,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
             </div>
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
-                    <a class="navbar-brand" href="../../scanner/index.php ">
+                    <a class="navbar-brand" href="../../../scanner/index.php ">
                         <img id="scannerizza" src="../../../../img/icons/scannerizza.png">
                     </a>
                 </center>
@@ -82,7 +82,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
             </div>
             <div class="col s-4" style="padding-top: 15px; ">
                 <center>
-                    <a class="navbar-brand" href="../../profilo/index.php">
+                    <a class="navbar-brand" href="../../../profilo/index.php">
                         <img id="account" src="../../../../img/icons/account.png">
                     </a>
                 </center>
