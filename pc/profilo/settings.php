@@ -52,7 +52,7 @@ if ($result = $connessione->query($sql)) {
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
     <title>Genova Route</title>
-    <link rel="icon" href="img/g.png" type="image/icon type">
+    <link rel="icon" href="../../img/g.png" type="image/icon type">
 </head>
 
 <body class="d-flex flex-column min-vh-100">
