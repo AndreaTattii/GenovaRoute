@@ -87,7 +87,7 @@ if ($result = $connessione->query($sql)) {
         <div class="col-1">
             <h3>Id</h3>
         </div>
-        <div class="col-3">
+        <div class="col-2">
             <h3>Ordine</h3>
         </div>
         <div class="col-4">
