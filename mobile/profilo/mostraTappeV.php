@@ -102,7 +102,7 @@ if ($connessione === false) {
                 </a>
             </div>
             <div class="col-8">
-                <h1 onclick="toCima()" style=" color: white; font-weight: bold; text-align: center;  font-size: 20px;">Mi piace</h1>
+                <h1 onclick="toCima()" style=" color: white; font-weight: bold; text-align: center;  font-size: 20px;">Visitate</h1>
             </div>
             <div class="col-2">
                 
