@@ -1,10 +1,35 @@
 <?php
 session_start();
-if(isset($_POST['nomePercorso'])){
-    $_SESSION['nomePercorso'] = $_POST['nomePercorso'];
-}
 if(isset($_POST['idPercorso'])){
     $_SESSION['idPercorso'] = $_POST['idPercorso'];
+}
+
+$host = "127.0.0.1";
+$user = "root";
+$pass = "";
+$database = "genovaroute";
+
+$connessione = new mysqli($host, $user, $pass, $database);
+
+$query = "SELECT nome FROM Percorso WHERE id = '".$_SESSION['idPercorso']."'";
+
+if($result = $connessione->query($query)){
+    while($row = $result->fetch_assoc()){
+        
+        $_SESSION['nomePercorso'] = $row['nome'];
+    }
+}
+
+// NUMERO DI TAPPE
+$sql = "SELECT MAX(ordine)  
+    FROM  Tappa_Appartiene_Percorso
+    WHERE id_percorso =  " . $_SESSION['idPercorso'] . "";
+
+if ($result = $connessione->query($sql)) {
+    $row = $result->fetch_assoc();
+    $quanteTappe = $row['MAX(ordine)']+1;
+} else {
+    echo "Impossibile eseguire la query2";
 }
 ?>
 <!doctype html>
@@ -64,62 +89,206 @@ if(isset($_POST['idPercorso'])){
 
     
     
-    <div class="container" style="padding-top:30px; margin-bottom: 100px;">
-    <?php
+    <div class="container" style="margin:0px; padding:0px">
+        <div></div>
+        <!-- CONTENUTO PAGINA -->
+        <?php
 
-        $host = "127.0.0.1";
-        $user = "root";
-        $pass = "";
-        $database = "genovaroute";
+        
 
-        $connessione = new mysqli($host, $user, $pass, $database);
-
+        unset($_SESSION['ordine']);
         //error_reporting(0);
 
         if ($connessione === false) {
             die("Errore: " . $connessione->connect_error);
         }
-        $sql = "SELECT tappa.nome, ordine, tappa.id FROM tappa, tappa_appartiene_percorso, percorso WHERE percorso.id = '" . $_SESSION['idPercorso'] . "' AND tappa_appartiene_percorso.id_percorso=percorso.id AND tappa.id=tappa_appartiene_percorso.id_tappa ORDER BY ordine";
+        $i = 0;
+
+        
+        
+
+        $sql = "SELECT tappa.nome AS nome, tappa_appartiene_percorso.ordine AS ordine, tappa.id AS id, via 
+                FROM tappa, tappa_appartiene_percorso, percorso 
+                WHERE tappa.id = tappa_appartiene_percorso.id_tappa 
+                    AND tappa_appartiene_percorso.id_percorso = percorso.id 
+                    AND percorso.id = " . $_SESSION['idPercorso'] . " ORDER BY tappa_appartiene_percorso.ordine;";
         if ($result = $connessione->query($sql)) {
             if ($result->num_rows > 0) {
-                echo'<div class="row"><div class="col-6">';
-                while ($row = $result->fetch_array()) {
+                while ($row = $result->fetch_array()) { 
+                    if ($i % 2 == 0) {
+                        $coloreRiga = "white";
+                    } else {
+                        $coloreRiga = "#F0F0F0";
+                    }
+                    //query per selezionare solo le tappe che sono state visitate e quindi scannerizzate
+                    //$sql2 = "SELECT * FROM utente_percorre_tappa WHERE id_tappa = " . $row['id'] . " AND email = " . $_SESSION['email'] ."";
+                    //fai una query per controllare se l'utente ha già scannerizzato la tappa, ovvero se la sua la variabile di sessione email è presente nella tabella utente_percorre_tappa, se è presente allora la tappa è stata scannerizzata, altrimenti non è stata scannerizzata
+                    $sql2 = "SELECT * FROM utente_percorre_tappa WHERE id_tappa = " . $row['id'] . " AND email = '" . $_SESSION['email'] . "';";
+                    if ($result2 = $connessione->query($sql2)) {
+                        if ($result2->num_rows > 0) {
+                            $visualizzata = true;
+                            $coloreBordo = " #B30000; padding:4px";
+                        } else {
+                            $visualizzata = false;
+
+                            $coloreBordo = "white";
+
+                        }
+                    } else {
+                        echo "Errore: " . $connessione->error;
+                    }
+
+
+                    // GESTIONE LINEA
+                    $prec = $i -1;
+                    //controllo tappa precedente
+                    $sql2 = "SELECT * 
+                            FROM utente_percorre_tappa, tappa_appartiene_percorso 
+                            WHERE  email = '" . $_SESSION['email'] . "'
+                                AND utente_percorre_tappa.id_tappa = tappa_appartiene_percorso.id_tappa
+                                AND tappa_appartiene_percorso.ordine = ".$prec." 
+                            ;";
+                    $sql2="SELECT *
+                            FROM utente_percorre_tappa
+                            WHERE email = '".$_SESSION['email']."'
+                                AND id_tappa IN (
+                                                SELECT id_tappa
+                                                FROM tappa_appartiene_percorso
+                                                WHERE id_percorso = ".$_SESSION['idPercorso']."
+                                                    AND ordine = ".$prec."
+                                            )
+                    ";
+                    if ($result2 = $connessione->query($sql2)) {
+                        if ($result2->num_rows > 0) {
+                            $visualizzataPrec = true;
+                        } else {
+
+                            $visualizzataPrec = false;
+
+                        }
+                    } else {
+                        echo "Errore: " . $connessione->error;
+                    }
+
+                    $succ = $i+1;
+                    
+                    //controllo tappa sucessiva
+                    $sql2 = "SELECT * 
+                            FROM utente_percorre_tappa, tappa_appartiene_percorso 
+                            WHERE  email = '" . $_SESSION['email'] . "'
+                            AND Utente_percorre_tappa.id_tappa = tappa_appartiene_percorso.id_tappa
+                            AND tappa_appartiene_percorso.ordine = ".$succ." 
+                            ;";
+                    
+                    $sql2="SELECT *
+                            FROM utente_percorre_tappa
+                            WHERE email = '".$_SESSION['email']."'
+                                AND id_tappa IN (
+                                                SELECT id_tappa
+                                                FROM tappa_appartiene_percorso
+                                                WHERE id_percorso = ".$_SESSION['idPercorso']."
+                                                    AND ordine = ".$succ."
+                                            )
+                    ";
+                    if ($result2 = $connessione->query($sql2)) {
+                        if ($result2->num_rows > 0) {
+                            $visualizzataSuc = true;
+                        } else {
+
+                            $visualizzataSuc = false;
+
+                        }
+                    } else {
+                        echo "Errore: " . $connessione->error;
+                    }
+
+                    if(($visualizzataPrec ||  $i == 0) && $visualizzata ){
+                        $linea=" border-left: 7px solid #B30000; height: 40px;   position: relative; left: 170px; margin-left: -5px; top: 0; ";
+
+                        if($visualizzataSuc){
+                            $linea2=" border-left: 7px solid #B30000; height: 40px;   position: relative; left: 170px; margin-left: -5px; top: 0;  ";
+                        }else{
+                            $linea2=" border-left: 7px dashed #B30000; height: 40px;   position: relative; left: 170px; margin-left: -5px; top: 0; margin-top:5px";
+
+                        }
+                        
+                    }else{
+                        if($visualizzataSuc  && $visualizzata){
+                            $linea=" border-left: 7px solid #B30000; height: 40px;   position: relative; left: 170px; margin-left: -5px; top: 0; ";
+                            $linea2=" border-left: 7px solid #B30000; height: 80px;   position: relative; left: 170px; margin-left: -5px; top: 0; ";
+                        }else{
+                            $linea=" border-left: 7px dashed #B30000; height: 40px;   position: relative; left: 170px; margin-left: -5px; top: 0; margin-bottom:px";
+                            $linea2=" border-left: 7px dashed #B30000; height: 40px;   position: relative; left: 170px; margin-left: -5px; top: 0; ";
+
+                        }
+                        
+
+                    }
+                    $ordineVisualizza=$row['ordine']+1;
                     echo '
-                        <div class="row-sm align-self-center" style="width:60%; padding-top:30px; ">       
-                            <div class="card text-center align-self-center" style="width:100%;  background-color: #F0F0F0;">
-                                <div class="card-body">
-                                    <form action="tappaSpecifica/index.php" method="post">
-                                        <p class="card-title">
-                                            <input type="hidden" name="idTappa" value="' . $row['id'] . '">
-                                            <input type="hidden" name="ordineTappa" value="' . $row['ordine'] . '">';
-                                            $row['ordine']++;
-                                            echo '<input type="submit" value="'.$row['ordine'].'. ' . $row['nome'] . '" style="background-color: #F0F0F0; text-decoration: none; color: #B30000; font-size:18px; border: none; font-weight: bold; float: left;">'; 
-                                            $row['ordine']--;
-                                            echo'<button type="submit" class="btn btn-primary" style="background-color: #B30000; font-weight:bold; border-color:#B30000; font-size: 15px; color:white ; text-align: center; float: right;">Visualizza</button>
-                                        </p>
-                                    </form>
+                        
+                        
+
+                        
+
+                        <form action="tappaSpecifica/index.php" method="post" id="'.$i.'" >
+                            <input type="hidden" name="ordineTappa" value="' . $row['ordine'] . '">
+                            <input type="hidden" name="idTappa" value="' . $row['id'] . '">
+                        </form>
+                    
+                        <div class="row" onclick="submit('.$i.')" style="margin:none; padding-bottom:100px; height: 300px; width:100%">
+                            <div class="col-3">
+                                <img src="../../../img/tappe/'.$row['id'].'.1.png" style="height:300px; width:300px; border-radius: 50%; border: 5px solid '.$coloreBordo.';  margin-left:20px">
+                            </div>
+                            <div class="col-6" >
+                                <div class="row" style="text-align:center;margin-top:85px"">
+                                    <h3 style="color:#b30000">'.$row['nome'].'</h3>
                                 </div>
-                            </div>                                        
+                                <div class="row" style="text-align:center;margin-top:20px"">
+                                    <p class="card-title" style="font-weight: bold; margin-left: 10px;"><img src="../../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; ">'.$row['via'].'</p>
+                                </div>
+                            </div>
                         </div>
+
+                        
                         ';
+                        if($i != ($quanteTappe-1)){
+                            echo '
+                                <div class="row" style="width:100%; ">
+                                    <div class="col-3">
+                                        <div style=" '.$linea.' "></div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="width:100%;">
+                                    <div class="col-3">
+                                        <div style=" '.$linea2.' "></div>
+                                    </div>
+                                </div>
+                            ';
+                        }
+                    $i++;
+
                 }
-            } else { 
-                echo "<p style='text-align: center'>Non ci sono tappe salvate nel database</p>";
+            } else {
+                echo "Non ci sono tappe salvate nel database";
             }
         } else {
             echo "Impossibile eseguire la query";
         }
         ?>
+        <br>
+        <br>
+        <br>
+        <br>
         <div class="row">
 
         </div>
         <div class="row">
-
-        </div>
 
         </div>
         
-        <div class="col-6" style="padding-top:25px" ><div id="osm-map"></div></div>
+        <div class="col-3" style="padding-top:25px" ><div id="osm-map"></div></div>
         </div>
         <script>
             element = document.getElementById('osm-map');
@@ -188,6 +357,10 @@ if(isset($_POST['idPercorso'])){
     <script>
         if ( window.history.replaceState ) {
             window.history.replaceState( null, null, window.location.href );
+        }
+        function submit( idForm){
+            var id= idForm;
+            document.forms[id].submit();
         }
     </script>
 </body>
