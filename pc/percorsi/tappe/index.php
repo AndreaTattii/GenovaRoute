@@ -167,7 +167,7 @@ if(isset($_POST['idPercorso'])){
     </div>
     
 
-    <div class="footer-clean" style="border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px; position:fixed; bottom:0px; width:100%; background-color:white;">
+    <div class="footer-clean" style="border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px;  bottom:0px; width:100%; background-color:white;">
 		<footer>
 			<div class="container">
 				<div class="row justify-content-center">
