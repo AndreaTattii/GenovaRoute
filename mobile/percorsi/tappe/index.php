@@ -171,6 +171,8 @@ if ($result = $connessione->query($sql)) {
                     } else {
                         echo "Errore: " . $connessione->error;
                     }
+
+
                     // GESTIONE LINEA
                     $prec = $i -1;
                     //controllo tappa precedente
@@ -180,6 +182,16 @@ if ($result = $connessione->query($sql)) {
                                 AND utente_percorre_tappa.id_tappa = tappa_appartiene_percorso.id_tappa
                                 AND tappa_appartiene_percorso.ordine = ".$prec." 
                             ;";
+                    $sql2="SELECT *
+                            FROM utente_percorre_tappa
+                            WHERE email = '".$_SESSION['email']."'
+                                AND id_tappa IN (
+                                                SELECT id_tappa
+                                                FROM tappa_appartiene_percorso
+                                                WHERE id_percorso = ".$_SESSION['idPercorso']."
+                                                    AND ordine = ".$prec."
+                                            )
+                    ";
                     if ($result2 = $connessione->query($sql2)) {
                         if ($result2->num_rows > 0) {
                             $visualizzataPrec = true;
@@ -201,6 +213,17 @@ if ($result = $connessione->query($sql)) {
                             AND Utente_percorre_tappa.id_tappa = tappa_appartiene_percorso.id_tappa
                             AND tappa_appartiene_percorso.ordine = ".$succ." 
                             ;";
+                    
+                    $sql2="SELECT *
+                            FROM utente_percorre_tappa
+                            WHERE email = '".$_SESSION['email']."'
+                                AND id_tappa IN (
+                                                SELECT id_tappa
+                                                FROM tappa_appartiene_percorso
+                                                WHERE id_percorso = ".$_SESSION['idPercorso']."
+                                                    AND ordine = ".$succ."
+                                            )
+                    ";
                     if ($result2 = $connessione->query($sql2)) {
                         if ($result2->num_rows > 0) {
                             $visualizzataSuc = true;
