@@ -17,7 +17,7 @@
     
     echo $idTappa;
     echo $contenuto;
-    $sql="UPDATE tappa SET lat = '".$contenuto."'
+    $sql="UPDATE tappa SET lon = '".$contenuto."'
             WHERE id = ".$idTappa;
     if ($result = $connessione->query($sql)) {
         header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/formModificaT.php");
