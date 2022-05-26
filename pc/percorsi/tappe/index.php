@@ -90,7 +90,9 @@ if ($result = $connessione->query($sql)) {
     
     
     <div class="container" style="margin:0px; padding:0px">
-        <div></div>
+        <div class="row" style="margin-top:100px">
+        <div class="col-7">
+
         <!-- CONTENUTO PAGINA -->
         <?php
 
@@ -203,22 +205,22 @@ if ($result = $connessione->query($sql)) {
                     }
 
                     if(($visualizzataPrec ||  $i == 0) && $visualizzata ){
-                        $linea=" border-left: 7px solid #B30000; height: 40px;   position: relative; left: 170px; margin-left: -5px; top: 0; ";
+                        $linea=" border-left: 7px solid #B30000; height: 40px;   position: relative; left: 170px; margin-left: 95px; top: 0; ";
 
                         if($visualizzataSuc){
-                            $linea2=" border-left: 7px solid #B30000; height: 40px;   position: relative; left: 170px; margin-left: -5px; top: 0;  ";
+                            $linea2=" border-left: 7px solid #B30000; height: 40px;   position: relative; left: 170px; margin-left: 95px; top: 0;  ";
                         }else{
-                            $linea2=" border-left: 7px dashed #B30000; height: 40px;   position: relative; left: 170px; margin-left: -5px; top: 0; margin-top:5px";
+                            $linea2=" border-left: 7px dashed #B30000; height: 40px;   position: relative; left: 170px; margin-left: 95px; top: 0; margin-top:5px";
 
                         }
                         
                     }else{
                         if($visualizzataSuc  && $visualizzata){
-                            $linea=" border-left: 7px solid #B30000; height: 40px;   position: relative; left: 170px; margin-left: -5px; top: 0; ";
-                            $linea2=" border-left: 7px solid #B30000; height: 80px;   position: relative; left: 170px; margin-left: -5px; top: 0; ";
+                            $linea=" border-left: 7px solid #B30000; height: 40px;   position: relative; left: 170px; margin-left: 95px; top: 0; ";
+                            $linea2=" border-left: 7px solid #B30000; height: 80px;   position: relative; left: 170px; margin-left: 95px; top: 0; ";
                         }else{
-                            $linea=" border-left: 7px dashed #B30000; height: 40px;   position: relative; left: 170px; margin-left: -5px; top: 0; margin-bottom:px";
-                            $linea2=" border-left: 7px dashed #B30000; height: 40px;   position: relative; left: 170px; margin-left: -5px; top: 0; ";
+                            $linea=" border-left: 7px dashed #B30000; height: 40px;   position: relative; left: 170px; margin-left: 95px; top: 0; margin-bottom:px";
+                            $linea2=" border-left: 7px dashed #B30000; height: 40px;   position: relative; left: 170px; margin-left: 95px; top: 0; ";
 
                         }
                         
@@ -236,16 +238,21 @@ if ($result = $connessione->query($sql)) {
                             <input type="hidden" name="idTappa" value="' . $row['id'] . '">
                         </form>
                     
-                        <div class="row" onclick="submit('.$i.')" style="margin:none; padding-bottom:100px; height: 300px; width:100%">
+                        <div class="row" onclick="submit('.$i.')" style="cursor: pointer;margin:none;padding-left:100px; padding-bottom:100px; height: 300px; width:100%">
                             <div class="col-3">
                                 <img src="../../../img/tappe/'.$row['id'].'.1.png" style="height:300px; width:300px; border-radius: 50%; border: 5px solid '.$coloreBordo.';  margin-left:20px">
                             </div>
-                            <div class="col-6" >
-                                <div class="row" style="text-align:center;margin-top:85px"">
-                                    <h3 style="color:#b30000">'.$row['nome'].'</h3>
-                                </div>
+                            <div class="col-5" style="margin-left:150px">
+                                <div class="row" style="text-align:center;margin-top:85px; margin-left:10px">';
+                                    $row['ordine']=$row['ordine']+1;
+                                    echo'<h3 style="color:#b30000"><b>'.$row['ordine'].'. </b>'.$row['nome'].'</h3>';
+                                    $row['ordine']=$row['ordine']-1;
+                                echo'</div>
                                 <div class="row" style="text-align:center;margin-top:20px"">
                                     <p class="card-title" style="font-weight: bold; margin-left: 10px;"><img src="../../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; ">'.$row['via'].'</p>
+                                </div>
+                                <div class="row" style="text-align:center;">
+                                    <img style="width:20%; margin-left:30px" src="../../../img/icons/backRed.png">
                                 </div>
                             </div>
                         </div>
@@ -280,15 +287,8 @@ if ($result = $connessione->query($sql)) {
         <br>
         <br>
         <br>
-        <br>
-        <div class="row">
-
         </div>
-        <div class="row">
-
-        </div>
-        
-        <div class="col-3" style="padding-top:25px" ><div id="osm-map"></div></div>
+        <div class="col-5" style="padding-top:25px" ><div id="osm-map"></div></div>
         </div>
         <script>
             element = document.getElementById('osm-map');
