@@ -5,7 +5,8 @@
 <html lang="en">
 
 <head>
-
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
     <!-- Required meta tags -->
@@ -107,7 +108,15 @@
         echo "<br>";
     }
     ?>
-    <div class="footer-clean" style="background-color:white; border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px; position:fixed; bottom:0px; width:100%;">
+    <div class="row">
+        <div class="col-3"></div>
+            <div class="col-6">
+                <h1>Seleziona le coordinate</h1>
+                <div id="osm-map"></div>
+            </div>
+        <div class="col-3"></div>
+    </div>
+    <div class="footer-clean" style="background-color:white; border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px; bottom:0px; width:100%;">
         <footer>
 
             <div class="container">
@@ -125,6 +134,34 @@
     </footer>
     </div>
 
+
+        <script>
+            element = document.getElementById('osm-map');
+            element.style = 'height:'.concat(500, 'px;');
+            var map = L.map(element);
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
+            map.setView(['44.409369955825774', '8.941610113846902'], 14);
+
+            map.on('click', function(e) {
+                var lat = e.latlng.lat;
+                var lng = e.latlng.lng;
+                //alert(lat + " " + lng);
+                //put the lat and lng in the input fields of latitudine and longitudine
+                document.getElementById("latitudine").value = lat;
+                document.getElementById("longitudine").value = lng;
+                //
+                L.marker([lat, lng]).addTo(map);
+
+            });
+
+            //put a marker on the map with the coordinates of the javascript variable lat and lng
+            //L.marker([lat, lng]).addTo(map);
+            
+            
+            
+
+
+    </script>
 </body>
 
 </html>
