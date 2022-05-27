@@ -16,37 +16,26 @@ if ($connessione === false) {
     die("Errore: " . $connessione->connect_error);
 }
 if(isset($_GET['emailUtente'])){
-    $sql = "SELECT nome, cognome, username FROM utente WHERE email = '" . $emailUtente . "'";
+    $sql = "SELECT xp, livello,nome, cognome, username FROM utente WHERE email = '" . $emailUtente . "'";
 }
 else{
-    $sql = "SELECT nome, cognome, username FROM utente WHERE email = '" . $_SESSION['email'] . "'";
+    $sql = "SELECT xp, livello,nome, cognome, username FROM utente WHERE email = '" . $_SESSION['email'] . "'";
 }
 if ($result = $connessione->query($sql)) {
     $row = $result->fetch_array();
     $nome = $row['nome'];
     $cognome = $row['cognome'];
     $username = $row['username'];
+    $xp = $row['xp'];
+    $livello = $row['livello'];
 } else {
     echo "Impossibile eseguire la query";
 }
 //xp e livelli
-$sql = "SELECT xp, livello FROM utente WHERE email='".$_SESSION['email']."';";
-$result = $connessione->query($sql);
-    if($result->num_rows > 0){
-        $row = $result->fetch_array();
-        $xp = $row['xp'];
-        $livello = $row['livello'];
-    }
-    else{
-        echo'nessun risultato';
-    }
-
-
 $xpPerLivello = 200;
 $xpNecessari=$xpPerLivello*$livello;
 $xpMancanti=$xpNecessari-$xp;
-echo 'Il livello è: '.$livello.'<br>';
-echo 'GLi xp sono: '.$xp;
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -159,13 +148,22 @@ echo 'GLi xp sono: '.$xp;
                     if(isset($_GET['emailUtente'])){
                 ?>
                 <img style="width:100px;height:100px; border-radius: 50%" src="../../img/propics/<?php echo $emailUtente; ?>.png">
+                <div>
+                    <span style="left:95px; top:92px" class="position-absolute top-70 start-600 translate-middle badge rounded-pill bg-danger">
+                        <?php echo $livello; ?>
+                    </span>
+                </div>
                 <?php
                     }
                     else{
                 ?>
                 <img style="width:100px;height:100px; border-radius: 50%" src="../../img/propics/<?php echo $_SESSION['email']; ?>.png">
-                <?php echo '<div class="test rounded-circle">'.$livello.'</div>';
-                
+                <div>
+                    <span style="left:95px; top:92px" class="position-absolute top-70 start-600 translate-middle badge rounded-pill bg-danger">
+                        <?php echo $livello; ?>
+                    </span>
+                </div>
+                <?php
                 }
                 ?>
             </div>

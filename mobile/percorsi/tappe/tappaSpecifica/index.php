@@ -246,6 +246,24 @@ if ($result = $connessione->query($sql)) {
         <p class="card-text" style="text-align:justify; border:none;"><?php echo $descrizione; ?></p>
     </div>
     
+
+   
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+</div>
+
+
+
     </div>
     <br>
     <br>
@@ -347,6 +365,24 @@ if ($result = $connessione->query($sql)) {
                 document.getElementsByClassName("swipeBack")[0].click();
             }
         }
+    </script>
+    <script>
+        //quando la pagina è caricata
+
+
+        const toastLiveExample = document.getElementById('liveToast');
+        const toast = new bootstrap.Toast(toastLiveExample);
+        toast.show();
+        <?php
+        //if($_SESSION['primaVolta']==1){
+        //    echo 'toast.show();';
+        //    //$_SESSION['primaVolta']=0;
+        //}
+        ?>
+
+
+        
+
     </script>
 </body>
 

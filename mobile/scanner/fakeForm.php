@@ -32,27 +32,41 @@
     $result = $connessione->query($sql);
     $_SESSION['ordineTappa'] = $result->fetch_assoc()['ordine'];
 
-    //fai una query che inserisca nella tabella Utente_Percorre_Tappa la mail dell'utente e l'id della tappa
-    $sql = "INSERT INTO utente_percorre_tappa (email, id_tappa) VALUES ('".$_SESSION['email']."', '".$_SESSION['idTappa']."')";
-    $connessione->query($sql);
+    //controlla che la tappa sia stata già scansionata
+    $sql = "SELECT id_tappa 
+            FROM utente_percorre_tappa 
+            WHERE id_tappa = ".$_SESSION['idTappa']."
+            AND email = '".$_SESSION['email']."';
+            ";
+    $result = mysqli_query($connessione, $sql);
+    if($result->num_rows > 0){
+        echo'Tappa già scansionata';
+        $_SESSION['primaVolta']=0;
+    }else{
+        $_SESSION['primaVolta']=1;
 
-    $sql = "INSERT INTO utente (xp) VALUES (xp+100) WHERE email='".$_SESSION['email']."'";
-    $connessione->query($sql);
+        //fai una query che inserisca nella tabella Utente_Percorre_Tappa la mail dell'utente e l'id della tappa
+        $sql = "INSERT INTO utente_percorre_tappa (email, id_tappa) VALUES ('".$_SESSION['email']."', '".$_SESSION['idTappa']."')";
+        $connessione->query($sql);
 
-    $sql = "SELECT xp, livello FROM utente WHERE email='".$_SESSION['email']."'";
-    if($result = $connessione->query($sql); === true){
+        $sql = "UPDATE utente SET xp=(xp+200) WHERE email='".$_SESSION['email']."'";
+        $connessione->query($sql);
+
+        $sql = "SELECT xp, livello FROM utente WHERE email='".$_SESSION['email']."'";
+        $result = $connessione->query($sql);
         $row = $result->fetch_assoc();
         $xp = $row['xp'];
         $livello = $row['livello'];
-    }
-    
-    $xpPerLivello = 200;
-    $xpNecessari=$xpPerLivello*$livello+1;
-    $xpMancanti=$xpNecessari-$xp;
 
-    if($xp>=$xpNecessari){
-        $sql = "UPDATE utente SET livello=(livello+1) WHERE email='".$_SESSION['email']."'";
-        $connessione->query($sql);
+        
+        $xpPerLivello = 200;
+        $xpNecessari=$xpPerLivello*$livello+1;
+        $xpMancanti=$xpNecessari-$xp;
+
+        if($xp>=$xpNecessari){
+            $sql = "UPDATE utente SET livello=(livello+1) WHERE email='".$_SESSION['email']."'";
+            $connessione->query($sql);
+        }
     }
 
     header("Location: ../percorsi/tappe/tappaSpecifica/index.php");

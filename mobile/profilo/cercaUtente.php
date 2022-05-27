@@ -50,6 +50,11 @@
                         <div class='row' style='border-bottom:1px solid black'>
                             <div class='col-4'>
                                 <img style='width:100px;height:100px; border-radius: 50%' src='../../img/propics/".$row['email'].".png'>
+
+                                <span style='' class='position-absolute top10 start100 translate-middle badge rounded-pill bg-danger'>
+                                    ".$row['livello']."
+                                </span>
+
                             </div>
                             <div class='col-8'>
                                 <h5>".$row['username']."</h5>
