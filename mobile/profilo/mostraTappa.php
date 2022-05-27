@@ -128,6 +128,27 @@ if ($connessione === false) {
         if ($result = $connessione->query($sql)) {
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()){
+                    $data = $row['data'];
+                    $arrayData = explode(' ', $data);
+                    $giornoMeseAnno = explode('-', $arrayData[0]);
+                    $anno = $giornoMeseAnno[0];
+                    $mese = $giornoMeseAnno[1];
+                    $giorno = $giornoMeseAnno[2];
+
+                    $sql2 = "SELECT COUNT(piace)
+                            FROM Utente_percorre_tappa
+                            WHERE piace = 1
+                            AND id_tappa = ".$row['id']."
+                    ";
+                    if($result2 = $connessione->query($sql2)){
+                        if($row2 = $result2->fetch_assoc() ){
+                            $nMiPiace = $row2['COUNT(piace)'];
+                        }
+                    }
+                    $persona = "persona";
+                    if($nMiPiace > 1){
+                        $persona = "persone";
+                    }
                     echo '
                         <div class="card text-center" id="'.$row['id'].'"  style="margin-top:20px; border-radius:0px; text-align: left;  margin:0px; border:none; ">
 
@@ -157,8 +178,12 @@ if ($connessione === false) {
                         </div>
                         <div id="gestureZone" class="card-body" style="text-align: center; border:none; ">
                             <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
+                            <p class="card-text" style="text-align:justify; border:none; margin-top:none; "><b>Piace a:</b>  '.$nMiPiace.' '.$persona.'</p>
+
                             <p class="card-text" style="text-align:justify; border:none;"><b>'.$row['nome'].':</b>  '.$row['descrizione'].'</p>
+                            <p style="text-align:justify; border:none; color:#808080;">'.$giorno.'/'.$mese.'/'.$anno.'</p>
                         </div>
+                        
                         <br>
                         <br>
                         
