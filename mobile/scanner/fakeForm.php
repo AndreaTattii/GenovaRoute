@@ -65,6 +65,8 @@
         if($xp>=$xpNecessari){
             $sql = "UPDATE utente SET livello=(livello+1) WHERE email='".$_SESSION['email']."'";
             $connessione->query($sql);
+            $sql = "UPDATE utente SET xp=(0) WHERE email='".$_SESSION['email']."'";
+            $connessione->query($sql);
         }
     }
 
