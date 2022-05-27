@@ -104,7 +104,7 @@
     </div>  <!-- fine container -->
     <!-- stampa tanti br -->
     <?php
-    for ($i = 0; $i < 15; $i++) {
+    for ($i = 0; $i < 2; $i++) {
         echo "<br>";
     }
     ?>
@@ -133,34 +133,50 @@
     </div>
     </footer>
     </div>
-
-
         <script>
             element = document.getElementById('osm-map');
             element.style = 'height:'.concat(500, 'px;');
             var map = L.map(element);
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
-            map.setView(['44.409369955825774', '8.941610113846902'], 14);
 
-            map.on('click', function(e) {
-                var lat = e.latlng.lat;
-                var lng = e.latlng.lng;
-                //alert(lat + " " + lng);
-                //put the lat and lng in the input fields of latitudine and longitudine
-                document.getElementById("latitudine").value = lat;
-                document.getElementById("longitudine").value = lng;
-                //
-                L.marker([lat, lng]).addTo(map);
-
+            //when the user types in the input with name città, send a query to coordinateCitta.php with ajax jquery with json dataType
+            $("input[name='città']").keyup(function() {
+                var città = $("input[name='città']").val()
+                $.ajax({
+                    url: 'coordinateCitta.php',
+                    type: 'POST',
+                    data: {
+                        città: città
+                    },
+                    success: function(data) {
+                        //change the view of the map to the coordinates of the city
+                        map.setView([<?php echo $_SESSION['x']; ?>, <?php echo $_SESSION['y']; ?>], 15);
+                        //if the query is successful, the coordinates are shown in the map
+                        //map.setView([data.lat, data.lon], 13);
+                    },
+                    error : function () {
+                        alert("error");
+                    }
+                });
             });
 
-            //put a marker on the map with the coordinates of the javascript variable lat and lng
-            //L.marker([lat, lng]).addTo(map);
+            var markerGroup = L.layerGroup().addTo(map);       
             
-            
-            
+           //when the user clicks on the map, create a layer with a draggable marker and prevent to create multiple markers
+            map.on('click', function(e) {
+                //delete all markers from marker group
+                markerGroup.clearLayers();
+                marker = new L.marker(e.latlng, {draggable: true}).addTo(markerGroup);
+                var coord = marker.getLatLng();
+                document.getElementById('latitudine').value = coord.lat;
+                document.getElementById('longitudine').value = coord.lng;
 
-
+                marker.on('dragend', function(e) {
+                    var coord = marker.getLatLng();
+                    document.getElementById('latitudine').value = coord.lat;
+                    document.getElementById('longitudine').value = coord.lng;
+                });
+            });
     </script>
 </body>
 
