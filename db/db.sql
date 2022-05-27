@@ -8,7 +8,9 @@ CREATE TABLE IF NOT EXISTS Utente(
     nome varchar(255) NOT NULL,
     cognome varchar(255) NOT NULL,
     psw varchar(255) NOT NULL,
-    admn int(1) NOT NULL
+    admn int(1) NOT NULL,
+    xp int NOT NULL,
+    livello int NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS citta(
