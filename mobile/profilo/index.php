@@ -29,8 +29,24 @@ if ($result = $connessione->query($sql)) {
 } else {
     echo "Impossibile eseguire la query";
 }
+//xp e livelli
+$sql = "SELECT xp, livello FROM utente WHERE email='".$_SESSION['email']."';";
+$result = $connessione->query($sql);
+    if($result->num_rows > 0){
+        $row = $result->fetch_array();
+        $xp = $row['xp'];
+        $livello = $row['livello'];
+    }
+    else{
+        echo'nessun risultato';
+    }
 
 
+$xpPerLivello = 200;
+$xpNecessari=$xpPerLivello*$livello;
+$xpMancanti=$xpNecessari-$xp;
+echo 'Il livello è: '.$livello.'<br>';
+echo 'GLi xp sono: '.$xp;
 ?>
 <!doctype html>
 <html lang="en">
@@ -148,7 +164,8 @@ if ($result = $connessione->query($sql)) {
                     else{
                 ?>
                 <img style="width:100px;height:100px; border-radius: 50%" src="../../img/propics/<?php echo $_SESSION['email']; ?>.png">
-                <?php
+                <?php echo '<div class="test rounded-circle">'.$livello.'</div>';
+                
                 }
                 ?>
             </div>
@@ -201,10 +218,10 @@ if ($result = $connessione->query($sql)) {
                 echo '<div class="row" style="width:100%; padding:0px; margin:0px; ">';
             }
             echo   "
-                            <div class='col-4' style='height: 90px; padding:0px; margin:0px; padding-left:0px' >
-                                <a  href='mostraTappa.php?idTappa=".$row['id']."&email=".$email."'>   <img src='../../img/tappe/" . $row['id'] . ".1.png' style='width:100%; height: 100%;padding:1px; margin:5px; position: relative; left: 0px;' > </a>
-                            </div>
-                        ";
+                        <div class='col-4' style='height: 90px; padding:0px; margin:0px; padding-left:0px' >
+                            <a  href='mostraTappa.php?idTappa=".$row['id']."&email=".$email."'>   <img src='../../img/tappe/" . $row['id'] . ".1.png' style='width:100%; height: 100%;padding:1px; margin:5px; position: relative; left: 0px;' > </a>
+                        </div>
+                    ";
             
             $i++;
         }

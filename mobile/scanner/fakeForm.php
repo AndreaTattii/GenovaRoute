@@ -36,5 +36,24 @@
     $sql = "INSERT INTO utente_percorre_tappa (email, id_tappa) VALUES ('".$_SESSION['email']."', '".$_SESSION['idTappa']."')";
     $connessione->query($sql);
 
+    $sql = "INSERT INTO utente (xp) VALUES (xp+100) WHERE email='".$_SESSION['email']."'";
+    $connessione->query($sql);
+
+    $sql = "SELECT xp, livello FROM utente WHERE email='".$_SESSION['email']."'";
+    if($result = $connessione->query($sql); === true){
+        $row = $result->fetch_assoc();
+        $xp = $row['xp'];
+        $livello = $row['livello'];
+    }
+    
+    $xpPerLivello = 200;
+    $xpNecessari=$xpPerLivello*$livello+1;
+    $xpMancanti=$xpNecessari-$xp;
+
+    if($xp>=$xpNecessari){
+        $sql = "UPDATE utente SET livello=(livello+1) WHERE email='".$_SESSION['email']."'";
+        $connessione->query($sql);
+    }
+
     header("Location: ../percorsi/tappe/tappaSpecifica/index.php");
 ?>
