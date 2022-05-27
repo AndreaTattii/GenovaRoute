@@ -22,7 +22,11 @@
     //    'y' => $row['y'],
     // );
     //echo json_encode($res);
-    $_SESSION['x'] = $row['x'];
-    $_SESSION['y'] = $row['y'];
+    //$_SESSION['x'] = $row['x'];
+    //$_SESSION['y'] = $row['y'];
+    $test = array();
+    $test['x'] = $row['x'];
+    $test['y'] = $row['y'];
 
+    echo json_encode($test);
 ?>

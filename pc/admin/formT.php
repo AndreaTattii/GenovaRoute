@@ -148,14 +148,15 @@
                     data: {
                         città: città
                     },
+                    dataType: "json",
                     success: function(data) {
                         //change the view of the map to the coordinates of the city
-                        map.setView([<?php echo $_SESSION['x']; ?>, <?php echo $_SESSION['y']; ?>], 15);
+                        map.setView([data.x, data.y], 15);
                         //if the query is successful, the coordinates are shown in the map
                         //map.setView([data.lat, data.lon], 13);
                     },
                     error : function () {
-                        alert("error");
+                        //alert("error");
                     }
                 });
             });
