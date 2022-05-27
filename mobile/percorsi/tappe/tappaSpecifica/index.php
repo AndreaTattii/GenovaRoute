@@ -251,9 +251,8 @@ if ($result = $connessione->query($sql)) {
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
-      <img src="..." class="rounded me-2" alt="...">
-      <strong class="me-auto">Bootstrap</strong>
-      <small>11 mins ago</small>
+      <strong style="color:red" class="me-auto">Tappa visitata!</strong>
+      <small style="color:green">+200XP</small>
       <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body">
@@ -372,12 +371,13 @@ if ($result = $connessione->query($sql)) {
 
         const toastLiveExample = document.getElementById('liveToast');
         const toast = new bootstrap.Toast(toastLiveExample);
-        toast.show();
+        //toast.show();
         <?php
-        //if($_SESSION['primaVolta']==1){
-        //    echo 'toast.show();';
-        //    //$_SESSION['primaVolta']=0;
-        //}
+        if(isset($_SESSION['primaVolta'])){?>
+            toast.show();
+        <?php
+            unset($_SESSION['primaVolta']);
+        }
         ?>
 
 

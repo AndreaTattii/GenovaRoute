@@ -41,7 +41,6 @@
     $result = mysqli_query($connessione, $sql);
     if($result->num_rows > 0){
         echo'Tappa già scansionata';
-        $_SESSION['primaVolta']=0;
     }else{
         $_SESSION['primaVolta']=1;
 
