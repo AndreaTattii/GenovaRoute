@@ -158,27 +158,48 @@ if ($connessione === false) {
                 }
                 echo '
                         <div class="card text-center" id="' . $row['id'] . '"  style="margin-top:20px; border-radius:0px; text-align: left;  margin:0px; border:none; ">
-
                             <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px; ">
                                 <div class="row">
+
                                     <div class="col-2">
                                         <div class="dropdown ">
                                             <button type="button" class=" toggle" data-toggle="dropdown" style="background-color:white;  text-align:center; ">
                                                 <img src="../../img/icons/hamburger-rosso.png" alt="Hamburger" width="30" height="30">
                                             </button>
-                                            <div class="dropdown-menu" >
-                                                <a class="dropdown-item" href="#" style="height:20px">Link 1</a>
-                                                <div class="dropdown-divider"></div>
+                                            <div class="dropdown-menu" style="border:2px solid #b30000; width: 200px;">
+                    ';
+                                            $sql2 = "SELECT *
+                                                    FROM Percorso, Tappa_appartiene_percorso
+                                                    WHERE Percorso.id = Tappa_appartiene_percorso.id_percorso
+                                                        AND id_tappa = ".$row['id']."
+                                                ";
 
-                                                <a class="dropdown-item" href="#" style="height:20px">Link 2</a>
-                                                <div class="dropdown-divider"></div>
+                                            if($result2 = $connessione->query($sql2)){
+                                                if ($result2->num_rows > 0) {
+                                                    while ($row2 = $result2->fetch_assoc()){
+                                                        echo'
+                                                            <a class="dropdown-item" style="height:30px" href="../percorsi/tappe/index.php?idPercorso='.$row2['id'].'" style="height:20px">'.$row2['nome'].'</a>
+                                                            <div class="dropdown-divider"></div>
+                                                        ';
+                                                    }
 
-                                                <a class="dropdown-item" href="#" style="height:20px">Link 3</a>
-                                                <div class="dropdown-divider"></div>
+                                                }
+                                                else{
+                                                    echo 'nessun risultato';
+                                                }
 
+                                            }
+                                            else{
+                                                echo "Impossibile eseguire la query: $sql2. " . $connessione->error;
+                                            }
+                
+
+                    echo '
                                             </div>
                                         </div>
                                     </div>
+
+
                                     <div class="col-8">
                                         <p class="card-title" style="font-weight: bold; margin-left: 10px;">' . $row['nome'] . '</p>
                                     </div>
@@ -186,13 +207,7 @@ if ($connessione === false) {
 
                                     </div>
                                 </div>
-                                
-                                
-                                
-                                
-                                
                             </div>
-                    
                             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="margin:none; padding:none; height:225px;">
                                 <div class="carousel-indicators" style="background-color:white; width:100%; margin:auto">
                                     <button style="background-color:#B30000;color:#B30000" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
