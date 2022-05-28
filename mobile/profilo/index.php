@@ -147,7 +147,7 @@ $xpMancanti=$xpNecessari-$xp;
                 <?php
                     if(isset($_GET['emailUtente'])){
                 ?>
-                <img style="width:100px;height:100px; border-radius: 50%" src="../../img/propics/<?php echo $emailUtente; ?>.png">
+                <img style="width:100px;height:100px; border-radius: 50%" src="../../img/propics/<?php echo $emailUtente; ?>.png<?php echo '?t='.time()?>">
                 <div>
                     <span style="left:95px; top:92px" class="position-absolute top-70 start-600 translate-middle badge rounded-pill bg-danger">
                         <?php echo $livello; ?>

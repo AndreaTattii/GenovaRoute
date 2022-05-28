@@ -129,7 +129,7 @@ if ($result = $connessione->query($sql)) {
             <div class="row" style="padding: 0px; margin:0px">
                 <div class="col" style="margin:auto; text-align:center; padding: 0px; margin:0px">
                     <form method="post" enctype="multipart/form-data" action="salvaImg.php">
-                        <label class="custom-file-upload" style="width:100px;height:100px; border-radius: 50%;background-size: cover; background-image: url('../../img/propics/<?php echo $_SESSION['email']; ?>.png');">
+                        <label class="custom-file-upload" style="width:100px;height:100px; border-radius: 50%;background-size: cover; background-image: url('../../img/propics/<?php echo $_SESSION['email']; ?>.png<?php echo "?t=".time()?>');">
                             <input type="file" name="propic" />
                             
                         </label>
