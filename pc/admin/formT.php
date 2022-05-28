@@ -91,14 +91,25 @@
                 <label for="nome">Città</label>
                 <input type="text" class="form-control" id="città" name="città" placeholder="Inserisci la città della tappa" maxlength="30" required>
             </div>
-            <div class="form-group">
-                <label for="percorso">Longitudine</label>
-                <input type="text" class="form-control" id="longitudine" name="longitudine" placeholder="Inserisci la longitudine della tappa" maxlength="100" required>
+            <div class="row">
+        
+                <div class="col-6">
+                    <h1>Seleziona le coordinate</h1>
+                    <h5>Ricorda di inserire prima una città</h5>
+                    <div id="osm-map"></div>
+                </div>
+                <div class="col-6" style="padding-top:225px">
+                    <div class="form-group">
+                        <label for="percorso">Longitudine</label>
+                        <input type="text" class="form-control" id="longitudine" name="longitudine" placeholder="Inserisci la longitudine della tappa" maxlength="100" required>
+                    </div>
+                    <div class="form-group" style="padding-top:50px">
+                        <label for="percorso">Latitudine</label>
+                        <input type="text" class="form-control" id="latitudine" name="latitudine" placeholder="Inserisci la latitudine della tappa" maxlength="100" required>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="percorso">Latitudine</label>
-                <input type="text" class="form-control" id="latitudine" name="latitudine" placeholder="Inserisci la latitudine della tappa" maxlength="100" required>
-            </div>
+
             <button type="submit" class="btn btn-primary" style="margin-top: 15px; background-color:#B30000; border-color:#B30000;">Inserisci</button>
         </form>
     </div>  <!-- fine container -->
@@ -108,14 +119,7 @@
         echo "<br>";
     }
     ?>
-    <div class="row">
-        <div class="col-3"></div>
-            <div class="col-6">
-                <h1>Seleziona le coordinate</h1>
-                <div id="osm-map"></div>
-            </div>
-        <div class="col-3"></div>
-    </div>
+
     <div class="footer-clean" style="background-color:white; border-top-color:#F0F0F0;  border-top-style: solid; border-top-width: 3px; margin-top: 40px; bottom:0px; width:100%;">
         <footer>
 
@@ -152,6 +156,11 @@
                     success: function(data) {
                         //change the view of the map to the coordinates of the city
                         map.setView([data.x, data.y], 15);
+                        //set bounds of the map to the entire world
+                        map.setMaxBounds([
+                            [90, 180],
+                            [-90, -180]
+                        ]);
                         //if the query is successful, the coordinates are shown in the map
                         //map.setView([data.lat, data.lon], 13);
                     },
