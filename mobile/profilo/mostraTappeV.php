@@ -152,7 +152,7 @@ if ($connessione === false) {
                     }
                 }
                 $persona = "persona";
-                if ($nMiPiace > 1) {
+                if ($nMiPiace != 1) {
                     $persona = "persone";
                 }
                 echo '
@@ -177,8 +177,10 @@ if ($connessione === false) {
                                                 if ($result2->num_rows > 0) {
                                                     while ($row2 = $result2->fetch_assoc()){
                                                         echo'
-                                                            <a class="dropdown-item" style="height:30px" href="../percorsi/tappe/index.php?idPercorso='.$row2['id'].'" style="height:20px">'.$row2['nome'].'</a>
-                                                            <div class="dropdown-divider"></div>
+                                                            <a class="dropdown-item" style="height:40px" href="../percorsi/tappe/index.php?idPercorso='.$row2['id'].'" style="height:20px">'
+                                                                .$row2['nome'].'
+                                                                <img src="../../img/icons/percorso.png" alt="Hamburger" width="20" height="20">
+                                                            </a>
                                                         ';
                                                     }
 
