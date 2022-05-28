@@ -224,7 +224,19 @@ if ($result = $connessione->query($sql)) {
             </div>
         </div>
     </div>
-
+ 
+    <div class="row" style="padding-left:20%; width:90%; position: fixed;">
+        <div class="toast <?php if(isset($_SESSION['primaVolta'])){echo'show';unset($_SESSION['primaVolta']);}?>">
+            <div class="toast-header">
+              <strong class="me-auto">Tappa visitata!</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+              <p style="color:green">+200XP</p>
+            </div>
+          </div>
+        </div>
+    </div>
     <!-- BARRA LIKE COMMENTO -->
     <?php
     if ($visitata) {
@@ -248,18 +260,7 @@ if ($result = $connessione->query($sql)) {
     
 
    
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-      <strong style="color:red" class="me-auto">Tappa visitata!</strong>
-      <small style="color:green">+200XP</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Hello, world! This is a toast message.
-    </div>
-  </div>
-</div>
+
 
 
 
@@ -364,25 +365,6 @@ if ($result = $connessione->query($sql)) {
                 document.getElementsByClassName("swipeBack")[0].click();
             }
         }
-    </script>
-    <script>
-        //quando la pagina è caricata
-
-
-        const toastLiveExample = document.getElementById('liveToast');
-        const toast = new bootstrap.Toast(toastLiveExample);
-        //toast.show();
-        <?php
-        if(isset($_SESSION['primaVolta'])){?>
-            toast.show();
-        <?php
-            unset($_SESSION['primaVolta']);
-        }
-        ?>
-
-
-        
-
     </script>
 </body>
 
