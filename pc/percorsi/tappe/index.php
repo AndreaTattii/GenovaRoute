@@ -291,9 +291,24 @@ if ($result = $connessione->query($sql)) {
             element = document.getElementById('osm-map');
             element.style = 'height:'.concat(500, 'px;');
             var map = L.map(element);
-            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {minZoom: 14}).addTo(map);
-            map.setView(['44.409369955825774', '8.941610113846902'], 14);
 
+            <?php
+            //query per selezionare le coordinate della prima tappa del percorso
+            $sql = 'SELECT lon, lat, Tappa.nome, ordine
+            FROM Tappa, Percorso, Tappa_Appartiene_Percorso
+            WHERE  Tappa.id = Tappa_Appartiene_Percorso.id_tappa
+            AND  percorso.id = Tappa_Appartiene_Percorso.id_percorso 
+            AND  percorso.id = '.$_SESSION['idPercorso'].'
+            AND ordine = 0';
+            
+            $result = $connessione->query($sql);
+
+            $row = $result->fetch_assoc();
+
+            ?>
+
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {minZoom: 14}).addTo(map);
+            map.setView(['<?php echo $row["lon"];?>', '<?php echo $row["lat"]?>'], 13.5);
 
 
             <?php

@@ -107,12 +107,13 @@ $connessione = new mysqli($host, $user, $pass, $database);
             });
 
             <?php
-            $sql = 'SELECT x,y 
-            FROM citta, Tappa, Percorso, Tappa_Appartiene_Percorso
+            //query per selezionare le coordinate della prima tappa del percorso
+            $sql = 'SELECT lon, lat, Tappa.nome, ordine
+            FROM Tappa, Percorso, Tappa_Appartiene_Percorso
             WHERE  Tappa.id = Tappa_Appartiene_Percorso.id_tappa
             AND  percorso.id = Tappa_Appartiene_Percorso.id_percorso 
             AND  percorso.id = '.$_GET["percorsi"].'
-            AND citta.nome=Tappa.citta;';
+            AND ordine = 0';
             
             $result = $connessione->query($sql);
 
@@ -121,7 +122,8 @@ $connessione = new mysqli($host, $user, $pass, $database);
             ?>
 
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
-            map.setView(['<?php echo $row["x"];?>', '<?php echo $row["y"]?>'], 12);
+            map.setView(['<?php echo $row["lon"];?>', '<?php echo $row["lat"]?>'], 13.5);
+            
 
 
 
