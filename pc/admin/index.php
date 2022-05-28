@@ -223,7 +223,7 @@ session_start();
                             <input type="text" name="idPercorso" placeholder="Inserisci l'id" required>
                         </div>
                         <div class="col-7">
-                            <input type="file" name="img" required>
+                            <input type="file" accept=".png,.jpg,.jpeg" name="img" required>
                         </div>
                         <div class="col-1">
                             <button type="submit" style="color:white; background-color:#B30000; ; border-color:#B30000; width:150px;">Modifica</button>

@@ -68,19 +68,19 @@
             <div class="form-group">
                 <label for="immagine">Immagine 1</label>
                 <div class="row">
-                    <input type="file" name="img1" required>
+                    <input type="file" accept=".png,.jpg,.jpeg" name="img1" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="immagine">Immagine 2</label>
                 <div class="row">
-                    <input type="file" name="img2" required>
+                    <input type="file" accept=".png,.jpg,.jpeg" name="img2" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="immagine">Immagine 3</label>
                 <div class="row">
-                    <input type="file" name="img3" required>
+                    <input type="file" accept=".png,.jpg,.jpeg" name="img3" required>
                 </div>
             </div>
             <div class="form-group">
@@ -142,7 +142,10 @@
             element.style = 'height:'.concat(500, 'px;');
             var map = L.map(element);
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
-
+            var Icon1 = L.icon({
+                            iconUrl: '../../img/icons/marker.png',
+                            iconSize:     [40, 40],
+                        });
             //when the user types in the input with name città, send a query to coordinateCitta.php with ajax jquery with json dataType
             $("input[name='città']").keyup(function() {
                 var città = $("input[name='città']").val()
@@ -176,7 +179,7 @@
             map.on('click', function(e) {
                 //delete all markers from marker group
                 markerGroup.clearLayers();
-                marker = new L.marker(e.latlng, {draggable: true}).addTo(markerGroup);
+                marker = new L.marker(e.latlng, {draggable: true, icon: Icon1}).addTo(markerGroup);
                 var coord = marker.getLatLng();
                 document.getElementById('latitudine').value = coord.lat;
                 document.getElementById('longitudine').value = coord.lng;
