@@ -23,7 +23,7 @@ if ($result = $connessione->query($sql)) {
     $descrizioneTappa = $row['descrizione'];
     $via = $row['via'];
     $longitudine = $row['lon'];
-    $latitudine = $row['lon'];
+    $latitudine = $row['lat'];
 } else {
     echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
 }
@@ -101,7 +101,7 @@ if ($result = $connessione->query($sql)) {
         <form action="modificaT/modificaDescrizioneT.php" method="POST">
             <div class="row" style="margin:10px;">
                 <div class="col">
-                    <textarea class="form-control" id="contenuto" name="contenuto" placeholder="Descrizione della tappa" name="nuovaDescrizione" maxlength="2000"  required><?php echo $descrizioneTappa ?></textarea>
+                    <textarea class="form-control" id="contenuto" name="contenuto" placeholder="Descrizione della tappa" name="nuovaDescrizione" maxlength="2000"  required><?php echo $descrizioneTappa ?></textarea>>
 
                 </div>
                 <div class="col">

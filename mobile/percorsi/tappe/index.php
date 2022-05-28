@@ -109,7 +109,7 @@ if ($result = $connessione->query($sql)) {
                 </a>
             </div>
             <div class="col-8">
-                <h1 style=" color: white; font-weight: bold; text-align: center;"><?php echo $_SESSION['nomePercorso'] ?> </h1>
+                <h1 style=" font-size: 17px; color: white; font-weight: bold; text-align: center;"><?php echo $_SESSION['nomePercorso'] ?> </h1>
             </div>
             <div class="col-2">
                 <center>

@@ -59,7 +59,7 @@
         <form action="inserimentoT.php" enctype="multipart/form-data" method="POST">
             <div class="form-group">
                 <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" placeholder="Inserisci il nome della tappa" maxlength="30" required>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Inserisci il nome della tappa" maxlength="40" required>
             </div>
             <div class="form-group">
                 <label for="descrizione">Descrizione</label>
