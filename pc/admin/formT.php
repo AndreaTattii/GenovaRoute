@@ -95,7 +95,7 @@
         
                 <div class="col-6">
                     <h1>Seleziona le coordinate</h1>
-                    <h5>Ricorda di inserire prima una città</h5>
+                    <strong><p style="color:red" id="controlla">Inserisci prima una città valida</p></strong>
                     <div id="osm-map"></div>
                 </div>
                 <div class="col-6" style="padding-top:225px">
@@ -157,6 +157,7 @@
                     },
                     dataType: "json",
                     success: function(data) {
+                        $("#controlla").hide();
                         //change the view of the map to the coordinates of the city
                         map.setView([data.x, data.y], 15);
                         //set bounds of the map to the entire world
@@ -168,7 +169,7 @@
                         //map.setView([data.lat, data.lon], 13);
                     },
                     error : function () {
-                        //alert("error");
+                        $("#controlla").show();
                     }
                 });
             });
@@ -190,6 +191,8 @@
                     document.getElementById('longitudine').value = coord.lng;
                 });
             });
+
+            
     </script>
 </body>
 
