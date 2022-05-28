@@ -10,7 +10,7 @@
     
         $connessione = new mysqli($host, $user, $pass , $database);
         
-        error_reporting(0);
+       // error_reporting(0);
 
         if($connessione === false){
             echo "Errore: ".$connessione->error;
