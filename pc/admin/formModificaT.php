@@ -15,11 +15,15 @@ if(isset($_POST['idTappa'])){
 if ($connessione === false) {
     echo "Errore: " . $connessione->error;
 }
-$sql = "SELECT nome FROM tappa WHERE id = ".$_SESSION['idTappa']."";
+$sql = "SELECT * FROM tappa WHERE id = ".$_SESSION['idTappa']."";
 
 if ($result = $connessione->query($sql)) {
     $row = $result->fetch_assoc();
     $nomeTappa = $row['nome'];
+    $descrizioneTappa = $row['descrizione'];
+    $via = $row['via'];
+    $longitudine = $row['lon'];
+    $latitudine = $row['lon'];
 } else {
     echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
 }
@@ -83,7 +87,7 @@ if ($result = $connessione->query($sql)) {
         <form action="modificaT/modificaNomeT.php" method="POST">
             <div class="row" style="margin:10px;">
                 <div class="col">
-                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Nome della tappa" maxlength="20" required>
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Nome della tappa" value="<?php echo $nomeTappa ?>" maxlength="20" required>
                 </div>
                 <div class="col">
                     <?php
@@ -97,7 +101,8 @@ if ($result = $connessione->query($sql)) {
         <form action="modificaT/modificaDescrizioneT.php" method="POST">
             <div class="row" style="margin:10px;">
                 <div class="col">
-                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Descrizione della tappa" maxlength="2000" required>
+                    <textarea class="form-control" id="contenuto" name="contenuto" placeholder="Descrizione della tappa" name="nuovaDescrizione" maxlength="2000"  required><?php echo $descrizioneTappa ?></textarea>
+
                 </div>
                 <div class="col">
                     <?php
@@ -158,7 +163,7 @@ if ($result = $connessione->query($sql)) {
         <form action="modificaT/modificaViaT.php" method="POST">
             <div class="row" style="margin:10px;">
                 <div class="col">
-                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Via" maxlength="30" required>
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Via" value="<?php echo $via ?>" maxlength="30" required>
                 </div>
                 <div class="col">
                     <?php
@@ -172,7 +177,7 @@ if ($result = $connessione->query($sql)) {
         <form action="modificaT/modificaLonT.php" method="POST">
             <div class="row" style="margin:10px;">
                 <div class="col">
-                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Longitudine" maxlength="100" required>
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Longitudine" value="<?php echo $longitudine ?>" maxlength="100" required>
                 </div>
                 <div class="col">
                     <?php
@@ -186,7 +191,7 @@ if ($result = $connessione->query($sql)) {
         <form action="modificaT/modificaLatT.php" method="POST">
             <div class="row" style="margin:10px;">
                 <div class="col">
-                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Latitudine" maxlength="100" required>
+                    <input type="text" class="form-control" id="contenuto" name="contenuto" placeholder="Latitudine" value="<?php echo $latitudine ?>" maxlength="100" required>
                 </div>
                 <div class="col">
                     <?php
