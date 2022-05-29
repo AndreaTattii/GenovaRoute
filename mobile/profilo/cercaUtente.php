@@ -49,9 +49,9 @@
                     <a style='text-decoration:none; color:black;' href='index.php?emailUtente=" . $row['email'] . "'>
                         <div class='row' style='border-bottom:1px solid black'>
                             <div class='col-4'>
-                                <img style='width:100px;height:100px; border-radius: 50%' src='../../img/propics/".$row['email'].".png'>
+                                <img style='z-index: 1;width:100px;height:100px; border-radius: 50%' src='../../img/propics/".$row['email'].".png'>
 
-                                <span style='' class='position-absolute top10 start100 translate-middle badge rounded-pill bg-danger'>
+                                <span style='position: relative;z-index: 2;top: -100px;left: 75px;' class='badge rounded-pill bg-danger'>
                                     ".$row['livello']."
                                 </span>
 
