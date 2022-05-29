@@ -271,6 +271,12 @@ if ($result = $connessione->query($sql)) {
     <br>
     <br>
     <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <script>
     $(function(){
     
