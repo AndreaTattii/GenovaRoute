@@ -146,6 +146,10 @@
                             iconUrl: '../../img/icons/marker.png',
                             iconSize:     [40, 40],
                         });
+            var IconB = L.icon({
+                iconUrl: '../../img/GB.png',
+                iconSize:     [40, 40]
+            });
             //when the user types in the input with name città, send a query to coordinateCitta.php with ajax jquery with json dataType
             $("input[name='città']").keyup(function() {
                 var città = $("input[name='città']").val()
@@ -174,13 +178,15 @@
                 });
             });
 
-            var markerGroup = L.layerGroup().addTo(map);       
+            var markerGroup = L.layerGroup().addTo(map); 
+            var markerGroupCitta = L.layerGroup().addTo(map);       
+
             
            //when the user clicks on the map, create a layer with a draggable marker and prevent to create multiple markers
             map.on('click', function(e) {
                 //delete all markers from marker group
                 markerGroup.clearLayers();
-                marker = new L.marker(e.latlng, {draggable: true, icon: Icon1}).addTo(markerGroup);
+                marker = new L.marker(e.latlng, {draggable: true, icon: IconB}).addTo(markerGroup);
                 var coord = marker.getLatLng();
                 document.getElementById('latitudine').value = coord.lat;
                 document.getElementById('longitudine').value = coord.lng;
@@ -189,6 +195,29 @@
                     var coord = marker.getLatLng();
                     document.getElementById('latitudine').value = coord.lat;
                     document.getElementById('longitudine').value = coord.lng;
+                });
+            });
+
+            $("input[name='città']").keyup(function() {
+                var città = $("input[name='città']").val()
+                $.ajax({
+                    url: 'stampaMarkerCitta.php',
+                    type: 'POST',
+                    data: {
+                        città: città
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        //print all the markers in the mark using the data from the query
+                        //alert((data).length);
+                        for (var i = 0; i < 10; i++) {
+                            //crea un marker concatenando la variabile i con data.lat e data.lon
+                            marker = new L.marker([data.lat, data.lon], {icon: Icon1}).addTo(markerGroupCitta).bindPopup(data.nome);
+                        }
+                    },
+                    error : function () {
+
+                    }
                 });
             });
 

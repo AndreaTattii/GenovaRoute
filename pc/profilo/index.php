@@ -66,7 +66,7 @@ if ($result = $connessione->query($sql)) {
 
 <nav class="navbar  navbar-expand-lg" style="background-color: #B30000;">
         <div class="container p-2">
-            <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold;" href="../../../index.php">
+            <a class="navbar-brand" style="font-family: 'Amiri', serif; color: white; font-weight: bold;" href="../index.php">
                 <h1>GrovaGO</h1>
             </a>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">

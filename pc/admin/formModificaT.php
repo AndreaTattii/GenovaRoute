@@ -230,6 +230,11 @@ if ($result = $connessione->query($sql)) {
                             iconUrl: '../../img/icons/marker.png',
                             iconSize:     [40, 40]
                         });
+                        
+            var IconB = L.icon({
+                iconUrl: '../../img/GB.png',
+                iconSize:     [40, 40]
+            });
             <?php
             //query per ottenere lat e lon e nome delle tappe che fanno parte degli stessi percorsi di cui fa parte la tappa con id = $_SESSION['idTappa'], senza usare la citta
             //header("Location: index.php");
@@ -269,7 +274,7 @@ if ($result = $connessione->query($sql)) {
                 $result2 = $connessione->query($sql2);
                 $row2 = $result2->fetch_array();
                     echo "
-                    marker = new L.marker(['".$row2["lon"]."', '".$row2["lat"]."'], {draggable: true}).addTo(markerGroup).bindPopup('".$row2["nome"]."').openPopup();;;";
+                    marker = new L.marker(['".$row2["lon"]."', '".$row2["lat"]."'], {draggable: true,icon: IconB}).addTo(markerGroup).bindPopup('".$row2["nome"]."').openPopup();;;";
             ?>
             //when the marker is dragged, update the values in the input fields
             marker.on('dragend', function(e) {
