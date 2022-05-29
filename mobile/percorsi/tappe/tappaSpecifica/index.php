@@ -247,7 +247,7 @@ if ($result = $connessione->query($sql)) {
                 <img class="cuore" src="'.$piace.'" style="width:40px; vertical-align: text-top">
             </div>
             <div class="col-2" id="commento">
-                <img  src="../../../../img/icons/commentoVuoto.png" style="width:40px; margin-top:6px">                  
+                <a href="commenti.php?idTappa='.$id.'"><img  src="../../../../img/icons/commentoVuoto.png" style="width:40px; margin-top:6px"></a>                  
             </div>
         </div>
         ';
