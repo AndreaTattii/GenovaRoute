@@ -228,7 +228,8 @@ if ($result = $connessione->query($sql)) {
     <div class="row" style="padding-left:20%; width:90%; position: fixed;">
         <div class="toast <?php if(isset($_SESSION['primaVolta'])){echo'show';unset($_SESSION['primaVolta']);}?>">
             <div class="toast-header">
-              <strong class="me-auto">Tappa visitata!</strong>
+                <?php if(isset($_SESSION['levelup'])){echo'<strong class="me-auto">Level Up!</strong>';unset($_SESSION['levelup']);}
+                else{echo'<strong class="me-auto">Tappa visitata!</strong>';}?>
               <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
             </div>
             <div class="toast-body">
