@@ -184,7 +184,7 @@ $percentuale=number_format($percentuale,0);
                 <?php if(!(isset($_GET['emailUtente']))){echo  ' <div class="progress" style="border:1px solid black" >
                                  <div class="progress-bar bg-danger" role="progressbar" style="width: '.$percentuale.'%" aria-valuenow="'.$percentuale.'" aria-valuemin="0" aria-valuemax="100"></div>
                               </div>
-                              <p>'.$xp.'/'.$xpNecessari.'</p>';}                    
+                              <p>'.$xp.'/'.$xpNecessari.' xp</p>';}                    
                 ?>
 
             </div>
