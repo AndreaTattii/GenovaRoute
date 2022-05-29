@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 session_start();
 
@@ -27,7 +28,7 @@ if ($result = $connessione->query($sql)) {
 
 
 ?>
-
+<html>
 <head>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -143,6 +144,7 @@ if ($result = $connessione->query($sql)) {
                                             <input type='hidden' name='idTappa' value='" . $row["id"] . "'>
                                             <input type='hidden' name='idPercorso' value='" . $idPercorso . "'>
                                             <input type='hidden' name='nomePercorso' value='" . $percorso . "'>
+                                            <input type='hidden' name='ordine' value='" . $row["ordine"] . "'>
                                             <button type='submit' style='color:white; background-color:#B30000; width:50px; border-color:#B30000; border-radius:50px'> QR </button>
                                         </form>
                                     </center>
@@ -216,3 +218,4 @@ if ($result = $connessione->query($sql)) {
     <br>
     <br>
 </body>
+</html>

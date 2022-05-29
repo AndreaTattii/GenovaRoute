@@ -68,19 +68,19 @@
             <div class="form-group">
                 <label for="immagine">Immagine 1</label>
                 <div class="row">
-                    <input type="file" name="img1" required>
+                    <input type="file" accept=".png,.jpg,.jpeg" name="img1" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="immagine">Immagine 2</label>
                 <div class="row">
-                    <input type="file" name="img2" required>
+                    <input type="file" accept=".png,.jpg,.jpeg" name="img2" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="immagine">Immagine 3</label>
                 <div class="row">
-                    <input type="file" name="img3" required>
+                    <input type="file" accept=".png,.jpg,.jpeg" name="img3" required>
                 </div>
             </div>
             <div class="form-group">
@@ -95,7 +95,7 @@
         
                 <div class="col-6">
                     <h1>Seleziona le coordinate</h1>
-                    <h5>Ricorda di inserire prima una città</h5>
+                    <strong><p style="color:red" id="controlla">Inserisci prima una città valida</p></strong>
                     <div id="osm-map"></div>
                 </div>
                 <div class="col-6" style="padding-top:225px">
@@ -142,7 +142,14 @@
             element.style = 'height:'.concat(500, 'px;');
             var map = L.map(element);
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
-
+            var Icon1 = L.icon({
+                            iconUrl: '../../img/icons/marker.png',
+                            iconSize:     [40, 40],
+                        });
+            var IconB = L.icon({
+                iconUrl: '../../img/GB.png',
+                iconSize:     [40, 40]
+            });
             //when the user types in the input with name città, send a query to coordinateCitta.php with ajax jquery with json dataType
             $("input[name='città']").keyup(function() {
                 var città = $("input[name='città']").val()
@@ -154,6 +161,7 @@
                     },
                     dataType: "json",
                     success: function(data) {
+                        $("#controlla").hide();
                         //change the view of the map to the coordinates of the city
                         map.setView([data.x, data.y], 15);
                         //set bounds of the map to the entire world
@@ -165,18 +173,20 @@
                         //map.setView([data.lat, data.lon], 13);
                     },
                     error : function () {
-                        //alert("error");
+                        $("#controlla").show();
                     }
                 });
             });
 
-            var markerGroup = L.layerGroup().addTo(map);       
+            var markerGroup = L.layerGroup().addTo(map); 
+            var markerGroupCitta = L.layerGroup().addTo(map);       
+
             
            //when the user clicks on the map, create a layer with a draggable marker and prevent to create multiple markers
             map.on('click', function(e) {
                 //delete all markers from marker group
                 markerGroup.clearLayers();
-                marker = new L.marker(e.latlng, {draggable: true}).addTo(markerGroup);
+                marker = new L.marker(e.latlng, {draggable: true, icon: IconB}).addTo(markerGroup);
                 var coord = marker.getLatLng();
                 document.getElementById('latitudine').value = coord.lat;
                 document.getElementById('longitudine').value = coord.lng;
@@ -187,6 +197,31 @@
                     document.getElementById('longitudine').value = coord.lng;
                 });
             });
+
+            $("input[name='città']").keyup(function() {
+                var città = $("input[name='città']").val()
+                $.ajax({
+                    url: 'stampaMarkerCitta.php',
+                    type: 'POST',
+                    data: {
+                        città: città
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        //print all the markers in the mark using the data from the query
+                        //alert((data).length);
+                        for (var i = 0; i < 10; i++) {
+                            //crea un marker concatenando la variabile i con data.lat e data.lon
+                            marker = new L.marker([data.lat, data.lon], {icon: Icon1}).addTo(markerGroupCitta).bindPopup(data.nome);
+                        }
+                    },
+                    error : function () {
+
+                    }
+                });
+            });
+
+            
     </script>
 </body>
 

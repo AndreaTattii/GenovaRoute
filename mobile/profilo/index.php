@@ -33,8 +33,18 @@ if ($result = $connessione->query($sql)) {
 }
 //xp e livelli
 $xpPerLivello = 200;
-$xpNecessari=$xpPerLivello*$livello;
+$xpNecessari=$xpPerLivello*($livello+1);
 $xpMancanti=$xpNecessari-$xp;
+$percentuale=($xp/$xpNecessari)*100;
+//togli le cifre decimali
+$percentuale=number_format($percentuale,0);
+//echo$xp;
+//echo'<br>';
+//echo$xpNecessari;
+//echo'<br>';
+//
+//echo $percentuale;
+
 
 ?>
 <!doctype html>
@@ -171,7 +181,11 @@ $xpMancanti=$xpNecessari-$xp;
             <div class="col" id="nomeUtente" style="padding-top: 25px; padding-right:80px">
 
                 <?php echo  ' <h1 style="font-weight: bold; font-size: 20px; color: black; text-align: left;">' . $nome . ' ' . $cognome . '</h1> ';  ?>
-
+                <?php if(!(isset($_GET['emailUtente']))){echo  ' <div class="progress" style="border:1px solid black" >
+                                 <div class="progress-bar bg-danger" role="progressbar" style="width: '.$percentuale.'%" aria-valuenow="'.$percentuale.'" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p>'.$xp.'/'.$xpNecessari.' xp</p>';}                    
+                ?>
 
             </div>
         </div>

@@ -13,7 +13,7 @@
     }
 
     $idTappa = $connessione->real_escape_string($_REQUEST['idTappa']);
-    $contenuto = $connessione->real_escape_string($_REQUEST['contenuto']);
+    $contenuto = $connessione->real_escape_string($_REQUEST['contenutoLat']);
     
     
     $sql="UPDATE tappa SET lat = '".$contenuto."'

@@ -255,7 +255,7 @@ INSERT INTO Percorso (nome, descrizione) VALUES ('Visita a Dublino', 'Percorso p
 INSERT INTO Percorso (nome, descrizione) VALUES ('Chiese di Dublino', 'Percorso per le chiese di Dublino');
 
  
-INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat) 
+INSERT INTO Tappa (nome, descrizione, citta, via,  lat, lon) 
     VALUES (
             'Arco della Vittoria', 
             "
@@ -268,7 +268,7 @@ INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat)
             '44.403077306694875',
             '8.944978513772323'
     );
-INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat) 
+INSERT INTO Tappa (nome, descrizione, citta, via,  lat, lon) 
     VALUES (
             'Ponte monumentale', 
             "  
@@ -280,7 +280,7 @@ INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat)
             '44.40591531858697', 
             '8.939335738048305'
     );
-INSERT INTO Tappa (nome, descrizione, citta, via, lon, lat) 
+INSERT INTO Tappa (nome, descrizione, citta, via, lat, lon) 
     VALUES (
             'Fontana de Ferrari', 
             "
@@ -293,7 +293,7 @@ INSERT INTO Tappa (nome, descrizione, citta, via, lon, lat)
             '44.40712785099835', 
             '8.934016640162541'
     );
-INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat) 
+INSERT INTO Tappa (nome, descrizione, citta, via,  lat, lon) 
     VALUES (
             'Cattedrale di San Lorenzo', 
             "
@@ -305,7 +305,7 @@ INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat)
             '44.40763134514167', 
             '8.931458789833469'
             );
-INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat) 
+INSERT INTO Tappa (nome, descrizione, citta, via,  lat, lon) 
     VALUES (
             'Ombre Rosse', 
             'Ottimo ristorante con piatti tipici genovesi', 
@@ -314,7 +314,7 @@ INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat)
             '44.4086854746386', 
             '8.931197246472893'
     );
-INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat) 
+INSERT INTO Tappa (nome, descrizione, citta, via,  lat, lon) 
     VALUES (
             'Acquario di Genova', 
             "
@@ -326,7 +326,7 @@ INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat)
             '44.41020428824749', 
             '8.92666193224689'
     );
-INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat)
+INSERT INTO Tappa (nome, descrizione, citta, via,  lat, lon)
      VALUES (
             'Palazzo Doria Tursi', 
             "
@@ -341,7 +341,7 @@ INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat)
              '44.411243317284956', 
              '8.932595267635298'
     );
-INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat) 
+INSERT INTO Tappa (nome, descrizione, citta, via,  lat, lon) 
     VALUES (    
             'Pesciolino', 
             'Ristorante di buonissimo pesce genovese', 

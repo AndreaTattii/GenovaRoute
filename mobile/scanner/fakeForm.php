@@ -67,6 +67,7 @@
             $connessione->query($sql);
             $sql = "UPDATE utente SET xp=(0) WHERE email='".$_SESSION['email']."'";
             $connessione->query($sql);
+            $_SESSION['levelup']=1;
         }
     }
 

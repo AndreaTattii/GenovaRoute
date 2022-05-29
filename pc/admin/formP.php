@@ -66,7 +66,7 @@
             <div class="form-group">
                 <label for="coperrtina">Copertina</label>
                 <div class="row">
-                    <input type="file" name="copertina" required>
+                    <input type="file" accept=".png,.jpg,.jpeg" name="copertina" required>
                 </div>
             </div>
             <div class="form-group">

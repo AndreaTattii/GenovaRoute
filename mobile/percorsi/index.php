@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
+//error_reporting(0);
 ?>
 <!doctype html>
 <html lang="en">
@@ -86,7 +86,6 @@ error_reporting(0);
         <div style="margin:0;display: flex; justify-content: center;">
             <input style="text-align:center; margin:0;" type="text" placeholder="Cerca un percorso..." name="ricerca" id="Logo">
         </div>
-        <div id="contenuto"></div>
         
         <?php
         
@@ -119,18 +118,10 @@ error_reporting(0);
                         }
 
                         //query per vedere se utente ha completato percorso
-                        $sql2 = "SELECT * FROM utente_percorre_tappa 
-                                WHERE email = '" . $_SESSION['email'] . "' 
-                                AND id_tappa IN (SELECT id_tappa FROM tappa_appartiene_percorso, percorso 
-                                                WHERE id_percorso=" . $row['id'] . ");
-                                ";
-
-                        if ($result2 = $connessione->query($sql2)) {
-
-                        } else {
-                            echo "Errore: " . $connessione->error;
-                        }
-
+                        $sql2 = "SELECT * FROM utente_percorre_tappa WHERE email = '" . $_SESSION['email'] . "' 
+                                 AND id_tappa IN (SELECT id_tappa FROM tappa_appartiene_percorso, percorso 
+                                                  WHERE id_percorso=" . $row['id'] . ");";
+                        
                         //query per vedere quante tappe 
                         $quanteTappeQuery = "SELECT MAX(ordine)  
                             FROM  Tappa_Appartiene_Percorso
@@ -140,6 +131,25 @@ error_reporting(0);
                             $quanteTappe = $row3['MAX(ordine)']+1;
                         } else {
                             echo "Impossibile eseguire la quante tappe query";
+                        }
+
+                        if ($result2 = $connessione->query($sql2)) {
+                            $nTappeCompletate=$result2->num_rows;
+                            if ($result2->num_rows == $quanteTappe) {
+                                $completato=true;
+                            } else {
+                                $completato=false;
+                            }
+                        } else {
+                            echo "Errore: " . $connessione->error;
+                        }
+                        $percentuale=($nTappeCompletate/$quanteTappe)*100;
+                        if($percentuale<=50){
+                            $colorePercentuale="progress-bar bg-danger";
+                        }else if($percentuale<=99){
+                            $colorePercentuale="progress-bar bg-warning";
+                        }else{
+                            $colorePercentuale="progress-bar bg-success";
                         }
 
                         //query per vedere la prima città del percorso
@@ -183,15 +193,16 @@ error_reporting(0);
                                     <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px;border:none; ">
                                         <p class="card-title"><img src="../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; ">'.$primaCitta.'</p>
                                     </div>
-                                    
-                                    <button style=" background-color: transparent; border:none;"><img style="border: 3px solid #B30000" src="../../img/percorsi/'.$row['id'].'.png" class="card-img-top" alt="..." style=" border-radius:0px;"></button>
+                                        <button style=" background-color: transparent; border:none;"><img style="border: 3px solid #B30000; position: relative;z-index: 1;" src="../../img/percorsi/'.$row['id'].'.png" class="card-img-top" alt="..." style=" border-radius:0px;"></button>
+                                        <!--<img src="../../img/icons/tick.png" style="width:20%;  position: relative;z-index: 2;top: -150px;left: 150px;"> -->
                                     <div class="card-body" style="text-align: center; border-bottom: 2px dotted black;">
-
-                                    <img class="preferito" id="' . $row['id'] . '" style="width:8%; margin:auto; padding-bottom:3px;" src= "'.$immagine.'" >
-
-
+                                        <div class="progress">
+                                            <div class="'.$colorePercentuale.'" role="progressbar" style="width: '.$percentuale.'%" aria-valuenow="'.$percentuale.'" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <p>'.$nTappeCompletate.'/'.$quanteTappe.'</p>
+                                    <img class="preferito" id="' . $row['id'] . '" style="width:10%; margin:auto; padding-bottom:3px;" src= "'.$immagine.'" >
                                         <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
-                                        <h5 class="card-title"><input type="submit" value=" ' . $row['nome'] . '" style=" text-decoration: none; color: #B30000; font-size:18px; border: none; background-color:white"></h5>
+                                        <h5 class="card-title"><input type="submit" value=" ' . $row['nome'] . '" style=" text-decoration: none; color: #B30000; font-size:18px; border: none; background-color:white">';if($completato){echo '<img src="../../img/icons/tickBlack.png" style="width:10%;color:">';}echo'</h5>
                                         <p class="card-text">'.$row['descrizione'].'</p>
                                     </div>
                                 </div>
@@ -207,6 +218,8 @@ error_reporting(0);
             }
         
         ?>
+        <div id="contenuto"></div>
+
         <div class="row">
 
         </div>
