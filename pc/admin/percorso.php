@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 session_start();
 
@@ -27,7 +28,7 @@ if ($result = $connessione->query($sql)) {
 
 
 ?>
-
+<html>
 <head>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -217,3 +218,4 @@ if ($result = $connessione->query($sql)) {
     <br>
     <br>
 </body>
+</html>
