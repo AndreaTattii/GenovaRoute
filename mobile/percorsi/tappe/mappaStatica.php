@@ -103,7 +103,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
             element = document.getElementById('osm-map');
             element.style = 'height:'.concat(window.innerHeight, 'px;');
             var map = L.map(element, {
-                //zoomControl: false
+                zoomControl: false
             });
 
             <?php
