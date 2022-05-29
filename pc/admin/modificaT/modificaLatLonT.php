@@ -13,23 +13,31 @@
     }
 
     $idTappa = $connessione->real_escape_string($_REQUEST['idTappa']);
-    $contenuto = $connessione->real_escape_string($_REQUEST['contenutoLon']);
+    $contenutoLat = $connessione->real_escape_string($_REQUEST['contenutoLat']);
+    $contenutoLon = $connessione->real_escape_string($_REQUEST['contenutoLon']);
     
-    echo $idTappa;
-    echo $contenuto;
-    $sql="UPDATE tappa SET lon = '".$contenuto."'
+    
+    $sql="UPDATE tappa SET lat = '".$contenutoLat."'
             WHERE id = ".$idTappa;
     if ($result = $connessione->query($sql)) {
-        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/formModificaT.php");
         
     } else {
         echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
+    } 
+    $sql="UPDATE tappa SET lon = '".$contenutoLon."'
+            WHERE id = ".$idTappa;
+    if ($result = $connessione->query($sql)) {
+        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/formModificaT.php");
+    
+    } else {
+        echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
     }
+    
 
 
 
     $connessione->close();
-
+/**/
 
     
 ?>

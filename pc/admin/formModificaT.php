@@ -174,31 +174,36 @@ if ($result = $connessione->query($sql)) {
                         </div>
                     </div>
                 </form>
-
-                <form action="modificaT/modificaLonT.php" method="POST">
+                <br>
+                <br>
+                <form action="modificaT/modificaLatLonT.php" method="POST">
                     <div class="row" style="margin:10px;">
                         <div class="col">
-                            <input type="text" class="form-control" id="lon" name="contenuto" placeholder="Longitudine" value="<?php echo $longitudine ?>" maxlength="100" required>
+                            <input type="text" class="form-control" id="lon" name="contenutoLon" placeholder="Longitudine" value="<?php echo $longitudine ?>" maxlength="100" required>
                         </div>
                         <div class="col">
                             <?php
                             echo "<input type='hidden' name='idTappa' value='" . $_SESSION['idTappa'] . "'>"
                             ?>
-                            <button type="submit" class="btn btn-primary" style=" background-color:#B30000; border-color:#B30000;">Modifica</button>
                         </div>
                     </div>
-                </form>
+                
 
-                <form action="modificaT/modificaLatT.php" method="POST">
                     <div class="row" style="margin:10px;">
                         <div class="col">
-                            <input type="text" class="form-control" id="lat" name="contenuto" placeholder="Latitudine" value="<?php echo $latitudine ?>" maxlength="100" required>
+                            <input type="text" class="form-control" id="lat" name="contenutoLat" placeholder="Latitudine" value="<?php echo $latitudine ?>" maxlength="100" required>
                         </div>
                         <div class="col">
                             <?php
                             echo "<input type='hidden' name='idTappa' value='" . $_SESSION['idTappa'] . "'>"
                             ?>
-                            <button type="submit" class="btn btn-primary" style=" background-color:#B30000; border-color:#B30000;">Modifica</button>
+                        </div>
+                        <div class="row">
+                            <div class="col-1"></div>
+                            <div class="col-6">
+                                <br>
+                                <button type="submit" class="btn btn-primary" style=" background-color:#B30000; border-color:#B30000;">Modifica Coordinate</button>
+                            </div>
                         </div>
                     </div>
                 </form>
