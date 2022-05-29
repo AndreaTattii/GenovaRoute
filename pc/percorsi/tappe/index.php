@@ -308,7 +308,7 @@ if ($result = $connessione->query($sql)) {
             ?>
 
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {minZoom: 14}).addTo(map);
-            map.setView(['<?php echo $row["lon"];?>', '<?php echo $row["lat"]?>'], 13.5);
+            map.setView(['<?php echo $row["lat"];?>', '<?php echo $row["lon"]?>'], 13.5);
 
 
             <?php
@@ -333,7 +333,7 @@ if ($result = $connessione->query($sql)) {
 
                 while($row = $result->fetch_assoc()){
                     echo "L.marker(
-                        ['".$row["lon"]."', '".$row["lat"]."'],
+                        ['".$row["lat"]."', '".$row["lon"]."'],
                         {
                             icon: Icon".$row["ordine"]."
                         }

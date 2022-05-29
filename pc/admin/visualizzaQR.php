@@ -1,35 +1,47 @@
 <?php
 session_start();
 
-$idTappa = $_POST['idTappa'];
 $idPercorso = $_POST['idPercorso'];
 $nomePercorso = $_POST['nomePercorso'];
+$ordine = $_POST['ordine'];
 
-$pathQR = "qrCodes/".$idPercorso . "." . $idTappa . ".png";
 
 
 $host = "127.0.0.1";
 $user = "root";
-$password = "";
-$database = "GenovaRoute";
+$pass = "";
+$database = "genovaroute";
 
-$connessione = new mysqli($host, $user, $password, $database);
+$connessione = new mysqli($host, $user, $pass, $database);
+
+//error_reporting(0);
 
 if ($connessione === false) {
-    die("Errore di connessione: " . $connessione->connect_error);
+    die("Errore: " . $connessione->connect_error);
 }
-
-$sql = "SELECT nome FROM Tappa WHERE id = ".$idTappa;
+$sql = "SELECT tappa.nome, tappa.id
+        FROM tappa, tappa_appartiene_percorso, percorso 
+        WHERE tappa.id=tappa_appartiene_percorso.id_tappa 
+        AND ordine=".$ordine." AND percorso.id=tappa_appartiene_percorso.id_percorso 
+        AND percorso.id=". $idPercorso."";
+if ($result = $connessione->query($sql)) {
+    $row = $result->fetch_assoc();
+    $id = $row['id'];
+    $nome = $row['nome'];
+} else {
+    echo "Impossibile eseguire la query nr.1";
+}
+$sql = "SELECT COUNT(tappa_appartiene_percorso.id_tappa) AS numeroTappe FROM tappa, percorso, tappa_appartiene_percorso WHERE percorso.nome='" . $nomePercorso . "' AND percorso.id=tappa_appartiene_percorso.id_percorso AND tappa.id=tappa_appartiene_percorso.id_tappa";
 
 if ($result = $connessione->query($sql)) {
-    if($result->num_rows > 0){
-        $row = $result->fetch_assoc();
-        $nomeTappa = $row['nome'];
-    }
-
+    $row = $result->fetch_assoc();
+    $_SESSION['quanteTappe'] = $row['numeroTappe'];
 } else {
-echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
+    echo "Impossibile eseguire la query nr.2";
 }
+
+$pathQR = "qrCodes/".$idPercorso . "." . $id . ".png";
+
 ?>
 
 <head>
@@ -79,7 +91,7 @@ echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
 
         <div class="row">
             <div class="col-8">
-                <h1><?php echo $nomePercorso ?>: <?php echo $nomeTappa ?></h1>
+                <h1><?php echo $nomePercorso ?>: <?php echo $nome ?></h1>
             </div>
         </div>
         
@@ -90,16 +102,51 @@ echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
 
         </div>
         <div style="text-align:center; ">
-            <a style="color:#B30000; font-size:30px;" href="<?php echo $pathQR; ?>" download="<?php echo $idPercorso.'.'.$idTappa.'.png' ?>">Scarica</a>
+            <a style="color:#B30000; font-size:30px;" href="<?php echo $pathQR; ?>" download="<?php echo $idPercorso.'.'.$id.'.png' ?>">Scarica</a>
         </div>
+        <br>
         <div class="row">
-            <b><p>N.B.</p></b>
+            <!--<h3>Contenuto del QR Code--> <?php //echo $idPercorso.'.'.$id.'' ;?> <!-- (IdPercorso= --> <?php //echo $idPercorso;?> <!--idTappa= --> <?php //echo $id;?><!-- )</h3> -->
+            <b>N.B.</b>
             <p>Il QR-CODE identifica una tappa in un percorso. Una tappa, quindi, ha un QR-CODE diverso per ogni percorso.</p>
-            <p>Presta attenzione a mettere, su una tappa, un QR-CODE per ogni percorso tramite il quale può essere raggiunta.</p>
         </div>
+
+            <div style="float:left;">
+                <?php
+                    if ($ordine != 0) {
+                        $ordine = $ordine - 1;
+                            echo '
+                                <form method="post" action="../admin/visualizzaQR.php">
+                                    <input type="hidden" name="ordine" value="' . $ordine . '">
+                                    <input type="hidden" name="nomePercorso" value="' . $nomePercorso . '">
+                                    <input type="hidden" name="idPercorso" value="' . $idPercorso . '">
+                                    <input type="image" src="../../img/icons/PcBackRed.png" name="tappa" value="Avanti" class="" style="width:50px">
+                                </form>
+                            ';
+                            $ordine = $ordine + 1;
+                    }
+                ?>
+            </div>
+            <div style="float:right;">
+                <?php
+                    if ($ordine != $_SESSION['quanteTappe'] - 1) {
+                        $ordine = $ordine + 1;
+                        echo '
+                            <form method="post" action="../admin/visualizzaQR.php">
+                                <input type="hidden" name="ordine" value="' . $ordine. '">
+                                <input type="hidden" name="nomePercorso" value="' . $nomePercorso . '">
+                                <input type="hidden" name="idPercorso" value="' . $idPercorso . '">
+                                <input type="image" src="../../img/icons/PcForwardRed.png" name="tappa" value="Avanti" class="" style="width:50px">
+                            </form>
+                        ';
+                        $ordine = $ordine - 1;
+                    }
+                ?>
+            </div>
+
     </div>
     <br>
-    <br>
+    <br> 
     <br>
     <br>
 </body>

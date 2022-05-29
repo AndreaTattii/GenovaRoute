@@ -184,7 +184,7 @@ if ($result = $connessione->query($sql)) {
             element.style = 'height:'.concat(400, 'px;');
             var map = L.map(element);
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {minZoom: 10}).addTo(map);
-            map.setView(['44.409369955825774', '8.941610113846902'], 14);
+            
             var Icon1 = L.icon({
                             iconUrl: '../../../../img/icons/marker.png',
                             iconSize:     [40, 40],
@@ -201,19 +201,15 @@ if ($result = $connessione->query($sql)) {
                 AND tappa.id=id_tappa ';
                 $result = $connessione->query($sql);
                 $row = $result->fetch_array();
-                    echo "L.marker(
-                        ['".$row["lon"]."', '".$row["lat"]."'],
+                    echo "map.setView(['".$row["lat"]."', '".$row["lon"]."'], 14);L.marker(
+                        ['".$row["lat"]."', '".$row["lon"]."'],
                         {
                             icon: Icon1
                         }
                         ).addTo(map)   
                         .bindPopup('".$row["nome"]."')
-                        .openPopup();;
-                        ";
-                
-                
-            
-            
+                        .openPopup();
+                        "; 
             ?>
         </script>
 

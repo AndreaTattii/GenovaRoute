@@ -257,7 +257,7 @@ if ($result = $connessione->query($sql)) {
                         $i++;
                         //print a marker for each row
                         echo "L.marker(
-                            ['".$row3["lon"]."', '".$row3["lat"]."'],
+                            ['".$row3["lat"]."', '".$row3["lon"]."'],
                             {
                                 icon: Icon1
                             }
@@ -274,7 +274,7 @@ if ($result = $connessione->query($sql)) {
                 $result2 = $connessione->query($sql2);
                 $row2 = $result2->fetch_array();
                     echo "
-                    marker = new L.marker(['".$row2["lon"]."', '".$row2["lat"]."'], {draggable: true,icon: IconB}).addTo(markerGroup).bindPopup('".$row2["nome"]."').openPopup();;;";
+                    marker = new L.marker(['".$row2["lat"]."', '".$row2["lon"]."'], {draggable: true,icon: IconB}).addTo(markerGroup).bindPopup('".$row2["nome"]."').openPopup();;;";
             ?>
             //when the marker is dragged, update the values in the input fields
             marker.on('dragend', function(e) {

@@ -103,7 +103,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
             element = document.getElementById('osm-map');
             element.style = 'height:'.concat(window.innerHeight, 'px;');
             var map = L.map(element, {
-                zoomControl: false
+                //zoomControl: false
             });
 
             <?php
@@ -122,7 +122,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
             ?>
 
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
-            map.setView(['<?php echo $row["lon"];?>', '<?php echo $row["lat"]?>'], 13.5);
+            map.setView(['<?php echo $row["lat"];?>', '<?php echo $row["lon"]?>'], 13.5);
             
 
 
@@ -149,7 +149,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
 
                 while($row = $result->fetch_assoc()){
                     echo "L.marker(
-                        ['".$row["lon"]."', '".$row["lat"]."'],
+                        ['".$row["lat"]."', '".$row["lon"]."'],
                         {
                             icon: Icon".$row["ordine"]."
                         }
