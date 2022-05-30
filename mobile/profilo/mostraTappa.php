@@ -9,6 +9,7 @@ if (isset($_GET['idTappa'])) {
 if (isset($_GET['email'])) {
     $email = $_GET['email'];
 }
+
 if (isset($_POST['idPercorso'])) {
     $_SESSION['idPercorso'] = $_POST['idPercorso'];
 }
@@ -32,7 +33,6 @@ if ($connessione === false) {
 <html lang="en">
 
 <head>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
     <!-- Required meta tags -->
@@ -55,7 +55,6 @@ if ($connessione === false) {
 
     <!-- CSS DROPDOWN-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -157,12 +156,11 @@ if ($connessione === false) {
 
                 }
 
-                // CONTROLLO SE UTENTE HA MESSO MI PIACE A TAPPA
+                 //CONTROLLO SE UTENTE HA MESSO MI PIACE A TAPPA
                 $sql2 = "SELECT * FROM utente_percorre_tappa
                         WHERE email = '" . $_SESSION['email'] . "'
                             AND id_tappa = ".$row['id']."
                             AND piace = 1";
-
                 $piace = "../../img/icons/cuoreVuoto.png";
                 if ($result2 = $connessione->query($sql2)) {
                     if ($result2->num_rows > 0) {
@@ -308,71 +306,43 @@ if ($connessione === false) {
     <br>
     <br>
     <script>
-    $(function(){
-    
-    // opzionale, refresha all'infinito la pagina
-    $.ajaxSetup ({
-        cache: false
-    });
-
-    //quando clicco il bottone o quando faccio doppio tap sul carousel
-
-    $(".cuore").click(function(){
-        var idTappa = $(this).attr("id");
-        if($(".cuore").attr("src") == "../../img/icons/cuoreVuoto.png"){ 
-            var url = "aggiungiLike.php";
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: {idTappa: idTappa},
-                success: function(data){
-                    $(".cuore").attr("src","../../../../img/icons/cuorePieno.png");
-                }
+        //quando clicco sull'immagine del cuore pieno faccio la query ajax rimuoviLike.php e cambio l'immagine in un cuore vuoto, altrimenti faccio la query ajax aggiungiLike.php e cambio l'immagine in un cuore pieno
+        $(document).ready(function () {
+            $.ajaxSetup ({
+                cache: false
             });
-        }
-        else{ 
-        var url = "rimuoviLike.php";
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: {idTappa: idTappa},
-                success: function(data){
-                    $(".cuore").attr("src","../../../../img/icons/cuoreVuoto.png");
-                }
-            });
-        }
-    });
-    $(".double-tap").dblclick(function(){
-        var idTappa = <?php echo $id; ?>;
-        if($(".cuore").attr("src") == "../../../../img/icons/cuoreVuoto.png"){ 
-            var url = "aggiungiLike.php";
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: {idTappa: idTappa},
-                success: function(data){
-                    $(".cuore").attr("src","../../../../img/icons/cuorePieno.png");
-                }
-            });
-        }
-        else{ 
-        var url = "rimuoviLike.php";
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: {idTappa: idTappa},
-                success: function(data){
-                    $(".cuore").attr("src","../../../../img/icons/cuoreVuoto.png");
-                }
-            });
-        }
-    });
-});
 
+            $(".cuore").click(function(){
+                var idTappa = $(this).attr("id");
+                //alert(idPercorso);
+                var id = $(this).attr("id");
+                var cuore = $(this).attr("src");
+                var cuorePieno = "../../img/icons/cuorePieno.png";
+                var cuoreVuoto = "../../img/icons/cuoreVuoto.png";
+                var url = "";
+                if (cuore == cuorePieno) {
+                    url = "rimuoviLike.php";
+                } else {
+                    url = "aggiungiLike.php";
+                }
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    data: {
+                        idTappa: idTappa
+                    },
+                    success: function (data) {
+                        if (cuore == cuorePieno) {
+                            $(".cuore").attr("src", cuoreVuoto);
+                        } else {
+                            $(".cuore").attr("src", cuorePieno);
+                        }
+                    }
+                });
+            });
+        });
 
-    
-
-</script>
+    </script>
     <script>
 
     

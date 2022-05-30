@@ -260,7 +260,6 @@ if ($result = $connessione->query($sql)) {
     </div>
     
 
-   <div id="ciao"></div>
 
 
 
@@ -297,8 +296,6 @@ if ($result = $connessione->query($sql)) {
                     url: url,
                     data: {idTappa: idTappa},
                     success: function(data){
-                        //stampa il data in un div con id content
-                        $("#ciao").html(data);
                         $(".cuore").attr("src","../../../../img/icons/cuorePieno.png");
                     }
                 });
