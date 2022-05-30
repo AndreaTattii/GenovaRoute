@@ -14,6 +14,6 @@
 
     $id=$_POST['idTappa'];
     //crea una query sql per inserire 0 nell'attributo piace della tabella della tappa
-    $sql = "UPDATE Utente_Percorre_Tappa SET piace=0 WHERE id_tappa='$id'";
+    $sql = "UPDATE Utente_Percorre_Tappa SET piace=null WHERE id_tappa=".$id." AND email='".$_SESSION['email']."'";
     mysqli_query($connessione, $sql);
 ?>

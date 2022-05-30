@@ -14,7 +14,6 @@
 
     $id=$_POST['idTappa'];
     //crea una query sql per inserire 1 nell'attributo piace della tabella della tappa
-    $sql = "UPDATE Utente_Percorre_Tappa SET piace=1 WHERE email='".$_SESSION['email']."';";
+    $sql = "UPDATE Utente_Percorre_Tappa SET piace=1 WHERE email='".$_SESSION['email']."' AND id_tappa=".$id.";";
     mysqli_query($connessione, $sql);
-    echo "Errore: ".$connessione->error;
 ?>
