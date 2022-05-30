@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-
+    <script src="html5-qrcode.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
     <link rel='stylesheet' href='global.css'>

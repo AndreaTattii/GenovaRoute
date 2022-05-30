@@ -45,7 +45,7 @@
         $_SESSION['primaVolta']=1;
 
         //fai una query che inserisca nella tabella Utente_Percorre_Tappa la mail dell'utente e l'id della tappa
-        $sql = "INSERT INTO utente_percorre_tappa (email, id_tappa) VALUES ('".$_SESSION['email']."', '".$_SESSION['idTappa']."')";
+        $sql = "INSERT INTO utente_percorre_tappa (email, id_tappa, piace, commento) VALUES ('".$_SESSION['email']."', '".$_SESSION['idTappa']."', null, null)";
         $connessione->query($sql);
 
         $sql = "UPDATE utente SET xp=(xp+200) WHERE email='".$_SESSION['email']."'";

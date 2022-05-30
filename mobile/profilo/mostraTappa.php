@@ -142,6 +142,33 @@ if ($connessione === false) {
                 $mese = $giornoMeseAnno[1];
                 $giorno = $giornoMeseAnno[2];
 
+                // UTENTE HA VIUALIZZATO?
+                $sql2 = "SELECT * FROM utente_percorre_tappa
+                        WHERE email = '" . $_SESSION['email'] . "'
+                        AND id_tappa = ".$row['id']."
+                    ";
+                $visitata = false;
+                if ($result2 = $connessione->query($sql2)) {
+                    if ($result2->num_rows > 0) {
+                        $visitata = true;
+                    }
+                }else{
+                    echo "Impossibile eseguire la query: $sql2. " . $connessione->error;
+
+                }
+
+                // CONTROLLO SE UTENTE HA MESSO MI PIACE A TAPPA
+                $sql2 = "SELECT * FROM utente_percorre_tappa
+                        WHERE email = '" . $_SESSION['email'] . "'
+                            AND id_tappa = ".$row['id']."
+                            AND piace = 1";
+
+                $piace = "../../img/icons/cuoreVuoto.png";
+                if ($result2 = $connessione->query($sql2)) {
+                    if ($result2->num_rows > 0) {
+                        $piace = "../../img/icons/cuorePieno.png";
+                    }
+                }
                 $sql2 = "SELECT COUNT(piace)
                             FROM Utente_percorre_tappa
                             WHERE piace = 1
@@ -156,6 +183,8 @@ if ($connessione === false) {
                 if ($nMiPiace != 1) {
                     $persona = "persone";
                 }
+
+                $id = $row['id'];
                 echo '
                         <div class="card text-center" id="' . $row['id'] . '"  style="margin-top:50px; border-radius:0px; text-align: left;  margin:0px; border:none; ">
                             <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px; ">
@@ -209,7 +238,7 @@ if ($connessione === false) {
                                     </div>
                                 </div>
                             </div>
-                            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="margin:none; padding:none; height:225px;">
+                            <div id="carouselExampleControls" class="carousel slide double-tap" data-bs-ride="carousel" style="margin:none; padding:none; height:225px;">
                                 <div class="carousel-indicators" style="background-color:white; width:100%; margin:auto">
                                     <button style="background-color:#B30000;color:#B30000" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                                     <button style="background-color:#B30000;color:#B30000" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -228,7 +257,21 @@ if ($connessione === false) {
                                 </div>
                             </div>
                         </div>
-                        <div id="gestureZone" class="card-body" style="text-align: center; border:none; ">
+                        ';
+                        // BARRA MI PIACE E COMMENTO
+                        if ($visitata) {
+                            echo'
+                            <div class="row justify-content-center" style="width:100%" >
+                                <div class="col-2" id="miPiace" style="margin-left: 10px; ">
+                                    <img class="cuore" id="'.$row['id'].'" src="'.$piace.'" style="width:40px; vertical-align: text-top">
+                                </div>
+                                <div class="col-2" id="commento">
+                                    <a href="commenti.php?idTappa='.$row['id'].'"><img  src="../../img/icons/commentoVuoto.png" style="width:40px; margin-top:6px"></a>                  
+                                </div>
+                            </div>
+                            ';
+                        }
+                       echo '<div id="gestureZone" class="card-body" style="text-align: center; border:none; ">
                             <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
                             <p class="card-text" style="text-align:justify; border:none; margin-top:none; "><b>Piace a:</b>  ' . $nMiPiace . ' ' . $persona . '</p>
 
@@ -260,17 +303,79 @@ if ($connessione === false) {
             element.scrollIntoView();
         }
     </script>
-
-
-
-
-
-
     </div>
 
     <br>
     <br>
     <script>
+    $(function(){
+    
+    // opzionale, refresha all'infinito la pagina
+    $.ajaxSetup ({
+        cache: false
+    });
+
+    //quando clicco il bottone o quando faccio doppio tap sul carousel
+
+    $(".cuore").click(function(){
+        var idTappa = $(this).attr("id");
+        if($(".cuore").attr("src") == "../../img/icons/cuoreVuoto.png"){ 
+            var url = "aggiungiLike.php";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {idTappa: idTappa},
+                success: function(data){
+                    $(".cuore").attr("src","../../../../img/icons/cuorePieno.png");
+                }
+            });
+        }
+        else{ 
+        var url = "rimuoviLike.php";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {idTappa: idTappa},
+                success: function(data){
+                    $(".cuore").attr("src","../../../../img/icons/cuoreVuoto.png");
+                }
+            });
+        }
+    });
+    $(".double-tap").dblclick(function(){
+        var idTappa = <?php echo $id; ?>;
+        if($(".cuore").attr("src") == "../../../../img/icons/cuoreVuoto.png"){ 
+            var url = "aggiungiLike.php";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {idTappa: idTappa},
+                success: function(data){
+                    $(".cuore").attr("src","../../../../img/icons/cuorePieno.png");
+                }
+            });
+        }
+        else{ 
+        var url = "rimuoviLike.php";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {idTappa: idTappa},
+                success: function(data){
+                    $(".cuore").attr("src","../../../../img/icons/cuoreVuoto.png");
+                }
+            });
+        }
+    });
+});
+
+
+    
+
+</script>
+    <script>
+
+    
         function toCima() {
             const element = document.getElementById("cima");
             element.scrollIntoView();

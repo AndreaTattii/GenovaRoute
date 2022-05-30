@@ -195,14 +195,14 @@ session_start();
                                     </div>
                                         <button style=" background-color: transparent; border:none;"><img style="border: 3px solid #B30000; position: relative;z-index: 1;" src="../../img/percorsi/'.$row['id'].'.png" class="card-img-top" alt="..." style=" border-radius:0px;"></button>
                                         <!--<img src="../../img/icons/tick.png" style="width:20%;  position: relative;z-index: 2;top: -150px;left: 150px;"> -->
-                                    <div class="card-body" style="text-align: center; border-bottom: 2px dotted black;">
+                                    <div class="card-body" style="text-align: center; margin-bottom:20px">
                                         <div class="progress">
                                             <div class="'.$colorePercentuale.'" role="progressbar" style="width: '.$percentuale.'%" aria-valuenow="'.$percentuale.'" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                         <p>'.$nTappeCompletate.'/'.$quanteTappe.'</p>
-                                    <img class="preferito" id="' . $row['id'] . '" style="width:10%; margin:auto; padding-bottom:3px;" src= "'.$immagine.'" >
+                                        <img class="preferito" id="' . $row['id'] . '" style="width:10%; margin:auto; padding-bottom:3px;" src= "'.$immagine.'" >
                                         <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
-                                        <h5 class="card-title"><input type="submit" value=" ' . $row['nome'] . '" style=" text-decoration: none; color: #B30000; font-size:18px; border: none; background-color:white">';if($completato){echo '<img src="../../img/icons/tickBlack.png" style="width:10%;color:">';}echo'</h5>
+                                        <h5 class="card-title"><input type="submit" value=" ' . $row['nome'] . '" style=" text-decoration: none; color: #B30000; font-size:18px; border: none; background-color:white"></h5>
                                         <p class="card-text">'.$row['descrizione'].'</p>
                                     </div>
                                 </div>

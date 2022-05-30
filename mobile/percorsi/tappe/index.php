@@ -258,18 +258,16 @@ if ($result = $connessione->query($sql)) {
                         
 
                     }
-
                     //CATTURA MI PIACE
-                    $sql2 = "SELECT COUNT(*)
+                    $sql2 = "SELECT COUNT(*) AS nMiPiace
                             FROM utente_percorre_tappa
                             WHERE id_tappa = ".$row['id']."
-                            AND piace = 1
+                                AND piace IS NOT NULL
                         ";
-
                     if ($result2 = $connessione->query($sql2)) {
                         if ($result2->num_rows > 0) {
                             if($row2 = $result2->fetch_array()){
-                                $nMiPiace = $row2['COUNT(*)'];
+                                $nMiPiace = $row2['nMiPiace'];
                             }
                         } else {
                         }
