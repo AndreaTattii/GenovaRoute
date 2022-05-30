@@ -35,35 +35,52 @@
 <body style="background-color:black; overflow-y: hidden;" class="d-flex flex-column min-vh-100">
 
 
-    <!-- NAVBAR -->
-    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 1px; height: 70px;">
-        <div class="row  justify-content-center" style="padding-top: 15px;">
-            <div class="col s-4" style="padding-top: 15px;  ">
-                <center>
-                    <a class="navbar-brand" href="../percorsi/index.php">
-                        <img  id="percorso" src="../../img/icons/percorso.png">
-                    </a>
-                </center>
+        <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-left-radius: 25px;border-top-right-radius: 25px; border-top-width: 1px; height: 50px;">
+            <div class="row  justify-content-center" >
+                <div class="col s-3" style="padding-top:10px">
+                    <center>
+                        <a class="navbar-brand" href="../percorsi/index.php">
+                            <img id="percorsoSfondo" src="../../img/icons/percorso.png">
+                        </a>
+                    </center>
 
-            </div>
-            <div class="col s-4" >
-                <center>
-                    <a class="navbar-brand" href="./">
-                        <img id="scannerizzaSfondo" src="../../img/icons/scannerizzaSfondo.png">
-                    </a>
-                </center>
+                </div>
 
-            </div>
-            <div class="col s-4" style="padding-top: 15px; ">
-                <center>
-                    <a class="navbar-brand" href="../profilo/index.php">
-                        <img id="account" src="../../img/icons/account.png">
-                    </a>
-                </center>
+                <div class="col s-3" style="padding-top:10px">
+                    <center>
+                        <a class="navbar-brand" href="../ricerca/index.php">
+                            <img id="ricercaNavImg" src="../../img/icons/searchBlack.png">
+                        </a>
+                    </center>
+                </div>
 
+                <div class="col s-3" style="">
+                    <center>
+                        <a class="navbar-brand" href="./ ">
+                            <img style="width:49px" src="../../img/icons/scannerizzaSfondo.png">
+                        </a>
+                    </center>
+
+                </div>
+
+                <div class="col s-3" style="padding-top:10px; ">
+                    <center>
+                        <a class="navbar-brand" href="../percorsiPersonali/index.php">
+                            <img style="width:25px" src="../../img/icons/aggiungiPercorso.png">
+                        </a>
+                    </center>
+
+                </div>
+
+                <div class="col s-3" style="padding-top:10px; ">
+                    <center>
+                        <a class="navbar-brand" href="../profilo/index.php">
+                            <img id="account" src="../../img/icons/account.png">
+                        </a>
+                    </center>
+                </div>
             </div>
         </div>
-
 
     </div>
 

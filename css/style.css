@@ -70,16 +70,18 @@
 
 #scannerizza{
   width: 27px;
-  padding-bottom: 5px;
 }
 
 #percorsoSfondo{
-  width:50px;
+  width:25px;
 }
 
 #percorso{
   width:25px;
-  padding-bottom: 8px;
+}
+
+#ricercaNavImg{
+  width:25px;
 }
 
 #accountSfondo{
@@ -88,7 +90,6 @@
 
 #account{
   width:21px;
-  padding-bottom: 5px;
 }
 
 #setting{
