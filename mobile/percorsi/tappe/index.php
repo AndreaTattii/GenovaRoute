@@ -258,6 +258,62 @@ if ($result = $connessione->query($sql)) {
                         
 
                     }
+
+                    //CATTURA MI PIACE
+                    $sql2 = "SELECT COUNT(*)
+                            FROM utente_percorre_tappa
+                            WHERE id_tappa = ".$row['id']."
+                            AND piace = 1
+                        ";
+
+                    if ($result2 = $connessione->query($sql2)) {
+                        if ($result2->num_rows > 0) {
+                            if($row2 = $result2->fetch_array()){
+                                $nMiPiace = $row2['COUNT(*)'];
+                            }
+                        } else {
+                        }
+                    } else {
+                        echo "Errore: " . $connessione->error;
+                    }
+
+                    //CATTURA COMMENTI
+                    $sql2 = "SELECT COUNT(*)
+                    FROM utente_percorre_tappa
+                    WHERE id_tappa = ".$row['id']."
+                    AND commento IS NOT NULL
+                    ";
+
+                    if ($result2 = $connessione->query($sql2)) {
+                        if ($result2->num_rows > 0) {
+                            if($row2 = $result2->fetch_array()){
+                                $nCommenti = $row2['COUNT(*)'];
+                            }
+                        } else {
+                        }
+                    } else {
+                        echo "Errore: " . $connessione->error;
+                    }
+
+                    //CATTURA VISITE
+                    $sql2 = "SELECT COUNT(*)
+                    FROM utente_percorre_tappa
+                    WHERE id_tappa = ".$row['id']."
+                    ";
+
+                    if ($result2 = $connessione->query($sql2)) {
+                        if ($result2->num_rows > 0) {
+                            if($row2 = $result2->fetch_array()){
+                                $nVisitati = $row2['COUNT(*)'];
+                            }
+                        } else {
+                        }
+                    } else {
+                        echo "Errore: " . $connessione->error;
+                    }
+
+
+
                     $ordineVisualizza=$row['ordine']+1;
                     echo '
                         
@@ -280,7 +336,8 @@ if ($result = $connessione->query($sql)) {
                                         <h3 style="color:#b30000">'.$row['nome'].'</h3>
                                     </div>
                                     <div class="row" style="text-align:center;">
-                                        <p class="card-title" style="font-weight: bold; margin-left: 10px;"><img src="../../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; ">'.$row['via'].'</p>
+                                        <p class="card-text">'.$nMiPiace.'<img style="width:25px" src="../../../img/icons/cuorePieno.png">   '. $nVisitati . '<img style="width:25px" src="../../../img/icons/occhioAperto.png">   ' . $nCommenti . '<img style="width:25px" src="../../../img/icons/commentoPieno.png">    </p>
+                                        
                                     </div>
                                 </div>
                             </div>

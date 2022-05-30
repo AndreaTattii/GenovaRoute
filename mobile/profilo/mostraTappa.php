@@ -166,7 +166,7 @@ if ($connessione === false) {
                                             <button type="button" class=" toggle" data-toggle="dropdown" style="background-color:white;  text-align:center; ">
                                                 <img src="../../img/icons/hamburger-rosso.png" alt="Hamburger" width="30" height="30">
                                             </button>
-                                            <div class="dropdown-menu" style="border:2px solid #b30000; width: 200px;">
+                                            <div class="dropdown-menu" style="border:2px solid #b30000; width: 300px;">
                     ';
                                             $sql2 = "SELECT *
                                                     FROM Percorso, Tappa_appartiene_percorso
@@ -178,8 +178,7 @@ if ($connessione === false) {
                                                 if ($result2->num_rows > 0) {
                                                     while ($row2 = $result2->fetch_assoc()){
                                                         echo'
-                                                            <a class="dropdown-item" style="height:40px" href="../percorsi/tappe/index.php?idPercorso='.$row2['id'].'" style="height:20px">'.$row2['nome'].'
-                                                                
+                                                            <a class="dropdown-item" style="height:40px" href="../percorsi/tappe/index.php?idPercorso='.$row2['id'].'" >'.$row2['nome'].'
                                                                 <img src="../../img/icons/percorso.png" alt="Hamburger" width="20" height="20">
                                                             </a>
                                                         ';
