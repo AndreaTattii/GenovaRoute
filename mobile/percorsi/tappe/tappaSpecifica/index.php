@@ -116,7 +116,7 @@ if ($result = $connessione->query($sql)) {
 
 
     <!-- NAVBAR BASSA-->
-    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 1px; padding-bottom:10px;">
+    <div class="container fixed-bottom" style="height:50px;background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 1px; padding-bottom:10px; border-top-left-radius: 25px;border-top-right-radius: 25px;">
         <div class="row  justify-content-center " style="padding-top: 15px;">
             <div class="col .s-4">
                 <center>
@@ -129,7 +129,7 @@ if ($result = $connessione->query($sql)) {
                         echo '
                             <form action="decrementaOrdinata.php" method="POST">
                                  <button class="swipeBack" type="submit" style="background-color: white; border-color:transparent;">
-                                    <img style="width:10px" src="../../../../img/icons/backRed.png">
+                                    <img style="width:15px" src="../../../../img/icons/backRed.png">
                                 </button>
                             </form>
                         ';
@@ -153,7 +153,7 @@ if ($result = $connessione->query($sql)) {
                         echo '
                             <form action="incrementaOrdinata.php" method="POST">
                                 <button class="swipeForward" type="submit" style="background-color: white; border-color:transparent;">
-                                    <img style="width:10px" src="../../../../img/icons/nextRed.png">
+                                    <img style="width:15px" src="../../../../img/icons/nextRed.png">
                                 </button>
                             </form>
                         ';
