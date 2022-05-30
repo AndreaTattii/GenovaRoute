@@ -47,7 +47,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
 
 <!-- NAVBAR ALTA -->
 <div class="container fixed-top" >
-        <div class="row justify-content-center align-items-center" style="background-color: #B30000; border-bottom-color:black;  border-bottom-style: solid; border-bottom-width: 2px; padding-top: 10px;">
+        <div class="row justify-content-center align-items-center" style="background-color: #B30000; height:60px; padding-top: 10px;">
 
             <div class="col-2">
                 <a href="../tappe/index.php">
@@ -55,7 +55,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
                 </a>
             </div>
             <div class="col-8">
-                <h1 style=" color: white; font-weight: bold; text-align: center;"><?php echo $_SESSION['nomePercorso']  ?> </h1>
+                <h1 style=" color: white; font-weight: bold; text-align: center; font-size: 17px;"><?php echo $_SESSION['nomePercorso']  ?> </h1>
             </div>
             <div class="col-2">
                  <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;"></h1>
@@ -64,7 +64,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
     </div>
 
  <!-- NAVBAR BASSA-->
- <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 4px; height: 70px;">
+ <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-width: 1px; height: 70px;">
         <div class="row  justify-content-center" style="padding-top: 15px;">
             <div class="col s-4">
                 <center>

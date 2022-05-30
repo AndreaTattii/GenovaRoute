@@ -282,9 +282,9 @@ if ($result = $connessione->query($sql)) {
     $(function(){
     
         // opzionale, refresha all'infinito la pagina
-        $.ajaxSetup ({
+        /*$.ajaxSetup ({
             cache: false
-        });
+        });*/
     
         //quando clicco il bottone o quando faccio doppio tap sul carousel
 

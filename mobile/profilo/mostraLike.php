@@ -13,7 +13,7 @@ if ($connessione === false) {
 }
 $i = 0;
 $email = $_POST['email'];
-$sql = "SELECT * FROM utente_percorre_tappa, tappa WHERE email = '" . $email . "' AND tappa.id=id_tappa AND piace=1 ORDER BY (utente_percorre_tappa.data)DESC";
+$sql = "SELECT * FROM utente_percorre_tappa, tappa WHERE email = '" . $email . "' AND tappa.id=id_tappa AND piace IS NOT NULL ORDER BY (utente_percorre_tappa.data)DESC";
     $result = $connessione->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
