@@ -83,10 +83,30 @@ session_start();
 
     <!-- NAVBAR ALTA -->
     <div class="container fixed-top">
-        <div  onclick="toCima()" class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
+        <div   class="row justify-content-center align-items-center" style="background-color:#EFEFEF; height:40px; border-radius: 25px; margin-top:10px;">
+            <div class="col-1" style="text-align: center;">
+                <img id="account" src="../../img/icons/searchBlackBold.png" style="width:20px">    
+            </div>
+            <div class="col-11" >
+                <input style="width: 100%; border:none; background-color:#EFEFEF;" type="text" placeholder="Cerca">
+            </div>
+        </div>
 
-            <div class="col ">
-                <h1  style=" color: white; font-weight: bold; text-align: center;">GrovaGO</h1>
+        <div   class="row justify-content-center align-items-center" style=" height:30px; border-radius: 25px; margin-top:10px;">
+            <div id="col-tappe" class="col-2" style="text-align: center;">
+                <h1 style="font-size:15px">Tappe</h1>
+            </div>
+            <div id="col-percrosi"  class="col-2" style="text-align: center;">
+                <h1 style="font-size:15px">Percorsi</h1>
+            </div>
+            <div id="col-citta"  class="col-2" style="text-align: center;">
+                <h1 style="font-size:15px">Città</h1>
+            </div>
+            <div id="col-categorie"  class="col-3" style="text-align: center;">
+                <h1 style="font-size:15px">Categorie</h1>
+            </div>
+            <div id="col-account"  class="col-2" style="text-align: center;">
+                <h1 style="font-size:15px">Account</h1>
             </div>
         </div>
     </div>
