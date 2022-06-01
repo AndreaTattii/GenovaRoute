@@ -152,6 +152,37 @@ session_start();
                     }
                 });
             });
+
+            $("#col-percorsi").click(function() {
+                $.ajax({
+                    type: "POST",
+                    url: "cercaPercorsi.php",
+                    data: {
+                        query: $("input[name=ricerca]").val() 
+                    },
+                    success: function(data) {
+                        $("#content").html(data);
+                    }
+                });
+            });
+            $("input[name='ricerca']").keyup(function() {
+                $.ajax({
+                    type: "POST",
+                    url: "cercaPercorsi.php",
+                    data: {
+                        query: $("input[name=ricerca]").val()
+                    },
+                    success: function(data) {
+                        $("#content").html(data);
+
+                        $("#col-tappe").css("border-bottom", " none");
+                        $("#col-percorsi").css("border-bottom", "2px solid #b30000 ");
+                        $("#col-citta").css("border-bottom", "none");
+                        $("#col-categorie").css("border-bottom", "none");
+                        $("#col-account").css("border-bottom", "none");
+                    }
+                });
+            });
         });
     </script>
     
