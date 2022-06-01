@@ -123,63 +123,93 @@ session_start();
     <script>
         $(document).ready(function() {
             $("#col-tappe").click(function() {
-                $.ajax({
-                    type: "POST",
-                    url: "cercaTappe.php",
-                    data: {
-                        query: $("input[name=ricerca]").val() 
-                    },
-                    success: function(data) {
-                        $("#content").html(data);
-                    }
-                });
+                //css
+                $("#col-tappe").css("border-bottom", "2px solid #b30000");
+                $("#col-percorsi").css("border-bottom", "none");
+                $("#col-citta").css("border-bottom", "none");
+                $("#col-categorie").css("border-bottom", "none");
+                $("#col-account").css("border-bottom", "none");
             });
-            $("input[name='ricerca']").keyup(function() {
-                $.ajax({
-                    type: "POST",
-                    url: "cercaTappe.php",
-                    data: {
-                        query: $("input[name=ricerca]").val()
-                    },
-                    success: function(data) {
-                        $("#content").html(data);
-
-                        $("#col-tappe").css("border-bottom", "2px solid #b30000");
-                        $("#col-percorsi").css("border-bottom", "none");
-                        $("#col-citta").css("border-bottom", "none");
-                        $("#col-categorie").css("border-bottom", "none");
-                        $("#col-account").css("border-bottom", "none");
-                    }
-                });
-            });
-
+            
             $("#col-percorsi").click(function() {
-                $.ajax({
-                    type: "POST",
-                    url: "cercaPercorsi.php",
-                    data: {
-                        query: $("input[name=ricerca]").val() 
-                    },
-                    success: function(data) {
-                        $("#content").html(data);
-                    }
-                });
+                //css
+                $("#col-tappe").css("border-bottom", "none");
+                $("#col-percorsi").css("border-bottom", "2px solid #b30000");
+                $("#col-citta").css("border-bottom", "none");
+                $("#col-categorie").css("border-bottom", "none");
+                $("#col-account").css("border-bottom", "none");
             });
+
+            $("#col-citta").click(function() {
+                //css
+                $("#col-tappe").css("border-bottom", "none");
+                $("#col-percorsi").css("border-bottom", "none");
+                $("#col-citta").css("border-bottom", "2px solid #b30000");
+                $("#col-categorie").css("border-bottom", "none");
+                $("#col-account").css("border-bottom", "none");
+            });
+
+            $("#col-account").click(function() {
+                //css
+                $("#col-tappe").css("border-bottom", "none");
+                $("#col-percorsi").css("border-bottom", "none");
+                $("#col-citta").css("border-bottom", "none");
+                $("#col-categorie").css("border-bottom", "none");
+                $("#col-account").css("border-bottom", "2px solid #b30000");
+            });
+
+            $("#col-categorie").click(function() {
+                //css
+                $("#col-tappe").css("border-bottom", "none");
+                $("#col-percorsi").css("border-bottom", "none");
+                $("#col-citta").css("border-bottom", "none");
+                $("#col-categorie").css("border-bottom", "2px solid #b30000");
+                $("#col-account").css("border-bottom", "none");
+            });
+
             $("input[name='ricerca']").keyup(function() {
+                //prendi l'attributo border del css della colonna con id col-tappe e salvalo in una variabile
+                //var colTappe = $("#col-tappe").css("border-bottom");
+                //alert(colTappe);
+                if($("#col-tappe").css("border-bottom")!="0px none rgb(33, 37, 41)"){
+                    tipo="tappa";
+                    //alert("tappa");
+                }
+                else {
+                    if($("#col-percorsi").css("border-bottom")!="0px none rgb(33, 37, 41)"){
+                        tipo="percorso";
+                        //alert("percorso");
+                    }
+                    else {
+                        if($("#col-citta").css("border-bottom")!="0px none rgb(33, 37, 41)"){
+                            tipo="citta";
+                            //alert("citta");
+                        }
+                        else {
+                            if($("#col-categorie").css("border-bottom")!="0px none rgb(33, 37, 41)"){
+                                tipo="categoria";
+                                //alert("categoria");
+                            }
+                            else {
+                                if($("#col-account").css("border-bottom")!="0px none rgb(33, 37, 41)"){
+                                    tipo="utente";
+                                    //alert("account");
+                                }
+                            }
+                        }
+                    }
+                }
                 $.ajax({
                     type: "POST",
-                    url: "cercaPercorsi.php",
+                    url: "cercaTutto.php",
                     data: {
-                        query: $("input[name=ricerca]").val()
+                        query: $("input[name=ricerca]").val(),
+                        tipo: tipo
                     },
                     success: function(data) {
+                        //alert("successo");
+                        $("#content").html("");
                         $("#content").html(data);
-
-                        $("#col-tappe").css("border-bottom", " none");
-                        $("#col-percorsi").css("border-bottom", "2px solid #b30000 ");
-                        $("#col-citta").css("border-bottom", "none");
-                        $("#col-categorie").css("border-bottom", "none");
-                        $("#col-account").css("border-bottom", "none");
                     }
                 });
             });
