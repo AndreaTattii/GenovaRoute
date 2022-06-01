@@ -130,7 +130,7 @@ session_start();
                 $("#col-categorie").css("border-bottom", "none");
                 $("#col-account").css("border-bottom", "none");
             });
-            
+
             $("#col-percorsi").click(function() {
                 //css
                 $("#col-tappe").css("border-bottom", "none");
