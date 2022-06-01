@@ -164,13 +164,15 @@ if ($result = $connessione->query($sql)) {
                 <div class="col-7" style="text-align: center">
                     <!-- form per cambiare username -->
                     <form action="cambiaUsername.php" method="post">
-                        <input type="text" class="form-control" name="username" value="<?php echo $username; ?>" required>
+                        <input style="outline: none;"  type="text" class="form-control" name="username" value="<?php echo $username; ?>" required>
                 </div>
                 <div class="col-2">
                     <button style="background-color: #B30000; border:1px solid black;" type="submit" class="btn btn-primary">✏</button>
                     </form>
                 </div>
             </div>
+
+
             <div class="row">
                 <div class="col-3" style="padding-top: 5px;">
                     <b>
@@ -180,13 +182,15 @@ if ($result = $connessione->query($sql)) {
                 <div class="col-7" style="text-align: center">
                     <!-- form per cambiare username -->
                     <form action="cambiaNome.php" method="post">
-                        <input type="text" class="form-control" name="nome" value="<?php echo $nome; ?>" maxlenght="8" required>
+                        <input style="outline: none;" type="text" class="form-control" name="nome" value="<?php echo $nome; ?>" maxlenght="8" required>
                 </div>
                 <div class="col-2">
                     <button style="background-color: #B30000; border:1px solid black;" type="submit" class="btn btn-primary">✏</button>
                     </form>
                 </div>
             </div>
+
+
             <div class="row">
                 <div class="col-3" style="padding-top: 5px;">
                     <b>
@@ -195,14 +199,16 @@ if ($result = $connessione->query($sql)) {
                 </div>
                 <div class="col-7" style="text-align: center">
                     <!-- form per cambiare username -->
-                    <form action="cambiaCognome.php" method="post">
-                        <input type="text" class="form-control" name="cognome" value="<?php echo $cognome; ?>" maxlenght="8" required>
+                    <form action="cambiaCognome.php" method="post" style="outline: none;" >
+                        <input style="outline:none;"  type="text" class="form-control" name="cognome" value="<?php echo $cognome; ?>" maxlenght="8" required>
                 </div>
                 <div class="col-2">
                     <button style="background-color: #B30000; border:1px solid black;" type="submit" class="btn btn-primary">✏</button>
                     </form>
                 </div>
             </div>
+
+            
             <br>
             <div class="row">
                 <div class="col-6" style="text-align:center;">

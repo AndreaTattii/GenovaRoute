@@ -28,6 +28,8 @@ session_start();
 
     <title>Genova Route</title>
     <link rel="icon" href="img/g.png" type="image/icon type">
+
+    
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -88,7 +90,7 @@ session_start();
                 <img id="account" src="../../img/icons/searchBlackBold.png" style="width:20px">    
             </div>
             <div class="col-11" >
-                <input style="width: 100%; border:none; background-color:#EFEFEF;" value="" name="ricerca" id="query" type="text" placeholder="Cerca">
+                <input  style="width: 100%; border:none; background-color:#EFEFEF; outline:none;" value="" name="ricerca" id="query" type="text" placeholder="Cerca">
             </div>
         </div>
 
