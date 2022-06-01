@@ -96,19 +96,19 @@ session_start();
 
         <div class="row justify-content-center align-items-center" style=" height:30px; border-radius: 25px; margin-top:10px;">
             <div id="col-tappe" class="col-2" style="text-align: center;  border-bottom:2px solid #b30000;">
-                <h1 style="font-size:15px">Tappe</h1>
+                <h1 style="font-size:13px">Tappe</h1>
             </div>
-            <div id="col-percorsi"  class="col-2" style="text-align: center; border-bottom:none;">
-                <h1 style="font-size:15px">Percorsi</h1>
+            <div id="col-percorsi"  class="col-3" style="text-align: center; border-bottom:none;">
+                <h1 style="font-size:13px">Percorsi</h1>
             </div>
             <div id="col-citta"  class="col-2" style="text-align: center; border-bottom:none;">
-                <h1 style="font-size:15px">Città</h1>
+                <h1 style="font-size:13px">Città</h1>
             </div>
             <div id="col-categorie"  class="col-3" style="text-align: center; border-bottom:none;">
-                <h1 style="font-size:15px">Categorie</h1>
+                <h1 style="font-size:13px">Categorie</h1>
             </div>
             <div id="col-account"  class="col-2" style="text-align: center; border-bottom:none;">
-                <h1 style="font-size:15px">Account</h1>
+                <h1 style="font-size:13px">Account</h1>
             </div>
         </div>
         
@@ -129,6 +129,20 @@ session_start();
                 $("#col-citta").css("border-bottom", "none");
                 $("#col-categorie").css("border-bottom", "none");
                 $("#col-account").css("border-bottom", "none");
+
+                $.ajax({
+                    type: "POST",
+                    url: "cercaTutto.php",
+                    data: {
+                        query: $("input[name=ricerca]").val(),
+                        tipo: "tappa"
+                    },
+                    success: function(data) {
+                        //alert("successo");
+                        $("#content").html("");
+                        $("#content").html(data);
+                    }
+                });
             });
 
             $("#col-percorsi").click(function() {
@@ -138,6 +152,20 @@ session_start();
                 $("#col-citta").css("border-bottom", "none");
                 $("#col-categorie").css("border-bottom", "none");
                 $("#col-account").css("border-bottom", "none");
+
+                $.ajax({
+                    type: "POST",
+                    url: "cercaTutto.php",
+                    data: {
+                        query: $("input[name=ricerca]").val(),
+                        tipo: "percorso"
+                    },
+                    success: function(data) {
+                        //alert("successo");
+                        $("#content").html("");
+                        $("#content").html(data);
+                    }
+                });
             });
 
             $("#col-citta").click(function() {
@@ -147,6 +175,20 @@ session_start();
                 $("#col-citta").css("border-bottom", "2px solid #b30000");
                 $("#col-categorie").css("border-bottom", "none");
                 $("#col-account").css("border-bottom", "none");
+
+                $.ajax({
+                    type: "POST",
+                    url: "cercaTutto.php",
+                    data: {
+                        query: $("input[name=ricerca]").val(),
+                        tipo: "citta"
+                    },
+                    success: function(data) {
+                        //alert("successo");
+                        $("#content").html("");
+                        $("#content").html(data);
+                    }
+                });
             });
 
             $("#col-account").click(function() {
@@ -156,6 +198,20 @@ session_start();
                 $("#col-citta").css("border-bottom", "none");
                 $("#col-categorie").css("border-bottom", "none");
                 $("#col-account").css("border-bottom", "2px solid #b30000");
+
+                $.ajax({
+                    type: "POST",
+                    url: "cercaTutto.php",
+                    data: {
+                        query: $("input[name=ricerca]").val(),
+                        tipo: "utente"
+                    },
+                    success: function(data) {
+                        //alert("successo");
+                        $("#content").html("");
+                        $("#content").html(data);
+                    }
+                });
             });
 
             $("#col-categorie").click(function() {
@@ -165,6 +221,20 @@ session_start();
                 $("#col-citta").css("border-bottom", "none");
                 $("#col-categorie").css("border-bottom", "2px solid #b30000");
                 $("#col-account").css("border-bottom", "none");
+
+                $.ajax({
+                    type: "POST",
+                    url: "cercaTutto.php",
+                    data: {
+                        query: $("input[name=ricerca]").val(),
+                        tipo: "categorie"
+                    },
+                    success: function(data) {
+                        //alert("successo");
+                        $("#content").html("");
+                        $("#content").html(data);
+                    }
+                });
             });
 
             $("input[name='ricerca']").keyup(function() {

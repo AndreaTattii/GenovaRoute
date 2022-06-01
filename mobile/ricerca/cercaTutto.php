@@ -51,18 +51,33 @@
                 ';
                 }
                 else{
-                    echo '
-                    <div class="row" style="height:60px;  margin-top:10px; width:100%">
-                        <div class="col-3" style="margin-left:10px">
-                            <img style="width:50px;height:50px; border-radius: 50%" src="../../img/'.$cartellaImmagine.'/'.$row['id'].''.$indiceImmagine.'">
-                        </div>
-                        <div class="col-8">
-                            <h2 style=" font-size: 17px; color: #b30000; font-weight: bold; text-align: left; padding-top:10px; padding-bottom:10px">'.$row['nome'].'</h2>
-                        </div>
-                    </div>                    
-                    ';
+                    if($tipo=="citta"){
+                        echo '
+                        <div class="row" style="height:60px;  margin-top:10px; width:100%">
+                            <div class="col-3" style="margin-left:10px">
+                                <img style="width:40px;height:40px; border-radius: 50%" src="../../img/icons/marker.png">
+                            </div>
+                            <div class="col-8">
+                                <h2 style=" font-size: 17px; color: #b30000; font-weight: bold; text-align: left; padding-top:10px; padding-bottom:10px">'.$row['nome'].'</h2>
+                            </div>
+                        </div>                   
+                    ';       
+                    }
+                    else{
+                        echo '
+                        <div class="row" style="height:60px;  margin-top:10px; width:100%">
+                            <div class="col-3" style="margin-left:10px">
+                                <img style="width:50px;height:50px; border-radius: 50%" src="../../img/'.$cartellaImmagine.'/'.$row['id'].''.$indiceImmagine.'">
+                            </div>
+                            <div class="col-8">
+                                <h2 style=" font-size: 17px; color: #b30000; font-weight: bold; text-align: left; padding-top:10px; padding-bottom:10px">'.$row['nome'].'</h2>
+                            </div>
+                        </div>                    
+                        ';
+                    }
                 }
                 $i++;
+            
             }
             echo "<br><br><br><br>";
 

@@ -140,9 +140,7 @@ $percentuale=number_format($percentuale,0);
                     }
                     else{
                 ?>
-                <a class="navbar-brand" href="search.php">
-                    <img id="setting" src="../../img/icons/utenti.png">
-                </a>
+
                 <?php
                 }
                 ?>
