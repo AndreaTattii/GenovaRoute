@@ -227,7 +227,7 @@ session_start();
                     url: "cercaTutto.php",
                     data: {
                         query: $("input[name=ricerca]").val(),
-                        tipo: "categorie"
+                        tipo: "categoria"
                     },
                     success: function(data) {
                         //alert("successo");

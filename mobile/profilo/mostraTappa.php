@@ -154,10 +154,33 @@ if ($connessione === false) {
                 $anno = $giornoMeseAnno[0];
                 $mese = $giornoMeseAnno[1];
                 $giorno = $giornoMeseAnno[2];
+                
+                //UTENTE HA COMMENTATO?
+                $commentato = false;
+                if($row['commento'] != null){
+                    $commentato = true;
+                }
 
+
+                // CATTURO USERNAME
+                $sql2 = "SELECT username FROM utente
+                        WHERE email = '" . $email. "'
+                    ";
+                if ($result2 = $connessione->query($sql2)) {
+                    if ($result2->num_rows > 0) {
+                        if($row2 = $result2->fetch_assoc()){
+                            $username = $row2['username'];
+                        }
+                    }
+                }else{
+                    echo "Impossibile eseguire la query: $sql2. " . $connessione->error;
+
+                }
+                
+                
                 // UTENTE HA VIUALIZZATO?
                 $sql2 = "SELECT * FROM utente_percorre_tappa
-                        WHERE email = '" . $_SESSION['email'] . "'
+                        WHERE email = '" . $email . "'
                         AND id_tappa = ".$row['id']."
                     ";
                 $visitata = false;
@@ -172,7 +195,7 @@ if ($connessione === false) {
 
                  //CONTROLLO SE UTENTE HA MESSO MI PIACE A TAPPA
                 $sql2 = "SELECT * FROM utente_percorre_tappa
-                        WHERE email = '" . $_SESSION['email'] . "'
+                        WHERE email = '" . $email . "'
                             AND id_tappa = ".$row['id']."
                             AND piace = 1";
                 $piace = "../../img/icons/cuoreVuoto.png";
@@ -283,18 +306,29 @@ if ($connessione === false) {
                             </div>
                             ';
                         }
-                       echo '<div id="gestureZone" class="card-body" style="text-align: center; border:none; ">
-                            <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
-                            <p class="card-text" style="text-align:justify; border:none; margin-top:none; "><b>Piace a:</b>  ' . $nMiPiace . ' ' . $persona . '</p>
 
-                            <p class="card-text" style="text-align:justify; border:none;"><b>' . $row['nome'] . ':</b>  ' . $row['descrizione'] . '</p>
-                            <p style="text-align:justify; border:none; color:#808080;">' . $giorno . '/' . $mese . '/' . $anno . '</p>
-                        </div>
+                        echo '
+                            <div id="gestureZone" class="card-body" style="text-align: center; border:none; ">
+                                <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
+                                <p class="card-text" style="text-align:justify; border:none; margin-top:none; "><b>Piace a:</b>  ' . $nMiPiace . ' ' . $persona . '</p>
+                        ';
+                               
+                        if($commentato){
+                            echo'    <p class="card-text" style="text-align:justify; border:none;"><b>' . $username. ':</b>  ' . $row['commento'] . '</p> ';
+                        }else{
+                            echo'    <p class="card-text" style="text-align:justify; border:none;"><b>' . $row['nome']. ':</b>  ' . $row['descrizione'] . '</p> ';
+
+                        }
                         
-                        <br>
-                        <br>
                         
-                    ';
+                        echo '
+                                <p style="text-align:justify; border:none; color:#808080;">' . $giorno . '/' . $mese . '/' . $anno . '</p>
+                            </div>
+                        
+                            <br>
+                            <br>
+                        
+                        ';
             }
         } else {
         }

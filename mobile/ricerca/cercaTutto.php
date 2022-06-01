@@ -27,13 +27,15 @@
         
 
     }
+
+    
     
     $sql = "SELECT * FROM ".$tipo." WHERE nome LIKE '%$search%'";
     //echo $sql;
     if ($result = $connessione->query($sql)) {
         if ($result->num_rows > 0) {
             $i=0;
-            while (($row = $result->fetch_array()) && ($i<10)) { 
+            while (($row = $result->fetch_array()) && ($i<13)) { 
                 //echo $tipo;
                 if($tipo=="utente"){
                     $cartellaImmagine="propics";
@@ -64,16 +66,29 @@
                     ';       
                     }
                     else{
-                        echo '
-                        <div class="row" style="height:60px;  margin-top:10px; width:100%">
-                            <div class="col-3" style="margin-left:10px">
-                                <img style="width:50px;height:50px; border-radius: 50%" src="../../img/'.$cartellaImmagine.'/'.$row['id'].''.$indiceImmagine.'">
-                            </div>
-                            <div class="col-8">
-                                <h2 style=" font-size: 17px; color: #b30000; font-weight: bold; text-align: left; padding-top:10px; padding-bottom:10px">'.$row['nome'].'</h2>
-                            </div>
-                        </div>                    
-                        ';
+                        if($tipo == "categoria"){
+                            echo '
+                                <div class="row" style="height:60px;  margin-top:10px; width:100%">
+                                    
+                                    <div class="col-8">
+                                        <h2 style=" font-size: 17px; color: #b30000; font-weight: bold; text-align: left; padding-top:10px; padding-bottom:10px">'.$row['nome'].'</h2>
+                                    </div>
+                                </div>                   
+                            '; 
+                        }
+                        else{
+                            echo '
+                            <div class="row" style="height:60px;  margin-top:10px; width:100%">
+                                <div class="col-3" style="margin-left:10px">
+                                    <img style="width:50px;height:50px; border-radius: 50%" src="../../img/'.$cartellaImmagine.'/'.$row['id'].''.$indiceImmagine.'">
+                                </div>
+                                <div class="col-8">
+                                    <h2 style=" font-size: 17px; color: #b30000; font-weight: bold; text-align: left; padding-top:10px; padding-bottom:10px">'.$row['nome'].'</h2>
+                                </div>
+                            </div>                    
+                            ';
+                        }
+                        
                     }
                 }
                 $i++;
