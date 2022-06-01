@@ -111,8 +111,28 @@ session_start();
         </div>
     </div>
 
+    <div id="content"></div>
     
-
+    <script>
+        $(document).ready(function() {
+            $("#col-tappe").click(function() {
+                $.ajax({
+                    url: "cercaTappe.php",
+                    success: function(result) {
+                        $("#content").html(result);
+                    }
+                });   
+            });
+            $("#col-percrosi").click(function() {
+            });
+            $("#col-citta").click(function() {
+            });
+            $("#col-categorie").click(function() {
+            });
+            $("#col-account").click(function() {
+            });
+        });
+    </script>
     
 </body>
 
