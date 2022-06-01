@@ -1,7 +1,8 @@
 <?php
     session_start();
-
-    $risultato=$_POST['risultato'];
+    //decommenta questa riga se vuoi testare l'altro scanner
+    //$risultato=$_POST['risultato'];
+    $risultato=$_GET['risultato'];
 
     //$risultato contiene il risultato della scansione, cioè due numeri separati da un .
     //Il primo numero è il numero del percorso, il secondo è il numero della tappa
