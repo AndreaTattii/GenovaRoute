@@ -95,19 +95,19 @@ session_start();
         </div>
 
         <div class="row justify-content-center align-items-center" style=" height:30px; border-radius: 25px; margin-top:10px;">
-            <div id="col-tappe" class="col-2" style="text-align: center;">
+            <div id="col-tappe" class="col-2" style="text-align: center;  border-bottom:2px solid #b30000;">
                 <h1 style="font-size:15px">Tappe</h1>
             </div>
-            <div id="col-percrosi"  class="col-2" style="text-align: center;">
+            <div id="col-percorsi"  class="col-2" style="text-align: center; border-bottom:none;">
                 <h1 style="font-size:15px">Percorsi</h1>
             </div>
-            <div id="col-citta"  class="col-2" style="text-align: center;">
+            <div id="col-citta"  class="col-2" style="text-align: center; border-bottom:none;">
                 <h1 style="font-size:15px">Città</h1>
             </div>
-            <div id="col-categorie"  class="col-3" style="text-align: center;">
+            <div id="col-categorie"  class="col-3" style="text-align: center; border-bottom:none;">
                 <h1 style="font-size:15px">Categorie</h1>
             </div>
-            <div id="col-account"  class="col-2" style="text-align: center;">
+            <div id="col-account"  class="col-2" style="text-align: center; border-bottom:none;">
                 <h1 style="font-size:15px">Account</h1>
             </div>
         </div>
@@ -138,6 +138,12 @@ session_start();
                     },
                     success: function(data) {
                         $("#content").html(data);
+
+                        $("#col-tappe").css("border-bottom", "2px solid #b30000");
+                        $("#col-percorsi").css("border-bottom", "none");
+                        $("#col-citta").css("border-bottom", "none");
+                        $("#col-categorie").css("border-bottom", "none");
+                        $("#col-account").css("border-bottom", "none");
                     }
                 });
             });
