@@ -19,10 +19,15 @@ CREATE TABLE IF NOT EXISTS citta(
     y varchar(255)
 );
 
+CREATE TABLE IF NOT EXISTS categoria(
+    nome varchar(255) PRIMARY KEY
+);
+
 CREATE TABLE IF NOT EXISTS Tappa(
 	id int PRIMARY KEY AUTO_INCREMENT,
     nome varchar(255) UNIQUE NOT NULL,
     descrizione mediumtext NOT NULL,
+    categoria varchar(255) NOT NULL REFERENCES Categoria(nome),
     citta varchar(255) NOT NULL REFERENCES citta(nome),
     via varchar(255) NOT NULL,
     lon varchar(255),
@@ -58,6 +63,27 @@ CREATE TABLE IF NOT EXISTS Tappa_Appartiene_Percorso(
     ordine int NOT NULL,
     PRIMARY KEY (id_tappa, id_percorso)
 );
+
+INSERT INTO categoria (nome ) VALUES
+('Ristorante'),
+('Bar'),
+('Cinema'),
+('Spiaggia'),
+('Museo'),
+('Parco'),
+('Piscina'),
+('Piazza'),
+('Mare'),
+('Fontana'),
+('Castello'),
+('Chiesa'),
+('Cattedrale'),
+('Basilica'),
+('Acquario'),
+("Galleria d'arte"),
+('Monumento'),
+('Ponte'),
+('Altro'); 
 
 
 INSERT INTO citta (nome, y, x) VALUES
@@ -255,7 +281,7 @@ INSERT INTO Percorso (nome, descrizione) VALUES ('Visita a Dublino', 'Percorso p
 INSERT INTO Percorso (nome, descrizione) VALUES ('Chiese di Dublino', 'Percorso per le chiese di Dublino');
 
  
-INSERT INTO Tappa (nome, descrizione, citta, via,  lat, lon) 
+INSERT INTO Tappa (nome, descrizione, categoria,citta, via,  lat, lon) 
     VALUES (
             'Arco della Vittoria', 
             "
@@ -263,24 +289,26 @@ INSERT INTO Tappa (nome, descrizione, citta, via,  lat, lon)
                 La commissione giudicatrice scelse nella seconda fase - dai sedici progetti pervenuti - la bozza dell'architetto Marcello Piacentini (architetto che realizzò parecchie opere per il regime) e dello scultore Arturo Dazzi perché, come commentò la commissione, nel progetto si valorizzarono gli elementi architettonici della Roma Imperiale e del Cinquecento dando al monumento una forte funzione commemorativa eroica e trionfale.
                 Il disegno originale del 1924 venne poi modificato dallo stesso Piacentini due anni dopo, rendendo il monumento ad arco più semplice e asciutto. Le opere per la costruzione del monumento furono eseguite dall'azienda locale 'Impresa Garbarino e Sciaccaluga, dirette personalmente dall'architetto Piacentini.
             ", 
+            'Monumento',
             'Genova',
             'Piazza della Vittoria', 
             '44.403077306694875',
             '8.944978513772323'
     );
-INSERT INTO Tappa (nome, descrizione, citta, via,  lat, lon) 
+INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
     VALUES (
             'Ponte monumentale', 
             "  
                 Il Ponte Monumentale è un'imponente costruzione in marmo, edificata nel 1895 dove prima sorgeva la Porta d'Arco delle Mura Nuove; il progetto fu presentato nel 1890 dall'ingegnere Cesare Gamba e dagli architetti Ronco e Haupt.
                 Il Ponte attraversa in senso longitudinale via XX Settembre ed è alto 21 metri, la struttura portante è costituita da un grande arco di mattoni, le arcate sottostanti sono sorrette da colonne in marmo sulle quali è posta una decorazione scultorea in pietra.
             ", 
+            'Monumento',
             'Genova',
             "Corso Andrea Podesta'",
             '44.40591531858697', 
             '8.939335738048305'
     );
-INSERT INTO Tappa (nome, descrizione, citta, via, lat, lon) 
+INSERT INTO Tappa (nome, descrizione, categoria, citta, via, lat, lon) 
     VALUES (
             'Fontana de Ferrari', 
             "
@@ -288,33 +316,36 @@ INSERT INTO Tappa (nome, descrizione, citta, via, lat, lon)
                 Fin dai primi anni sorse il problema di come arredare il centro della piazza per permettere la realizzazione di una rotatoria intorno alla quale incanalare i veicoli provenienti dalle varie direzioni. Venne inizialmente realizzata una grande aiuola con palmizi, ma la soluzione non risultò convincente e agli inizi degli anni trenta l'architetto Giuseppe Crosa di Vergagni fu incaricato di ideare una nuova sistemazione.
                 Il progetto di Crosa di Vergagni prevedeva una grande fontana costituita da una vasca centrale in bronzo posizionata al centro di una serie di vasche concentriche rivestite in travertino. Il bacile in bronzo fu donato alla citta dall'ingegnere Carlo Piaggio per esaudire il desiderio testamentario del padre - il banchiere e armatore Erasmo Piaggio - di lasciare qualcosa di duraturo in dono alla citta. La vasca venne fusa negli stabilimenti Tirreno di Genova-Le Grazie e trasportata in Piazza De Ferrari il 23 aprile 1936. Il trasporto del manufatto si rivelò particolarmente impegnativo perché la vasca, composta da un unico elemento di 11 metri di diametro e 36 tonnellate di peso, non poteva passare tra i vicoli del centro storico genovese. Il bacile fu quindi caricato su un pontone e trainato fino alla zona della Foce, da dove un trattore lo trasportò lungo il futuro Viale Brigate Partigiane e Via XX Settembre fino alla sua destinazione finale.
             ", 
+            'Fontana',
             'Genova',
             'Piazza Raffaele de Ferrari', 
             '44.40712785099835', 
             '8.934016640162541'
     );
-INSERT INTO Tappa (nome, descrizione, citta, via,  lat, lon) 
+INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
     VALUES (
             'Cattedrale di San Lorenzo', 
             "
                 È stata consacrata al santo il 10 ottobre del 1118 da papa Gelasio II quando ne esistevano solo l'altare e una zona circostante, riservata alla preghiera, ma nessuna struttura in elevato. Nel corso del XII secolo fu costruita, ma ancora nel terzo quarto del secolo restava incompiuta e priva di una facciata vera e propria.
                 Una prima basilica vi sorse intorno al VI-VII secolo[3] Una leggenda vuole che in citta si siano fermati San Lorenzo e papa Sisto II, diretti in Spagna, venendo ospitati in una casa sita nella zona dell'attuale cattedrale, dove, dopo la loro uccisione, sarebbero sorte una cappella e poi una chiesa dedicate al santo.
             ", 
+            'Cattedrale'
             'Genova',
             'Piazza San Lorenzo', 
             '44.40763134514167', 
             '8.931458789833469'
             );
-INSERT INTO Tappa (nome, descrizione, citta, via,  lat, lon) 
+INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
     VALUES (
             'Ombre Rosse', 
             'Ottimo ristorante con piatti tipici genovesi', 
+            'ristorante',
             'Genova',
             'Vico degli Indoratori', 
             '44.4086854746386', 
             '8.931197246472893'
     );
-INSERT INTO Tappa (nome, descrizione, citta, via,  lat, lon) 
+INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
     VALUES (
             'Acquario di Genova', 
             "
@@ -322,11 +353,12 @@ INSERT INTO Tappa (nome, descrizione, citta, via,  lat, lon)
                 Il percorso di 2 ore e 30 minuti comprende 39 vasche cui si aggiungono le 4 a cielo aperto del Padiglione Cetacei inaugurato nell'estate del 2013. La superficie totale della struttura è di 27 000 metri quadrati. Le vasche ospitano circa 15 000 animali di 400 specie diverse tra pesci, mammiferi marini, uccelli, rettili, anfibi, invertebrati in ambienti che riproducono quelli originari delle singole specie con evidenti finalità didattiche.
             ", 
             'Genova',
+            'acquario',
             'Porto Antico, Molo Ponte Calvi', 
             '44.41020428824749', 
             '8.92666193224689'
     );
-INSERT INTO Tappa (nome, descrizione, citta, via,  lat, lon)
+INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon)
      VALUES (
             'Palazzo Doria Tursi', 
             "
@@ -336,15 +368,17 @@ INSERT INTO Tappa (nome, descrizione, citta, via,  lat, lon)
                 A seguito dell'annessione della Repubblica di Genova nel Regno di Sardegna, fu acquistato da Vittorio Emanuele I di Savoia nel 1820, ed in tale occasione ristrutturato dall'architetto di corte Carlo Randoni, cui è dovuta la costruzione della torretta dell'orologio.
                 Dal 1848 è sede del municipio genovese.
             ",
+            'Palazzo',
             'Genova',
              'Via Garibaldi', 
              '44.411243317284956', 
              '8.932595267635298'
     );
-INSERT INTO Tappa (nome, descrizione, citta, via,  lat, lon) 
+INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
     VALUES (    
             'Pesciolino', 
             'Ristorante di buonissimo pesce genovese', 
+            'ristorante',
             'Genova',
             'Vico Domoculta', 
             '44.409211995678156', 

@@ -100,9 +100,7 @@ session_start();
     <br>
     <br>
     <br>
-        <div style="margin:0;display: flex; justify-content: center;">
-            <input style="text-align:center; margin:0;" type="text" placeholder="Cerca un percorso..." name="ricerca" id="Logo">
-        </div>
+        
         
         <?php
         
@@ -294,20 +292,7 @@ session_start();
                     });
                 }
             });
-            $("input[name='ricerca']").keyup(function() {
-                $.ajax({
-                    type: "POST",
-                    url: "suggestions.php",
-                    data: {
-                        query: $("input[name=ricerca]").val()
-                    },
-                    success: function(data) {
-                        $("#contenuto").html(data);
-                        //nascondi il div con id mostra
-                        $("#mostra").hide();
-                    }
-                });
-            });
+            
 
         });
     </script>
