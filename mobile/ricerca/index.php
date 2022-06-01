@@ -83,16 +83,16 @@ session_start();
 
     <!-- NAVBAR ALTA -->
     <div class="container fixed-top">
-        <div   class="row justify-content-center align-items-center" style="background-color:#EFEFEF; height:40px; border-radius: 25px; margin-top:10px;">
+        <div class="row justify-content-center align-items-center" style="background-color:#EFEFEF; height:40px; border-radius: 25px; margin-top:10px;">
             <div class="col-1" style="text-align: center;">
                 <img id="account" src="../../img/icons/searchBlackBold.png" style="width:20px">    
             </div>
             <div class="col-11" >
-                <input style="width: 100%; border:none; background-color:#EFEFEF;" type="text" placeholder="Cerca">
+                <input style="width: 100%; border:none; background-color:#EFEFEF;" value="" name="ricerca" id="query" type="text" placeholder="Cerca">
             </div>
         </div>
 
-        <div   class="row justify-content-center align-items-center" style=" height:30px; border-radius: 25px; margin-top:10px;">
+        <div class="row justify-content-center align-items-center" style=" height:30px; border-radius: 25px; margin-top:10px;">
             <div id="col-tappe" class="col-2" style="text-align: center;">
                 <h1 style="font-size:15px">Tappe</h1>
             </div>
@@ -109,27 +109,42 @@ session_start();
                 <h1 style="font-size:15px">Account</h1>
             </div>
         </div>
+        <div id="content">
+        </div>
     </div>
-
-    <div id="content"></div>
     
     <script>
         $(document).ready(function() {
             $("#col-tappe").click(function() {
                 $.ajax({
+                    type: "POST",
                     url: "cercaTappe.php",
-                    success: function(result) {
-                        $("#content").html(result);
+                    data: {
+                        query: $("input[name=ricerca]").val() 
+                    },
+                    success: function(data) {
+                        $("#content").html(data);
                     }
-                });   
+                });
             });
-            $("#col-percrosi").click(function() {
-            });
-            $("#col-citta").click(function() {
-            });
-            $("#col-categorie").click(function() {
-            });
-            $("#col-account").click(function() {
+            $("input[name='ricerca']").keyup(function() {
+                $.ajax({
+                    type: "POST",
+                    if() { //qui controllare se è attivata una colonna
+                        url: "cercaTappe.php",
+                    } else{
+                        if(){
+                            url: "cercaTappe.php",
+                        }
+                    }
+                    url: "suggestions.php",
+                    data: {
+                        query: $("input[name=ricerca]").val()
+                    },
+                    success: function(data) {
+                        $("#content").html(data);
+                    }
+                });
             });
         });
     </script>

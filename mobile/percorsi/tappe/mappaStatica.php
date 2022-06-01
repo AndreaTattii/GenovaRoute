@@ -170,22 +170,16 @@ $connessione = new mysqli($host, $user, $pass, $database);
                         {
                             icon: Icon".$row["ordine"]."
                         }
-                        ).addTo(map)   
-                        .bindPopup('".$row["nome"]."')
+                        ).addTo(map).on('click', onClick)   
+                        .bindPopup('".$row["nome"]."');
                         ";
                 }
             }
-            
             ?>
+            function onClick(e) { 
+                //alert(this.getLatLng());
+                //stampa il valore contenuto nell'attributo id del marker cliccato
+            }
         </script>
-    
-    
-
-   
-
-
-
-
-
 </body>
 </html>

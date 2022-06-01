@@ -330,11 +330,11 @@ if ($connessione === false) {
                 var idTappa = $(this).attr("id");
                 //alert(idPercorso);
                 var id = $(this).attr("id");
-                var cuore = $(this).attr("src");
+                var img = $(this).attr("src");
                 var cuorePieno = "../../img/icons/cuorePieno.png";
                 var cuoreVuoto = "../../img/icons/cuoreVuoto.png";
                 var url = "";
-                if (cuore == cuorePieno) {
+                if (img == cuorePieno) {
                     url = "rimuoviLike.php";
                 } else {
                     url = "aggiungiLike.php";
@@ -346,10 +346,10 @@ if ($connessione === false) {
                         idTappa: idTappa
                     },
                     success: function (data) {
-                        if (cuore == cuorePieno) {
-                            $(".cuore").attr("src", cuoreVuoto);
+                        if (img == cuorePieno) {
+                            $(this).attr("src", cuoreVuoto);
                         } else {
-                            $(".cuore").attr("src", cuorePieno);
+                            $(this).attr("src", cuorePieno);
                         }
                     }
                 });
