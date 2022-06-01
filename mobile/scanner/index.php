@@ -3,14 +3,12 @@
 <html lang="en">
 
 <head>
-    <script src="html5-qrcode.min.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
     <link rel='stylesheet' href='global.css'>
     <link rel='stylesheet' href='bundle.css'>
-    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/3.3.3/adapter.min.js"></script>
+    <script defer src='bundle.js'></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,10 +30,11 @@
     <link rel="icon" href="img/g.png" type="image/icon type">
 </head>
 
-<body style="background-color:black; overflow-y: hidden;" class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100" onload="submitform()">
 
 
-        <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-left-radius: 25px;border-top-right-radius: 25px; border-top-width: 1px; height: 50px;">
+    <!-- NAVBAR -->
+    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-left-radius: 25px;border-top-right-radius: 25px; border-top-width: 1px; height: 50px;">
             <div class="row  justify-content-center" >
                 <div class="col s-3" style="padding-top:10px">
                     <center>
@@ -84,30 +83,10 @@
 
     </div>
 
-
-    <div class="container fixed-top">
-        <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px;">
-
-            <div class="col-2">
-
-            </div>
-            <div class="col-8">
-                <h1 style=" color: white; font-weight: bold; text-align: center;  font-size: 17px;">Scanner</h1>
-            </div>
-            <div class="col-2">
-
-            </div>
-        </div>
-    </div>
-
-    <div>
-        <video style="width:100%;height:100%;"id="preview" style="object-fit: cover;" autoplay="autoplay" class="inactive"></video>
-        <!-- put the img of the square in the center of the video on the layer above -->
-        <div>
-        <img id="square" src="../../img/Qrc.png" style="width:100%;position: absolute; top: 50%; left: 50%; margin-top: -160px; margin-left: -180px;">
-        </div>
-    </div> 
+    
     <!-- LOGO -->
+    
+
 
     <!-- TITOLO PAGINA -->
     <!-- <br>
@@ -116,61 +95,19 @@
             <h1 style="color: #B30000;">Scanner<h1>
         </center>
     </div> -->
-    <form method="POST" action="fakeForm.php" id="form">
-        <input type="hidden" name="risultato" id="id" value="">
-    </form>
+    
 
     <!-- CONTENUTO PAGINA -->
+
     <script>
-        let scanner = new Instascan.Scanner(
-        {
-            video:document.getElementById('preview'),
-            mirror: false
-            
-        });
-        Instascan.Camera.getCameras().then(function(cameras)
-        {
-            if(cameras.length > 0)
-            {
-                //seleziona la fotocamera posteriore del telefono
-                scanner.start(cameras[1]);
+        window.addEventListener("orientationchange", function() {
+            if (window.orientation == 90 || window.orientation == -90) {
+                alert("Gira lo schermo in verticale!!!")
+                //window.orientation = 0;
+                //document.getElementById("orientation").style.display = "none";
+                //window.location.reload();
             }
-            else
-            {
-                alert("No cameras found");
-            }
-        }).catch(function(e)
-        {
-            console.error(e);
         });
-        scanner.addListener('scan',function(c)
-        {
-            var a=c;
-            //alert(a);
-            document.getElementById("id").value=a;
-            document.getElementById("form").submit();
-            //pass with a get request tha value of the qr code
-            //window.location.href = 'fakeForm.php?risultato='c';
-
-        });
-
-
-        
-    </script>
-    <script>
-        //window.addEventListener("orientationchange", function() {
-        //    if (window.orientation == 90 || window.orientation == -90) {
-        //        alert("Gira lo schermo in verticale!!!")
-        //        //window.orientation = 0;
-        //        //document.getElementById("orientation").style.display = "none";
-        //        //window.location.reload();
-        //    }
-        //});
-        
-        if ( window.history.replaceState ) 
-        {
-        window.history.replaceState( null, null, window.location.href );
-        }    
     </script>
 </body>
 
