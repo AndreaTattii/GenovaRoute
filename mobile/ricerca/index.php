@@ -36,7 +36,7 @@ session_start();
 
 
         <!-- NAVBAR BASSA -->
-        <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-left-radius: 25px;border-top-right-radius: 25px; border-top-width: 1px; height: 50px;">
+    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-left-radius: 25px;border-top-right-radius: 25px; border-top-width: 1px; height: 50px;">
         <div class="row  justify-content-center" >
             <div class="col s-3" style="padding-top:10px">
                 <center>
@@ -84,7 +84,7 @@ session_start();
 
 
     <!-- NAVBAR ALTA -->
-    <div class="container fixed-top">
+    <div class="container fixed-top" style="background-color: white;">
         <div class="row justify-content-center align-items-center" style="background-color:#EFEFEF; height:40px; border-radius: 25px; margin-top:10px;">
             <div class="col-1" style="text-align: center;">
                 <img id="account" src="../../img/icons/searchBlackBold.png" style="width:20px">    
@@ -111,10 +111,15 @@ session_start();
                 <h1 style="font-size:15px">Account</h1>
             </div>
         </div>
-        <div id="content">
-        </div>
+        
     </div>
-    
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="content">
+            
+    </div>
     <script>
         $(document).ready(function() {
             $("#col-tappe").click(function() {
