@@ -328,12 +328,9 @@ if ($connessione === false) {
 
             $(".cuore").click(function(){
                 var idTappa = $(this).attr("id");
-                //alert(idPercorso);
-                var id = $(this).attr("id");
                 var img = $(this).attr("src");
                 var cuorePieno = "../../img/icons/cuorePieno.png";
                 var cuoreVuoto = "../../img/icons/cuoreVuoto.png";
-                var url = "";
                 if (img == cuorePieno) {
                     url = "rimuoviLike.php";
                 } else {
