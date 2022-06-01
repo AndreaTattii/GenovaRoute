@@ -132,14 +132,7 @@ session_start();
             $("input[name='ricerca']").keyup(function() {
                 $.ajax({
                     type: "POST",
-                    if() { //qui controllare se è attivata una colonna
-                        url: "cercaTappe.php",
-                    } else{
-                        if(){
-                            url: "cercaTappe.php",
-                        }
-                    }
-                    url: "suggestions.php",
+                    url: "cercaTappe.php",
                     data: {
                         query: $("input[name=ricerca]").val()
                     },
