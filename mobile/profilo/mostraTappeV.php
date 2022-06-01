@@ -9,6 +9,7 @@ if (isset($_GET['idTappa'])) {
 if (isset($_GET['email'])) {
     $email = $_GET['email'];
 }
+
 if (isset($_POST['idPercorso'])) {
     $_SESSION['idPercorso'] = $_POST['idPercorso'];
 }
@@ -32,7 +33,6 @@ if ($connessione === false) {
 <html lang="en">
 
 <head>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
     <!-- Required meta tags -->
@@ -55,7 +55,6 @@ if ($connessione === false) {
 
     <!-- CSS DROPDOWN-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -66,8 +65,8 @@ if ($connessione === false) {
 <body onload="toTappa()">
 
 
-<!-- NAVBAR BASSA -->
-        <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-left-radius: 25px;border-top-right-radius: 25px; border-top-width: 1px; height: 50px;">
+    <!-- NAVBAR BASSA -->
+    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-left-radius: 25px;border-top-right-radius: 25px; border-top-width: 1px; height: 50px;">
             <div class="row  justify-content-center" >
                 <div class="col s-3" style="padding-top:10px">
                     <center>
@@ -155,6 +154,32 @@ if ($connessione === false) {
                 $mese = $giornoMeseAnno[1];
                 $giorno = $giornoMeseAnno[2];
 
+                // UTENTE HA VIUALIZZATO?
+                $sql2 = "SELECT * FROM utente_percorre_tappa
+                        WHERE email = '" . $_SESSION['email'] . "'
+                        AND id_tappa = ".$row['id']."
+                    ";
+                $visitata = false;
+                if ($result2 = $connessione->query($sql2)) {
+                    if ($result2->num_rows > 0) {
+                        $visitata = true;
+                    }
+                }else{
+                    echo "Impossibile eseguire la query: $sql2. " . $connessione->error;
+
+                }
+
+                 //CONTROLLO SE UTENTE HA MESSO MI PIACE A TAPPA
+                $sql2 = "SELECT * FROM utente_percorre_tappa
+                        WHERE email = '" . $_SESSION['email'] . "'
+                            AND id_tappa = ".$row['id']."
+                            AND piace = 1";
+                $piace = "../../img/icons/cuoreVuoto.png";
+                if ($result2 = $connessione->query($sql2)) {
+                    if ($result2->num_rows > 0) {
+                        $piace = "../../img/icons/cuorePieno.png";
+                    }
+                }
                 $sql2 = "SELECT COUNT(piace)
                             FROM Utente_percorre_tappa
                             WHERE piace = 1
@@ -169,8 +194,10 @@ if ($connessione === false) {
                 if ($nMiPiace != 1) {
                     $persona = "persone";
                 }
+
+                $id = $row['id'];
                 echo '
-                        <div class="card text-center" id="' . $row['id'] . '"  style="margin-top:20px; border-radius:0px; text-align: left;  margin:0px; border:none; ">
+                        <div class="card text-center" id="' . $row['id'] . '"  style="margin-top:50px; border-radius:0px; text-align: left;  margin:0px; border:none; ">
                             <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px; ">
                                 <div class="row">
 
@@ -179,7 +206,7 @@ if ($connessione === false) {
                                             <button type="button" class=" toggle" data-toggle="dropdown" style="background-color:white;  text-align:center; ">
                                                 <img src="../../img/icons/hamburger-rosso.png" alt="Hamburger" width="30" height="30">
                                             </button>
-                                            <div class="dropdown-menu" style="border:2px solid #b30000; width: 200px;">
+                                            <div class="dropdown-menu" style="border:2px solid #b30000; width: 300px;">
                     ';
                                             $sql2 = "SELECT *
                                                     FROM Percorso, Tappa_appartiene_percorso
@@ -191,8 +218,7 @@ if ($connessione === false) {
                                                 if ($result2->num_rows > 0) {
                                                     while ($row2 = $result2->fetch_assoc()){
                                                         echo'
-                                                            <a class="dropdown-item" style="height:40px" href="../percorsi/tappe/index.php?idPercorso='.$row2['id'].'" style="height:20px">'
-                                                                .$row2['nome'].'
+                                                            <a class="dropdown-item" style="height:40px" href="../percorsi/tappe/index.php?idPercorso='.$row2['id'].'" >'.$row2['nome'].'
                                                                 <img src="../../img/icons/percorso.png" alt="Hamburger" width="20" height="20">
                                                             </a>
                                                         ';
@@ -223,7 +249,7 @@ if ($connessione === false) {
                                     </div>
                                 </div>
                             </div>
-                            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="margin:none; padding:none; height:225px;">
+                            <div id="carouselExampleControls" class="carousel slide double-tap" data-bs-ride="carousel" style="margin:none; padding:none; height:225px;">
                                 <div class="carousel-indicators" style="background-color:white; width:100%; margin:auto">
                                     <button style="background-color:#B30000;color:#B30000" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                                     <button style="background-color:#B30000;color:#B30000" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -242,7 +268,21 @@ if ($connessione === false) {
                                 </div>
                             </div>
                         </div>
-                        <div id="gestureZone" class="card-body" style="text-align: center; border:none; ">
+                        ';
+                        // BARRA MI PIACE E COMMENTO
+                        if ($visitata) {
+                            echo'
+                            <div class="row justify-content-center" style="width:100%" >
+                                <div class="col-2" id="miPiace" style="margin-left: 10px; ">
+                                    <img class="cuore" id="'.$row['id'].'cuore" src="'.$piace.'" style="width:40px; vertical-align: text-top">
+                                </div>
+                                <div class="col-2" id="commento">
+                                    <a href="commenti.php?idTappa='.$row['id'].'"><img  src="../../img/icons/commentoVuoto.png" style="width:40px; margin-top:6px"></a>                  
+                                </div>
+                            </div>
+                            ';
+                        }
+                       echo '<div id="gestureZone" class="card-body" style="text-align: center; border:none; ">
                             <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
                             <p class="card-text" style="text-align:justify; border:none; margin-top:none; "><b>Piace a:</b>  ' . $nMiPiace . ' ' . $persona . '</p>
 
@@ -274,17 +314,44 @@ if ($connessione === false) {
             element.scrollIntoView();
         }
     </script>
-
-
-
-
-
-
     </div>
 
     <br>
     <br>
     <script>
+        //quando clicco sull'immagine del cuore pieno faccio la query ajax rimuoviLike.php e cambio l'immagine in un cuore vuoto, altrimenti faccio la query ajax aggiungiLike.php e cambio l'immagine in un cuore pieno
+        $(document).ready(function () {
+            $.ajaxSetup ({
+                cache: false
+            });
+
+            $(".cuore").click(function(){
+                var idTappa = $(this).attr("id");
+                var id = $(this).attr("id");
+                if($('#' + id).attr("src") == "../../img/icons/cuoreVuoto.png"){ 
+                    var url = "aggiungiLike.php";
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: {idTappa: idTappa},
+                        success: function(data){
+                            $('#' + id ).attr("src","../../img/icons/cuorePieno.png");
+                        }
+                    });
+                }
+                else{ 
+                var url = "rimuoviLike.php";
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: {idTappa: idTappa},
+                        success: function(data){
+                            $('#' + id ).attr("src","../../img/icons/cuoreVuoto.png");
+                        }
+                    });
+                }
+            });
+        });
         function toCima() {
             const element = document.getElementById("cima");
             element.scrollIntoView();

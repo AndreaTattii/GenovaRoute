@@ -275,7 +275,7 @@ if ($connessione === false) {
                             echo'
                             <div class="row justify-content-center" style="width:100%" >
                                 <div class="col-2" id="miPiace" style="margin-left: 10px; ">
-                                    <img class="cuore" id="'.$row['id'].'" src="'.$piace.'" style="width:40px; vertical-align: text-top">
+                                    <img class="cuore" id="'.$row['id'].'cuore" src="'.$piace.'" style="width:40px; vertical-align: text-top">
                                 </div>
                                 <div class="col-2" id="commento">
                                     <a href="commenti.php?idTappa='.$row['id'].'"><img  src="../../img/icons/commentoVuoto.png" style="width:40px; margin-top:6px"></a>                  
@@ -328,35 +328,31 @@ if ($connessione === false) {
 
             $(".cuore").click(function(){
                 var idTappa = $(this).attr("id");
-                var img = $(this).attr("src");
-                var cuorePieno = "../../img/icons/cuorePieno.png";
-                var cuoreVuoto = "../../img/icons/cuoreVuoto.png";
-                if (img == cuorePieno) {
-                    url = "rimuoviLike.php";
-                } else {
-                    url = "aggiungiLike.php";
-                }
-                $.ajax({
-                    url: url,
-                    type: "POST",
-                    data: {
-                        idTappa: idTappa
-                    },
-                    success: function (data) {
-                        if (img == cuorePieno) {
-                            $(this).attr("src", cuoreVuoto);
-                        } else {
-                            $(this).attr("src", cuorePieno);
+                var id = $(this).attr("id");
+                if($('#' + id).attr("src") == "../../img/icons/cuoreVuoto.png"){ 
+                    var url = "aggiungiLike.php";
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: {idTappa: idTappa},
+                        success: function(data){
+                            $('#' + id ).attr("src","../../img/icons/cuorePieno.png");
                         }
-                    }
-                });
+                    });
+                }
+                else{ 
+                var url = "rimuoviLike.php";
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: {idTappa: idTappa},
+                        success: function(data){
+                            $('#' + id ).attr("src","../../img/icons/cuoreVuoto.png");
+                        }
+                    });
+                }
             });
         });
-
-    </script>
-    <script>
-
-    
         function toCima() {
             const element = document.getElementById("cima");
             element.scrollIntoView();

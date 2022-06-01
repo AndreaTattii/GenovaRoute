@@ -12,7 +12,7 @@
         echo "Errore: ".$connessione->error;
     }
 
-    $id=$_POST['idTappa'];
+    $id=(explode("c",$_POST['idTappa']))[0];
     //crea una query sql per inserire 0 nell'attributo piace della tabella della tappa
     $sql = "UPDATE Utente_Percorre_Tappa SET piace=null WHERE id_tappa=".$id." AND email='".$_SESSION['email']."'";
     mysqli_query($connessione, $sql);
