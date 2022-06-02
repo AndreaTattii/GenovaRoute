@@ -118,7 +118,7 @@ if ($result = $connessione->query($sql)) {
         <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
 
             <div class="col-2">
-                <a href="../../percorsi/index.php">
+                <a <?php if(isset($_SESSION['arrivoDaCercaPerPercorsi'])){unset($_SESSION['arrivoDaCercaPerPercorsi']);echo'href="../../ricerca/index.php"';}else{echo'href="../../percorsi/index.php"';}?> >
                     <img id="back" src="../../../img/icons/back.png">
                 </a>
             </div>

@@ -3,6 +3,7 @@
     <body>
 <?php
     session_start();
+    $_SESSION['arrivoDaCercaPerPercorsi'] = true;
     $host = "127.0.0.1";
     $user = "root";
     $pass = "";
@@ -132,17 +133,21 @@
                             } else {
                                 echo "Errore: " . $connessione->error;
                             }
-                                echo '
+                                echo ' 
                                         <div class="row" style="height:60px;  margin-top:10px; width:100%">
-                                            <div class="col-3" style="margin-left:10px">
-                                                <img style="width:50px;height:50px; border-radius: 50%" src="../../img/'.$cartellaImmagine.'/'.$row['id'].''.$indiceImmagine.'">
-                                            </div>
-                                            <div class="col-6">
-                                                <h2 style=" font-size: 17px; color: #b30000; font-weight: bold; text-align: left; padding-top:10px; padding-bottom:10px">'.$row['nome'].'</h2>
-                                            </div>
-                                            <div class="col-2">
-                                                <img class="preferito" id="' . $row['id'] . '" style="width:60%; margin:auto;padding-top:11px " src= "'.$immagine.'" >
-                                            </div>
+                                                <div class="col-3" style="margin-left:10px">
+                                                    <a style="text-decoration:none; color:black;" href="../percorsi/tappe/index.php?idPercorso=' . $row['id'] . '">
+                                                    <img style="width:50px;height:50px; border-radius: 50%" src="../../img/'.$cartellaImmagine.'/'.$row['id'].''.$indiceImmagine.'">
+                                                    </a>
+                                                </div>
+                                                <div class="col-6">
+                                                    <a style="text-decoration:none; color:black;" href="../percorsi/tappe/index.php?idPercorso=' . $row['id'] . '">
+                                                    <h2 style=" font-size: 17px; color: #b30000; font-weight: bold; text-align: left; padding-top:10px; padding-bottom:10px">'.$row['nome'].'</h2>
+                                                    </a>
+                                                </div>
+                                                <div class="col-2">
+                                                    <img class="preferito" id="' . $row['id'] . '" style="width:60%; margin:auto;padding-top:11px " src= "'.$immagine.'" >
+                                                </div>
                                         </div>
                                 ';
                                 
