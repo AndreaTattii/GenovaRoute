@@ -132,15 +132,24 @@ $percentuale=number_format($percentuale,0);
             <div class="col-2">
                 <?php
                     if(isset($_GET['emailUtente'])){
+                        if(isset($_SESSION['vengoDaClassifica'])){
+                            unset($_SESSION['vengoDaClassifica']);
+                            $link="leaderboard.php";
+                        }
+                        else{
+                            $link="../ricerca/index.php";
+                        }
                 ?>
-                <a href="search.php">
+                <a href="<?php echo $link; ?>">
                     <img id="back" style="padding-bottom:8px" src="../../img/icons/back.png">
                 </a>
                 <?php
                     }
                     else{
                 ?>
-
+                <a href="leaderboard.php">
+                    <img id="leaderboard" style="width:30px; padding-bottom:7px" src="../../img/icons/leaderboard.png">
+                </a>
                 <?php
                 }
                 ?>

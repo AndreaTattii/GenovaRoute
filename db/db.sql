@@ -329,7 +329,7 @@ INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon)
                 È stata consacrata al santo il 10 ottobre del 1118 da papa Gelasio II quando ne esistevano solo l'altare e una zona circostante, riservata alla preghiera, ma nessuna struttura in elevato. Nel corso del XII secolo fu costruita, ma ancora nel terzo quarto del secolo restava incompiuta e priva di una facciata vera e propria.
                 Una prima basilica vi sorse intorno al VI-VII secolo[3] Una leggenda vuole che in citta si siano fermati San Lorenzo e papa Sisto II, diretti in Spagna, venendo ospitati in una casa sita nella zona dell'attuale cattedrale, dove, dopo la loro uccisione, sarebbero sorte una cappella e poi una chiesa dedicate al santo.
             ", 
-            'Cattedrale'
+            'Cattedrale',
             'Genova',
             'Piazza San Lorenzo', 
             '44.40763134514167', 

@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+unset($_SESSION['vengoDaClassifica']);
 //error_reporting(0);
 ?>
 <!doctype html>
@@ -95,7 +97,7 @@ session_start();
         </div>
 
         <div class="row justify-content-center align-items-center" style=" height:30px; border-radius: 25px; margin-top:10px;">
-            <div id="col-tappe" class="col-2" style="text-align: center;  border-bottom:2px solid #b30000;">
+            <div id="col-tappe" class="col-2" style="text-align: center;  border-bottom:none;">
                 <h1 style="font-size:13px">Tappe</h1>
             </div>
             <div id="col-percorsi"  class="col-3" style="text-align: center; border-bottom:none;">
