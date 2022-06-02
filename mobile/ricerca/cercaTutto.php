@@ -28,7 +28,7 @@
 
     }
 
-    
+
     
     $sql = "SELECT * FROM ".$tipo." WHERE nome LIKE '%$search%'";
     //echo $sql;
@@ -69,12 +69,12 @@
                         if($tipo == "categoria"){
                             echo '
                                 <div class="row" style="height:60px;  margin-top:10px; width:100%">
-                                    
-                                    <div class="col-8">
-                                        <h2 style=" font-size: 17px; color: #b30000; font-weight: bold; text-align: left; padding-top:10px; padding-bottom:10px">'.$row['nome'].'</h2>
-                                    </div>
-                                </div>                   
-                            '; 
+
+                                <div class="col-8">
+                                <h2 style=" font-size: 17px; color: #b30000; font-weight: bold; text-align: left; padding-top:10px; padding-bottom:10px">'.$row['nome'].'</h2>
+                            </div>
+                        </div>                   
+                    ';       
                         }
                         else{
                             echo '
@@ -88,7 +88,7 @@
                             </div>                    
                             ';
                         }
-                        
+
                     }
                 }
                 $i++;
