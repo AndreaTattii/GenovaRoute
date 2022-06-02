@@ -98,19 +98,19 @@ unset($_SESSION['vengoDaClassifica']);
 
         <div class="row justify-content-center align-items-center" style=" height:30px; border-radius: 25px; margin-top:10px;">
             <div id="col-tappe" class="col-2" style="text-align: center;  border-bottom:none;">
-                <h1 style="font-size:13px">Tappe</h1>
+                <h1 style="font-size:12px">Tappe</h1>
             </div>
             <div id="col-percorsi"  class="col-3" style="text-align: center; border-bottom:none;">
-                <h1 style="font-size:13px">Percorsi</h1>
+                <h1 style="font-size:12px">Percorsi</h1>
             </div>
             <div id="col-citta"  class="col-2" style="text-align: center; border-bottom:none;">
-                <h1 style="font-size:13px">Città</h1>
+                <h1 style="font-size:12px">Città</h1>
             </div>
             <div id="col-categorie"  class="col-3" style="text-align: center; border-bottom:none;">
-                <h1 style="font-size:13px">Categorie</h1>
+                <h1 style="font-size:12px">Categorie</h1>
             </div>
             <div id="col-account"  class="col-2" style="text-align: center; border-bottom:none;">
-                <h1 style="font-size:13px">Account</h1>
+                <h1 style="font-size:12px">Account</h1>
             </div>
         </div>
         

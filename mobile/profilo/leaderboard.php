@@ -125,16 +125,18 @@ if ($connessione === false) {
                         while ($row = $result->fetch_array()) { 
                             $i++;    
                             if($i==1){
-                                echo '<div class="row justify-content-center" style="">                
-                                        <div class="col" style="text-align:center;">
-                                                <img src="../../img/propics/'.$row['email'].'.png" style="width:40%;border-radius: 50%;margin-left:20px">
-                                                <span style="position: relative;z-index: 2;top: -50px;left: -30px;" class="badge rounded-pill bg-danger">
-                                                    '.$row["livello"].'
-                                                </span>
-                                            <br>
-                                            <p style="color:black; font-size:22px"><strong style="color:#B30000; font-size:30px">' . $row['username'] . '</strong> ' . $row['xp'] . ' xp</p>
-                                        </div>
-                                      </div>';
+                                echo '<a style="text-decoration:none; color:black;" href="../profilo/index.php?emailUtente=' . $row["email"] . '"> 
+                                        <div class="row justify-content-center" style="">                
+                                            <div class="col" style="text-align:center;">
+                                                    <img src="../../img/propics/'.$row['email'].'.png" style="width:40%;border-radius: 50%;margin-left:20px">
+                                                    <span style="position: relative;z-index: 2;top: -50px;left: -30px;" class="badge rounded-pill bg-danger">
+                                                        '.$row["livello"].'
+                                                    </span>
+                                                <br>
+                                                <p style="color:black; font-size:22px"><strong style="color:#B30000; font-size:30px">' . $row['username'] . '</strong> ' . $row['xp'] . ' xp</p>
+                                            </div>
+                                          </div>
+                                        </a>';
                             }
                             else{
                                 if($i==2){
@@ -190,7 +192,7 @@ if ($connessione === false) {
                                         else{
                                             if($i>4){
                                                 echo "
-                                                <!--<a style='text-decoration:none; color:black;' href='../profilo/index.php?emailUtente=" . $row['email'] . "'> -->
+                                                <a style='text-decoration:none; color:black;' href='../profilo/index.php?emailUtente=" . $row['email'] . "'> 
                                                     <div class='row' style='width:100%; padding-top:20px'>
                                                         <div class='col-2' style='align-items:center'>
                                                             <h5>".$i.".</h5>
@@ -208,7 +210,7 @@ if ($connessione === false) {
                                                         <p>".$row['xp']." xp</p>
                                                     </div>  
                                                     </div>
-                                                <!-- </a> -->";
+                                                </a>";
                                             }
                                         }
                                     }
