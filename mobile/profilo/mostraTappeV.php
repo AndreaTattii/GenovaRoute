@@ -179,7 +179,7 @@ if ($connessione === false) {
 
                 // UTENTE HA VIUALIZZATO?
                 $sql2 = "SELECT * FROM utente_percorre_tappa
-                        WHERE email = '" . $email . "'
+                        WHERE email = '" . $_SESSION['email'] . "'
                         AND id_tappa = ".$row['id']."
                     ";
                 $visitata = false;
@@ -194,7 +194,7 @@ if ($connessione === false) {
 
                  //CONTROLLO SE UTENTE HA MESSO MI PIACE A TAPPA
                 $sql2 = "SELECT * FROM utente_percorre_tappa
-                        WHERE email = '" . $email . "'
+                        WHERE email = '" . $_SESSION['email'] . "'
                             AND id_tappa = ".$row['id']."
                             AND piace = 1";
                 $piace = "../../img/icons/cuoreVuoto.png";
