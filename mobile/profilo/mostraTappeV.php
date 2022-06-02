@@ -351,6 +351,24 @@ if ($connessione === false) {
 
     <br>
     <br>
+    <div class="loader-wrapper">
+        <div id="container">
+            <svg viewBox="0 0 100 100">
+                <defs>
+                  <filter id="shadow">
+                    <feDropShadow dx="0" dy="0" stdDeviation="1.5" 
+                      flood-color="#fc6767"/>
+                  </filter>
+                </defs>
+            <circle id="spinner" style="fill:transparent;stroke:#dd2476;stroke-width: 7px;stroke-linecap: round;filter:url(#shadow);" cx="50" cy="50" r="45"/>
+            </svg>
+        </div>
+    </div>
+    <script>
+        $(window).on('load', function() {
+            $(".loader-wrapper").fadeOut("slow");
+        });
+    </script>
     <script>
         //quando clicco sull'immagine del cuore pieno faccio la query ajax rimuoviLike.php e cambio l'immagine in un cuore vuoto, altrimenti faccio la query ajax aggiungiLike.php e cambio l'immagine in un cuore pieno
         $(document).ready(function () {

@@ -128,7 +128,7 @@ if ($connessione === false) {
                                 echo '<a style="text-decoration:none; color:black;" href="../profilo/index.php?emailUtente=' . $row["email"] . '"> 
                                         <div class="row justify-content-center" style="">                
                                             <div class="col" style="text-align:center;">
-                                                    <img src="../../img/propics/'.$row['email'].'.png" style="width:40%;border-radius: 50%;margin-left:20px">
+                                                    <img src="../../img/propics/'.$row['email'].'.png" style="width:150px;height:150px;border-radius: 50%;margin-left:20px">
                                                     <span style="position: relative;z-index: 2;top: -50px;left: -30px;" class="badge rounded-pill bg-danger">
                                                         '.$row["livello"].'
                                                     </span>
@@ -142,7 +142,7 @@ if ($connessione === false) {
                                 if($i==2){
                                     echo '<div class="row" style="">
                                             <div class="col-6" style="float:left;padding-left:30px">
-                                                <img src="../../img/propics/'.$row['email'].'.png" style="width:40%;border-radius: 50%">
+                                                <img src="../../img/propics/'.$row['email'].'.png" style="width:65px;height:65px;border-radius: 50%">
                                                 <span style="position: relative;z-index: 2;top: -16px;left: -20px;" class="badge rounded-pill bg-danger">
                                                     '.$row["livello"].'
                                                 </span>
@@ -155,7 +155,7 @@ if ($connessione === false) {
                                     if($i==3){
                                         echo '
                                                 <div class="col-6" style="text-align:right; padding-top:18px; padding-right:30px">
-                                                    <img src="../../img/propics/'.$row['email'].'.png" style="width:35%;border-radius: 50%">
+                                                    <img src="../../img/propics/'.$row['email'].'.png" style="width:45px;height:45px;border-radius: 50%">
                                                     <span style="position: relative;z-index: 2;top: -16px;left: -20px;" class="badge rounded-pill bg-danger">
                                                         '.$row["livello"].'
                                                     </span>
@@ -226,6 +226,24 @@ if ($connessione === false) {
                 }
             ?>
         </div>
+        <div class="loader-wrapper">
+        <div id="container">
+            <svg viewBox="0 0 100 100">
+                <defs>
+                  <filter id="shadow">
+                    <feDropShadow dx="0" dy="0" stdDeviation="1.5" 
+                      flood-color="#fc6767"/>
+                  </filter>
+                </defs>
+            <circle id="spinner" style="fill:transparent;stroke:#dd2476;stroke-width: 7px;stroke-linecap: round;filter:url(#shadow);" cx="50" cy="50" r="45"/>
+            </svg>
+        </div>
+    </div>
+    <script>
+        $(window).on('load', function() {
+            $(".loader-wrapper").fadeOut("slow");
+        });
+    </script>
     <script>
         window.addEventListener("orientationchange", function() {
             if (window.orientation == 90 || window.orientation == -90) {
