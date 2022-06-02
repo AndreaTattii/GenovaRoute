@@ -121,9 +121,9 @@
                             ";
                             if ($result3 = $connessione->query($sql3)) {
                                 if ($result3->num_rows > 0) {
-                                    $immagine = "../img/icons/fullStarRed.png" ;
+                                    $immagine = "../../img/icons/fullStarRed.png" ;
                                 } else {
-                                    $immagine = "../img/icons/emptyStarRed.png";
+                                    $immagine = "../../img/icons/emptyStarRed.png";
                                 }
                             } else {
                                 echo "Errore: " . $connessione->error;
