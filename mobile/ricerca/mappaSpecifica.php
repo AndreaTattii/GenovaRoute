@@ -25,12 +25,12 @@ $connessione = new mysqli($host, $user, $pass, $database);
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 
     <!-- Bootstrap CSS 
     -->
 
-    <link rel="stylesheet" href="../../../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
     <!-- font -->
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
 
@@ -39,7 +39,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
     <title>Genova Route</title>
-    <link rel="icon" href="../../../../img/G.png" type="image/icon type">
+    <link rel="icon" href="../../img/G.png" type="image/icon type">
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -49,12 +49,13 @@ $connessione = new mysqli($host, $user, $pass, $database);
         <div class="row justify-content-center align-items-center" style="background-color: #B30000; height:60px; padding-top: 10px;">
 
             <div class="col-2">
-                <a href="index.php">
-                    <img id="back" src="../../../../img/icons/back.png">
+                <a href="tappaSpec.php">
+                    <img id="back" src="../../img/icons/back.png">
                 </a>
             </div>
             <div class="col-8">
-                <h1 style=" color: white; font-weight: bold; text-align: center; font-size: 17px;"><?php echo $_SESSION['nomePercorso']  ?> </h1>
+                <h1 style=" color: white; font-weight: bold; text-align: center; font-size: 17px;"><?php echo $_SESSION['nomeTappa'];  ?> </h1>
+                <?php unset($_SESSION['nomeTappa']); ?>
             </div>
             <div class="col-2">
                  <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;"></h1>
@@ -68,16 +69,16 @@ $connessione = new mysqli($host, $user, $pass, $database);
         <div class="row  justify-content-center" >
             <div class="col s-3" style="padding-top:10px">
                 <center>
-                    <a class="navbar-brand" href="../../index.php">
-                        <img id="percorsoSfondo" src="../../../../img/icons/percorsoRosso.png">
+                    <a class="navbar-brand" href="../percorsi/index.php">
+                        <img id="percorsoSfondo" src="../../img/icons/percorsoRosso.png">
                     </a>
                 </center>
 
             </div>
             <div class="col s-3" style="padding-top:10px">
                 <center>
-                    <a class="navbar-brand" href="../../../ricerca/index.php">
-                        <img id="ricercaNavImg" src="../../../../img/icons/searchBlack.png">
+                    <a class="navbar-brand" href="..//ricerca/index.php">
+                        <img id="ricercaNavImg" src="../../img/icons/searchBlack.png">
                     </a>
                 </center>
 
@@ -85,24 +86,24 @@ $connessione = new mysqli($host, $user, $pass, $database);
 
             <div class="col s-3" style="padding-top:10px">
                 <center>
-                    <a class="navbar-brand" href="../../../scanner/index.php ">
-                        <img style="width:25px" src="../../../../img/icons/scannerizza.png">
+                    <a class="navbar-brand" href="../scanner/index.php ">
+                        <img style="width:25px" src="../../img/icons/scannerizza.png">
                     </a>
                 </center>
 
             </div>
             <div class="col s-3" style="padding-top:10px">
                 <center>
-                    <a class="navbar-brand" href="../../../percorsiPersonali/index.php ">
-                        <img style="width:25px" src="../../../../img/icons/aggiungiPercorso.png">
+                    <a class="navbar-brand" href="../percorsiPersonali/index.php ">
+                        <img style="width:25px" src="../../img/icons/aggiungiPercorso.png">
                     </a>
                 </center>
 
             </div>
             <div class="col s-3" style="padding-top:10px">
                 <center>
-                    <a class="navbar-brand" href="../../../profilo/index.php">
-                        <img id="account" src="../../../../img/icons/account.png">
+                    <a class="navbar-brand" href="../profilo/index.php">
+                        <img id="account" src="../../img/icons/account.png">
                     </a>
                 </center>
             </div>
@@ -125,18 +126,15 @@ $connessione = new mysqli($host, $user, $pass, $database);
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {minZoom: 10}).addTo(map);
             //map.setView(['44.409369955825774', '8.941610113846902'], 14);
             var Icon1 = L.icon({
-                            iconUrl: '../../../../img/icons/marker.png',
+                            iconUrl: '../../img/icons/marker.png',
                             iconSize:     [40, 40],
                         });
 
 
             <?php
                 $sql = 'SELECT lat,lon,Tappa.nome
-                FROM Tappa, Percorso, Tappa_Appartiene_Percorso 
-                Where ordine = '.$_SESSION['ordineTappa'].'  
-                AND percorso.id = Tappa_Appartiene_Percorso.id_percorso 
-                AND  percorso.id = '.$_SESSION['idPercorso'].'
-                AND tappa.id=id_tappa ';
+                FROM Tappa 
+                WHERE id='.$_SESSION['idTappa'].';';
                 $result = $connessione->query($sql);
                 $row = $result->fetch_array();
                     echo "map.setView(['".$row["lat"]."', '".$row["lon"]."'], 14);L.marker(

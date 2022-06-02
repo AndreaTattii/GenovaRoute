@@ -114,7 +114,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
     </div>
     <br>
     <br>
-    
+    <div id="content"></div>
     <div id="osm-map"></div>
         <script>
             element = document.getElementById('osm-map');
@@ -177,8 +177,18 @@ $connessione = new mysqli($host, $user, $pass, $database);
             }
             ?>
             function onClick(e) { 
-                //alert(this.getLatLng());
-                //stampa il valore contenuto nell'attributo id del marker cliccato
+                //var popup = e.target.getPopup();
+                //var idPercorso = <?php echo $_GET["percorsi"]; ?>;
+                //var url = "popup.php";
+                //    $.ajax({
+                //        type: "POST",
+                //        url: url,
+                //        data: {idPercorso: idPercorso,
+                //               nomeTappa: popup.getContent()},
+                //        success: function(data){
+                //            $("#content").html(data);
+                //        }
+                //    });
             }
         </script>
 </body>
