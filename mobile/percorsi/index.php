@@ -310,8 +310,6 @@ session_start();
                     });
                 }
             });
-            
-
         });
     </script>
     <script>
