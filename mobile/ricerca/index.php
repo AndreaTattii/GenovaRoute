@@ -119,6 +119,7 @@ unset($_SESSION['vengoDaClassifica']);
     <br>
     <br>
     <br>
+
     <div id="content">
             
     </div>
@@ -302,34 +303,6 @@ unset($_SESSION['vengoDaClassifica']);
                         $("#content").html(data);
                     }
                 });
-            });
-                        //quando clicco il bottone eseguo la query con ajax
-            $(".preferito").click(function(){
-                var idPercorso = $(this).attr("id");
-                //alert(idPercorso);
-                var id = $(this).attr("id");
-                if($('#' + id).attr("src") == "../../img/icons/emptyStarRed.png"){ //se stella è vuota e quindi devo inserire il preferito
-                    var url = "aggiungiPreferito.php";
-                    $.ajax({
-                        type: "POST",
-                        url: url,
-                        data: {idPercorso: idPercorso},
-                        success: function(data){
-                            $('#' + id).attr("src","../../img/icons/fullStarRed.png");
-                        }
-                    });
-                }
-                else{ //se stella è piena e quindi devo togliere il preferito
-                var url = "rimuoviPreferito.php";
-                    $.ajax({
-                        type: "POST",
-                        url: url,
-                        data: {idPercorso: idPercorso},
-                        success: function(data){
-                            $('#' + id).attr("src","../../img/icons/emptyStarRed.png");
-                        }
-                    });
-                }
             });
         });
     </script>
