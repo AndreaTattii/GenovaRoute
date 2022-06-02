@@ -173,7 +173,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
                 ";
             }
             if(!empty($_GET["percorsi"])){
-                $sql = 'SELECT lat,lon,Tappa.nome, ordine
+                $sql = 'SELECT lat,lon,Tappa.nome, ordine, tappa.id
                 FROM Tappa, Percorso, Tappa_Appartiene_Percorso 
                 Where Tappa.id = Tappa_Appartiene_Percorso.id_tappa 
                 AND percorso.id = Tappa_Appartiene_Percorso.id_percorso 
@@ -189,7 +189,8 @@ $connessione = new mysqli($host, $user, $pass, $database);
                             icon: Icon".$row["ordine"]."
                         }
                         ).addTo(map).on('click', onClick)   
-                        .bindPopup('".$row["nome"]."');
+                        //metti nel bindPopup un tag a cui passare l'id del percorso e l'id della tappa
+                        .bindPopup('<a href=\"tappaSpecifica/index.php?idPercorso=".$_GET["percorsi"]."&ordineTappa=".$row["ordine"]."\">".$row["nome"]."</a>');
                         ";
                 }
             }

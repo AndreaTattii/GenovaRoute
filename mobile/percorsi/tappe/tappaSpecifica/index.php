@@ -10,6 +10,12 @@ if (isset($_POST['ordineTappa'])) {
 if (isset($_POST['idPercorso'])) {
     $_SESSION['idPercorso'] = $_POST['idPercorso'];
 }
+if (isset($_GET['idPercorso'])) {
+    $_SESSION['idPercorso'] = $_GET['idPercorso'];
+}
+if (isset($_GET['ordineTappa'])) {
+    $_SESSION['ordineTappa'] = $_GET['ordineTappa'];
+}
 
 
 $host = "127.0.0.1";
