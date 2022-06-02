@@ -94,6 +94,7 @@
                 else{
                     if($tipo=="citta"){
                         echo '
+                        <a style="text-decoration:none; color:black;" href="mappaCitta.php?citta=' . $row['nome'] . '">
                         <div class="row" style="height:60px;  margin-top:10px; width:100%">
                             <div class="col-3" style="margin-left:10px">
                                 <img style="width:40px;height:40px; border-radius: 50%" src="../../img/icons/marker.png">

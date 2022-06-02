@@ -20,7 +20,7 @@ if ($connessione === false) {
 
 
 // CATTURO DA DB INFORMAZIONI DELLA TAPPA
-$sql = "SELECT Tappa.nome, Tappa.descrizione,  Tappa.via, tappa.id
+$sql = "SELECT Tappa.nome, Tappa.descrizione,  Tappa.via, tappa.id, tappa.citta
         FROM Tappa 
         WHERE id = " . $_SESSION['idTappa'] . "";
 
@@ -32,6 +32,7 @@ if ($result = $connessione->query($sql)) {
         $nome = $row['nome'];
         $_SESSION['nomeTappa'] = $nome;
         $id = $row['id'];
+        $citta = $row['citta'];
     } else {
         echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
         //die('ERRORE: codice QR non riconosciuto');
@@ -155,7 +156,7 @@ if ($result = $connessione->query($sql)) {
         <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:70px;">
 
             <div class="col-2">
-                <a href="index.php">
+                <a <?php if(isset($_SESSION['vengoDaMappa'])){unset($_SESSION['vengoDaMappa']);echo'href="mappaCitta.php?citta='.$citta.'"';}else{echo 'href="index.php"';}?> >
                     <img id="back" src="../../img/icons/back.png">
                 </a>
             </div>
