@@ -90,6 +90,12 @@ if ($result = $connessione->query($sql)) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
+
+    <!-- CSS DROPDOWN-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
     <title>Genova Route</title>
     <link rel="icon" href="../../img/G.png" type="image/icon type">
 </head>
@@ -146,7 +152,7 @@ if ($result = $connessione->query($sql)) {
 
     <!-- NAVBAR ALTA -->
     <div class="container fixed-top">
-        <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px;">
+        <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:70px;">
 
             <div class="col-2">
                 <a href="index.php">
@@ -177,7 +183,53 @@ if ($result = $connessione->query($sql)) {
     <div class="card text-center" style="margin-top:20px; border-radius:0px; text-align: left; padding-top:60px; margin:0px; border:none;">
 
         <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px">
-            <p class="card-title" style="font-weight: bold; margin-left: 10px;"><img src="../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; "><?php echo $dove; ?></p>
+            <div class="row">
+                <div class="col-2">
+                    <div class="dropdown ">
+                        <button type="button" class=" toggle" data-toggle="dropdown" style="background-color:white;  text-align:center; border:none; ">
+                            <img src="../../img/icons/hamburger-rosso.png" alt="Hamburger" width="30" height="30">
+                        </button>
+
+                        <div class="dropdown-menu" style="border:2px solid #b30000; width: 300px;">
+                            <?php 
+                                $sql2 = "SELECT *
+                                        FROM Percorso, Tappa_appartiene_percorso
+                                        WHERE Percorso.id = Tappa_appartiene_percorso.id_percorso
+                                            AND id_tappa = ".$id."
+                                    ";
+
+                                if($result2 = $connessione->query($sql2)){
+                                    if ($result2->num_rows > 0) {
+                                        while ($row2 = $result2->fetch_assoc()){
+                                            echo'
+                                                <a class="dropdown-item" style="height:40px" href="../percorsi/tappe/index.php?idPercorso='.$row2['id'].'" >'.$row2['nome'].'
+                                                    <img src="../../img/icons/percorso.png" alt="Hamburger" width="20" height="20">
+                                                </a>
+                                            ';
+                                        }
+
+                                    }
+                                    else{
+                                        echo 'nessun risultato';
+                                    }
+
+                                }
+                                else{
+                                    echo "Impossibile eseguire la query: $sql2. " . $connessione->error;
+                                }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            
+                    
+                <div class="col-8">
+                    <p class="card-title" style="font-weight: bold; margin-left: 10px;"><img src="../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; "><?php echo $dove; ?></p>
+                </div>
+                <div class="col-2">
+
+                </div>
+            </div>
 
         </div>
 

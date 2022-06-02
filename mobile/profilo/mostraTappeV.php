@@ -226,7 +226,7 @@ if ($connessione === false) {
 
                                     <div class="col-2">
                                         <div class="dropdown ">
-                                            <button type="button" class=" toggle" data-toggle="dropdown" style="background-color:white;  text-align:center; ">
+                                            <button type="button" class=" toggle" data-toggle="dropdown" style="background-color:white;  text-align:center; border:none;">
                                                 <img src="../../img/icons/hamburger-rosso.png" alt="Hamburger" width="30" height="30">
                                             </button>
                                             <div class="dropdown-menu" style="border:2px solid #b30000; width: 300px;">
