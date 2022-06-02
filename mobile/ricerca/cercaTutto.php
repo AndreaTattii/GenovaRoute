@@ -1,3 +1,6 @@
+<html>
+    <head></head>
+    <body>
 <?php
     session_start();
     $host = "127.0.0.1";
@@ -129,19 +132,17 @@
                                 echo "Errore: " . $connessione->error;
                             }
                                 echo '
-                                    <a style="text-decoration:none; color:black;" href="../percorsi/tappe/index.php?idPercorso='.$row['id'].'">
                                         <div class="row" style="height:60px;  margin-top:10px; width:100%">
                                             <div class="col-3" style="margin-left:10px">
                                                 <img style="width:50px;height:50px; border-radius: 50%" src="../../img/'.$cartellaImmagine.'/'.$row['id'].''.$indiceImmagine.'">
                                             </div>
-                                            <div class="col-8">
+                                            <div class="col-6">
                                                 <h2 style=" font-size: 17px; color: #b30000; font-weight: bold; text-align: left; padding-top:10px; padding-bottom:10px">'.$row['nome'].'</h2>
                                             </div>
-                                            <div class="col-1">
-                                                <img class="preferito" id="' . $row['id'] . '" style="width:10%; margin:auto; padding-bottom:3px;" src= "'.$immagine.'" >
+                                            <div class="col-2">
+                                                <img class="preferito" id="' . $row['id'] . '" style="width:60%; margin:auto;padding-top:11px " src= "'.$immagine.'" >
                                             </div>
                                         </div>
-                                    </a>                 
                                 ';
                                 
                             }else{
@@ -174,3 +175,36 @@
         echo "Impossibile eseguire la query";
     }
 ?>
+    <script>
+        $(document).ready(function() {
+            $(".preferito").click(function(){
+                //alert("cliccato");
+                var idPercorso = $(this).attr("id");
+                var id = $(this).attr("id");
+                if($('#' + id).attr("src") == "../../img/icons/emptyStarRed.png"){ 
+                    var url = "../percorsi/aggiungiPreferito.php";
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: {idPercorso: idPercorso},
+                        success: function(data){
+                            $('#' + id ).attr("src","../../img/icons/fullStarRed.png");
+                        }
+                    });
+                }
+                else{ 
+                var url = "../percorsi/rimuoviPreferito.php";
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: {idPercorso: idPercorso},
+                        success: function(data){
+                            $('#' + id ).attr("src","../../img/icons/emptyStarRed.png");
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    </body>
+</html>
