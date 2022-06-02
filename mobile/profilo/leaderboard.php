@@ -140,7 +140,7 @@ if ($connessione === false) {
                             }
                             else{
                                 if($i==2){
-                                    echo '<div class="row" style="">
+                                    echo '<div class="row" style="height:130px">
                                             <div class="col-6" style="float:left;padding-left:30px">
                                                 <img src="../../img/propics/'.$row['email'].'.png" style="width:65px;height:65px;border-radius: 50%">
                                                 <span style="position: relative;z-index: 2;top: -16px;left: -20px;" class="badge rounded-pill bg-danger">
@@ -154,7 +154,9 @@ if ($connessione === false) {
                                 else{
                                     if($i==3){
                                         echo '
-                                                <div class="col-6" style="text-align:right; padding-top:18px; padding-right:30px">
+                                                <div class="col-2">
+                                                </div>
+                                                <div class="col-4" style="text-align:right; padding-top:50px; padding-right:30px">
                                                     <img src="../../img/propics/'.$row['email'].'.png" style="width:45px;height:45px;border-radius: 50%">
                                                     <span style="position: relative;z-index: 2;top: -16px;left: -20px;" class="badge rounded-pill bg-danger">
                                                         '.$row["livello"].'
