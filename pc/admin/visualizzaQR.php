@@ -103,6 +103,7 @@ $pathQR = "qrCodes/".$idPercorso . "." . $id . ".png";
         </div>
         <div style="text-align:center; ">
             <a style="color:#B30000; font-size:30px;" href="<?php echo $pathQR; ?>" download="<?php echo $idPercorso.'.'.$id.'.png' ?>">Scarica</a>
+            <strong style="text-align:center"><a style="color:black; font-size:25px;" href="percorso.php">&nbsp;Torna alla modifica del percorso&nbsp;</a></strong>
         </div>
         <br>
         <div class="row">

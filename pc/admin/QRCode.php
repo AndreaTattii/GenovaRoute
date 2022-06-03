@@ -48,7 +48,7 @@
     $idPercorso=$_SESSION['idPercorso'];
     $idTappa=$_SESSION['idTappa'];
     $pathQR = "qrCodes/".$idPercorso . "." . $idTappa . ".png";
-    echo '<b><h1 style="text-align:center;">QR Code generato</h1></b><br><br><br><br><br><br>';
+    echo '<b><h1 style="text-align:center;">QR Code generato</h1></b><br>';
     
     //set it to writable location, a place for temp generated PNG files
     $PNG_TEMP_DIR = dirname(__FILE__).DIRECTORY_SEPARATOR.'qrCodes'.DIRECTORY_SEPARATOR;
@@ -71,7 +71,7 @@
     //if (isset($_REQUEST['level']) && in_array($_REQUEST['level'], array('L','M','Q','H')))
     //    $errorCorrectionLevel = $_REQUEST['level'];    
 
-    $matrixPointSize = 7;
+    $matrixPointSize = 9;
     //if (isset($_REQUEST['size']))
     //    $matrixPointSize = min(max((int)$_REQUEST['size'], 1), 10);
 
@@ -104,6 +104,11 @@
         <div style="text-align:center; ">
             <a style="color:#B30000; font-size:30px;" href="<?php echo $pathQR; ?>" download="<?php echo $idPercorso.'.'.$idTappa.'.png' ?>">Scarica</a>
         </div>
+        <br>
+        <div style="text-align:center; ">
+            <strong style="text-align:center"><a style="color:black; font-size:25px;" href="percorso.php">Torna alla modifica del percorso</a></strong>
+        </div>
+
 <script>
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
