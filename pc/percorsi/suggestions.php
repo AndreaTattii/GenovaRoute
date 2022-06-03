@@ -1,3 +1,9 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+
 <?php
     session_start();
     error_reporting(0);
@@ -89,22 +95,23 @@
                     echo '
                         <br>
                         <form action="tappe/index.php" method="post">
-                            <div class="card " style="border:none;  text-align: left;">
-                                <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px;border:none; ">
-                                    <p class="card-title"><img src="../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; ">'.$primaCitta.'</p>
-                                </div>
-                                <button style=" background-color: transparent; border:none;"><img style="border: 3px solid #B30000" src="../../img/percorsi/'.$row['id'].'.png" class="card-img-top" alt="..." style=" border-radius:0px;"></button>
-                                <div class="card-body" style="text-align: center; border-bottom: 2px dotted black;">
-
-                                <img class="preferito" id="' . $row['id'] . '" style="width:8%; margin:auto; padding-bottom:3px;" src= "'.$immagine.'" >
-
-
-                                    <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
-                                    <h5 class="card-title"><input type="submit" value=" ' . $row['nome'] . '" style=" text-decoration: none; color: #B30000; font-size:18px; border: none; background-color:white"></h5>
-                                    <p class="card-text">'.$row['descrizione'].'</p>
-                                </div>
+                        <div class="card " style="border:none;  text-align: center;">
+                            <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px;border:none; ">
+                                <p class="card-title"><img src="../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; ">'.$primaCitta.'</p>
                             </div>
-                        </form>
+                            
+                            <button style=" background-color: transparent; border:none;"><img style="width:50%;border: 3px solid #B30000" src="../../img/percorsi/'.$row['id'].'.png" class="card-img-top" alt="..." style=" border-radius:0px;"></button>
+                            <div class="card-body" style="text-align: center; border-bottom: 2px dotted black;">
+
+                            <img class="preferito" id="' . $row['id'] . '" style="cursor:pointer;width:8%; margin:auto; padding-bottom:3px;" src= "'.$immagine.'" >
+
+
+                                <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
+                                <h5 class="card-title"><input type="submit" value=" ' . $row['nome'] . '" style=" text-decoration: none; color: #B30000; font-size:18px; border: none; background-color:white"></h5>
+                                <p class="card-text">'.$row['descrizione'].'</p>
+                            </div>
+                        </div>
+                    </form>
                     ';
                 }
             } else {
@@ -114,3 +121,58 @@
             echo "Impossibile eseguire la query";
         }
 ?>
+    <script>
+        $(function(){
+    
+            // opzionale, refresha all'infinito la pagina
+            $.ajaxSetup ({
+                cache: false
+            });
+           
+            //quando clicco il bottone eseguo la query con ajax
+            $(".preferito").click(function(){
+                var idPercorso = $(this).attr("id");
+                //alert(idPercorso);
+                var id = $(this).attr("id");
+                if($('#' + id).attr("src") == "../../img/icons/emptyStarRed.png"){ //se stella è vuota e quindi devo inserire il preferito
+                    var url = "aggiungiPreferito.php";
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: {idPercorso: idPercorso},
+                        success: function(data){
+                            $('#' + id).attr("src","../../img/icons/fullStarRed.png");
+                        }
+                    });
+                }
+                else{ //se stella è piena e quindi devo togliere il preferito
+                var url = "rimuoviPreferito.php";
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: {idPercorso: idPercorso},
+                        success: function(data){
+                            $('#' + id).attr("src","../../img/icons/emptyStarRed.png");
+                        }
+                    });
+                }
+            });
+            $("input[name='ricerca']").keyup(function() {
+                $.ajax({
+                    type: "POST",
+                    url: "suggestions.php",
+                    data: {
+                        query: $("input[name=ricerca]").val()
+                    },
+                    success: function(data) {
+                        $("#contenuto").html(data);
+                        //nascondi il div con id mostra
+                        $("#mostra").hide();
+                    }
+                });
+            });
+
+        });
+    </script>
+    </body>
+</html>
