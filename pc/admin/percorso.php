@@ -116,13 +116,14 @@ if ($result = $connessione->query($sql)) {
 
     if ($result = $connessione->query($sql)) {
         if ($result->num_rows > 0) {
+            echo'<div class="containerr">';
             while ($row = $result->fetch_assoc()) {
                 if ($i % 2 == 0) {
                     $sfondo = "background-color:#F0F0F0;";
                 } else {
                     $sfondo = "background-color:white;";
                 }
-                echo "<div class='row' style='" . $sfondo . "; padding:10px; border-left-style:solid; border-left-width:1px; border-right-style:solid; border-right-width:1px; ' >";
+                echo "<div draggable='true' class='row draggable' style='" . $sfondo . "; padding:10px; border-left-style:solid; border-left-width:1px; border-right-style:solid; border-right-width:1px; ' >";
                     echo "<div class='col-1' style='border-right-style:solid; border-right-width:1px'>";
                         echo '<b>';
                             echo $row["id"];
@@ -160,7 +161,7 @@ if ($result = $connessione->query($sql)) {
     } else {
         echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
     }
-
+    echo'</div>';
     $connessione->close();
 
     if ($i % 2 == 0) {
@@ -213,9 +214,53 @@ if ($result = $connessione->query($sql)) {
         </form>
     </div>
     </div>
+
     <br>
     <br>
     <br>
     <br>
+    <script>
+        const draggables = document.querySelectorAll('.draggable')
+        const containers = document.querySelectorAll('.containerr')
+
+        draggables.forEach(draggable => {
+          draggable.addEventListener('dragstart', () => {
+            draggable.classList.add('dragging')
+          })
+      
+          draggable.addEventListener('dragend', () => {
+            draggable.classList.remove('dragging')
+          })
+        })
+
+        containers.forEach(container => {
+          container.addEventListener('dragover', e => {
+            e.preventDefault()
+            const afterElement = getDragAfterElement(container, e.clientY)
+            const draggable = document.querySelector('.dragging')
+            if (afterElement == null) {
+              container.appendChild(draggable)
+            } else {
+              container.insertBefore(draggable, afterElement)
+            }
+          })
+        })
+
+        function getDragAfterElement(container, y) {
+          const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')]
+        
+          return draggableElements.reduce((closest, child) => {
+            const box = child.getBoundingClientRect()
+            const offset = y - box.top - box.height / 2
+            if (offset < 0 && offset > closest.offset) {
+              return { offset: offset, element: child }
+            } else {
+              return closest
+            }
+          }, { offset: Number.NEGATIVE_INFINITY }).element
+        }
+
+        //when starting drag an element
+    </script>
 </body>
 </html>

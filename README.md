@@ -8,12 +8,14 @@ Ogni percorso è composto da un certo numero di tappe e a ogni tappa appartiene 
 La visualizzazione delle tappe è agevolata dalla presenza di una mappa, composta da segnalini numerati che indicano l'ordine delle tappe.
 
 ## Utente
-La webapp offre la possibilità di aggiungere percorsi ai preferiti, mettere like alle tappe e di poterle visualizzare nella propria pagina del profilo.
+La webapp offre la possibilità di aggiungere percorsi ai preferiti, mettere like alle tappe e di poterle visualizzare in seguito nella propria pagina del profilo.
 
 Inoltre, è possibile cercare altri utenti iscritti alla piattaforma e visualizzare le loro statistiche.
 
+E' disponibile una classifica degli utenti basata sul livello; per salire di livello un utente deve scannerizzare più tappe possibili.
+
 ## Admin
-La webapp include anche un'interfaccia semplificata che permetta a un ipotetico admin di inserire le informazioni di nuovi percorsi/tappe o di modificare le esistenti.
+La webapp include anche un'interfaccia semplificata che permetta a un admin di inserire le informazioni di nuovi percorsi/tappe o di modificare le esistenti.
 
 ## Query MySQL da eseguire per testare la webapp
 
@@ -28,7 +30,9 @@ CREATE TABLE IF NOT EXISTS Utente(
     nome varchar(255) NOT NULL,
     cognome varchar(255) NOT NULL,
     psw varchar(255) NOT NULL,
-    admn int(1) NOT NULL
+    admn int(1) NOT NULL,
+    xp int NOT NULL,
+    livello int NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS citta(
@@ -37,10 +41,15 @@ CREATE TABLE IF NOT EXISTS citta(
     y varchar(255)
 );
 
+CREATE TABLE IF NOT EXISTS categoria(
+    nome varchar(255) PRIMARY KEY
+);
+
 CREATE TABLE IF NOT EXISTS Tappa(
 	id int PRIMARY KEY AUTO_INCREMENT,
     nome varchar(255) UNIQUE NOT NULL,
     descrizione mediumtext NOT NULL,
+    categoria varchar(255) NOT NULL REFERENCES Categoria(nome),
     citta varchar(255) NOT NULL REFERENCES citta(nome),
     via varchar(255) NOT NULL,
     lon varchar(255),
@@ -50,12 +59,18 @@ CREATE TABLE IF NOT EXISTS Tappa(
 CREATE TABLE IF NOT EXISTS Percorso(
     id int PRIMARY KEY AUTO_INCREMENT,
 	nome varchar(255) UNIQUE,
-    descrizione varchar(255) NOT NULL
+    descrizione varchar(255) NOT NULL,
+    dataInserimento TIMESTAMP,
+    like_tot int,
+    commenti_tot int,
+    visite_tot int
 );
 
 CREATE TABLE IF NOT EXISTS Utente_Percorre_Tappa(
     email varchar(255) REFERENCES Utente(email),
     id_tappa int REFERENCES Tappa(id),
+    piace int,
+    commento mediumtext,
     PRIMARY KEY (email, id_tappa),
     data TIMESTAMP NOT NULL
 );
@@ -63,6 +78,7 @@ CREATE TABLE IF NOT EXISTS Utente_Percorre_Tappa(
 CREATE TABLE IF NOT EXISTS Utente_Preferisce_Percorso(
     email varchar(255) REFERENCES Utente(email),
     id_percorso int REFERENCES Percorso(id),
+    data TIMESTAMP NOT NULL,
     PRIMARY KEY (email, id_percorso)
 );
 
@@ -73,8 +89,29 @@ CREATE TABLE IF NOT EXISTS Tappa_Appartiene_Percorso(
     PRIMARY KEY (id_tappa, id_percorso)
 );
 
+INSERT INTO categoria (nome ) VALUES
+('Ristorante'),
+('Bar'),
+('Cinema'),
+('Spiaggia'),
+('Museo'),
+('Parco'),
+('Piscina'),
+('Piazza'),
+('Mare'),
+('Fontana'),
+('Castello'),
+('Chiesa'),
+('Cattedrale'),
+('Basilica'),
+('Acquario'),
+("Galleria d'arte"),
+('Monumento'),
+('Ponte'),
+('Altro'); 
 
-INSERT INTO citta (nome, x, y) VALUES
+
+INSERT INTO citta (nome, y, x) VALUES
 ('Genova', '8.9881', '44.4074'),
 ('Milano', '9.1899', '45.4642'),
 ('Roma', '12.5674', '41.8719'),
@@ -149,7 +186,7 @@ INSERT INTO citta (nome, x, y) VALUES
 ('Bergamo', '9.8833', '45.6667'),
 ('Sondrio', '9.9333', '46.2');
 
-INSERT INTO citta (nome, x, y) VALUES
+INSERT INTO citta (nome, y, x) VALUES
 ('Paris', '2.3522', '48.8566'),
 ('Lyon', '4.8333', '45.7'),
 ('Marseille', '5.3667', '43.3'),
@@ -176,7 +213,7 @@ INSERT INTO citta (nome, x, y) VALUES
 ('Rouen', '1.0833', '49.4333'),
 ('Nantes', '1.7', '47.2');
 
-INSERT INTO citta (nome, x, y) VALUES
+INSERT INTO citta (nome, y, x) VALUES
 ('Berlin', '13.3833', '52.5167'),
 ('Hamburg', '9.9667', '53.6'),
 ('Munich', '11.55', '48.15'),
@@ -205,7 +242,7 @@ INSERT INTO citta (nome, x, y) VALUES
 ('Aachen', '6.0833', '50.7333'),
 ('Kiel', '10.1333', '54.3333');
 
-INSERT INTO citta (nome, x, y) VALUES
+INSERT INTO citta (nome, y, x) VALUES
 ('London', '-0.1333', '51.5'),
 ('Manchester', '-2.2', '53.5'),
 ('Liverpool', '-2.9667', '53.4667'),
@@ -229,7 +266,7 @@ INSERT INTO citta (nome, x, y) VALUES
 ('Cambridge', '0.1167', '52.2'),
 ('Oxford', '1.25', '51.8667');
 
-INSERT INTO citta (nome, x, y) VALUES
+INSERT INTO citta (nome, y, x) VALUES
 ('Brussels', '4.35', '50.8333'),
 ('Antwerp', '4.4667', '51.2167'),
 ('Ghent', '3.7', '51.0333'),
@@ -239,7 +276,7 @@ INSERT INTO citta (nome, x, y) VALUES
 ('Bruges', '3.2', '51.2'),
 ('Mons', '3.9667', '50.45'),
 ('Bruxelles', '4.35', '50.8333');
-INSERT INTO citta (nome, x, y) VALUES
+INSERT INTO citta (nome, y, x) VALUES
 ('Zagreb', '15.9167', '45.8'),
 ('Split', '15.5', '43.5667'),
 ('Rijeka', '15.45', '45.35'),
@@ -247,17 +284,6 @@ INSERT INTO citta (nome, x, y) VALUES
 ('Osijek', '18.6', '45.55'),
 ('Pula', '15.3333', '44.8333'),
 ('Koprivnica', '16.65', '43.8333');
-
-
-
-
-
-
-
-
-
-
-
 
 
 INSERT INTO Percorso (nome, descrizione) VALUES ('Visita a Genova', 'Percorso per i monumenti, musei e ristoranti di Genova');
@@ -269,7 +295,7 @@ INSERT INTO Percorso (nome, descrizione) VALUES ('Visita a Dublino', 'Percorso p
 INSERT INTO Percorso (nome, descrizione) VALUES ('Chiese di Dublino', 'Percorso per le chiese di Dublino');
 
  
-INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat) 
+INSERT INTO Tappa (nome, descrizione, categoria,citta, via,  lat, lon) 
     VALUES (
             'Arco della Vittoria', 
             "
@@ -277,24 +303,26 @@ INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat)
                 La commissione giudicatrice scelse nella seconda fase - dai sedici progetti pervenuti - la bozza dell'architetto Marcello Piacentini (architetto che realizzò parecchie opere per il regime) e dello scultore Arturo Dazzi perché, come commentò la commissione, nel progetto si valorizzarono gli elementi architettonici della Roma Imperiale e del Cinquecento dando al monumento una forte funzione commemorativa eroica e trionfale.
                 Il disegno originale del 1924 venne poi modificato dallo stesso Piacentini due anni dopo, rendendo il monumento ad arco più semplice e asciutto. Le opere per la costruzione del monumento furono eseguite dall'azienda locale 'Impresa Garbarino e Sciaccaluga, dirette personalmente dall'architetto Piacentini.
             ", 
+            'Monumento',
             'Genova',
             'Piazza della Vittoria', 
             '44.403077306694875',
             '8.944978513772323'
     );
-INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat) 
+INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
     VALUES (
             'Ponte monumentale', 
             "  
                 Il Ponte Monumentale è un'imponente costruzione in marmo, edificata nel 1895 dove prima sorgeva la Porta d'Arco delle Mura Nuove; il progetto fu presentato nel 1890 dall'ingegnere Cesare Gamba e dagli architetti Ronco e Haupt.
                 Il Ponte attraversa in senso longitudinale via XX Settembre ed è alto 21 metri, la struttura portante è costituita da un grande arco di mattoni, le arcate sottostanti sono sorrette da colonne in marmo sulle quali è posta una decorazione scultorea in pietra.
             ", 
+            'Monumento',
             'Genova',
             "Corso Andrea Podesta'",
             '44.40591531858697', 
             '8.939335738048305'
     );
-INSERT INTO Tappa (nome, descrizione, citta, via, lon, lat) 
+INSERT INTO Tappa (nome, descrizione, categoria, citta, via, lat, lon) 
     VALUES (
             'Fontana de Ferrari', 
             "
@@ -302,45 +330,49 @@ INSERT INTO Tappa (nome, descrizione, citta, via, lon, lat)
                 Fin dai primi anni sorse il problema di come arredare il centro della piazza per permettere la realizzazione di una rotatoria intorno alla quale incanalare i veicoli provenienti dalle varie direzioni. Venne inizialmente realizzata una grande aiuola con palmizi, ma la soluzione non risultò convincente e agli inizi degli anni trenta l'architetto Giuseppe Crosa di Vergagni fu incaricato di ideare una nuova sistemazione.
                 Il progetto di Crosa di Vergagni prevedeva una grande fontana costituita da una vasca centrale in bronzo posizionata al centro di una serie di vasche concentriche rivestite in travertino. Il bacile in bronzo fu donato alla citta dall'ingegnere Carlo Piaggio per esaudire il desiderio testamentario del padre - il banchiere e armatore Erasmo Piaggio - di lasciare qualcosa di duraturo in dono alla citta. La vasca venne fusa negli stabilimenti Tirreno di Genova-Le Grazie e trasportata in Piazza De Ferrari il 23 aprile 1936. Il trasporto del manufatto si rivelò particolarmente impegnativo perché la vasca, composta da un unico elemento di 11 metri di diametro e 36 tonnellate di peso, non poteva passare tra i vicoli del centro storico genovese. Il bacile fu quindi caricato su un pontone e trainato fino alla zona della Foce, da dove un trattore lo trasportò lungo il futuro Viale Brigate Partigiane e Via XX Settembre fino alla sua destinazione finale.
             ", 
+            'Fontana',
             'Genova',
             'Piazza Raffaele de Ferrari', 
             '44.40712785099835', 
             '8.934016640162541'
     );
-INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat) 
+INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
     VALUES (
             'Cattedrale di San Lorenzo', 
             "
                 È stata consacrata al santo il 10 ottobre del 1118 da papa Gelasio II quando ne esistevano solo l'altare e una zona circostante, riservata alla preghiera, ma nessuna struttura in elevato. Nel corso del XII secolo fu costruita, ma ancora nel terzo quarto del secolo restava incompiuta e priva di una facciata vera e propria.
                 Una prima basilica vi sorse intorno al VI-VII secolo[3] Una leggenda vuole che in citta si siano fermati San Lorenzo e papa Sisto II, diretti in Spagna, venendo ospitati in una casa sita nella zona dell'attuale cattedrale, dove, dopo la loro uccisione, sarebbero sorte una cappella e poi una chiesa dedicate al santo.
             ", 
+            'Cattedrale',
             'Genova',
             'Piazza San Lorenzo', 
             '44.40763134514167', 
             '8.931458789833469'
             );
-INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat) 
+INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
     VALUES (
             'Ombre Rosse', 
             'Ottimo ristorante con piatti tipici genovesi', 
+            'ristorante',
             'Genova',
             'Vico degli Indoratori', 
             '44.4086854746386', 
             '8.931197246472893'
     );
-INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat) 
+INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
     VALUES (
             'Acquario di Genova', 
             "
                 L'Acquario di Genova è un acquario situato a Ponte Spinola, nel cinquecentesco porto antico di Genova. Al momento dell'inaugurazione era il più grande d'Europa e il secondo nel mondo.
                 Il percorso di 2 ore e 30 minuti comprende 39 vasche cui si aggiungono le 4 a cielo aperto del Padiglione Cetacei inaugurato nell'estate del 2013. La superficie totale della struttura è di 27 000 metri quadrati. Le vasche ospitano circa 15 000 animali di 400 specie diverse tra pesci, mammiferi marini, uccelli, rettili, anfibi, invertebrati in ambienti che riproducono quelli originari delle singole specie con evidenti finalità didattiche.
             ", 
+            'Acquario',
             'Genova',
             'Porto Antico, Molo Ponte Calvi', 
             '44.41020428824749', 
             '8.92666193224689'
     );
-INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat)
+INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon)
      VALUES (
             'Palazzo Doria Tursi', 
             "
@@ -350,15 +382,17 @@ INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat)
                 A seguito dell'annessione della Repubblica di Genova nel Regno di Sardegna, fu acquistato da Vittorio Emanuele I di Savoia nel 1820, ed in tale occasione ristrutturato dall'architetto di corte Carlo Randoni, cui è dovuta la costruzione della torretta dell'orologio.
                 Dal 1848 è sede del municipio genovese.
             ",
+            'Palazzo',
             'Genova',
              'Via Garibaldi', 
              '44.411243317284956', 
              '8.932595267635298'
     );
-INSERT INTO Tappa (nome, descrizione, citta, via,  lon, lat) 
+INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
     VALUES (    
             'Pesciolino', 
             'Ristorante di buonissimo pesce genovese', 
+            'ristorante',
             'Genova',
             'Vico Domoculta', 
             '44.409211995678156', 
@@ -378,5 +412,6 @@ INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (8,
 
 
 INSERT INTO Utente (email, username, nome, cognome, psw, admn) VALUES ('admin@admin','admin', 'admin', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1);
+
 
 ```
