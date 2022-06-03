@@ -1,6 +1,8 @@
 <?php
 session_start();
 //error_reporting(0);
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -95,11 +97,64 @@ session_start();
 
     <!-- CONTENUTO PAGINA -->
 
-    <div class="container" style="margin:0px; padding:0px">
+    <div class="container" style="margin:0px; padding:0px" id="Logo">
     <br>
     <br>
     <br>
-        
+    <?php
+    if(isset($_POST['ordina'])){
+    $ordina = $_POST['ordina'];
+    //echo $ordina;
+    }
+    ?>
+
+    <div id="contenuto">
+        <div class="accordion accordion-flush"  id="accordionFlushExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingOne" >
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                      Ordina per: &nbsp; <?php if(isset($ordina) && $ordina=="like"){echo' <strong style="color:#B30000"> Like</strong>';}
+                                        if(isset($ordina) && $ordina=="commenti"){echo' <strong style="color:#B30000"> Commenti</strong>';}  
+                                        if(isset($ordina) && $ordina=="time"){echo' <strong style="color:#B30000"> Recenti</strong>';}  
+                                        if(isset($ordina) && $ordina=="visitati"){echo' <strong style="color:#B30000"> Visite</strong>';} 
+                                  ?>
+                    </button>
+                </form>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div id="orderLike" class="accordion-body">
+                    <form method="POST" action="index.php">
+                        <input type="hidden" name="ordina" value="like">
+                        <button type="submit" style="background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">Più like</button>
+                    </form>
+                </div>
+              </div>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <form method="POST" action="index.php">
+                        <input type="hidden" name="ordina" value="time">
+                        <button type="submit" style="background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">Più recenti</button>
+                    </form>
+                </div>
+              </div>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <form method="POST" action="index.php">
+                        <input type="hidden" name="ordina" value="commenti">
+                        <button type="submit" style="background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">Più commenti</button>
+                    </form>
+                </div>
+              </div>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <form method="POST" action="index.php">
+                        <input type="hidden" name="ordina" value="visitati">
+                        <button type="submit" style="background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">Più visitati</button>
+                    </form>
+                </div>
+              </div>
+            </div>
+        </div>
         <?php
         
             $host = "127.0.0.1";
@@ -115,10 +170,79 @@ session_start();
                 die("Errore: " . $connessione->connect_error);
             }
 
+            if(isset($ordina) && $ordina=="like"){
+                //riempo la colonna like_tot per ogni percorso
+                $sql = "SELECT * FROM percorso";
+                if ($result = $connessione->query($sql)) {
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_array()) { 
+                            $sql2="UPDATE percorso SET like_tot=(SELECT COUNT(*)
+                                                                 FROM utente_percorre_tappa, percorso, tappa_appartiene_percorso
+                                                                 WHERE tappa_appartiene_percorso.id_percorso=".$row['id']."
+                                                                 AND tappa_appartiene_percorso.id_percorso=percorso.id
+                                                                 AND tappa_appartiene_percorso.id_tappa=utente_percorre_tappa.id_tappa
+                                                                 AND utente_percorre_tappa.piace=1)
+                                   WHERE id=".$row['id'].";";
+                            $result2 = $connessione->query($sql2);
+                        }
+                    }
+                }
+                $sql = "SELECT * FROM percorso ORDER BY (like_tot)DESC";
+            }
+            else{
+                if(isset($ordina) && $ordina=="time"){
+                    $sql = "SELECT * FROM percorso ORDER BY (dataInserimento)DESC";
+                }
+                else{
+                    if(isset($ordina) && $ordina=="commenti"){
+                        //riempo la colonna commenti_tot per ogni percorso
+                        $sql = "SELECT * FROM percorso";
+                        if ($result = $connessione->query($sql)) {
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_array()) { 
+                                    $sql2="UPDATE percorso SET commenti_tot=(SELECT COUNT(*)
+                                                                         FROM utente_percorre_tappa, percorso, tappa_appartiene_percorso
+                                                                         WHERE tappa_appartiene_percorso.id_percorso=".$row['id']."
+                                                                         AND tappa_appartiene_percorso.id_percorso=percorso.id
+                                                                         AND tappa_appartiene_percorso.id_tappa=utente_percorre_tappa.id_tappa
+                                                                         AND utente_percorre_tappa.commento IS NOT NULL)
+                                           WHERE id=".$row['id'].";";
+                                    $result2 = $connessione->query($sql2);
+                                }
+                            }
+                        }
+                        $sql = "SELECT * FROM percorso ORDER BY (commenti_tot)DESC";    
+                    }
+                    else{
+                        if(isset($ordina) && $ordina=="visitati"){
+                            //riempo la colonna visite_tot per ogni percorso
+                            $sql = "SELECT * FROM percorso";
+                            if ($result = $connessione->query($sql)) {
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_array()) { 
+                                        $sql2="UPDATE percorso SET visite_tot=(SELECT COUNT(*)
+                                                                             FROM utente_percorre_tappa, percorso, tappa_appartiene_percorso
+                                                                             WHERE tappa_appartiene_percorso.id_percorso=".$row['id']."
+                                                                             AND tappa_appartiene_percorso.id_percorso=percorso.id
+                                                                             AND tappa_appartiene_percorso.id_tappa=utente_percorre_tappa.id_tappa)
+                                               WHERE id=".$row['id'].";";
+                                        $result2 = $connessione->query($sql2);
+                                    }
+                                }
+                            }
+                            $sql = "SELECT * FROM percorso ORDER BY (visite_tot)DESC";  
+                        }
+                        else{
+                            $sql = "SELECT * FROM percorso ORDER BY (dataInserimento)DESC";
+                        }
+                    }
+
+                }
+
+            }
 
 
             $i = 0;
-            $sql = "SELECT * FROM percorso ORDER BY (dataInserimento)DESC";
             if ($result = $connessione->query($sql)) {
                 if ($result->num_rows > 0) {
                     echo '<div id="mostra">';
@@ -231,7 +355,7 @@ session_start();
             }
         
         ?>
-        <div id="contenuto"></div>
+        </div>
 
         <div class="row">
 
@@ -308,6 +432,29 @@ session_start();
                     });
                 }
             });
+            //quando viene cliccato l'id orderLike, eseguo la query con ajax
+            //$("#orderLike").click(function(){
+            //    //alert("like");
+            //    $.ajax({
+            //        type: "POST",
+            //        data: {ordina: "like"},
+            //        success: function(data){
+            //            //$("#contenuto").html('');
+            //            //$("#contenuto").html(data);
+            //        }
+            //    });
+            //});
+            //$("#orderTime").click(function(){
+            //    //alert("like");
+            //    $.ajax({
+            //        type: "POST",
+            //        data: {ordina: "time"},
+            //        success: function(data){
+            //            //$("#contenuto").html('');
+            //            //$("#contenuto").html(data);
+            //        }
+            //    });
+            //});
         });
     </script>
     <script>

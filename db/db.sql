@@ -38,7 +38,10 @@ CREATE TABLE IF NOT EXISTS Percorso(
     id int PRIMARY KEY AUTO_INCREMENT,
 	nome varchar(255) UNIQUE,
     descrizione varchar(255) NOT NULL,
-    dataInserimento TIMESTAMP
+    dataInserimento TIMESTAMP,
+    like_tot int,
+    commenti_tot int,
+    visite_tot int
 );
 
 CREATE TABLE IF NOT EXISTS Utente_Percorre_Tappa(
@@ -352,8 +355,8 @@ INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon)
                 L'Acquario di Genova è un acquario situato a Ponte Spinola, nel cinquecentesco porto antico di Genova. Al momento dell'inaugurazione era il più grande d'Europa e il secondo nel mondo.
                 Il percorso di 2 ore e 30 minuti comprende 39 vasche cui si aggiungono le 4 a cielo aperto del Padiglione Cetacei inaugurato nell'estate del 2013. La superficie totale della struttura è di 27 000 metri quadrati. Le vasche ospitano circa 15 000 animali di 400 specie diverse tra pesci, mammiferi marini, uccelli, rettili, anfibi, invertebrati in ambienti che riproducono quelli originari delle singole specie con evidenti finalità didattiche.
             ", 
+            'Acquario',
             'Genova',
-            'acquario',
             'Porto Antico, Molo Ponte Calvi', 
             '44.41020428824749', 
             '8.92666193224689'

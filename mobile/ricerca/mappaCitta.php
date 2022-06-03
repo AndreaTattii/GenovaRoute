@@ -54,7 +54,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
                 </a>
             </div>
             <div class="col-8">
-                <h1 style=" color: white; font-weight: bold; text-align: center; font-size: 17px;"><?php echo $_SESSION['nomePercorso']  ?> </h1>
+                <h1 style=" color: white; font-weight: bold; text-align: center; font-size: 17px;"><?php echo $citta  ?> </h1>
             </div>
             <div class="col-2">
                  <h1 style="font-family: 'Amiri', serif; color: white; font-weight: bold; text-align: center;"></h1>
