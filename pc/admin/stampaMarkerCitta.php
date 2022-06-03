@@ -19,11 +19,16 @@
     $i=0;
     while($row = $result->fetch_assoc()){
         $i++;
-        $test2 = array(
-            'lat' => $row['lat'],
-            'lon' => $row['lon'],
-            'nome' => $row['nome'],
-        );
+        $test2[$i]['lat'] = $row['lat'];
+        $test2[$i]['lon'] = $row['lon'];
+        $test2[$i]['nome'] = $row['nome'];
+
+        //decommenta questo e commenta quello sopra(era corretto)
+        //$test2 = array(
+        //    'lat' => $row['lat'],
+        //    'lon' => $row['lon'],
+        //    'nome' => $row['nome'],
+        //);
     }
     echo json_encode($test2);
 ?>
