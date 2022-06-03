@@ -87,6 +87,7 @@ if ($result = $connessione->query($sql)) {
             <div class="row">
                 <div class="col-8">
                     <h1><?php echo $percorso ?></h1>
+                    <p><strong>TIP:</strong> Trascina le tappe per riordinarle o inseriscile manualmente</p>
                 </div>
                 <div class="col-4">
                     
@@ -126,29 +127,29 @@ if ($result = $connessione->query($sql)) {
 
     if ($result = $connessione->query($sql)) {
         if ($result->num_rows > 0) {
-            echo'<div class="containerr">';
+            echo'<div class="row_position">';
             while ($row = $result->fetch_assoc()) {
                 if ($i % 2 == 0) {
                     $sfondo = "background-color:#F0F0F0;";
                 } else {
                     $sfondo = "background-color:white;";
                 }
-                echo "<div draggable='false' class='row' style='" . $sfondo . "; padding:10px; border-left-style:solid; border-left-width:1px; border-right-style:solid; border-right-width:1px; ' >";
-                    echo "<div class='col-1' style='border-right-style:solid; border-right-width:1px'>";
-                        echo '<b>';
+                echo "<div id='".$row['id']."' class='row' style='" . $sfondo . "; padding:10px; border-left-style:solid; border-left-width:1px; border-right-style:solid; border-right-width:1px; ' >";
+                    echo "<div class='col-1' style='border-right-style:solid; border-right-width:1px' id='".$row['id']."'>";
+                        echo '<b id="'.$row['id'].'">';
                             echo $row["id"];
                         echo '</b>';
                     echo "</div>";
-                    echo "<div class='col-2'>";
+                    echo "<div class='col-2' id='".$row['id']."'>";
                         echo $row["ordine"];
                     echo "</div>";
-                    echo "<div class='col-4'>";
+                    echo "<div class='col-4' id='".$row['id']."'>";
                         echo $row["nome"];
                     echo "</div>";
-                    echo "<div class='col-4'>";
+                    echo "<div class='col-4' id='".$row['id']."'>";
                         echo $row["via"];
                     echo "</div>";
-                    echo "<div class='col-1'>";
+                    echo "<div class='col-1' id='".$row['id']."'>";
                             echo "
                                     <center>
                                         <form action='visualizzaQR.php' method='POST'>
@@ -225,35 +226,6 @@ if ($result = $connessione->query($sql)) {
     </div>
     <br>
     <br>
-    <h1>Ordina con Drag&Drop</h1>
-        <table class="table table-bordered" id="mytable">
-            <thead>
-                <th>Ordine</th>
-                <th>ID</th>
-                <th>Nome</th>
-            </thead>
-            <tbody class="row_position">
-                <?php 
-                $mysqli = new mysqli($host, $user, $password , $database);
-                $sql = "Select tappa.nome, tappa.id, tappa.descrizione, ordine 
-                        FROM tappa_appartiene_percorso, tappa 
-                        WHERE id_percorso=".$_SESSION['idPercorso']."
-                        AND tappa.id=tappa_appartiene_percorso.id_tappa
-                        order by ordine";
-                $datas = $mysqli->query($sql);    
-                while ($data = $datas->fetch_assoc()) { ?>
-                <tr id="<?php echo $data['id']?>">
-                    <td><?php echo $data['ordine']; ?>
-                    </td>
-                    <td><?php echo $data['id']; ?>
-                    </td>
-                    <td><?php echo $data['nome']; ?>
-                    </td>
-                </tr>
-                <?php } ?>
-
-            </tbody>
-        </table>
     </div>
 
     <br>
@@ -265,7 +237,7 @@ if ($result = $connessione->query($sql)) {
         delay: 150,
         stop: function() {
             var selectedData = new Array();
-            $(".row_position>tr").each(function() {
+            $(".row_position>div").each(function() {
                 selectedData.push($(this).attr("id"));
             });
             updateOrder(selectedData);
