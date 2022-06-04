@@ -134,7 +134,7 @@ if ($result = $connessione->query($sql)) {
                 } else {
                     $sfondo = "background-color:white;";
                 }
-                echo "<div id='".$row['id']."' class='row' style='" . $sfondo . "; padding:10px; border-left-style:solid; border-left-width:1px; border-right-style:solid; border-right-width:1px; ' >";
+                echo "<div id='".$row['id']."' class='row' style='" . $sfondo . ";cursor:grab;padding:10px; border-left-style:solid; border-left-width:1px; border-right-style:solid; border-right-width:1px; ' >";
                     echo "<div class='col-1' style='border-right-style:solid; border-right-width:1px' id='".$row['id']."'>";
                         echo '<b id="'.$row['id'].'">';
                             echo $row["id"];
@@ -234,6 +234,7 @@ if ($result = $connessione->query($sql)) {
     <br>
     <script>
     $(".row_position").sortable({
+        cursor: "grabbing",
         delay: 150,
         stop: function() {
             var selectedData = new Array();

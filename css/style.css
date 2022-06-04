@@ -162,3 +162,11 @@
 .draggable{
   cursor: move;
 }
+
+.drag{
+  cursor: grab;
+}
+
+.drag:hover:active{
+  cursor: grabbing;
+}
