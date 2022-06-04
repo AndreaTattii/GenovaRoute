@@ -31,7 +31,7 @@
             WHERE id = ".$idPercorso.";";
 
     if ($result = $connessione->query($sql)) {
-        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/index.php");
+        header("Location: index.php");
 
 
     } else {

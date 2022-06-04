@@ -24,11 +24,11 @@
     //hashing della password
     $password = hash("sha256", $password);
 
-    $sql = "INSERT INTO Tappa (nome, descrizione, via, img1, img2, img3, lon, lat) VALUES 
+    $sql = "INSERT INTO tappa (nome, descrizione, via, img1, img2, img3, lon, lat) VALUES 
     ('".$nome."','".$descrizione."', '".$via."', '".$img1."','".$img2."','".$img3."','".$lon."','".$lat."')";
     
     if($connessione->query($sql) === true){
-        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/formT.php");
+        header("Location: formT.php");
     }else{
         echo "Errore durante inserimento: ".$connessione->error;
     }

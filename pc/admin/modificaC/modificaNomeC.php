@@ -19,7 +19,7 @@
     $sql="UPDATE citta SET nome = '".$contenuto."'
             WHERE nome = '".$nomeCitta."';";
     if ($result = $connessione->query($sql)) {
-        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/");
+        header("Location: index.php");
         
     } else {
         echo "Errore nella query: " . $sql . "<br>" . $connessione->error;

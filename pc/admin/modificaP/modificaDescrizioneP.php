@@ -19,7 +19,7 @@
     $sql = "UPDATE percorso SET descrizione = '".$nuovaDescrizione."'
             WHERE id = ".$idPercorso.";";
     if ($result = $connessione->query($sql)) {
-        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/index.php");
+        header("Location: index.php");
     } else {
         echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
     }

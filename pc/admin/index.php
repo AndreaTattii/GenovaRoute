@@ -115,7 +115,7 @@ session_start();
             $connessione = new mysqli($host, $user, $pass, $database);
 
             $i = 0;
-            error_reporting(0);
+            //error_reporting(0);
 
             if ($connessione === false) {
                 echo "Errore: " . $connessione->error;
@@ -366,14 +366,6 @@ session_start();
                 </div>
             </div>
             <?php
-
-            $host = "localhost";
-            $user = "grovago";
-            $pass = "";
-            $database="my_grovago";
-            $connessione = new mysqli($host, $user, $pass, $database);
-
-            error_reporting(0);
 
             if ($connessione === false) {
                 echo "Errore: " . $connessione->error;

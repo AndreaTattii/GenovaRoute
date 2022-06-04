@@ -19,7 +19,7 @@
     
 
     
-    $sql="INSERT INTO Percorso (nome, descrizione) VALUES ('$nome', '$descrizione')";
+    $sql="INSERT INTO percorso (nome, descrizione) VALUES ('$nome', '$descrizione')";
     if ($result = $connessione->query($sql)) {
         echo "Percorso inserito con successo";
     } else {
@@ -78,6 +78,6 @@
     }
 
     $connessione->close();
-    header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/formP.php");
+    header("Location: formP.php");
 
 ?>
