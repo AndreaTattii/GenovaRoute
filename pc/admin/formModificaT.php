@@ -271,10 +271,10 @@ if ($result = $connessione->query($sql)) {
                             ";
                     }
                 }
-                $sql2 = 'SELECT lat,lon,Tappa.nome
-                FROM Tappa, Percorso, Tappa_Appartiene_Percorso 
+                $sql2 = 'SELECT lat,lon,tappa.nome
+                FROM tappa, percorso, tappa_appartiene_percorso 
                 WHERE tappa.id='.$_SESSION['idTappa'].'  
-                AND percorso.id = Tappa_Appartiene_Percorso.id_percorso 
+                AND percorso.id = tappa_appartiene_percorso.id_percorso 
                 AND tappa.id=id_tappa ';
                 $result2 = $connessione->query($sql2);
                 $row2 = $result2->fetch_array();

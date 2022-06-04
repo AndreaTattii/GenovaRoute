@@ -28,7 +28,7 @@
 
 
     //restituisci ultimo percroso inserito
-    $sql="SELECT id FROM Percorso
+    $sql="SELECT id FROM percorso
         WHERE nome = '$nome'
         AND descrizione = '$descrizione'
     ";

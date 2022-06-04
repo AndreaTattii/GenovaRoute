@@ -121,7 +121,7 @@ if ($result = $connessione->query($sql)) {
 
     $sql = "SELECT  id, tappa.nome AS nome, tappa.via AS via, tappa_appartiene_percorso.ordine AS ordine 
         FROM tappa, tappa_appartiene_percorso 
-        WHERE id_Percorso = '" . $idPercorso . "'
+        WHERE id_percorso = '" . $idPercorso . "'
             AND tappa.id = tappa_appartiene_percorso.id_tappa
             ORDER BY ordine";
 
