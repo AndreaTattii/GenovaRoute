@@ -7,7 +7,7 @@
 <?php
     session_start();
     error_reporting(0);
-        $host = "127.0.0.1";
+        $host = "localhost";
         $user = "grovago";
         $pass = "";
         $database="my_grovago";

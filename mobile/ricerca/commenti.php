@@ -4,7 +4,7 @@ session_start();
 //error_reporting(0);
 $_SESSION['arrivoDalCerca']=true;
 
-$host = "127.0.0.1";
+$host = "localhost";
 $user = "grovago";
 $pass = "";
 $database="my_grovago";

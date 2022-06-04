@@ -4,7 +4,7 @@ if(isset($_POST['percorso'])){
     $_SESSION['nomePercorso'] = $_POST['percorso'];
 }
 
-$host = "127.0.0.1";
+$host = "localhost";
 $user = "grovago";
 $pass = "";
 $database="my_grovago";

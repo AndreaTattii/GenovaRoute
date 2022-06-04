@@ -4,7 +4,7 @@ if(isset($_GET['emailUtente'])){
     $emailUtente=$_GET['emailUtente'];
 }
 
-$host = "127.0.0.1";
+$host = "localhost";
 $user = "grovago";
 $pass = "";
 $database="my_grovago";

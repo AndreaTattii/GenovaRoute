@@ -7,7 +7,7 @@ if (isset($_POST['ordineTappa'])) {
 if (isset($_POST['idTappa'])) {
     $_SESSION['idTappa'] = $_POST['idTappa'];
 }
-$host = "127.0.0.1";
+$host = "localhost";
 $user = "grovago";
 $pass = "";
 $database="my_grovago";

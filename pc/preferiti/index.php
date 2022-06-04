@@ -56,7 +56,7 @@
 
     <div class="container" style="padding-top:30px; margin-bottom: 100px;">
         <?php
-        $host = "127.0.0.1";
+        $host = "localhost";
         $user = "grovago";
         $pass = "";
         $database="my_grovago";
