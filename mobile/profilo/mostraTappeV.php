@@ -139,7 +139,7 @@ if ($connessione === false) {
     <!-- CONTENUTO PAGINA -->
     <?php
     $sql = " SELECT * 
-                    FROM Tappa, utente_percorre_tappa
+                    FROM tappa, utente_percorre_tappa
                     WHERE email = '" . $email . "'
                         AND id = id_tappa
                         ORDER BY (data)DESC
@@ -204,7 +204,7 @@ if ($connessione === false) {
                     }
                 }
                 $sql2 = "SELECT COUNT(piace)
-                            FROM Utente_percorre_tappa
+                            FROM utente_percorre_tappa
                             WHERE piace = 1
                             AND id_tappa = " . $row['id'] . "
                     ";
@@ -232,8 +232,8 @@ if ($connessione === false) {
                                             <div class="dropdown-menu" style="border:2px solid #b30000; width: 300px;">
                     ';
                                             $sql2 = "SELECT *
-                                                    FROM Percorso, Tappa_appartiene_percorso
-                                                    WHERE Percorso.id = Tappa_appartiene_percorso.id_percorso
+                                                    FROM percorso, tappa_appartiene_percorso
+                                                    WHERE percorso.id = tappa_appartiene_percorso.id_percorso
                                                         AND id_tappa = ".$row['id']."
                                                 ";
 

@@ -143,10 +143,10 @@ $connessione = new mysqli($host, $user, $pass, $database);
 
             <?php
             //query per selezionare le coordinate della prima tappa del percorso
-            $sql = 'SELECT lon, lat, Tappa.nome, ordine
-            FROM Tappa, Percorso, Tappa_Appartiene_Percorso
-            WHERE  Tappa.id = Tappa_Appartiene_Percorso.id_tappa
-            AND  percorso.id = Tappa_Appartiene_Percorso.id_percorso 
+            $sql = 'SELECT lon, lat, tappa.nome, ordine
+            FROM tappa, percorso, tappa_appartiene_percorso
+            WHERE  tappa.id = tappa_appartiene_percorso.id_tappa
+            AND  percorso.id = tappa_appartiene_percorso.id_percorso 
             AND  percorso.id = '.$_GET["percorsi"].'
             AND ordine = 0';
             
@@ -173,10 +173,10 @@ $connessione = new mysqli($host, $user, $pass, $database);
                 ";
             }
             if(!empty($_GET["percorsi"])){
-                $sql = 'SELECT lat,lon,Tappa.nome, ordine, tappa.id
-                FROM Tappa, Percorso, Tappa_Appartiene_Percorso 
-                Where Tappa.id = Tappa_Appartiene_Percorso.id_tappa 
-                AND percorso.id = Tappa_Appartiene_Percorso.id_percorso 
+                $sql = 'SELECT lat,lon,tappa.nome, ordine, tappa.id
+                FROM tappa, percorso, tappa_appartiene_percorso 
+                Where tappa.id = tappa_appartiene_percorso.id_tappa 
+                AND percorso.id = tappa_appartiene_percorso.id_percorso 
                 AND  percorso.id = '.$_GET["percorsi"].';';
 
                 $result = $connessione->query($sql);

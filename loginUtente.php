@@ -27,13 +27,13 @@
                 $row = mysqli_fetch_assoc($result);
                 $_SESSION['email'] = $row['email'];
                 if($_SESSION['dispositivo']=='mobile'){
-                    header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/mobile/percorsi/index.php");
+                    header("Location: mobile/percorsi/index.php");
                 }
                 else{
                     if($row['admn']==1){
-                        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/index.php");
+                        header("Location: pc/admin/index.php");
                     }else{
-                        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/index.php");
+                        header("Location: pc/index.php");
                     }
                 }
                 //header("Location: ".$_SESSION['dispositivo']."/percorsi/index.php");  
@@ -42,7 +42,7 @@
                 */
             } else {
                 $_SESSION['errore'] = 1;
-                header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/index.php");
+                header("Location: index.php");
             }
         }
         else{
@@ -64,17 +64,17 @@
             }
             else{
 
-                $sql = "INSERT INTO utente (nome, cognome, email, psw, username, livello, xp) VALUES 
-                ('$nome','$cognome', '$mail', '$password','$username', 1, 0)";
+                $sql = "INSERT INTO utente (nome, cognome, email, psw, username, livello, xp, admn) VALUES 
+                ('$nome','$cognome', '$mail', '$password','$username', 1, 0, 0)";
             
                 
                 if($connessione->query($sql) === true){
                     $_SESSION['email']= $mail;
                     if($_SESSION['dispositivo']=='mobile'){
-                        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/mobile/percorsi/index.php");
+                        header("Location: mobile/percorsi/index.php");
                     }
                     else{
-                        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/index.php");
+                        header("Location: pc/index.php");
                     }
                     //header("location: ../".$_SESSION['dispositivo']."/percorsi/index.php");
                     echo "Utente inserito con successo";

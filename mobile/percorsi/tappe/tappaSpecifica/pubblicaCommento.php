@@ -23,10 +23,10 @@
     if ($result = $connessione->query($sql)) {
         if(isset($_SESSION['arrivoDalCerca'])){
             unset($_SESSION['arrivoDalCerca']);
-            header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/mobile/ricerca/commenti.php?idTappa=".$_SESSION['idTappa']."");
+            header("Location: ../../../ricerca/commenti.php?idTappa=".$_SESSION['idTappa']."");
         }
         else{
-            header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/mobile/percorsi/tappe/tappaSpecifica/commenti.php?idTappa=".$idTappa."");
+            header("Location: commenti.php?idTappa=".$idTappa."");
         }
     } else {
         echo "Errore nella query: " . $sql . "<br>" . $connessione->error;

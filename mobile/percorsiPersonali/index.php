@@ -90,7 +90,9 @@ session_start();
             </div>
         </div>
     </div>
-
+    <div>
+        <h1>Coming soon...</h1>
+    </div>
     <div class="loader-wrapper">
         <div id="container">
             <svg viewBox="0 0 100 100">

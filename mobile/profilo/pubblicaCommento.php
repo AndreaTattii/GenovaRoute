@@ -22,7 +22,7 @@
                 AND email ='".$email."'";
                 
     if ($result = $connessione->query($sql)) {
-        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/mobile/profilo/commenti.php?idTappa=".$idTappa."");
+        header("Location: commenti.php?idTappa=".$idTappa."");
     } else {
         echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
     }

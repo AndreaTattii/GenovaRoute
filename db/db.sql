@@ -47,13 +47,13 @@ CREATE TABLE IF NOT EXISTS Utente_Percorre_Tappa(
     piace int,
     commento mediumtext,
     PRIMARY KEY (email, id_tappa),
-    data TIMESTAMP NOT NULL
+    data datetime NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Utente_Preferisce_Percorso(
     email varchar(100) REFERENCES Utente(email),
     id_percorso int REFERENCES Percorso(id),
-    data TIMESTAMP NOT NULL,
+    data datetime NOT NULL,
     PRIMARY KEY (email, id_percorso)
 );
 

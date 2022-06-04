@@ -31,10 +31,10 @@ if ($connessione === false) {
 
 
 // CATTURO DA DB INFORMAZIONI DELLA TAPPA
-$sql = "SELECT Tappa.id ,Tappa.nome, Tappa.descrizione,  Tappa.via 
-        FROM Tappa, Tappa_appartiene_percorso, Percorso
-        WHERE Tappa.id = Tappa_appartiene_percorso.id_tappa
-            AND Percorso.id =  Tappa_appartiene_percorso.id_percorso
+$sql = "SELECT tappa.id ,tappa.nome, tappa.descrizione,  tappa.via 
+        FROM tappa, tappa_appartiene_percorso, percorso
+        WHERE tappa.id = tappa_appartiene_percorso.id_tappa
+            AND percorso.id =  tappa_appartiene_percorso.id_percorso
             AND id_percorso = " . $_SESSION['idPercorso'] . " 
             AND ordine = " . $_SESSION['ordineTappa'] . "";
 
@@ -55,7 +55,7 @@ if ($result = $connessione->query($sql)) {
 }
 
 $sql = "SELECT MAX(ordine)  
-    FROM  Tappa_Appartiene_Percorso
+    FROM  tappa_appartiene_percorso
     WHERE id_percorso =  " . $_SESSION['idPercorso'] . "";
 
 if ($result = $connessione->query($sql)) {

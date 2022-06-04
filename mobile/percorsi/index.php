@@ -261,7 +261,7 @@ session_start();
                         
                         //query per vedere quante tappe 
                         $quanteTappeQuery = "SELECT MAX(ordine)  
-                            FROM  Tappa_Appartiene_Percorso
+                            FROM  tappa_appartiene_percorso
                             WHERE id_percorso =  " . $row['id'] . ";";
                         if ($risultato = $connessione->query($quanteTappeQuery)) {
                             $row3 = $risultato->fetch_assoc();
@@ -291,7 +291,7 @@ session_start();
 
                         //query per vedere la prima città del percorso
                         $primaCittaQuery = "SELECT citta FROM tappa 
-                                            WHERE id IN (SELECT Tappa.id 
+                                            WHERE id IN (SELECT tappa.id 
                                                         FROM tappa_appartiene_percorso, tappa 
                                                         WHERE id_percorso = " . $row['id'] . " 
                                                                 AND ordine = 0
