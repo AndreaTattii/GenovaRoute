@@ -1,5 +1,5 @@
 
-CREATE TABLE IF NOT EXISTS Utente(
+CREATE TABLE IF NOT EXISTS utente(
     email varchar(100) PRIMARY KEY,
     username varchar(100) NOT NULL UNIQUE,
     nome varchar(255) NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS categoria(
     nome varchar(100) PRIMARY KEY
 );
 
-CREATE TABLE IF NOT EXISTS Tappa(
+CREATE TABLE IF NOT EXISTS tappa(
 	id int PRIMARY KEY AUTO_INCREMENT,
     nome varchar(100) UNIQUE NOT NULL,
     descrizione mediumtext NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS Tappa(
     lat varchar(255)
 );
 
-CREATE TABLE IF NOT EXISTS Percorso(
+CREATE TABLE IF NOT EXISTS percorso(
     id int PRIMARY KEY AUTO_INCREMENT,
 	nome varchar(100) UNIQUE,
     descrizione varchar(255) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS Percorso(
     visite_tot int
 );
 
-CREATE TABLE IF NOT EXISTS Utente_Percorre_Tappa(
+CREATE TABLE IF NOT EXISTS utente_percorre_tappa(
     email varchar(100) REFERENCES Utente(email),
     id_tappa int REFERENCES Tappa(id),
     piace int,
@@ -50,14 +50,14 @@ CREATE TABLE IF NOT EXISTS Utente_Percorre_Tappa(
     data datetime NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS Utente_Preferisce_Percorso(
+CREATE TABLE IF NOT EXISTS utente_preferisce_percorso(
     email varchar(100) REFERENCES Utente(email),
     id_percorso int REFERENCES Percorso(id),
     data datetime NOT NULL,
     PRIMARY KEY (email, id_percorso)
 );
 
-CREATE TABLE IF NOT EXISTS Tappa_Appartiene_Percorso(
+CREATE TABLE IF NOT EXISTS tappa_appartiene_percorso(
     id_tappa int REFERENCES Tappa(id),
     id_percorso int REFERENCES Percorso(id),
     ordine int NOT NULL,
@@ -272,16 +272,11 @@ INSERT INTO citta (nome, y, x) VALUES
 
 
 
-INSERT INTO Percorso (nome, descrizione) VALUES ('Visita a Genova', 'Percorso per i monumenti, musei e ristoranti di Genova');
-INSERT INTO Percorso (nome, descrizione) VALUES ('Vicolata', 'Percorso per la vicolata');
-INSERT INTO Percorso (nome, descrizione) VALUES ('Chiese di Genova', 'Percorso per le chiese di Genova');
-INSERT INTO Percorso (nome, descrizione) VALUES ('Musei di Genova', 'Percorso per i musei di Genova');
-INSERT INTO Percorso (nome, descrizione) VALUES ('Fontane di Genova', 'Percorso per le fontane di Genova');
-INSERT INTO Percorso (nome, descrizione) VALUES ('Visita a Dublino', 'Percorso per i monumenti, musei e ristoranti di Dublino');
-INSERT INTO Percorso (nome, descrizione) VALUES ('Chiese di Dublino', 'Percorso per le chiese di Dublino');
+INSERT INTO percorso (nome, descrizione) VALUES ('Visita a Genova', 'Percorso per i monumenti, musei e ristoranti di Genova');
+
 
  
-INSERT INTO Tappa (nome, descrizione, categoria,citta, via,  lat, lon) 
+INSERT INTO tappa (nome, descrizione, categoria,citta, via,  lat, lon) 
     VALUES (
             'Arco della Vittoria', 
             "
@@ -295,7 +290,7 @@ INSERT INTO Tappa (nome, descrizione, categoria,citta, via,  lat, lon)
             '44.403077306694875',
             '8.944978513772323'
     );
-INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
+INSERT INTO tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
     VALUES (
             'Ponte monumentale', 
             "  
@@ -308,7 +303,7 @@ INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon)
             '44.40591531858697', 
             '8.939335738048305'
     );
-INSERT INTO Tappa (nome, descrizione, categoria, citta, via, lat, lon) 
+INSERT INTO tappa (nome, descrizione, categoria, citta, via, lat, lon) 
     VALUES (
             'Fontana de Ferrari', 
             "
@@ -322,7 +317,7 @@ INSERT INTO Tappa (nome, descrizione, categoria, citta, via, lat, lon)
             '44.40712785099835', 
             '8.934016640162541'
     );
-INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
+INSERT INTO tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
     VALUES (
             'Cattedrale di San Lorenzo', 
             "
@@ -335,7 +330,7 @@ INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon)
             '44.40763134514167', 
             '8.931458789833469'
             );
-INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
+INSERT INTO tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
     VALUES (
             'Ombre Rosse', 
             'Ottimo ristorante con piatti tipici genovesi', 
@@ -345,7 +340,7 @@ INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon)
             '44.4086854746386', 
             '8.931197246472893'
     );
-INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
+INSERT INTO tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
     VALUES (
             'Acquario di Genova', 
             "
@@ -358,7 +353,7 @@ INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon)
             '44.41020428824749', 
             '8.92666193224689'
     );
-INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon)
+INSERT INTO tappa (nome, descrizione, categoria, citta, via,  lat, lon)
      VALUES (
             'Palazzo Doria Tursi', 
             "
@@ -374,7 +369,7 @@ INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon)
              '44.411243317284956', 
              '8.932595267635298'
     );
-INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
+INSERT INTO tappa (nome, descrizione, categoria, citta, via,  lat, lon) 
     VALUES (    
             'Pesciolino', 
             'Ristorante di buonissimo pesce genovese', 
@@ -385,15 +380,15 @@ INSERT INTO Tappa (nome, descrizione, categoria, citta, via,  lat, lon)
             '8.935454975015281'
     );
 
-INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (1, 1, 0);
-INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (2, 1, 1);
-INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (3, 1, 2);
-INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (4, 1, 3);
-INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (5, 1, 4);
-INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (6, 1, 5);
-INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (7, 1, 6);
-INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (8, 1, 7);
+INSERT INTO tappa_appartiene_percorso (id_tappa, id_percorso, ordine) VALUES (1, 1, 0);
+INSERT INTO tappa_appartiene_percorso (id_tappa, id_percorso, ordine) VALUES (2, 1, 1);
+INSERT INTO tappa_appartiene_percorso (id_tappa, id_percorso, ordine) VALUES (3, 1, 2);
+INSERT INTO tappa_appartiene_percorso (id_tappa, id_percorso, ordine) VALUES (4, 1, 3);
+INSERT INTO tappa_appartiene_percorso (id_tappa, id_percorso, ordine) VALUES (5, 1, 4);
+INSERT INTO tappa_appartiene_percorso (id_tappa, id_percorso, ordine) VALUES (6, 1, 5);
+INSERT INTO tappa_appartiene_percorso (id_tappa, id_percorso, ordine) VALUES (7, 1, 6);
+INSERT INTO tappa_appartiene_percorso (id_tappa, id_percorso, ordine) VALUES (8, 1, 7);
 
 
 
-INSERT INTO Utente (email, username, nome, cognome, psw, admn, xp, livello) VALUES ('admin@admin','admin', 'admin', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1, 0, 1);
+INSERT INTO utente (email, username, nome, cognome, psw, admn, xp, livello) VALUES ('admin@admin','admin', 'admin', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1, 0, 1);
