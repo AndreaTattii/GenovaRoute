@@ -3,9 +3,9 @@ session_start();
 
 
 $host = "127.0.0.1";
-$user = "root";
+$user = "grovago";
 $pass = "";
-$database = "genovaroute";
+$database="my_grovago";
 
 $connessione = new mysqli($host, $user, $pass, $database);
 

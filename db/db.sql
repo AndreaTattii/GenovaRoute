@@ -1,10 +1,10 @@
-CREATE DATABASE IF NOT EXISTS GenovaRoute;
+CREATE DATABASE IF NOT EXISTS my_grovago;
 
-USE GenovaRoute;
+USE my_grovago;
 
 CREATE TABLE IF NOT EXISTS Utente(
-    email varchar(255) PRIMARY KEY,
-    username varchar(255) NOT NULL UNIQUE,
+    email varchar(100) PRIMARY KEY,
+    username varchar(100) NOT NULL UNIQUE,
     nome varchar(255) NOT NULL,
     cognome varchar(255) NOT NULL,
     psw varchar(255) NOT NULL,
@@ -14,18 +14,18 @@ CREATE TABLE IF NOT EXISTS Utente(
 );
 
 CREATE TABLE IF NOT EXISTS citta(
-    nome varchar(255) PRIMARY KEY,
+    nome varchar(100) PRIMARY KEY,
     x varchar(255),
     y varchar(255)
 );
 
 CREATE TABLE IF NOT EXISTS categoria(
-    nome varchar(255) PRIMARY KEY
+    nome varchar(100) PRIMARY KEY
 );
 
 CREATE TABLE IF NOT EXISTS Tappa(
 	id int PRIMARY KEY AUTO_INCREMENT,
-    nome varchar(255) UNIQUE NOT NULL,
+    nome varchar(100) UNIQUE NOT NULL,
     descrizione mediumtext NOT NULL,
     categoria varchar(255) NOT NULL REFERENCES Categoria(nome),
     citta varchar(255) NOT NULL REFERENCES citta(nome),
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS Tappa(
 
 CREATE TABLE IF NOT EXISTS Percorso(
     id int PRIMARY KEY AUTO_INCREMENT,
-	nome varchar(255) UNIQUE,
+	nome varchar(100) UNIQUE,
     descrizione varchar(255) NOT NULL,
     dataInserimento TIMESTAMP,
     like_tot int,
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS Percorso(
 );
 
 CREATE TABLE IF NOT EXISTS Utente_Percorre_Tappa(
-    email varchar(255) REFERENCES Utente(email),
+    email varchar(100) REFERENCES Utente(email),
     id_tappa int REFERENCES Tappa(id),
     piace int,
     commento mediumtext,
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS Utente_Percorre_Tappa(
 );
 
 CREATE TABLE IF NOT EXISTS Utente_Preferisce_Percorso(
-    email varchar(255) REFERENCES Utente(email),
+    email varchar(100) REFERENCES Utente(email),
     id_percorso int REFERENCES Percorso(id),
     data TIMESTAMP NOT NULL,
     PRIMARY KEY (email, id_percorso)
@@ -400,4 +400,4 @@ INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (9,
 INSERT INTO Tappa_Appartiene_Percorso (id_tappa, id_percorso, ordine) VALUES (8, 2, 1);
 
 
-INSERT INTO Utente (email, username, nome, cognome, psw, admn) VALUES ('admin@admin','admin', 'admin', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1);
+INSERT INTO Utente (email, username, nome, cognome, psw, admn, xp, livello) VALUES ('admin@admin','admin', 'admin', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1, 0, 1);
