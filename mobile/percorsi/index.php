@@ -89,13 +89,13 @@ if(!isset($_SESSION['tip'])){
     <!-- NAVBAR ALTA -->
     <div class="container fixed-top">
         <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
-            <div class="col-2" style=" padding: bottom 20px;">
-                <a class="navbar-brand" href="faq.php">
-                    <img id="percorsoSfondo" src="../../img/icons/questionMark.png" style="width:17px;">
+            <div class="col-2" >
+                <a class="navbar-brand" href="faq.php" >
+                    <img id="percorsoSfondo" src="../../img/icons/questionMark.png" style="width:17px;padding-bottom:10px;">
                 </a>
             </div>
             <div class="col-8" onclick="toCima()">
-                <h1  style=" color: white; font-weight: bold; text-align: center;">GrovaGO</h1>
+                <h1  style=" color: white; font-weight: bold; text-align: center;">Percorsi</h1>
             </div>
             <div class="col-2">
 
@@ -119,7 +119,6 @@ if(!isset($_SESSION['tip'])){
     ?>
 
     <div id="contenuto">
-        <h2 style="font-weight:bold;padding-left:5px">Scegli un percorso</h2>
         <div class="accordion accordion-flush"  id="accordionFlushExample">
             <div class="accordion-item">
               <h2 class="accordion-header" id="flush-headingOne" >
