@@ -48,10 +48,12 @@
         else{
             $nome = $connessione->real_escape_string($_REQUEST['nome']);
             $cognome = $connessione->real_escape_string($_REQUEST['cognome']);
-            $mail = $connessione->real_escape_string($_REQUEST['mail']);
+            $email = $connessione->real_escape_string($_REQUEST['mail']);
             $password = $connessione->real_escape_string($_REQUEST['password']);
             $username= $connessione->real_escape_string($_REQUEST['username']);
             
+           
+
             //hashing della password
             $password = hash("sha256", $password);
             
@@ -68,7 +70,7 @@
                 ('$nome','$cognome', '$mail', '$password','$username', 1, 0)";
             
                 
-                if($connessione->query($sql) === true){
+                if($connessione->query($sql)){
                     $_SESSION['email']= $mail;
                     if($_SESSION['dispositivo']=='mobile'){
                         header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/mobile/percorsi/index.php");
