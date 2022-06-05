@@ -66,6 +66,7 @@ if ($result = $connessione->query($sql)) {
             padding: 6px 12px;
             cursor: pointer;
         }
+
         
     </style>
 </head>
@@ -73,51 +74,51 @@ if ($result = $connessione->query($sql)) {
 <body class="d-flex flex-column min-vh-100">
 
 
-        <!-- NAVBAR BASSA -->
-        <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-left-radius: 25px;border-top-right-radius: 25px; border-top-width: 1px; height: 50px;">
-            <div class="row  justify-content-center" >
-                <div class="col s-3" style="padding-top:10px">
-                    <center>
-                        <a class="navbar-brand" href="../percorsi/index.php">
-                            <img id="percorsoSfondo" src="../../img/icons/percorso.png">
-                        </a>
-                    </center>
+    <!-- NAVBAR BASSA -->
+    <div class="container fixed-bottom" style="background-color: white; border-top-color:black;  border-top-style: solid; border-top-left-radius: 25px;border-top-right-radius: 25px; border-top-width: 1px; height: 50px;">
+        <div class="row  justify-content-center">
+            <div class="col s-3" style="padding-top:10px">
+                <center>
+                    <a class="navbar-brand" href="../percorsi/index.php">
+                        <img id="percorsoSfondo" src="../../img/icons/percorso.png">
+                    </a>
+                </center>
 
-                </div>
-                <div class="col s-3" style="padding-top:10px">
-                    <center>
-                        <a class="navbar-brand" href="../ricerca/index.php">
-                            <img id="ricercaNavImg" src="../../img/icons/searchBlack.png">
-                        </a>
-                    </center>
+            </div>
+            <div class="col s-3" style="padding-top:10px">
+                <center>
+                    <a class="navbar-brand" href="../ricerca/index.php">
+                        <img id="ricercaNavImg" src="../../img/icons/searchBlack.png">
+                    </a>
+                </center>
 
-                </div>
+            </div>
 
-                <div class="col s-3" style="padding-top:10px">
-                    <center>
-                        <a class="navbar-brand" href="../scanner/index.php ">
-                            <img style="width:25px" src="../../img/icons/scannerizza.png">
-                        </a>
-                    </center>
+            <div class="col s-3" style="padding-top:10px">
+                <center>
+                    <a class="navbar-brand" href="../scanner/index.php ">
+                        <img style="width:25px" src="../../img/icons/scannerizza.png">
+                    </a>
+                </center>
 
-                </div>
-                <div class="col s-3" style="padding-top:10px">
-                    <center>
-                        <a class="navbar-brand" href="../percorsiPersonali/index.php">
-                            <img style="width:25px" src="../../img/icons/aggiungiPercorso.png">
-                        </a>
-                    </center>
+            </div>
+            <div class="col s-3" style="padding-top:10px">
+                <center>
+                    <a class="navbar-brand" href="../percorsiPersonali/index.php">
+                        <img style="width:25px" src="../../img/icons/aggiungiPercorso.png">
+                    </a>
+                </center>
 
-                </div>
-                <div class="col s-3" style="padding-top:10px">
-                    <center>
-                        <a class="navbar-brand" href="./">
-                            <img id="account" src="../../img/icons/accountRosso.png">
-                        </a>
-                    </center>
-                </div>
+            </div>
+            <div class="col s-3" style="padding-top:10px">
+                <center>
+                    <a class="navbar-brand" href="./">
+                        <img id="account" src="../../img/icons/accountRosso.png">
+                    </a>
+                </center>
             </div>
         </div>
+    </div>
 
 
     <div class="container">
@@ -132,6 +133,7 @@ if ($result = $connessione->query($sql)) {
                 <h1 style=" color: white; font-weight: bold; text-align: center;">Impostazioni</h1>
             </div>
             <div class="col-2 ">
+
             </div>
         </div>
 
@@ -139,87 +141,77 @@ if ($result = $connessione->query($sql)) {
         <br>
         <br>
         <div class="container">
-            
+
             <br>
             <div class="row" style="padding: 0px; margin:0px">
                 <div class="col" style="margin:auto; text-align:center; padding: 0px; margin:0px">
-                    <form method="post" enctype="multipart/form-data" action="salvaImg.php">
-                        <label class="custom-file-upload" style="width:100px;height:100px; border-radius: 50%;background-size: cover; background-image: url('../../img/propics/<?php echo $_SESSION['email']; ?>.png<?php echo "?t=".time()?>');">
-                            <input type="file" name="propic" />
-                            
+                    <form id="propicForm"  method="post" enctype="multipart/form-data" action="salvaImg.php">
+                        <label class="custom-file-upload" style="width:150px;height:150px; border-radius: 50%;background-size: cover; background-image: url('../../img/propics/<?php echo $_SESSION['email']; ?>.png<?php echo "?t=" . time() ?>');">
+                            <input id="propicInput" type="file" name="propic" />
+
                         </label>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <input style="background-color: #B30000; color:white" type="submit" name="submit" value="Carica immagine profilo">
-                </form>
-            </div>
-            <br>
-            <div class="row" style="margin-top: 50px;">
-                <div class="col-3" style="padding-top: 5px;">
-                    <b>
-                        <p>Username</p>
-                    </b>
-                </div>
-                <div class="col-7" style="text-align: center">
-                    <!-- form per cambiare username -->
-                    <form action="cambiaUsername.php" method="post">
-                        <input style="outline: none;"  type="text" class="form-control" name="username" value="<?php echo $username; ?>" required>
-                </div>
-                <div class="col-2">
-                    <button style="background-color: #B30000; border:1px solid black;" type="submit" class="btn btn-primary">✏</button>
                     </form>
                 </div>
             </div>
-
-
-            <div class="row">
-                <div class="col-3" style="padding-top: 5px;">
-                    <b>
-                        <p>Nome</p>
-                    </b>
-                </div>
-                <div class="col-7" style="text-align: center">
-                    <!-- form per cambiare username -->
-                    <form action="cambiaNome.php" method="post">
-                        <input style="outline: none;" type="text" class="form-control" name="nome" value="<?php echo $nome; ?>" maxlenght="8" required>
-                </div>
-                <div class="col-2">
-                    <button style="background-color: #B30000; border:1px solid black;" type="submit" class="btn btn-primary">✏</button>
-                    </form>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col-3" style="padding-top: 5px;">
-                    <b>
-                        <p>Cognome</p>
-                    </b>
-                </div>
-                <div class="col-7" style="text-align: center">
-                    <!-- form per cambiare username -->
-                    <form action="cambiaCognome.php" method="post" style="outline: none;" >
-                        <input style="outline:none;"  type="text" class="form-control" name="cognome" value="<?php echo $cognome; ?>" maxlenght="8" required>
-                </div>
-                <div class="col-2">
-                    <button style="background-color: #B30000; border:1px solid black;" type="submit" class="btn btn-primary">✏</button>
-                    </form>
-                </div>
-            </div>
+            
 
             
+            <form id="dataForm" action="cambiaDatiUser.php" method="POST">
+                <div class="row" style="margin-top: 30px;">
+                    <div class="col-3 " style="padding-top: 5px;">
+                        <b>
+                            <p>Username</p>
+                        </b>
+                    </div>
+                    <div class="col-9" style="text-align: center; ">
+                            <input style="outline: none;" type="text" class="form-control " name="username" value="<?php echo $username; ?>" required>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-3 " style="padding-top: 5px;">
+                        <b>
+                            <p>Nome</p>
+                        </b>
+                    </div>
+                    <div class="col-9" style="text-align: center">
+                            <input style="outline: none;" type="text" class="form-control " name="nome" value="<?php echo $nome; ?>" maxlenght="8" required>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-3 " style="padding-top: 5px;">
+                        <b>
+                            <p>Cognome</p>
+                        </b>
+                    </div>
+                    <div class="col-9" style="text-align: center">
+                            <input style="outline:none;" type="text" class="form-control " name="cognome" value="<?php echo $cognome; ?>" maxlenght="8" required>
+                    </div>
+
+                </div>
+            </form>
+            
+
+
             <br>
             <div class="row">
-                <div class="col-6" style="text-align:center;">
+                <div class="col-4" style="text-align:center;">
                     <form action="cambiaPsw/index.php" method="POST">
-                        <button type="submit" class="btn btn-primary" style="background-color: white; border-color:#B30000; font-size: 15px; color:#B30000 ;">Password</button>
+                        <button type="submit" class="btn btn-primary" style="background-color: white; border-color:#B30000; font-size: 15px; color:#B30000; width: 90%; ">Password</button>
                     </form>
                 </div>
-                <div class="col-6" style="text-align:center;">
+
+                <div class="col-4" style="text-align:center;">
+                        <button onclick="submitData()"  class="btn " style="background-color: #b30000; border-color:#B30000; font-size: 15px; color:white; width: 90%;">Fine</button>
+                </div>
+
+                <div class="col-4" style="text-align:center;">
                     <form action="logout/logout.php" method="POST">
-                        <button type="submit" class="btn btn-primary" style="background-color: white; border-color:#B30000; font-size: 15px; color:#B30000 ; ">Log out</button>
+                        <button type="submit" class="btn btn-primary" style="background-color: white; border-color:#B30000; font-size: 15px; color:#B30000; width: 90%; ">Log out</button>
                     </form>
                 </div>
             </div>
@@ -236,12 +228,11 @@ if ($result = $connessione->query($sql)) {
         <div id="container">
             <svg viewBox="0 0 100 100">
                 <defs>
-                  <filter id="shadow">
-                    <feDropShadow dx="0" dy="0" stdDeviation="1.5" 
-                      flood-color="#fc6767"/>
-                  </filter>
+                    <filter id="shadow">
+                        <feDropShadow dx="0" dy="0" stdDeviation="1.5" flood-color="#fc6767" />
+                    </filter>
                 </defs>
-            <circle id="spinner" style="fill:transparent;stroke:#dd2476;stroke-width: 7px;stroke-linecap: round;filter:url(#shadow);" cx="50" cy="50" r="45"/>
+                <circle id="spinner" style="fill:transparent;stroke:#dd2476;stroke-width: 7px;stroke-linecap: round;filter:url(#shadow);" cx="50" cy="50" r="45" />
             </svg>
         </div>
     </div>
@@ -259,6 +250,18 @@ if ($result = $connessione->query($sql)) {
                 //window.location.reload();
             }
         });
+
+        $('#propicInput').change(function() {
+            startUpload();
+        });
+
+        function startUpload(){
+            document.getElementById("propicForm").submit();
+        }
+
+        function submitData(){
+            document.getElementById("dataForm").submit();
+        }
     </script>
 </body>
 

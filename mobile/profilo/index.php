@@ -126,7 +126,7 @@ $percentuale=number_format($percentuale,0);
         </div>
 
 
-    <div class="container" style="margin-bottom:100px">
+    <div class="container" style="margin-bottom:100px; padding-left:0px; ">
         <!-- NAVBAR ALTA -->
         <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
             <div class="col-2">
@@ -173,27 +173,37 @@ $percentuale=number_format($percentuale,0);
 
 
         <!-- INTESTAZIONE  -->
-        <div class="row justify-content-center" style="padding-top: 20px; padding-bottom: 20px; ">
+        <div class="row justify-content-center" style="padding-top: 20px; padding-bottom: 20px; padding-left:5px">
             <div class="col s-2" id="immagineProfilo">
                 <?php
                     if(isset($_GET['emailUtente'])){
                 ?>
-                <img style="width:100px;height:100px; border-radius: 50%" src="../../img/propics/<?php echo $emailUtente; ?>.png<?php echo '?t='.time()?>">
-                <div>
-                    <span style="left:95px; top:92px" class="position-absolute top-70 start-600 translate-middle badge rounded-pill bg-danger">
-                        <?php echo $livello; ?>
-                    </span>
-                </div>
+                        <a class="navbar-brand" href="settings.php">
+                            <label  style="width:100px;height:100px; border-radius: 50%;background-size: cover; background-image: url('../../img/propics/<?php echo $emailUtente;; ?>.png<?php echo "?t=".time()?>');">
+
+                        </a>
+
+
+                        <div>
+                            <span style="left:95px; top:92px" class="position-absolute top-70 start-600 translate-middle badge rounded-pill bg-danger">
+                                <?php echo $livello; ?>
+                            </span>
+                        </div>
                 <?php
                     }
                     else{
                 ?>
-                <img style="width:100px;height:100px; border-radius: 50%" src="../../img/propics/<?php echo $_SESSION['email']; ?>.png<?php echo '?t='.time()?>">
-                <div>
-                    <span style="left:95px; top:92px" class="position-absolute top-70 start-600 translate-middle badge rounded-pill bg-danger">
-                        <?php echo $livello; ?>
-                    </span>
-                </div>
+                        <a class="navbar-brand" href="settings.php">
+                            <label  style="width:100px;height:100px; border-radius: 50%;background-size: cover; background-image: url('../../img/propics/<?php echo $_SESSION['email']; ?>.png<?php echo "?t=".time()?>');">
+                        </a>
+                            
+                            
+                            
+                        <div>
+                            <span style="left:95px; top:92px" class="position-absolute top-70 start-600 translate-middle badge rounded-pill bg-danger">
+                                <?php echo $livello; ?>
+                            </span>
+                        </div>
                 <?php
                 }
                 ?>
