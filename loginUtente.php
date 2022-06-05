@@ -67,11 +67,11 @@
             else{
 
                 $sql = "INSERT INTO utente (nome, cognome, email, psw, username, livello, xp) VALUES 
-                ('$nome','$cognome', '$mail', '$password','$username', 1, 0)";
+                ('$nome','$cognome', '$email', '$password','$username', 1, 0)";
             
                 
                 if($connessione->query($sql)){
-                    $_SESSION['email']= $mail;
+                    $_SESSION['email']= $email;
                     if($_SESSION['dispositivo']=='mobile'){
                         header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/mobile/percorsi/index.php");
                     }
