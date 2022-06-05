@@ -1,11 +1,14 @@
 <?php
 session_start();
+if(!isset($_SESSION['tip'])){
+    $_SESSION['tip']=0;
+}
 //error_reporting(0);
 
 
 ?>
 <!doctype html>
-<html lang="en">
+<html>
 
 <head>
 
@@ -85,10 +88,17 @@ session_start();
 
     <!-- NAVBAR ALTA -->
     <div class="container fixed-top">
-        <div  onclick="toCima()" class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
-
-            <div class="col ">
+        <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
+            <div class="col-2" style=" padding: bottom 20px;">
+                <a class="navbar-brand" href="faq.php">
+                    <img id="percorsoSfondo" src="../../img/icons/questionMark.png" style="width:17px;">
+                </a>
+            </div>
+            <div class="col-8" onclick="toCima()">
                 <h1  style=" color: white; font-weight: bold; text-align: center;">GrovaGO</h1>
+            </div>
+            <div class="col-2">
+
             </div>
         </div>
     </div>
@@ -109,6 +119,7 @@ session_start();
     ?>
 
     <div id="contenuto">
+        <h2 style="font-weight:bold;padding-left:5px">Scegli un percorso</h2>
         <div class="accordion accordion-flush"  id="accordionFlushExample">
             <div class="accordion-item">
               <h2 class="accordion-header" id="flush-headingOne" >
@@ -336,10 +347,10 @@ session_start();
                                         <div class="progress">
                                             <div class="'.$colorePercentuale.'" role="progressbar" style="width: '.$percentuale.'%" aria-valuenow="'.$percentuale.'" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                        <p>'.$nTappeCompletate.'/'.$quanteTappe.'</p>
+                                        <p>'.$nTappeCompletate.'/'.$quanteTappe.'<img src="../../img/icons/occhioCancellato.png" style="width:25px; padding-bottom:2px"></p>
                                         <img class="preferito" id="' . $row['id'] . '" style="width:10%; margin:auto; padding-bottom:3px;" src= "'.$immagine.'" >
                                         <input type="hidden" name="idPercorso" value="' . $row['id'] . '">
-                                        <h5 class="card-title"><input type="submit" value=" ' . $row['nome'] . '" style=" text-decoration: none; color: #B30000; font-size:18px; border: none; background-color:white"></h5>
+                                        <h5 class="card-title"><input type="submit" value=" ' . $row['nome'] . '" style="font-weight:bold; text-decoration: none; color: #B30000; font-size:18px; border: none; background-color:white"></h5>
                                         <p class="card-text">'.$row['descrizione'].'</p>
                                     </div>
                                 </div>
@@ -389,6 +400,54 @@ session_start();
                 </defs>
             <circle id="spinner" style="fill:transparent;stroke:#dd2476;stroke-width: 7px;stroke-linecap: round;filter:url(#shadow);" cx="50" cy="50" r="45"/>
             </svg>
+        </div>
+        <div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <?php
+            if($_SESSION['tip']==0){
+                $_SESSION['tip']=$_SESSION['tip']+1;
+                echo'<center><p style="text-align:center; font-size:15px;"><strong>Tip:</strong> in home, clicca su "Genova Route" per tornare in cima alla lista</p></center>';
+            }
+            else{
+                if($_SESSION['tip']==1){
+                    $_SESSION['tip']=$_SESSION['tip']+1;
+                    echo'<center><p style="text-align:center; font-size:15px;"><strong>Tip:</strong> nella pagina della tappa, puoi navigare tra le tappe con le freccette rosse oppure fare uno swipe</p></center>';
+                }
+                else{
+                    if($_SESSION['tip']==2){
+                        $_SESSION['tip']=$_SESSION['tip']+1;
+                        echo'<center><p style="text-align:center; font-size:15px;"><strong>Tip:</strong> aggiungi i percorsi ai preferiti cliccando sulla stella per poi visualizzarli sul tuo profilo!</p></center>';
+                    }
+                    else{
+                        if($_SESSION['tip']==3){
+                            $_SESSION['tip']=$_SESSION['tip']+1;
+                            echo'<center><p style="text-align:center; font-size:15px;"><strong>Tip:</strong> scannerizza più tappe possibili per ottenere più punti xp e scalare la classifica!</p></center>';
+                        }
+                        else{
+                            if($_SESSION['tip']==4){
+                                $_SESSION['tip']=0;
+                                echo'<center><p style="text-align:center; font-size:15px;"><strong>Tip:</strong> non trovi la tappa che cercavi? Usa la barra di ricerca cliccando sulla lente nel menu in basso!</p></center>';
+                            }
+                        }
+                    }
+                }
+            }
+            ?>       
         </div>
     </div>
     <script>
