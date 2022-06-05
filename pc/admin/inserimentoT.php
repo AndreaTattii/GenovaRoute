@@ -14,14 +14,15 @@
 
     $nome = $connessione->real_escape_string($_REQUEST['nome']);
     $descrizione = $connessione->real_escape_string($_REQUEST['nuovaDescrizione']);
+    $categoria = $_POST['categoria'];
     $via = $connessione->real_escape_string($_REQUEST['via']);
     $città = $connessione->real_escape_string($_REQUEST['città']);
     $lon = $connessione->real_escape_string($_REQUEST['longitudine']);
     $lat = $connessione->real_escape_string($_REQUEST['latitudine']);
 
-
-    $sql = "INSERT INTO Tappa (nome, descrizione, via, citta, lon, lat) VALUES 
-    ('".$nome."','".$descrizione."', '".$via."', '".$città."','".$lon."','".$lat."')";
+    
+    $sql = "INSERT INTO Tappa (nome, descrizione, categoria, via, citta, lon, lat) VALUES 
+    ('".$nome."','".$descrizione."', '".$categoria."', '".$via."', '".$città."','".$lon."','".$lat."')";
     
     if($connessione->query($sql) === true){
         echo "New record created successfully";

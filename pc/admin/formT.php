@@ -76,9 +76,9 @@ if ($connessione === false) {
                 <label for="descrizione">Descrizione</label>
                 <textarea class="form-control" placeholder="Inserisci descrizione" name="nuovaDescrizione" maxlength="2000" required></textarea>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="padding-bottom:20px; ">
                 <label for="descrizione">Categoria</label>
-                <div class="row">
+                <div class="row" style="border: 1px solid #d2d2d2; border-radius:5px">
 
                     <?php
                         $sql = "
@@ -87,20 +87,22 @@ if ($connessione === false) {
                         ";
                         if($result = $connessione->query($sql)){
                             while($row = $result->fetch_assoc()){
-                                
+                                echo'
+                                <div class="col-sm-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="categoria" id="flexRadioDefault2" value="'.$row['nome'].'" checked>
+                                        <label class="form-check-label" for="flexRadioDefault2" style="font-size:12px">
+                                            '.$row['nome'].'
+                                        </label>
+                                    </div>
+                                </div>
+                                ';
                             }
                         }else{
                             echo "La query".$sql."è errata:".$connessione->error;
                         }
                     ?>
-                    <div class="col-sm-1">
-                        <div class="form-check">
-                                <input class="form-check-input" type="radio" name="sezione" id="flexRadioDefault2" value="antipasti" checked>
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Antipasti
-                                </label>
-                        </div>
-                    </div>
+                    
                     
                 </div>
             </div>
