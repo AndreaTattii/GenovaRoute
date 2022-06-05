@@ -75,10 +75,14 @@
 
                     echo "<br>
                     <a style='text-decoration:none; color:black;' href='../profilo/index.php?emailUtente=" . $row['email'] . "'>
-                        <div class='row' style='border-bottom:1px solid black; width:100%'>
+                        <div class='row' style='border-bottom:1px solid black; width:100%; padding-bottom:10px'>
                             <div class='col-4'>
-                                <img style='z-index: 1;width:100px;height:100px; border-radius: 50%' src='../../img/propics/".$row['email'].".png'>
-                                <span style='position: relative;z-index: 2;top: -100px;left: 75px;' class='badge rounded-pill bg-danger'>
+                    ";
+                    ?>
+                    <label class="custom-file-upload" style="width:100px;height:100px; border-radius: 50%;background-size: cover; background-image: url('../../img/propics/<?php echo $row['email']; ?>.png<?php echo "?t=" . time() ?>');">
+                    <?php
+                    
+                    echo"        <span style='position: relative;z-index: 2;top: -100px;left: 75px;' class='badge rounded-pill bg-danger'> 
                                     ".$row['livello']."
                                 </span>
                             </div>
