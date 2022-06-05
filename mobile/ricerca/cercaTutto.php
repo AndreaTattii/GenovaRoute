@@ -109,13 +109,16 @@
                     else{
                         if($tipo == "categoria"){
                             echo '
-                                <div class="row" style="height:60px;  margin-top:10px; width:100%">
-
-                                <div class="col-8">
-                                <h2 style=" font-size: 17px; color: #b30000; font-weight: bold; text-align: left; padding-top:10px; padding-bottom:10px">'.$row['nome'].'</h2>
-                            </div>
-                        </div>                   
-                    ';       
+                                <a style="text-decoration:none; color:black;" href="tappeCategoria.php?categoria='.$row['nome'].'">
+                                    <div class="card text-center" style="width: 100%;  margin-bottom:50px">
+                                        <img src="../../img/categorie/'.$row['nome'].'.png" class="card-img-top" alt="..." style="height:150px">
+                                        <div class="card-body">
+                                            <h5 class="card-title">'.$row['nome'].'</h5>
+                                        </div>
+                                    </div> 
+                                </a>
+        
+                            ';       
                         }
                         else{
                             if($tipo == "percorso"){

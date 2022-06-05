@@ -66,6 +66,13 @@ if ($result = $connessione->query($sql)) {
     }
 }
 
+// HREF DEL PULSANTE INDIETRO
+if(isset($_SESSION['vengoDaMappa'])){
+     $href = "mappaCitta.php?citta=".$citta;
+     unset($_SESSION['vengoDaMappa']);
+    }else{
+       $href = "index.php";
+    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -151,12 +158,13 @@ if ($result = $connessione->query($sql)) {
     </div>
 
 
+
     <!-- NAVBAR ALTA -->
     <div class="container fixed-top">
         <div class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:70px;">
 
             <div class="col-2">
-                <a <?php if(isset($_SESSION['vengoDaMappa'])){unset($_SESSION['vengoDaMappa']);echo'href="mappaCitta.php?citta='.$citta.'"';}else{echo 'href="index.php"';}?> >
+                <a href="<?php echo $href ?>" >
                     <img id="back" src="../../img/icons/back.png">
                 </a>
             </div>
