@@ -2,6 +2,15 @@
 session_start();
 $_SESSION['vengoDaMappa']=true;
 $citta=$_GET['citta'];
+if(isset($_GET['provenienza'])){
+    $provenienza = $_GET['provenienza'];
+    if($provenienza == "percorsi/index"){
+        $href = "../percorsi/index.php";
+    }
+}else{
+    $href = "index.php";
+
+}
 
 $host = "127.0.0.1";
 $user = "root";
@@ -9,6 +18,7 @@ $pass = "";
 $database = "genovaroute";
 
 $connessione = new mysqli($host, $user, $pass, $database);
+
 
 
 ?>
@@ -44,12 +54,12 @@ $connessione = new mysqli($host, $user, $pass, $database);
 
 <body class="d-flex flex-column min-vh-100">
 
-<!-- NAVBAR ALTA -->
-<div class="container fixed-top" >
+    <!-- NAVBAR ALTA -->
+    <div class="container fixed-top" >
         <div class="row justify-content-center align-items-center" style="background-color: #B30000; height:60px; padding-top: 10px;">
 
             <div class="col-2">
-                <a href="index.php">
+                <a href="<?php echo $href ?>">
                     <img id="back" src="../../img/icons/back.png">
                 </a>
             </div>

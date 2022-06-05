@@ -258,11 +258,7 @@ if(!isset($_SESSION['tip'])){
                     echo '<div id="mostra">';
                     while ($row = $result->fetch_array()) { //da risolvere il decentramento verticale del bottone in ogni card
                         $i++;
-                        if ($i % 2 == 0) {
-                            $coloreRiga = "white";
-                        } else {
-                            $coloreRiga = "#F0F0F0";
-                        }
+                        
 
                         //query per vedere se utente ha completato percorso
                         $sql2 = "SELECT * FROM utente_percorre_tappa WHERE email = '" . $_SESSION['email'] . "' 
@@ -338,7 +334,7 @@ if(!isset($_SESSION['tip'])){
                             <form action="tappe/index.php" method="post">
                                 <div class="card " style="border:none;  text-align: left;">
                                     <div class="card-header" style="background-color:white; margin-left:0px; padding-left:0px;border:none; ">
-                                        <p class="card-title"><img src="../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; ">'.$primaCitta.'</p>
+                                        <a href="../ricerca/mappaCitta.php?citta='.$primaCitta.'&provenienza=percorsi/index" style="text-decoration:none; color:black;"><p class="card-title"><img src="../../img/icons/marker.png" style="width: 30px; margin-bottom: 15px; ">'.$primaCitta.'</p></a>
                                     </div>
                                         <button style=" background-color: transparent; border:none;"><img style="border: 3px solid #B30000; position: relative;z-index: 1;" src="../../img/percorsi/'.$row['id'].'.png" class="card-img-top" alt="..." style=" border-radius:0px;"></button>
                                         <!--<img src="../../img/icons/tick.png" style="width:20%;  position: relative;z-index: 2;top: -150px;left: 150px;"> -->
