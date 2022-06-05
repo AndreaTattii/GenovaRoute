@@ -196,9 +196,9 @@ $percentuale=number_format($percentuale,0);
                         <a class="navbar-brand" href="settings.php">
                             <label  style="width:100px;height:100px; border-radius: 50%;background-size: cover; background-image: url('../../img/propics/<?php echo $_SESSION['email']; ?>.png<?php echo "?t=".time()?>');">
                         </a>
-                            
-                            
-                            
+
+
+
                         <div>
                             <span style="left:95px; top:92px" class="position-absolute top-70 start-600 translate-middle badge rounded-pill bg-danger">
                                 <?php echo $livello; ?>
@@ -273,9 +273,27 @@ $percentuale=number_format($percentuale,0);
         echo "<br><br><br><br>";
     } else {
         if ($_SESSION['email'] == $email) {
-            echo "Non hai messo mi piace a nessuna tappa";
+            echo '
+                <div class="row" style="margin-top:100px">
+                    <div class="col-12" style="text-align:center">
+                        <img src="../../img/icons/greyHearth.png" style="width:20%">
+                    </div>
+                </div>
+                <div class="row" style="text-align:center">
+                    <b><p style="color:#909090; margin-bottom:30px; ">Non hai ancora messo mi piace a nessuna tappa</p></b>
+                </div>
+            ';
         } else {
-            echo "Non ha messo mi piace a nessuna tappa";
+            echo '
+                <div class="row" style="margin-top:100px">
+                    <div class="col-12" style="text-align:center">
+                        <img src="../../img/icons/greyHearth.png" style="width:20%">
+                    </div>
+                </div>
+                <div class="row" style="text-align:center">
+                    <b><p style="color:#909090; margin-bottom:30px; ">Non ha ancora messo mi piace a nessuna tappa</p></b>
+                </div>
+            ';
         }
     }
     ?>

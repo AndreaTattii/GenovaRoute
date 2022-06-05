@@ -36,9 +36,27 @@ $sql = "SELECT * FROM utente_percorre_tappa, tappa WHERE email = '" . $email . "
         echo "<br><br><br><br>";
     } else {
         if ($_SESSION['email'] == $email) {
-            echo "Non hai messo mi piace a nessuna tappa";
+            echo '
+                <div class="row" style="margin-top:100px">
+                    <div class="col-12" style="text-align:center">
+                        <img src="../../img/icons/greyHearth.png" style="width:20%">
+                    </div>
+                </div>
+                <div class="row" style="text-align:center">
+                    <b><p style="color:#909090; margin-bottom:30px; ">Non hai ancora messo mi piace a nessuna tappa</p></b>
+                </div>
+            ';
         } else {
-            echo "Non ha messo mi piace a nessuna tappa";
+            echo '
+                <div class="row" style="margin-top:100px">
+                    <div class="col-12" style="text-align:center">
+                        <img src="../../img/icons/greyHearth.png" style="width:20%">
+                    </div>
+                </div>
+                <div class="row" style="text-align:center">
+                    <b><p style="color:#909090; margin-bottom:30px; ">Non ha ancora messo mi piace a nessuna tappa</p></b>
+                </div>
+            ';
         }
     }
 
