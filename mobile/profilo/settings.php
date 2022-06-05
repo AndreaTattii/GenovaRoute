@@ -201,7 +201,7 @@ if ($result = $connessione->query($sql)) {
             <div class="row">
                 <div class="col-4" style="text-align:center;">
                     <form action="cambiaPsw/index.php" method="POST">
-                        <button type="submit" class="btn btn-primary" style="background-color: white; border-color:#B30000; font-size: 15px; color:#B30000; width: 90%; ">Password</button>
+                        <button type="submit" class="btn btn-primary" style="background-color: white; border-color:#B30000; font-size: 15px; color:#B30000; width: 90%;">Password</button>
                     </form>
                 </div>
 
@@ -234,6 +234,54 @@ if ($result = $connessione->query($sql)) {
                 </defs>
                 <circle id="spinner" style="fill:transparent;stroke:#dd2476;stroke-width: 7px;stroke-linecap: round;filter:url(#shadow);" cx="50" cy="50" r="45" />
             </svg>
+        </div>
+        <div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <?php
+            if($_SESSION['tip']==0){
+                $_SESSION['tip']=$_SESSION['tip']+1;
+                echo'<center><p style="text-align:center; font-size:15px;"><strong>Tip:</strong> in home, clicca su "Genova Route" per tornare in cima alla lista</p></center>';
+            }
+            else{
+                if($_SESSION['tip']==1){
+                    $_SESSION['tip']=$_SESSION['tip']+1;
+                    echo'<center><p style="text-align:center; font-size:15px;"><strong>Tip:</strong> nella pagina della tappa, puoi navigare tra le tappe con le freccette rosse oppure fare uno swipe</p></center>';
+                }
+                else{
+                    if($_SESSION['tip']==2){
+                        $_SESSION['tip']=$_SESSION['tip']+1;
+                        echo'<center><p style="text-align:center; font-size:15px;"><strong>Tip:</strong> aggiungi i percorsi ai preferiti cliccando sulla stella per poi visualizzarli sul tuo profilo!</p></center>';
+                    }
+                    else{
+                        if($_SESSION['tip']==3){
+                            $_SESSION['tip']=$_SESSION['tip']+1;
+                            echo'<center><p style="text-align:center; font-size:15px;"><strong>Tip:</strong> scannerizza più tappe possibili per ottenere più punti xp e scalare la classifica!</p></center>';
+                        }
+                        else{
+                            if($_SESSION['tip']==4){
+                                $_SESSION['tip']=0;
+                                echo'<center><p style="text-align:center; font-size:15px;"><strong>Tip:</strong> non trovi la tappa che cercavi? Usa la barra di ricerca cliccando sulla lente nel menu in basso!</p></center>';
+                            }
+                        }
+                    }
+                }
+            }
+            ?>       
         </div>
     </div>
     <script>
