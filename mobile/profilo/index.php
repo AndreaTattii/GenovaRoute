@@ -4,10 +4,10 @@ if(isset($_GET['emailUtente'])){
     $emailUtente=$_GET['emailUtente'];
 }
 
-$host = "127.0.0.1";
-$user = "root";
+$host="localhost";
+$user="grovago";
 $pass = "";
-$database = "genovaroute";
+$database="my_grovago";
 
 $connessione = new mysqli($host, $user, $pass, $database);
 

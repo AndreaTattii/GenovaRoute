@@ -7,10 +7,10 @@
 <?php
     session_start();
     error_reporting(0);
-        $host = "127.0.0.1";
-        $user = "root";
+        $host="localhost";
+        $user="grovago";
         $pass = "";
-        $database = "genovaroute";
+        $database="my_grovago";
 
         $connessione = new mysqli($host, $user, $pass, $database);
 

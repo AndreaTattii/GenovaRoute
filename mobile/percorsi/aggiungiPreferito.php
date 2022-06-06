@@ -1,10 +1,10 @@
 <?php
     session_start(); 
         
-    $host="127.0.0.1";
-    $user="root";
+    $host="localhost";
+    $user="grovago";
     $pass="";
-    $database="GenovaRoute";
+    $database="my_grovago";
 
     $conn = new mysqli($host, $user, $pass , $database);
     //prendi le variabili dell'email dell'utente e dell'id del percorso con il metodo post dal jquery ed esegui la query per aggiungere il preferito

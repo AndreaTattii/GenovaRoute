@@ -1,9 +1,9 @@
 <?php 
 session_start();
-    $host="127.0.0.1";
-    $user="root";
+    $host="localhost";
+    $user="grovago";
     $pass="";
-    $database="GenovaRoute";
+    $database="my_grovago";
 
     $mysqli = new mysqli($host, $user, $pass , $database);
 
