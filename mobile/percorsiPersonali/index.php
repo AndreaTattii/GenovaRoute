@@ -86,11 +86,32 @@ session_start();
         <div  onclick="toCima()" class="row justify-content-center align-items-center" style="background-color: #B30000;  padding-top: 10px; height:60px">
 
             <div class="col ">
-                <h1  style=" color: white; font-weight: bold; text-align: center;">GrovaGO</h1>
+                <h1  style=" color: white; font-weight: bold; text-align: center;">Editor</h1>
             </div>
         </div>
     </div>
 
+
+    <div class="container" style="margin-top: 100px;">
+        <div class="row justify-content-center">
+            <div class="col" style="text-align: center;">
+                <img src="../../img/icons/work.png" style="width: 300px;">
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col" style="text-align: center;">
+                <h1 style="color:#999999">COMING SOON</h1>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!-- LOADER  -->
     <div class="loader-wrapper">
         <div id="container">
             <svg viewBox="0 0 100 100">
