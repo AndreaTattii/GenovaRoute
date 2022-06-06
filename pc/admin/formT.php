@@ -206,7 +206,7 @@ if ($connessione === false) {
                 success: function(data) {
                     $("#controlla").hide();
                     //change the view of the map to the coordinates of the city
-                    map.setView([data.x, data.y], 15);
+                    map.setView([parseFloat(data.x), parseFloat(data.y)], 15);
                     //set bounds of the map to the entire world
                     map.setMaxBounds([
                         [90, 180],
@@ -250,17 +250,21 @@ if ($connessione === false) {
                 url: 'stampaMarkerCitta.php',
                 type: 'POST',
                 data: {
-                    città: città
+                    città: città 
                 },
                 dataType: "json",
                 success: function(data) {
                     //print all the markers in the mark using the data from the query
                     //alert((data).length);
-                    for (var i = 0; i < 10; i++) {
+                    for (var i = 0; i < data.length; i++) {
+                        console.log(data[i]);
+                        var lat=parseFloat(data[i].lat);
+                        var lon=parseFloat(data[i].lon);
+                        var nome=data[i].nome;
                         //crea un marker concatenando la variabile i con data.lat e data.lon
-                        marker = new L.marker([data.lat, data.lon], {
+                        marker = new L.marker([lat, lon], {
                             icon: Icon1
-                        }).addTo(markerGroupCitta).bindPopup(data.nome);
+                        }).addTo(markerGroupCitta).bindPopup(nome);
                     }
                 },
                 error: function() {

@@ -17,18 +17,21 @@
     $sql = "SELECT lat, lon, nome FROM tappa WHERE citta='".$nome."'";
     $result = $connessione->query($sql);
     $i=0;
+    $tappe = array();
     while($row = $result->fetch_assoc()){
         $i++;
-        $test2[$i]['lat'] = $row['lat'];
-        $test2[$i]['lon'] = $row['lon'];
-        $test2[$i]['nome'] = $row['nome'];
+
+        //$test2[$i]['lat'] = $row['lat';
+        //$test2[$i]['lon'] = $row['lon'];
+        //$test2[$i]['nome'] = $row['nome'];
 
         //decommenta questo e commenta quello sopra(era corretto)
-        //$test2 = array(
-        //    'lat' => $row['lat'],
-        //    'lon' => $row['lon'],
-        //    'nome' => $row['nome'],
-        //);
+        $tappa = array(
+            'lat' => $row['lat'],
+            'lon' => $row['lon'],
+            'nome' => $row['nome'],
+        );
+        array_push($tappe, $tappa);
     }
-    echo json_encode($test2);
+    echo json_encode($tappe);
 ?>
