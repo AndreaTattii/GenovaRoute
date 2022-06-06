@@ -175,7 +175,7 @@ if ($result = $connessione->query($sql)) {
                     $sql2 = "SELECT * 
                             FROM utente_percorre_tappa, tappa_appartiene_percorso 
                             WHERE  email = '" . $_SESSION['email'] . "'
-                            AND Utente_percorre_tappa.id_tappa = tappa_appartiene_percorso.id_tappa
+                            AND utente_percorre_tappa.id_tappa = tappa_appartiene_percorso.id_tappa
                             AND tappa_appartiene_percorso.ordine = ".$succ." 
                             ;";
                     

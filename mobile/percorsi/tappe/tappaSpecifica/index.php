@@ -32,9 +32,9 @@ if ($connessione === false) {
 
 // CATTURO DA DB INFORMAZIONI DELLA TAPPA
 $sql = "SELECT tappa.id ,tappa.nome, tappa.descrizione,  tappa.via 
-        FROM tappa, Tappa_appartiene_percorso, percorso
-        WHERE tappa.id = Tappa_appartiene_percorso.id_tappa
-            AND percorso.id =  Tappa_appartiene_percorso.id_percorso
+        FROM tappa, tappa_appartiene_percorso, percorso
+        WHERE tappa.id = tappa_appartiene_percorso.id_tappa
+            AND percorso.id =  tappa_appartiene_percorso.id_percorso
             AND id_percorso = " . $_SESSION['idPercorso'] . " 
             AND ordine = " . $_SESSION['ordineTappa'] . "";
 
