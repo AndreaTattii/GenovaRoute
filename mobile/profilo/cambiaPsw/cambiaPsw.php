@@ -34,7 +34,7 @@
             }else{
                 if ($result->num_rows > 0) {
                     $_SESSION['successo'] = true ;
-                    $sql="UPDATE utente SET psw= '".$nuovaPsw."'";
+                    $sql="UPDATE utente SET psw= '".$nuovaPsw."' WHERE email = '".$_SESSION['email']."' ";
                     mysqli_query($connessione, $sql);
                     
                 }else{
