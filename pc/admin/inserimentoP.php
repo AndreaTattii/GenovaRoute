@@ -19,16 +19,16 @@
     
 
     
-    $sql="INSERT INTO Percorso (nome, descrizione) VALUES ('$nome', '$descrizione')";
+    $sql="INSERT INTO percorso (nome, descrizione) VALUES ('$nome', '$descrizione')";
     if ($result = $connessione->query($sql)) {
-        echo "Percorso inserito con successo";
+        echo "percorso inserito con successo";
     } else {
         echo "Errore nella query: " . $sql . "<br>" . $connessione->error;
     }
 
 
     //restituisci ultimo percroso inserito
-    $sql="SELECT id FROM Percorso
+    $sql="SELECT id FROM percorso
         WHERE nome = '$nome'
         AND descrizione = '$descrizione'
     ";

@@ -15,9 +15,9 @@
     $nomeTappa = $_POST['nomeTappa'];
 
     $sql = 'SELECT tappa.id, tappa.ordine, percorso.id
-            FROM Tappa, Percorso, Tappa_Appartiene_Percorso
-            WHERE  Tappa.id = Tappa_Appartiene_Percorso.id_tappa
-            AND  percorso.id = Tappa_Appartiene_Percorso.id_percorso 
+            FROM tappa, percorso, tappa_appartiene_percorso
+            WHERE  tappa.id = tappa_appartiene_percorso.id_tappa
+            AND  percorso.id = tappa_appartiene_percorso.id_percorso 
             AND  percorso.id = '.$idPercorso.'
             AND tappa.nome = "'.$nomeTappa.'";';
     echo $sql;

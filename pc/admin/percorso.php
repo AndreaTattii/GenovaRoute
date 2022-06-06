@@ -22,7 +22,7 @@ else{
 
 
 
-$sql = "SELECT  nome FROM Percorso WHERE id = '" . $idPercorso . "'";
+$sql = "SELECT  nome FROM percorso WHERE id = '" . $idPercorso . "'";
 
 if ($result = $connessione->query($sql)) {
     $row = $result->fetch_assoc();

@@ -21,7 +21,7 @@
     $lat = $connessione->real_escape_string($_REQUEST['latitudine']);
 
     
-    $sql = "INSERT INTO Tappa (nome, descrizione, categoria, via, citta, lon, lat) VALUES 
+    $sql = "INSERT INTO tappa (nome, descrizione, categoria, via, citta, lon, lat) VALUES 
     ('".$nome."','".$descrizione."', '".$categoria."', '".$via."', '".$città."','".$lon."','".$lat."')";
     
     if($connessione->query($sql) === true){
@@ -30,7 +30,7 @@
         echo "Errore durante inserimento: ".$connessione->error;
     }
 /**/
-    $sql = "SELECT MAX(id) AS maxId FROM Tappa;";
+    $sql = "SELECT MAX(id) AS maxId FROM tappa;";
     if ($risultato = $connessione->query($sql)) {
         $row = $risultato->fetch_assoc();
         $idMassimo = $row['maxId'];

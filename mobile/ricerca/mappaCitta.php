@@ -221,7 +221,7 @@ $connessione = new mysqli($host, $user, $pass, $database);
 
 
                 $sql = 'SELECT lat,lon,nome,id
-                        FROM Tappa 
+                        FROM tappa 
                         WHERE citta="'.$citta.'";';
                 $result = $connessione->query($sql);
                 

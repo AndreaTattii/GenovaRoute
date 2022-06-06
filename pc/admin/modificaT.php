@@ -24,7 +24,7 @@
     //hashing della password
     $password = hash("sha256", $password);
 
-    $sql = "INSERT INTO Tappa (nome, descrizione, via, img1, img2, img3, lon, lat) VALUES 
+    $sql = "INSERT INTO tappa (nome, descrizione, via, img1, img2, img3, lon, lat) VALUES 
     ('".$nome."','".$descrizione."', '".$via."', '".$img1."','".$img2."','".$img3."','".$lon."','".$lat."')";
     
     if($connessione->query($sql) === true){

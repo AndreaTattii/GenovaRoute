@@ -20,8 +20,8 @@ if ($connessione === false) {
 
 
 // CATTURO DA DB INFORMAZIONI DELLA TAPPA
-$sql = "SELECT Tappa.nome, Tappa.descrizione,  Tappa.via, tappa.id, tappa.citta
-        FROM Tappa 
+$sql = "SELECT tappa.nome, tappa.descrizione,  tappa.via, tappa.id, tappa.citta
+        FROM tappa 
         WHERE id = " . $_SESSION['idTappa'] . "";
 
 if ($result = $connessione->query($sql)) {
@@ -202,8 +202,8 @@ if(isset($_SESSION['vengoDaMappa'])){
                         <div class="dropdown-menu" style="border:2px solid #b30000; width: 300px;">
                             <?php 
                                 $sql2 = "SELECT *
-                                        FROM Percorso, Tappa_appartiene_percorso
-                                        WHERE Percorso.id = Tappa_appartiene_percorso.id_percorso
+                                        FROM percorso, Tappa_appartiene_percorso
+                                        WHERE percorso.id = Tappa_appartiene_percorso.id_percorso
                                             AND id_tappa = ".$id."
                                     ";
 

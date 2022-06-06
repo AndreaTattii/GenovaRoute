@@ -28,7 +28,7 @@
     
 
 
-    $sql = "INSERT INTO Citta (nome, x, y) VALUES 
+    $sql = "INSERT INTO citta (nome, x, y) VALUES 
     ('".$nome."','".$x."', '".$y."')";
     
     if(($connessione->query($sql) === true)&&(!isset($_SESSION['errore']))){

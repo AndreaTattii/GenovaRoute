@@ -193,10 +193,10 @@ if ($result = $connessione->query($sql)) {
 
             <?php
 
-                $sql = 'SELECT lat,lon,Tappa.nome
-                FROM Tappa, Percorso, Tappa_Appartiene_Percorso 
+                $sql = 'SELECT lat,lon,tappa.nome
+                FROM tappa, percorso, tappa_appartiene_percorso 
                 Where ordine = '.$_SESSION['ordineTappa'].'  
-                AND percorso.id = Tappa_Appartiene_Percorso.id_percorso 
+                AND percorso.id = tappa_appartiene_percorso.id_percorso 
                 AND  percorso.id = '.$_SESSION['idPercorso'].'
                 AND tappa.id=id_tappa ';
                 $result = $connessione->query($sql);

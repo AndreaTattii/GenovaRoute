@@ -15,7 +15,7 @@
     $idTappa = $connessione->real_escape_string($_REQUEST['idTappa']);
     
     
-    $sql="SELECT id FROM Percorso
+    $sql="SELECT id FROM percorso
         WHERE id IN (
             SELECT DISTINCT id_percorso AS id 
             FROM tappa_appartiene_percorso

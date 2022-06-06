@@ -198,8 +198,8 @@ $connessione = new mysqli($host, $user, $pass, $database);
 
 
             <?php
-                $sql = 'SELECT lat,lon,Tappa.nome
-                FROM Tappa 
+                $sql = 'SELECT lat,lon,tappa.nome
+                FROM tappa 
                 WHERE id='.$_SESSION['idTappa'].';';
                 $result = $connessione->query($sql);
                 $row = $result->fetch_array();

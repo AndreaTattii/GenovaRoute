@@ -14,7 +14,7 @@ $database="my_grovago";
 
 $connessione = new mysqli($host, $user, $pass, $database);
 
-$query = "SELECT nome FROM Percorso WHERE id = '".$_SESSION['idPercorso']."'";
+$query = "SELECT nome FROM percorso WHERE id = '".$_SESSION['idPercorso']."'";
 
 if($result = $connessione->query($query)){
     while($row = $result->fetch_assoc()){
@@ -25,7 +25,7 @@ if($result = $connessione->query($query)){
 
 // NUMERO DI TAPPE
 $sql = "SELECT MAX(ordine)  
-    FROM  Tappa_Appartiene_Percorso
+    FROM  tappa_appartiene_percorso
     WHERE id_percorso =  " . $_SESSION['idPercorso'] . "";
 
 if ($result = $connessione->query($sql)) {

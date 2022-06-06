@@ -11,7 +11,7 @@ $database="my_grovago";
 
 $connessione = new mysqli($host, $user, $pass, $database);
 
-$query = "SELECT nome FROM Percorso WHERE id = '".$_SESSION['idPercorso']."'";
+$query = "SELECT nome FROM percorso WHERE id = '".$_SESSION['idPercorso']."'";
 
 if($result = $connessione->query($query)){
     while($row = $result->fetch_assoc()){
@@ -22,7 +22,7 @@ if($result = $connessione->query($query)){
 
 // NUMERO DI TAPPE
 $sql = "SELECT MAX(ordine)  
-    FROM  Tappa_Appartiene_Percorso
+    FROM  tappa_appartiene_percorso
     WHERE id_percorso =  " . $_SESSION['idPercorso'] . "";
 
 if ($result = $connessione->query($sql)) {
@@ -294,10 +294,10 @@ if ($result = $connessione->query($sql)) {
 
             <?php
             //query per selezionare le coordinate della prima tappa del percorso
-            $sql = 'SELECT lon, lat, Tappa.nome, ordine
-            FROM Tappa, Percorso, Tappa_Appartiene_Percorso
-            WHERE  Tappa.id = Tappa_Appartiene_Percorso.id_tappa
-            AND  percorso.id = Tappa_Appartiene_Percorso.id_percorso 
+            $sql = 'SELECT lon, lat, tappa.nome, ordine
+            FROM tappa, percorso, tappa_appartiene_percorso
+            WHERE  tappa.id = tappa_appartiene_percorso.id_tappa
+            AND  percorso.id = tappa_appartiene_percorso.id_percorso 
             AND  percorso.id = '.$_SESSION['idPercorso'].'
             AND ordine = 0';
             
@@ -322,10 +322,10 @@ if ($result = $connessione->query($sql)) {
                 ";
             }
 
-                $sql = 'SELECT lat,lon,Tappa.nome, ordine
-                FROM Tappa, Percorso, Tappa_Appartiene_Percorso 
-                Where Tappa.id = Tappa_Appartiene_Percorso.id_tappa 
-                AND percorso.id = Tappa_Appartiene_Percorso.id_percorso 
+                $sql = 'SELECT lat,lon,tappa.nome, ordine
+                FROM tappa, percorso, tappa_appartiene_percorso 
+                Where tappa.id = tappa_appartiene_percorso.id_tappa 
+                AND percorso.id = tappa_appartiene_percorso.id_percorso 
                 AND  percorso.id = '.$_SESSION['idPercorso'].';';
 
                 $result = $connessione->query($sql);
