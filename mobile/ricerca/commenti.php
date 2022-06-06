@@ -61,7 +61,7 @@ $idTappa = $_GET['idTappa'];
                 <div class="col-10" >
                     <div class="row" style="border:1px solid black; border-radius:20px">
                         <div class="col-7" style="margin: 5px; ">
-                            <textarea  id="commento"  name="commento" placeholder="Aggiungi un commento"  maxlength="2000" style="border: none; width:200px" required></textarea>
+                            <textarea  id="commento"  name="commento" placeholder="Aggiungi un commento"  maxlength="2000" style="border: none; width:200px;outline:none;" required></textarea>
                         </div>
                         <div class="col-3">
                             <input type="hidden" value="<?php echo $_SESSION['email']; ?>" id="email" name="email">
