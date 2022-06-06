@@ -78,6 +78,6 @@
     }
 
     $connessione->close();
-    header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/formP.php");
+    header("Location: formP.php");
 
 ?>

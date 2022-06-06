@@ -22,7 +22,7 @@
         $row = $result->fetch_assoc();
         if($row['nome'] == $nome){
             $_SESSION['errore'] = "Esiste già una città con lo stesso nome";
-            header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/formC.php");
+            header("Location: formC.php");
         }
     }
     
@@ -32,7 +32,7 @@
     ('".$nome."','".$x."', '".$y."')";
     
     if(($connessione->query($sql) === true)&&(!isset($_SESSION['errore']))){
-        header("Location: https://".$_SERVER['SERVER_ADDR']."/genovaroute/pc/admin/formC.php");
+        header("Location: formC.php");
     }else{
         echo "Errore durante inserimento: ".$connessione->error;
     }
