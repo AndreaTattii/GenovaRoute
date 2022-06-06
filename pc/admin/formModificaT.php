@@ -291,7 +291,7 @@ if ($result = $connessione->query($sql)) {
                 zoomControl: false
             });
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
-            map.setView([<?php echo $x; ?>, <?php echo $y; ?>], 14);
+            map.setView([parseFloat(<?php echo $x; ?>), parseFloat(<?php echo $y; ?>)], 14);
             var markerGroup = L.layerGroup().addTo(map);       
 
             var Icon1 = L.icon({
@@ -306,26 +306,29 @@ if ($result = $connessione->query($sql)) {
             <?php
             //query per ottenere lat e lon e nome delle tappe che fanno parte degli stessi percorsi di cui fa parte la tappa con id = $_SESSION['idTappa'], senza usare la citta
             //header("Location: index.php");
-            
-            $sql3="SELECT DISTINCT lat, lon, nome FROM tappa_appartiene_percorso, tappa 
-                  WHERE id!=".$_SESSION['idTappa']." 
-                  AND id_percorso IN (SELECT percorso.id FROM tappa, percorso, tappa_appartiene_percorso
-                                      WHERE tappa.id=".$_SESSION['idTappa']." 
-                                      AND tappa_appartiene_percorso.id_tappa=tappa.id
-                                      AND tappa_appartiene_percorso.id_percorso=percorso.id)
-                                       ;";
-                $result3 = $connessione->query($sql3);
+            //$view="SELECT id_tappa
+            //       FROM tappa_appartiene_percorso 
+            //       WHERE id_percorso=(SELECT id_percorso 
+            //                          FROM tappa_appartiene_percorso 
+            //                          WHERE id_tappa=".$_SESSION['idTappa'].");";
+            //$sql3="SELECT lat, lon, nome FROM tappa 
+            //       WHERE id!=".$_SESSION['idTappa']." 
+            //       AND id IN (".$view.");";
+            $view="SELECT citta FROM tappa WHERE id=".$_SESSION['idTappa']."";
+            $sql = "SELECT lat, lon, nome FROM tappa WHERE citta IN (".$view.") AND id!=".$_SESSION['idTappa'].";";
+            //echo $sql;
+                $result3 = $connessione->query($sql);
+
+                //echo $connessione-->error;
                 //$row = $result->fetch_array();
                 //$lat=$row['lat'];
                 //$lon=$row['lon'];
                 //$nome=$row['nome'];
                 if($result3->num_rows > 0){
-                    $i=0;
                     while($row3 = $result3->fetch_assoc()){
-                        $i++;
                         //print a marker for each row
                         echo "L.marker(
-                            ['".$row3["lat"]."', '".$row3["lon"]."'],
+                            [".$row3["lat"].", ".$row3["lon"]."],
                             {
                                 icon: Icon1
                             }
@@ -335,14 +338,12 @@ if ($result = $connessione->query($sql)) {
                     }
                 }
                 $sql2 = 'SELECT lat,lon,tappa.nome
-                FROM tappa, percorso, tappa_appartiene_percorso 
-                WHERE tappa.id='.$_SESSION['idTappa'].'  
-                AND percorso.id = tappa_appartiene_percorso.id_percorso 
-                AND tappa.id=id_tappa ';
+                FROM tappa
+                WHERE tappa.id='.$_SESSION['idTappa'].'';
                 $result2 = $connessione->query($sql2);
                 $row2 = $result2->fetch_array();
                     echo "
-                    marker = new L.marker(['".$row2["lat"]."', '".$row2["lon"]."'], {draggable: true,icon: IconB}).addTo(markerGroup).bindPopup('".$row2["nome"]."').openPopup();;;";
+                    marker = new L.marker([".$row2["lat"].", ".$row2["lon"]."], {draggable: true,icon: IconB}).addTo(markerGroup).bindPopup('".$row2["nome"]."').openPopup();;;";
             ?>
             //when the marker is dragged, update the values in the input fields
             marker.on('dragend', function(e) {

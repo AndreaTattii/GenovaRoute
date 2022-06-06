@@ -33,8 +33,12 @@
     }
 
 
-    
-    $sql = "SELECT * FROM ".$tipo." WHERE nome LIKE '%$search%'";
+    if($tipo=="utente"){
+        $sql = "SELECT * FROM utente WHERE (nome LIKE '%$search%' OR cognome LIKE '%$search%' OR username LIKE '%$search%') AND email != '".$_SESSION['email']."' AND username != 'admin'";
+    }
+    else{
+        $sql = "SELECT * FROM ".$tipo." WHERE nome LIKE '%$search%'";
+    }
     //echo $sql;
     if ($result = $connessione->query($sql)) {
         if ($result->num_rows > 0) {
@@ -82,7 +86,7 @@
                     <label class="custom-file-upload" style="width:100px;height:100px; border-radius: 50%;background-size: cover; background-image: url('../../img/propics/<?php echo $row['email']; ?>.png<?php echo "?t=" . time() ?>');">
                     <?php
                     
-                    echo"        <span style='position: relative;z-index: 2;top: -100px;left: 75px;' class='badge rounded-pill bg-danger'> 
+                    echo"        <span style='position: relative;z-index: 2;left: 75px;' class='badge rounded-pill bg-danger'> 
                                     ".$row['livello']."
                                 </span>
                             </div>
