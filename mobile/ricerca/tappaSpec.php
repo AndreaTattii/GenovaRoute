@@ -202,8 +202,8 @@ if(isset($_SESSION['vengoDaMappa'])){
                         <div class="dropdown-menu" style="border:2px solid #b30000; width: 300px;">
                             <?php 
                                 $sql2 = "SELECT *
-                                        FROM percorso, Tappa_appartiene_percorso
-                                        WHERE percorso.id = Tappa_appartiene_percorso.id_percorso
+                                        FROM percorso, tappa_appartiene_percorso
+                                        WHERE percorso.id = tappa_appartiene_percorso.id_percorso
                                             AND id_tappa = ".$id."
                                     ";
 

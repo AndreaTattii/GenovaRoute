@@ -66,8 +66,8 @@
             }
             else{
 
-                $sql = "INSERT INTO utente (nome, cognome, email, psw, username, livello, xp) VALUES 
-                ('$nome','$cognome', '$email', '$password','$username', 1, 0)";
+                $sql = "INSERT INTO utente (nome, cognome, email, psw, username, livello, xp, admn) VALUES 
+                ('$nome','$cognome', '$email', '$password','$username', 1, 0, 0)";
             
                 
                 if($connessione->query($sql)){
